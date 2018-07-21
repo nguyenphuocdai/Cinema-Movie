@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LoadingModule } from 'ngx-loading';
 import { LoadersCssModule } from 'angular2-loaders-css';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LoadersCssModule } from 'angular2-loaders-css';
   imports: [
     BrowserModule,
     CoreModule,
+    HomeModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     LoadingModule,
     LoadersCssModule

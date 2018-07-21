@@ -23,10 +23,20 @@
             ],
             "styles": [
               "node_modules/loaders.css/loaders.min.css",
-              "src/styles.css"
-              
+              "./src/styles.css",
+              "./src/assets/css/animation.css",
+              "./src/assets/css/bootstrap.css",
+              "./src/assets/css/font-awesome.css",
+              "./src/assets/css/lity.css",
+              "./src/assets/css/screen.css",
+              "./src/assets/scss/_styles.scss",
+              "./src/assets/css/customize.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/assets/js/jquery.min.js",
+              "./src/assets/js/lity.js",
+              "./src/assets/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -73,15 +83,12 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"          
+              "src/styles.css"
             ],
-            "scripts": [
-
-            ],
+            "scripts": [],
             "assets": [
               "src/favicon.ico",
               "src/assets"
-             
             ]
           }
         },
@@ -127,5 +134,11 @@
       }
     }
   },
-  "defaultProject": "Cinema-theater"
+  "defaultProject": "Cinema-theater",
+  
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
