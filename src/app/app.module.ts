@@ -32,7 +32,7 @@ import { HomeModule } from './modules/home/home.module';
     CoreModule,
     HomeModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
-    LoadingModule,
+  LoadingModule,
     LoadersCssModule
   ],
   providers: [
