@@ -38,8 +38,8 @@ export class SliderComponent implements OnInit {
   loadImages() {
     this.images = [
       '../../../../../assets/img/banners/banner-sm.jpg',
-      '../../../../../assets/img/banners/banner-sm.jpg',
-      '../../../../../assets/img/banners/banner-sm.jpg'
+      '../../../../../assets/img/banners/Ciw293N.jpg',
+      '../../../../../assets/img/banners/titanic.jpeg'
     ];
   }
   next() {

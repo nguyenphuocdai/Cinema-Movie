@@ -6,3 +6,6 @@ swiper{
 .swiper-wrapper {
     box-sizing: border-box;
 }
+.swiper-slide{
+    max-height: 560px !important;
+}
