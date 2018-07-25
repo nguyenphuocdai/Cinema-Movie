@@ -30,12 +30,14 @@
               "./src/assets/css/lity.css",
               "./src/assets/css/screen.css",
               "./src/assets/scss/_styles.scss",
-              "./src/assets/css/customize.css"
+              "./src/assets/css/customize.css",
+              "node_modules/swiper/dist/css/swiper.css"    
             ],
             "scripts": [
-              "./src/assets/js/jquery.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "./src/assets/js/lity.js",
-              "./src/assets/js/bootstrap.min.js"
+              "./src/assets/js/bootstrap.min.js",
+              "node_modules/swiper/dist/js/swiper.js"         
             ]
           },
           "configurations": {

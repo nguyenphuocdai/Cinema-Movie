@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/app/core/interceptors/http.token.interceptor';
@@ -17,6 +17,7 @@ import { LoadingModule } from 'ngx-loading';
 import { LoadersCssModule } from 'angular2-loaders-css';
 import { HomeModule } from './modules/home/home.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +33,9 @@ import { HomeModule } from './modules/home/home.module';
     CoreModule,
     HomeModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
-  LoadingModule,
-    LoadersCssModule
+    LoadingModule,
+    LoadersCssModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
