@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       dots: true,
       autoplay: true,
       autoplayTimeout: 5000,
+      autoplayHoverPause: true, // Stops autoplay
       nav: false,
       items: 1,
       responsive: {

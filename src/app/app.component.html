@@ -1,5 +1,5 @@
-<!-- HOME 1 -->
-
 <app-header></app-header>
-<app-home></app-home>
+<div [@routerAnimations]="prepareRouteTransition(outlet)" class="body-container">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div>
 <app-footer></app-footer>
