@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/pages/home/home.component';
 import { LoginComponent } from './modules/home/components/login/login.component';
+import { ZaloCallbackComponent } from './modules/home/pages/zalo-callback/zalo-callback.component';
 
 const appRoutes: Routes = [
     {
@@ -12,6 +13,10 @@ const appRoutes: Routes = [
                 value: 'home',
             }
         }
+    },
+    {
+        path: 'zalo-callback',
+        component: ZaloCallbackComponent,
     },
     {
         path: 'login',
@@ -29,8 +34,7 @@ const appRoutes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(
-            appRoutes,
-            { enableTracing: true } // <-- debugging purposes only
+            appRoutes
         )
     ],
     exports: [

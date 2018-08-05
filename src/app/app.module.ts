@@ -17,8 +17,16 @@ import { LoadingModule } from 'ngx-loading';
 import { LoadersCssModule } from 'angular2-loaders-css';
 import { HomeModule } from './modules/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxZaloService } from './shared/services/ngx-zalo.service';
+import { NgxZaloModule } from './shared/ngx-zalo.module';
+import { LoginZaloDirective } from './shared/directives/login-zalo.directive';
+import { LogoutZaloDirective } from './shared/directives/logout-zalo.directive';
 
-
+const zaloConfigs = {
+  version: environment.zaloConfigs.version,
+  appId: environment.zaloConfigs.appId,
+  redirectUrl: environment.zaloConfigs.redirectUrl,
+};
 
 @NgModule({
   declarations: [
@@ -38,7 +46,8 @@ import { AppRoutingModule } from './app-routing.module';
     LoadingModule,
     LoadersCssModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxZaloModule
   ],
   providers: [
     {
@@ -47,6 +56,12 @@ import { AppRoutingModule } from './app-routing.module';
       multi: true
     }
   ],
+  exports: [NgxZaloModule
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngxZaloService: NgxZaloService) {
+    ngxZaloService.init(zaloConfigs);
+  }
+}

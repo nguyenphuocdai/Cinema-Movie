@@ -9,10 +9,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   current: any;
   prevRating: any;
   nextRating: any;
+
   constructor() {
-
   }
-
   ngOnInit() {
 
   }
@@ -90,5 +89,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     $(window).load(function () {
       $('#preloader').fadeOut(500);
     });
+
   }
 }

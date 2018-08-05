@@ -19,3 +19,17 @@
 .transformers-box{
     width: 100%;
 }
+.login-social{
+    justify-content: flex-end !important;
+}
+.login-social a {
+    margin-left: 10px;
+}
+.bg-zalo-login{
+    background: none !important;
+    background-image: url('../../../../../assets/img/zalo-logo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 45px;
+}
