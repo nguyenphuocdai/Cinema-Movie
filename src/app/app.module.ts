@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxZaloService } from './shared/services/ngx-zalo.service';
 import { NgxZaloModule } from './shared/ngx-zalo.module';
 import { ScriptLoaderModule } from 'ngx-script-loader';
+import { LocalStorageServiceModule } from './shared/ng2-cache-service';
 
 const zaloConfigs = {
   version: environment.zaloConfigs.version,
@@ -47,7 +48,8 @@ const zaloConfigs = {
     BrowserAnimationsModule,
     AppRoutingModule,
     NgxZaloModule,
-    ScriptLoaderModule
+    ScriptLoaderModule,
+    LocalStorageServiceModule
   ],
   providers: [
     {

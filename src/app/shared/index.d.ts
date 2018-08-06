@@ -1,0 +1,1 @@
+export * from '../shared/ng2-cache-service';
