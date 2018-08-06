@@ -41,11 +41,15 @@ const slideRight = [
 })
 export class AppComponent {
   title = 'app';
+  userNameLogin: String;
+  isLogin: Boolean;
+  constructor(
+  ) {
+  }
 
   prepareRouteTransition(outlet) {
     const animation = outlet.activatedRouteData['animation'] || {};
     return animation['value'] || null;
   }
-
 }
 

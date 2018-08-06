@@ -19,8 +19,7 @@ import { HomeModule } from './modules/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxZaloService } from './shared/services/ngx-zalo.service';
 import { NgxZaloModule } from './shared/ngx-zalo.module';
-import { LoginZaloDirective } from './shared/directives/login-zalo.directive';
-import { LogoutZaloDirective } from './shared/directives/logout-zalo.directive';
+import { ScriptLoaderModule } from 'ngx-script-loader';
 
 const zaloConfigs = {
   version: environment.zaloConfigs.version,
@@ -47,7 +46,8 @@ const zaloConfigs = {
     LoadersCssModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxZaloModule
+    NgxZaloModule,
+    ScriptLoaderModule
   ],
   providers: [
     {

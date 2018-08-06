@@ -21,9 +21,11 @@
 }
 .login-social{
     justify-content: flex-end !important;
+    margin-top: 20px;
 }
-.login-social a {
+.login-social div {
     margin-left: 10px;
+    cursor: pointer;
 }
 .bg-zalo-login{
     background: none !important;

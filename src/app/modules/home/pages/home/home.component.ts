@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { ScriptService } from '../../../../../../node_modules/ngx-script-loader';
+
 declare var $: any;
 @Component({
   selector: 'app-home',
@@ -10,7 +12,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   prevRating: any;
   nextRating: any;
 
-  constructor() {
+  constructor(private scriptService: ScriptService) {
+    // this.scriptService.loadScript('../../../../../assets/js/main.js').subscribe(() => {
+    // }, (error) => {
+    //   console.log('Failed to load script main js');
+    // });
   }
   ngOnInit() {
 
@@ -82,13 +88,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     //     filter: this.selector
     //   });
     // });
-
     /*----------------------------
       START - Preloader
       ------------------------------ */
     $(window).load(function () {
       $('#preloader').fadeOut(500);
     });
-
   }
 }

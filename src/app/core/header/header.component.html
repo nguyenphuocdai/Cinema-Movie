@@ -13,11 +13,20 @@
                     <input type="text"/>
                     <button><i class="icofont icofont-search"></i></button>
                 </form>
-                <ul>
+                <ul *ngIf="!isLogin">
                     <li><a href="#">Sign up</a></li>
                     <li><a class="login-popup" routerLink="/login" routerLinkActive="active">Sign in</a></li>
                 </ul>
+                <ul *ngIf="isLogin">
+                    <li><a href="#">Chào, {{ this.user.name}}</a></li>
+                </ul>
             </div>
+            <!-- <p ngxLoginZalo>Login Zalo</p>
+            <p (click)="login()">Test</p>
+            <p (click)="checkLoginStatus()">Check login status</p>
+            <p (click)="getMyProfile()">Get my profile</p>
+            <p (click)="getAccessToken()">Get access token</p>
+            <p appLogoutZalo (successEvent)="logoutSuccessfullyAction()">Logout Zalo</p> -->
             <div class="menu-area">
                 <div class="responsive-menu"></div>
                 <div class="mainmenu">
