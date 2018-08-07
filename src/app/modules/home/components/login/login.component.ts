@@ -22,16 +22,13 @@ export class LoginComponent implements OnInit {
     } else {
       this.isRegister = true;
     }
-    this.getMyProfile();
-    localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
-
-
-    const exists: Boolean = this._cacheService.exists('key');
-    const data: any | null = this._cacheService.get('key');
   }
   login() {
     this._ngxZaloService.login();
-    this.checkLoginStatus();
+    if (this.checkLoginStatus()) {
+      this.getMyProfile();
+      localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
+    }
   }
   checkLoginStatus() {
     console.log('Login status:', this._ngxZaloService.isLogin);

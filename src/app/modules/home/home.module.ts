@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ZaloCallbackComponent } from './pages/zalo-callback/zalo-callback.component';
 import { LogoutZaloDirective } from '../../shared/directives/logout-zalo.directive';
 import { LoginZaloDirective } from '../../shared/directives/login-zalo.directive';
+import { UATFeatureComponent } from './pages/uat-feature/uat-feature.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +19,8 @@ import { LoginZaloDirective } from '../../shared/directives/login-zalo.directive
     RegisterComponent,
     ZaloCallbackComponent,
     LoginZaloDirective,
-    LogoutZaloDirective
+    LogoutZaloDirective,
+    UATFeatureComponent
   ],
   exports: [
     HomeComponent,
