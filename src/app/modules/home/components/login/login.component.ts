@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxZaloService } from '../../../../shared/services/ngx-zalo.service';
-import { Router } from '../../../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { CacheService } from '../../../../shared/ng2-cache-service';
 
@@ -25,10 +25,8 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this._ngxZaloService.login();
-    if (this.checkLoginStatus()) {
-      this.getMyProfile();
-      localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
-    }
+    this.getMyProfile();
+    localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
   }
   checkLoginStatus() {
     console.log('Login status:', this._ngxZaloService.isLogin);

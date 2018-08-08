@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgxZaloService } from '../../shared/services/ngx-zalo.service';
-import { User } from '../../shared/models/user.model';
+import { UserSocial } from '../../shared/models/user-social.model';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { User } from '../../shared/models/user.model';
 })
 export class HeaderComponent implements OnInit {
   isLogin: Boolean = false;
-  user: User;
+  user: UserSocial;
   constructor(
     private _ngxZaloService: NgxZaloService,
 

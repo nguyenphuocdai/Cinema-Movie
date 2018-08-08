@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { style, query, group, animate, trigger, transition } from '../../node_modules/@angular/animations';
+import { style, query, group, animate, trigger, transition } from '@angular/animations';
 
 const slideLeft = [
   query(':leave', style({ position: 'absolute', left: 0, right: 0, transform: 'translate3d(0%,0,0)' }), { optional: true }),
@@ -40,7 +40,7 @@ const slideRight = [
   ]
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Movie Point';
   userNameLogin: String;
   isLogin: Boolean;
   constructor(

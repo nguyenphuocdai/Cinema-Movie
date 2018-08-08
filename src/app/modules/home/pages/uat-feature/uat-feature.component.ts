@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ScriptService } from '../../../../../../node_modules/ngx-script-loader';
+import { ScriptService } from 'ngx-script-loader';
 
 @Component({
   selector: 'app-uat-feature',

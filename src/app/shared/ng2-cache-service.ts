@@ -3,7 +3,7 @@ import { CacheLocalStorage } from './services/storage/local-storage/cache-local-
 import { CacheMemoryStorage } from './services/storage/memory/cache-memory.service';
 import { CacheSessionStorage } from './services/storage/session-storage/cache-session-storage.service';
 import { CacheStorageAbstract } from './services/storage/cache-storage-abstract.service';
-import { CacheStoragesEnum } from '../shared/enums/cache-storages.enum';
+import { CacheStoragesEnum } from './enums/cache-storages.enum';
 import { CacheService } from './services/cache.service';
 
 
