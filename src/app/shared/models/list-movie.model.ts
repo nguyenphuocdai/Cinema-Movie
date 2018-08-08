@@ -1,5 +1,5 @@
 export class ListMovie {
-    MaPhim: String;
+    MaPhim: number;
     TenPhim: String;
     Trailer: String;
     HinhAnh: String;

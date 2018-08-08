@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ScriptService } from 'ngx-script-loader';
+import { MovieService } from '../../../../shared/services/movie.service';
+import { ListMovie } from '../../../../shared/models/list-movie.model';
 
 declare var $: any;
 @Component({
@@ -12,15 +14,36 @@ export class HomeComponent implements OnInit, AfterViewInit {
   prevRating: any;
   nextRating: any;
 
-  constructor(private scriptService: ScriptService) {
+  listMovie: ListMovie;
+
+  constructor(
+    private scriptService: ScriptService,
+    private movieService: MovieService
+  ) {
     // this.scriptService.loadScript('../../../../../assets/js/main.js').subscribe(() => {
     // }, (error) => {
     //   console.log('Failed to load script main js');
     // });
   }
-  ngOnInit() {
 
+
+  ngOnInit() {
+    this.getListMovie();
   }
+
+  getListMovie() {
+    this.movieService.getListMovie()
+      .subscribe(
+        (result) => {
+          this.listMovie = result;
+          console.log(result);
+        },
+        (err) => {
+          console.log(SERVER_ERROR);
+        }
+      );
+  }
+
   ngAfterViewInit(): void {
     $('.hero-area-slider').owlCarousel({
       loop: true,

@@ -21,6 +21,8 @@ import { NgxZaloService } from './shared/services/ngx-zalo.service';
 import { NgxZaloModule } from './shared/ngx-zalo.module';
 import { ScriptLoaderModule } from 'ngx-script-loader';
 import { LocalStorageServiceModule } from './shared/ng2-cache-service';
+import { MovieService } from './shared/services/movie.service';
+import { HttpModule } from '@angular/http';
 
 const zaloConfigs = {
   version: environment.zaloConfigs.version,
@@ -40,6 +42,7 @@ const zaloConfigs = {
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     CoreModule,
     HomeModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
@@ -56,7 +59,8 @@ const zaloConfigs = {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    MovieService
   ],
   exports: [NgxZaloModule
   ],

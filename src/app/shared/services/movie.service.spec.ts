@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MovieServiceService } from './movie-service.service';
+import { MovieService } from './movie.service';
 
 describe('MovieServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MovieServiceService]
+      providers: [MovieService]
     });
   });
 
-  it('should be created', inject([MovieServiceService], (service: MovieServiceService) => {
+  it('should be created', inject([MovieService], (service: MovieService) => {
     expect(service).toBeTruthy();
   }));
 });

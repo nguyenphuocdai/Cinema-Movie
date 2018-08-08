@@ -10,12 +10,12 @@ import { ListMovie } from '../models/list-movie.model';
 @Injectable({
   providedIn: 'root'
 })
-export class MovieServiceService {
+export class MovieService {
 
   constructor(private http: Http) { }
 
 
-  getListMovie(): Observable<ListMovie[]> {
+  getListMovie(): Observable<ListMovie> {
     return this.http.get(appConfig.getListMovie)
       .map(this.parseData)
       .catch(this.handleErrorObservable);
