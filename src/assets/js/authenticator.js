@@ -38,7 +38,7 @@ function updateOtp() {
     shaObj.update(time);
     var hmac = shaObj.getHMAC("HEX");
 
-    $('#qrImg').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=200x200&chld=M|0&cht=qr&chl=otpauth://totp/user@host.com%3Fsecret%3D' + $('#secret').val());
+    $('#qrImg').attr('src', 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=200x200&chld=M|0&cht=qr&chl=otpauth://totp/MoviePoint%3Fsecret%3D' + $('#secret').val());
     $('#secretHex').text(key);
     $('#secretHexLength').text((key.length * 4) + ' bits'); 
     $('#epoch').text(time);

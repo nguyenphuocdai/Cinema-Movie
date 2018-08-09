@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
+
     this._ngxZaloService.login();
     this.getMyProfile();
     localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());

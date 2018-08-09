@@ -1,11 +1,11 @@
-import {Injectable, Optional} from '@angular/core';
-import {CacheOptionsInterface} from '../interfaces/cache-options.interface';
-import {CacheStoragesEnum} from '../enums/cache-storages.enum';
-import {CacheStorageAbstract} from './storage/cache-storage-abstract.service';
-import {CacheSessionStorage} from './storage/session-storage/cache-session-storage.service';
-import {CacheLocalStorage} from './storage/local-storage/cache-local-storage.service';
-import {CacheMemoryStorage} from './storage/memory/cache-memory.service';
-import {StorageValueInterface} from '../interfaces/storage-value.interface';
+import { Injectable, Optional } from '@angular/core';
+import { CacheOptionsInterface } from '../interfaces/cache-options.interface';
+import { CacheStoragesEnum } from '../enums/cache-storages.enum';
+import { CacheStorageAbstract } from './storage/cache-storage-abstract.service';
+import { CacheSessionStorage } from './storage/session-storage/cache-session-storage.service';
+import { CacheLocalStorage } from './storage/local-storage/cache-local-storage.service';
+import { CacheMemoryStorage } from './storage/memory/cache-memory.service';
+import { StorageValueInterface } from '../interfaces/storage-value.interface';
 
 const CACHE_PREFIX = 'CacheService';
 
@@ -22,7 +22,7 @@ export class CacheService {
      */
     private _defaultOptions: CacheOptionsInterface = {
         expires: Number.MAX_VALUE,
-        maxAge : Number.MAX_VALUE
+        maxAge: Number.MAX_VALUE
     };
 
     /**
@@ -103,7 +103,7 @@ export class CacheService {
      */
     public getTagData(tag: string) {
         let tags = this.get(this._tagsStorageKey()) || {},
-            result : {[key: string]: any} = {};
+            result: { [key: string]: any } = {};
         if (tags[tag]) {
             tags[tag].forEach((key: string) => {
                 let data = this.get(this._fromStorageKey(key));

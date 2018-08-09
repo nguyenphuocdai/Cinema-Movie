@@ -28,7 +28,6 @@ export class NgxZaloService {
     this._initStatus = this.STATUS_INITIALIZING;
     this.initZaloScript(() => {
       Zalo.init(configs);
-
       this.getLoginStatus(() => {
         this._initStatus = this.STATUS_INIT_SUCCESSFULLY;
       });
@@ -40,6 +39,8 @@ export class NgxZaloService {
   login(): void {
     if (this.isInitSuccessfully) {
       Zalo.login();
+      // localStorage.setItem('currentUser', JSON.stringify(result));
+      // localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
     }
   }
 

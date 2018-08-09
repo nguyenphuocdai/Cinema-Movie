@@ -62,7 +62,8 @@ const zaloConfigs = {
     },
     MovieService
   ],
-  exports: [NgxZaloModule
+  exports: [
+    NgxZaloModule
   ],
   bootstrap: [AppComponent]
 })

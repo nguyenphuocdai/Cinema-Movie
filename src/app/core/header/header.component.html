@@ -2,7 +2,9 @@
     <div class="container">
         <div class="header-area">
             <div class="logo">
-                <a href="index.html"><img src="assets/img/logo.png" alt="logo" /></a>
+                <a href="index.html">
+                    <img src="assets/img/logo.png" alt="logo" />
+                </a>
             </div>
             <div class="header-right">
                 <form action="#">
@@ -10,40 +12,80 @@
                         <option value="Movies">Phim</option>
                         <option value="Movies">Diễn viên</option>
                     </select>
-                    <input type="text"/>
-                    <button><i class="icofont icofont-search"></i></button>
+                    <input type="text" />
+                    <button>
+                        <i class="icofont icofont-search"></i>
+                    </button>
                 </form>
                 <ul *ngIf="!isLogin">
-                    <li><a href="#">Sign up</a></li>
-                    <li><a class="login-popup" routerLink="/login" routerLinkActive="active">Sign in</a></li>
+                    <li>
+                        <a href="#">Sign up</a>
+                    </li>
+                    <li>
+                        <a class="login-popup" routerLink="/login" routerLinkActive="active">Sign in</a>
+                    </li>
                 </ul>
+
                 <ul *ngIf="isLogin">
-                    <li><a href="javascript:void(0)">Chào, {{ this.user.name}}</a></li>
+                    <li>
+                        <div class="dropdown show">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Chào, {{ this.user.name}}
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item c-font-16" href="javascript:void(0)">Thông tin cá nhân</a>
+                                <a class="dropdown-item c-font-16" href="javascript:void(0)">Cài đặt</a>
+                                <a class="dropdown-item c-font-16" href="javascript:void(0)" appLogoutZalo (successEvent)="logoutSuccessfullyAction()">Đăng xuất</a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
+            <p (click)="checkLoginStatus()">status</p>
             <!-- <p ngxLoginZalo>Login Zalo</p>
             <p (click)="login()">Test</p>
             <p (click)="checkLoginStatus()">Check login status</p>
             <p (click)="getMyProfile()">Get my profile</p>
-            <p (click)="getAccessToken()">Get access token</p>
-            <p appLogoutZalo (successEvent)="logoutSuccessfullyAction()">Logout Zalo</p> -->
+            <p (click)="getAccessToken()">Get access token</p> -->
+            <!-- <p appLogoutZalo (successEvent)="logoutSuccessfullyAction()">Logout Zalo</p> -->
             <div class="menu-area">
                 <div class="responsive-menu"></div>
                 <div class="mainmenu">
                     <ul id="primary-menu">
-                        <li><a routerLink="/home" routerLinkActive="active">Trang chủ</a></li>
+                        <li>
+                            <a routerLink="/home" routerLinkActive="active">Trang chủ</a>
+                        </li>
 
-                        <li><a href="#">Thể loại<i class="icofont icofont-simple-down"></i></a>
+                        <li>
+                            <a href="#">Thể loại
+                                <i class="icofont icofont-simple-down"></i>
+                            </a>
                             <ul>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                                <li><a href="movie-details.html">Movie Details</a></li>
+                                <li>
+                                    <a href="blog-details.html">Blog Details</a>
+                                </li>
+                                <li>
+                                    <a href="movie-details.html">Movie Details</a>
+                                </li>
                             </ul>
                         </li>
-                        <li><a href="celebrities.html">Phim lẻ</a></li>
-                        <li><a href="top-movies.html">Phim bộ</a></li>
-                        <li><a href="blog.html">Trailer</a></li>
-                        <li><a href="movies.html">Liên hệ</a></li>
-                        <li><a class="theme-btn" href="#"><i class="icofont icofont-ticket"></i> Đặt vé</a></li>
+                        <li>
+                            <a href="celebrities.html">Phim lẻ</a>
+                        </li>
+                        <li>
+                            <a href="top-movies.html">Phim bộ</a>
+                        </li>
+                        <li>
+                            <a href="blog.html">Trailer</a>
+                        </li>
+                        <li>
+                            <a href="movies.html">Liên hệ</a>
+                        </li>
+                        <li>
+                            <a class="theme-btn" href="#">
+                                <i class="icofont icofont-ticket"></i> Đặt vé</a>
+                        </li>
                     </ul>
                 </div>
             </div>

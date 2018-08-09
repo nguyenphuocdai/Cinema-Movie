@@ -11,7 +11,12 @@ import { NgxZaloService } from '../../../../shared/services/ngx-zalo.service';
 export class ZaloCallbackComponent {
 
   constructor(private _router: Router, private _ngxZaloService: NgxZaloService) {
+    this._ngxZaloService.getMyProfile().subscribe(result => {
+      localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
+      localStorage.setItem('currentUser', JSON.stringify(result));
+    });
     this._ngxZaloService.updateLoginInfo().subscribe(() => {
+      location.reload();
       this._router.navigate(['/home']);
     });
   }
