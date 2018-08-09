@@ -31,5 +31,26 @@ export class MovieService {
     console.error(error.message || error);
     return Observable.throw(error.message || error);
   }
+  public StringConverter(value: any) {
+    if (value === null || value === undefined || typeof value === 'string') {
+      return value;
+    }
+
+    return value.toString();
+  }
+  public BooleanConverter(value: any) {
+    if (value === null || value === undefined || typeof value === 'boolean') {
+      return value;
+    }
+
+    return value.toString() === 'true';
+  }
+  public NumberConverter(value: any) {
+    if (value === null || value === undefined || typeof value === 'number') {
+      return value;
+    }
+
+    return parseFloat(value.toString());
+  }
 
 }

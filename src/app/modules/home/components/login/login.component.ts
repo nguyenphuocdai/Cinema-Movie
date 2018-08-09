@@ -3,6 +3,8 @@ import { NgxZaloService } from '../../../../shared/services/ngx-zalo.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { CacheService } from '../../../../shared/ng2-cache-service';
+import { MovieService } from '../../../../shared/services/movie.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -10,25 +12,30 @@ import { CacheService } from '../../../../shared/ng2-cache-service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  isLogin: Boolean = false;
+  isLogin: Boolean = true;
   isRegister: Boolean = false;
+  isAllowLogin: Boolean = false;
   constructor(
     private _ngxZaloService: NgxZaloService,
     private _router: Router,
-    private _cacheService: CacheService
+    private _cacheService: CacheService,
+    private _movieService: MovieService,
+    private _location: Location
   ) {
-    if (this._router.url === '/login') {
-      this.isLogin = true;
-    } else {
-      this.isRegister = true;
-    }
-  }
-  login() {
 
+    this.isAllowLogin = this._movieService.BooleanConverter(localStorage.getItem('isLogin'));
+    if (this.isAllowLogin === true) {
+      this._location.back();
+    }
+
+  }
+
+  login() {
     this._ngxZaloService.login();
     this.getMyProfile();
     localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
   }
+
   checkLoginStatus() {
     console.log('Login status:', this._ngxZaloService.isLogin);
   }
@@ -47,7 +54,13 @@ export class LoginComponent implements OnInit {
   // logoutSuccessfullyAction() {
   //   console.log('Logout successfully');
   // }
-
+  register() {
+    this.isLogin = true;
+    if (this.isLogin) {
+      this.isLogin = false;
+      this.isRegister = !this.isLogin;
+    }
+  }
   ngOnInit() {
   }
   // public func() {

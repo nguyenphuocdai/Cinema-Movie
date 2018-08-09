@@ -9,54 +9,98 @@
             </div>
           </div>
           <div class="col-lg-7">
-            <div class="transformers-content c-padding-t-20" *ngIf="isLogin">
+            <div class="transformers-content c-padding-t-20">
               <h2>The Movie Point Login</h2>
               <p>Moive | 2D | 3D | Sci-Fi | SBS</p>
               <div class="details-reply">
                 <form action="#">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="select-container">
-                        <input type="text" placeholder="UserName" />
-                        <i class="icofont icofont-ui-user"></i>
+                  <div *ngIf="isLogin">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="select-container">
+                          <input type="text" placeholder="Tên đăng nhập" />
+                          <i class="icofont icofont-ui-user"></i>
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="select-container">
+                          <input type="password" placeholder="Mật khẩu" />
+                          <i class="icofont icofont-ui-password"></i>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-lg-12">
-                      <div class="select-container">
-                        <input type="password" placeholder="Password" />
-                        <i class="icofont icofont-ui-password"></i>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <button type="button" class="theme-btn">Đăng nhập</button>
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <button type="button" class="theme-btn">Login</button>
+                  <div class="transformers-content c-padding-t-20" *ngIf="isRegister">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="select-container">
+                          <input type="text" placeholder="Tên đăng nhập" />
+                          <i class="icofont icofont-ui-user"></i>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="select-container">
+                          <input type="text" placeholder="Họ tên" />
+                          <i class="icofont icofont-ui-user"></i>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="select-container">
+                          <input type="password" placeholder="Mật khẩu" />
+                          <i class="icofont icofont-ui-password"></i>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="select-container">
+                          <input type="email" placeholder="Email" />
+                          <i class="icofont icofont-ui-email"></i>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="select-container">
+                          <input type="text" placeholder="Số điện thoại" />
+                          <i class="icofont icofont-smart-phone"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <button type="button" class="theme-btn">Đăng ký</button>
+                      </div>
                     </div>
                   </div>
-                  <div class="login-social">
-                    <div>
-                      <a><i class="icofont icofont-social-facebook"></i></a>
-                    </div>
-                    <div class="bg-zalo-login" ngxLoginZalo>
-                      <img src="../../../../../assets/img/zalo-logo.png" alt="" width="100" ngxLoginZalo>
-                    </div>
-                    <div>
-                      <a><i class="icofont icofont-social-google-plus"></i></a>
-                    </div>
-                  </div>
-                  <!-- <p ngxLoginZalo>Login Zalo</p>
-                  <p (click)="login()">Test</p>
-                  <p (click)="checkLoginStatus()">Check login status</p>
-                  <p (click)="getMyProfile()">Get my profile</p>
-                  <p (click)="getAccessToken()">Get access token</p>
-                  <p appLogoutZalo (successEvent)="logoutSuccessfullyAction()">Logout Zalo</p> -->
                 </form>
               </div>
             </div>
-            <div class="transformers-content c-padding-t-20" *ngIf="isRegister">
-              test
+
+            <div class="row row--no--padding c-padding-t-20 text-right">
+              <div class="col-lg-12 row--no--padding">
+                <button type="button" class="btn button-register" (click)="register()">Chưa có tài khoản?</button>
+                <button type="button" class="btn button-register">Quên mật khẩu?</button>
+              </div>
+            </div>
+            <div class="login-social">
+              <div>
+                <a>
+                  <i class="icofont icofont-social-facebook"></i>
+                </a>
+              </div>
+              <div class="bg-zalo-login" ngxLoginZalo>
+                <img src="../../../../../assets/img/zalo-logo.png" alt="" width="100" ngxLoginZalo>
+              </div>
+              <div>
+                <a>
+                  <i class="icofont icofont-social-google-plus"></i>
+                </a>
+              </div>
             </div>
           </div>
+
         </div>
         <!-- <a href="#" class="theme-btn">
           <i class="icofont icofont-ticket"></i> BUY TICKET</a> -->
