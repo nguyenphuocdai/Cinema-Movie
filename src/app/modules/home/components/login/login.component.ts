@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxZaloService } from '../../../../shared/services/ngx-zalo.service';
 import { Router } from '@angular/router';
-import { environment } from '../../../../../environments/environment';
 import { CacheService } from '../../../../shared/ng2-cache-service';
 import { MovieService } from '../../../../shared/services/movie.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 
 @Component({
@@ -15,6 +15,17 @@ export class LoginComponent implements OnInit {
   isLogin: Boolean = true;
   isRegister: Boolean = false;
   isAllowLogin: Boolean = false;
+
+  private registerForm: FormGroup;
+  private account: FormControl;
+  private password: FormControl;
+  private passwordConFirm: FormControl;
+  private username: FormControl;
+  private email: FormControl;
+  private phoneNumber: FormControl;
+
+  private formIsSubmitting: boolean;
+
   constructor(
     private _ngxZaloService: NgxZaloService,
     private _router: Router,
@@ -62,6 +73,8 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.CreateValidatorRegisterForm();
+    this.CreateRegisterForm();
   }
   // public func() {
 
@@ -98,4 +111,35 @@ export class LoginComponent implements OnInit {
   //   this._cacheService.getTagData('tag');
 
   // }
+  private CreateRegisterForm() {
+    this.registerForm = new FormGroup({
+      account: this.account,
+      password: this.password,
+      passwordConFirm: this.passwordConFirm,
+      username: this.username,
+      email: this.email,
+      phoneNumber: this.phoneNumber
+    });
+  }
+  private CreateValidatorRegisterForm() {
+    this.account = new FormControl('', [Validators.required, Validators.pattern(/^[a-z0-9_-]{8,15}$/)]);
+    this.password = new FormControl('', [Validators.required]);
+    this.passwordConFirm = new FormControl('', [Validators.required]);
+    this.username = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(24)]);
+    this.email = new FormControl('', [Validators.required, Validators.pattern(/[^\s@]+@[^\s@]+\.[^\s@]+$/)]);
+    this.phoneNumber = new FormControl('', [Validators.required, Validators.pattern(/^(01[2689]|09|08)[0-9]{8}$/)]);
+
+    this.registerForm = new FormGroup({
+      account: this.account,
+      password: this.password,
+      passwordConFirm: this.passwordConFirm,
+      username: this.username,
+      email: this.email,
+      phoneNumber: this.phoneNumber
+    });
+  }
+
+  registerUser() {
+    console.log(this.registerForm);
+  }
 }

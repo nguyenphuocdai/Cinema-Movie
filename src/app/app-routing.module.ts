@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     },
     { path: 'test', component: UATFeatureComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    // { path: '**', component: PageNotFoundComponent }
+    { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

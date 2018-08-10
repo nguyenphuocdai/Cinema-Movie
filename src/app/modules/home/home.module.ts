@@ -6,11 +6,14 @@ import { LoginComponent } from './components/login/login.component';
 import { ZaloCallbackComponent } from './pages/zalo-callback/zalo-callback.component';
 import { UATFeatureComponent } from './pages/uat-feature/uat-feature.component';
 import { LoginZaloDirective } from '../../shared/directives/login-zalo.directive';
+import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     HomeComponent,
