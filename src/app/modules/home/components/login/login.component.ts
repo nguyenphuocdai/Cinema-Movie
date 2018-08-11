@@ -5,6 +5,12 @@ import { CacheService } from '../../../../shared/ng2-cache-service';
 import { MovieService } from '../../../../shared/services/movie.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { PasswordValidation } from '../../../../shared/directives/macth-password.validate';
+import { SimpleCrypt } from 'ngx-simple-crypt';
+import { LocalKey } from '../../../../app.config';
+import { UserNormal } from '../../../../shared/models/user-normal.model';
+import { UserService } from '../../../../shared/services/user.service';
+import * as base32 from 'hi-base32';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +21,10 @@ export class LoginComponent implements OnInit {
   isLogin: Boolean = true;
   isRegister: Boolean = false;
   isAllowLogin: Boolean = false;
+  isSuccessfully: Boolean = false;
+  registeredName: String = '';
+  userLoginNow: any;
+  regexPassword = '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,32}$';
 
   private registerForm: FormGroup;
   private account: FormControl;
@@ -23,16 +33,24 @@ export class LoginComponent implements OnInit {
   private username: FormControl;
   private email: FormControl;
   private phoneNumber: FormControl;
-
   private formIsSubmitting: boolean;
+  private registerInfo: UserNormal = new UserNormal();
 
   constructor(
     private _ngxZaloService: NgxZaloService,
     private _router: Router,
     private _cacheService: CacheService,
     private _movieService: MovieService,
+    private _userService: UserService,
     private _location: Location
   ) {
+    // const simpleCrypt = new SimpleCrypt();
+    // const encodedString = simpleCrypt.encode(LocalKey.keyCryto, 'Su-Su');
+    // console.log(encodedString);
+    // const decodedString = simpleCrypt.decode(LocalKey.keyCryto, encodedString);
+    // console.log(decodedString);
+    console.log(base32.encode('vicente001'));
+    console.log(base32.decode('OZUWGZLOORSTAMBR'));
 
     this.isAllowLogin = this._movieService.BooleanConverter(localStorage.getItem('isLogin'));
     if (this.isAllowLogin === true) {
@@ -40,7 +58,6 @@ export class LoginComponent implements OnInit {
     }
 
   }
-
   login() {
     this._ngxZaloService.login();
     this.getMyProfile();
@@ -75,6 +92,75 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.CreateValidatorRegisterForm();
     this.CreateRegisterForm();
+  }
+
+  private CreateRegisterForm() {
+    this.registerForm = new FormGroup({
+      account: this.account,
+      password: this.password,
+      passwordConFirm: this.passwordConFirm,
+      username: this.username,
+      email: this.email,
+      phoneNumber: this.phoneNumber
+    }, {
+        validators: PasswordValidation.MatchPassword
+      });
+  }
+
+  private CreateValidatorRegisterForm() {
+    this.account = new FormControl('', [Validators.required, Validators.pattern(/^[a-z0-9_-]{8,15}$/)]);
+    this.password = new FormControl('', [Validators.required, Validators.pattern(this.regexPassword)]);
+    this.passwordConFirm = new FormControl('', [Validators.required]);
+    this.username = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(24)]);
+    this.email = new FormControl('', [Validators.required, Validators.pattern(/[^\s@]+@[^\s@]+\.[^\s@]+$/)]);
+    this.phoneNumber = new FormControl('', [Validators.required, Validators.pattern(/^(01[2689]|09|08)[0-9]{8}$/)]);
+
+    this.registerForm = new FormGroup({
+      account: this.account,
+      password: this.password,
+      passwordConFirm: this.passwordConFirm,
+      username: this.username,
+      email: this.email,
+      phoneNumber: this.phoneNumber
+    });
+  }
+
+  registerUser() {
+
+    const simpleCrypt = new SimpleCrypt();
+
+    this.formIsSubmitting = true;
+
+    this.registerInfo.TaiKhoan = this.account.value;
+    this.registerInfo.MatKhau = simpleCrypt.encode(LocalKey.keyCryto, this.password.value);
+    this.registerInfo.HoTen = this.username.value;
+    this.registerInfo.Email = this.email.value;
+    this.registerInfo.SoDT = this.email.value;
+    this.registerInfo.MaNhom = 'GP07';
+    this.registerInfo.MaLoaiNguoiDung = 'KhachHang';
+    this.registerInfo.TenLoaiNguoiDung = 'Khách hàng';
+    this.registerInfo.SSID = '';
+    this.registerInfo.SecretKey = base32.encode(this.account.value);
+
+    this._userService.registerUser(this.registerInfo)
+      .subscribe(
+        (result) => {
+          this.userLoginNow = result;
+          console.log(this.userLoginNow);
+          this.isSuccessfully = true;
+          this.registeredName = result.HoTen;
+          this.isSuccessfully = true;
+          this.formIsSubmitting = false;
+          this.resetForm(this.registerForm);
+        }
+      );
+
+  }
+  loginNow() {
+
+  }
+  resetForm(form: FormGroup) {
+    return form.reset();
   }
   // public func() {
 
@@ -111,35 +197,5 @@ export class LoginComponent implements OnInit {
   //   this._cacheService.getTagData('tag');
 
   // }
-  private CreateRegisterForm() {
-    this.registerForm = new FormGroup({
-      account: this.account,
-      password: this.password,
-      passwordConFirm: this.passwordConFirm,
-      username: this.username,
-      email: this.email,
-      phoneNumber: this.phoneNumber
-    });
-  }
-  private CreateValidatorRegisterForm() {
-    this.account = new FormControl('', [Validators.required, Validators.pattern(/^[a-z0-9_-]{8,15}$/)]);
-    this.password = new FormControl('', [Validators.required]);
-    this.passwordConFirm = new FormControl('', [Validators.required]);
-    this.username = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(24)]);
-    this.email = new FormControl('', [Validators.required, Validators.pattern(/[^\s@]+@[^\s@]+\.[^\s@]+$/)]);
-    this.phoneNumber = new FormControl('', [Validators.required, Validators.pattern(/^(01[2689]|09|08)[0-9]{8}$/)]);
 
-    this.registerForm = new FormGroup({
-      account: this.account,
-      password: this.password,
-      passwordConFirm: this.passwordConFirm,
-      username: this.username,
-      email: this.email,
-      phoneNumber: this.phoneNumber
-    });
-  }
-
-  registerUser() {
-    console.log(this.registerForm);
-  }
 }

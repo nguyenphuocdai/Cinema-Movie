@@ -12,7 +12,7 @@
             <div class="transformers-content c-padding-t-20">
               <h2>The Movie Point</h2>
               <p>Moive | 2D | 3D | Sci-Fi | SBS</p>
-              <div class="details-reply">
+              <div class="details-reply" *ngIf="!isSuccessfully">
                 <form action="#">
                   <div *ngIf="isLogin">
                     <div class="row">
@@ -36,80 +36,84 @@
                     </div>
                   </div>
                 </form>
-                <div class="transformers-content c-padding-t-20" *ngIf="isRegister">
+                <div class="transformers-content c-padding-t-20" *ngIf="isRegister && !isSuccessfully">
                   <form action="#" [formGroup]="registerForm" name="registerForm" novalidate>
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="text" placeholder="Tên đăng nhập" name="account" id="account" formControlName="account"
-                          [ngClass]="{'has-error': account.invalid && (account.dirty || account.touched)}"
+                          <input type="text" placeholder="Tên đăng nhập" name="account" id="account" formControlName="account" [ngClass]="{'has-error': account.invalid && (account.dirty || account.touched)}"
                           />
                           <i class="icofont icofont-ui-user"></i>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="text" placeholder="Họ tên" name="username" id="username" formControlName="username"
-                          [ngClass]="{'has-error': username.invalid && (username.dirty || username.touched)}"
+                          <input type="text" placeholder="Họ tên" name="username" id="username" formControlName="username" [ngClass]="{'has-error': username.invalid && (username.dirty || username.touched)}"
                           />
                           <i class="icofont icofont-ui-user"></i>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="password" placeholder="Mật khẩu" name="password" id="password" formControlName="password"
-                          [ngClass]="{'has-error': password.invalid && (password.dirty || password.touched)}"
+                          <input type="password" placeholder="Mật khẩu" name="password" id="password" formControlName="password" maxlength="32" [ngClass]="{'has-error': password.invalid && (password.dirty || password.touched)}"
                           />
                           <i class="icofont icofont-ui-password"></i>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="password" placeholder="Nhập lại mật khẩu" name="passwordConFirm" id="passwordConFirm" formControlName="passwordConFirm"
-                          [ngClass]="{'has-error': passwordConFirm.invalid && (passwordConFirm.dirty || passwordConFirm.touched)}"
+                          <input type="password" maxlength="32" placeholder="Nhập lại mật khẩu" name="passwordConFirm" id="passwordConFirm" formControlName="passwordConFirm"
+                            [ngClass]="{'has-error': passwordConFirm.invalid && (passwordConFirm.dirty || passwordConFirm.touched)}"
                           />
                           <i class="icofont icofont-ui-password"></i>
                         </div>
+                        <div class="display-password-confirm" *ngIf="registerForm.controls.passwordConFirm.errors?.MatchPassword">Mật khẩu nhập lại chưa khớp</div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="email" placeholder="Email" name="email" id="email" formControlName="email"
-                          [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched)}"
+                          <input type="email" placeholder="Email" name="email" id="email" formControlName="email" [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched)}"
                           />
                           <i class="icofont icofont-ui-email"></i>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="text" placeholder="Số điện thoại" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber"
-                          [ngClass]="{'has-error': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}"
+                          <input type="text" placeholder="Số điện thoại" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber" [ngClass]="{'has-error': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}"
                           />
                           <i class="icofont icofont-smart-phone"></i>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-lg-12">
-                        <button type="button" class="theme-btn" 
-                        [disabled]="registerForm.invalid"
-                        [ngClass]='{disabled: registerForm.invalid}'
-                        (click)="registerUser()"
-                        >Đăng ký</button>
+                      <div class="col-lg-12 row-flex">
+                        <div>
+                          <button type="button" class="theme-btn" [disabled]="registerForm.invalid || formIsSubmitting" [ngClass]='{disabled: registerForm.invalid}'
+                            (click)="registerUser()">Đăng ký </button>
+                        </div>
+                        <div class="loader" *ngIf="formIsSubmitting"></div>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
+              <div class="details-reply" *ngIf="isSuccessfully">
+                <h4 style="margin-bottom: 15px">Chúc mừng {{registeredName}}</h4>
+                <p style="margin-bottom: 15px">Bạn vừa đăng ký thành công tài khoản tại Movie Point</p>
+              </div>
             </div>
 
             <div class="row row--no--padding c-padding-t-20 text-right">
-              <div class="col-lg-12 row--no--padding">
+              <div class="col-lg-12 row--no--padding" *ngIf="!isSuccessfully">
                 <button type="button" class="btn button-register" *ngIf="isRegister" (click)="isLogin = true; isRegister = false;">Đăng nhập</button>
                 <button type="button" class="btn button-register" (click)="register()">Chưa có tài khoản?</button>
                 <button type="button" class="btn button-register">Quên mật khẩu?</button>
               </div>
+              <div class="col-lg-12 row--no--padding" *ngIf="isSuccessfully">
+                <button type="button" class="btn button-register" (click)="loginNow()">Đăng nhập ngay</button>
+                <button type="button" class="btn button-register" (click)="isSuccessfully = false;isRegister = false; isLogin = true;">Đăng nhập sau</button>
+              </div>
             </div>
-            <div class="login-social">
+            <div class="login-social" *ngIf="!isSuccessfully">
               <div>
                 <a>
                   <i class="icofont icofont-social-facebook"></i>
@@ -127,8 +131,7 @@
           </div>
 
         </div>
-        <!-- <a href="#" class="theme-btn">
-          <i class="icofont icofont-ticket"></i> BUY TICKET</a> -->
+
       </div>
     </div>
   </div>

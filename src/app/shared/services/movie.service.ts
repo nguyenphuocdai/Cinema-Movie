@@ -31,6 +31,7 @@ export class MovieService {
     console.error(error.message || error);
     return Observable.throw(error.message || error);
   }
+
   public StringConverter(value: any) {
     if (value === null || value === undefined || typeof value === 'string') {
       return value;

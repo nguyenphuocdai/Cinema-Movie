@@ -5,5 +5,8 @@ export class UserNormal {
     SoDT: String;
     MaNhom: String;
     MaLoaiNguoiDung: String;
+    TenLoaiNguoiDung: String;
     HoTen: String;
+    SSID: String;
+    SecretKey: String;
 }
