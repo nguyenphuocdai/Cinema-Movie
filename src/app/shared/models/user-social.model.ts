@@ -8,4 +8,5 @@ export class UserSocial {
             url: string;
         }
     };
+    error: any;
 }

@@ -22,9 +22,14 @@ export class LoginComponent implements OnInit {
   isRegister: Boolean = false;
   isAllowLogin: Boolean = false;
   isSuccessfully: Boolean = false;
+  isShowLoadingLogin: Boolean = false;
   registeredName: String = '';
   userLoginNow: any;
   regexPassword = '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,32}$';
+
+  private loginForm: FormGroup;
+  private usernameLogin: FormControl;
+  private passwordLogin: FormControl;
 
   private registerForm: FormGroup;
   private account: FormControl;
@@ -49,8 +54,8 @@ export class LoginComponent implements OnInit {
     // console.log(encodedString);
     // const decodedString = simpleCrypt.decode(LocalKey.keyCryto, encodedString);
     // console.log(decodedString);
-    console.log(base32.encode('vicente001'));
-    console.log(base32.decode('OZUWGZLOORSTAMBR'));
+    // console.log(base32.encode('vicente001'));
+    // console.log(base32.decode('OZUWGZLOORSTAMBR'));
 
     this.isAllowLogin = this._movieService.BooleanConverter(localStorage.getItem('isLogin'));
     if (this.isAllowLogin === true) {
@@ -63,7 +68,24 @@ export class LoginComponent implements OnInit {
     this.getMyProfile();
     localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
   }
-
+  loginNormal() {
+    this.isShowLoadingLogin = true;
+    this._userService.loginUser(this.usernameLogin.value, this.passwordLogin.value)
+      .subscribe(
+        (result) => {
+          console.log(result);
+          if (result !== null) {
+            localStorage.setItem('TypeLogin', 'normal');
+            localStorage.setItem('currentUserNormal', JSON.stringify(result));
+            location.reload();
+            this._router.navigate(['/home']);
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
   checkLoginStatus() {
     console.log('Login status:', this._ngxZaloService.isLogin);
   }
@@ -92,8 +114,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.CreateValidatorRegisterForm();
     this.CreateRegisterForm();
-  }
 
+    this.CreateValidatorLoginForm();
+    this.CreateLoginForm();
+  }
+  private CreateLoginForm() {
+    this.loginForm = new FormGroup({
+      usernameLogin: this.usernameLogin,
+      passwordLogin: this.passwordLogin
+    });
+  }
+  private CreateValidatorLoginForm() {
+    this.usernameLogin = new FormControl('', [Validators.required]);
+    this.passwordLogin = new FormControl('', [Validators.required]);
+  }
   private CreateRegisterForm() {
     this.registerForm = new FormGroup({
       account: this.account,
@@ -126,21 +160,19 @@ export class LoginComponent implements OnInit {
   }
 
   registerUser() {
-
     const simpleCrypt = new SimpleCrypt();
 
     this.formIsSubmitting = true;
-
     this.registerInfo.TaiKhoan = this.account.value;
     this.registerInfo.MatKhau = simpleCrypt.encode(LocalKey.keyCryto, this.password.value);
     this.registerInfo.HoTen = this.username.value;
     this.registerInfo.Email = this.email.value;
-    this.registerInfo.SoDT = this.email.value;
+    this.registerInfo.SoDT = this.phoneNumber.value;
     this.registerInfo.MaNhom = 'GP07';
     this.registerInfo.MaLoaiNguoiDung = 'KhachHang';
     this.registerInfo.TenLoaiNguoiDung = 'Khách hàng';
     this.registerInfo.SSID = '';
-    this.registerInfo.SecretKey = base32.encode(this.account.value);
+    this.registerInfo.SecretKey = this._userService.makeid();
 
     this._userService.registerUser(this.registerInfo)
       .subscribe(
@@ -162,6 +194,15 @@ export class LoginComponent implements OnInit {
   resetForm(form: FormGroup) {
     return form.reset();
   }
+  // function makeid() {
+  //   var text = "";
+  //   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+
+  //   for (var i = 0; i < 32; i++)
+  //     text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  //   return text;
+  // }
   // public func() {
 
   //   //set global prefix as build version

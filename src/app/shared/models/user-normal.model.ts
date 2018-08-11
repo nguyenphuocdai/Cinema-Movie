@@ -9,4 +9,8 @@ export class UserNormal {
     HoTen: String;
     SSID: String;
     SecretKey: String;
+    DaXoa: String;
+    DatVes: Array<any>;
+    LoaiNguoiDung: String;
+    Nhom: String;
 }

@@ -8,6 +8,8 @@ export const LocalKey = {
 };
 
 export const appConfig = {
-    getListMovie: `${baseAPIMovie}LayDanhSachPhim?MaNhom=GP01`,
-    registerUser : `${baseAPIUSer}ThemNguoiDung`
+    getListMovie: `${baseAPIMovie}LayDanhSachPhim?MaNhom=GP07`,
+    getUser:  `${baseAPIUSer}LayDanhSachNguoiDung?MaNhom=GP07`,
+    registerUser : `${baseAPIUSer}ThemNguoiDung`,
+    loginUser : `${baseAPIUSer}DangNhap?`
 };
