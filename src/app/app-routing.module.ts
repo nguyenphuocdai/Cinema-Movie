@@ -4,6 +4,7 @@ import { HomeComponent } from './modules/home/pages/home/home.component';
 import { LoginComponent } from './modules/home/components/login/login.component';
 import { ZaloCallbackComponent } from './modules/home/pages/zalo-callback/zalo-callback.component';
 import { UATFeatureComponent } from './modules/home/pages/uat-feature/uat-feature.component';
+import { BookTicketComponent } from './modules/home/pages/book-ticket/book-ticket.component';
 
 const appRoutes: Routes = [
     {
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
             }
         }
     },
+    { path: 'ticket', component: BookTicketComponent },
     { path: 'test', component: UATFeatureComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: HomeComponent }

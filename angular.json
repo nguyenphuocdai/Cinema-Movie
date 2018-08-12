@@ -31,7 +31,9 @@
               "./src/assets/css/magnific-popup.css",
               "./src/assets/css/style.css",
               "./src/assets/css/responsive.css",
-              "./node_modules/font-awesome/css/font-awesome.css" 
+              "./node_modules/font-awesome/css/font-awesome.css",
+              "./src/assets/css/external/jquery.selectbox.css",
+              "./src/assets/css/external/idangerous.swiper.css",
             ],
             "scripts": [
               "./src/assets/js/popper.min.js",
@@ -40,8 +42,8 @@
               "./src/assets/js/jquery.slicknav.min.js",  
               "./src/assets/js/owl.carousel.min.js",
               "./src/assets/js/jquery.magnific-popup.min.js",    
-              "./src/assets/js/isotope.pkgd.min.js"
-              
+              "./src/assets/js/isotope.pkgd.min.js",
+              "./src/assets/js/external/idangerous.swiper.min.js"
             ]
           },
           "configurations": {

@@ -7,20 +7,27 @@ import { ZaloCallbackComponent } from './pages/zalo-callback/zalo-callback.compo
 import { UATFeatureComponent } from './pages/uat-feature/uat-feature.component';
 import { LoginZaloDirective } from '../../shared/directives/login-zalo.directive';
 import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
-
+import { BookTicketComponent } from './pages/book-ticket/book-ticket.component';
+import { CarouselModule } from 'angular2-carousel';
+import { BrowserModule } from '../../../../node_modules/@angular/platform-browser';
+import { AngularDateTimePickerModule } from './components/datetime-picker';
 @NgModule({
   imports: [
+    BrowserModule,
     CommonModule,
     CoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule,
+    AngularDateTimePickerModule
   ],
   declarations: [
     HomeComponent,
     LoginComponent,
     ZaloCallbackComponent,
     UATFeatureComponent,
-    LoginZaloDirective
+    LoginZaloDirective,
+    BookTicketComponent
   ],
   exports: [
     HomeComponent,
