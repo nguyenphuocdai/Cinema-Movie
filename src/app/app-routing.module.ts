@@ -29,7 +29,15 @@ const appRoutes: Routes = [
             }
         }
     },
-    { path: 'ticket', component: BookTicketComponent },
+    {
+        path: 'ticket',
+        component: BookTicketComponent,
+        data: {
+            animation: {
+                value: 'ticket',
+            }
+        }
+    },
     { path: 'test', component: UATFeatureComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: HomeComponent }

@@ -673,7 +673,7 @@ h5 {
 p {
   font-size: 15px;
   line-height: 28px;
-  color: #4c4145;
+  color: black;
   margin-bottom: 28px;
 }
 .text--light {
@@ -2744,8 +2744,8 @@ input[type="button"].btn-block {
   margin-top: 80px;
 }
 .order-container {
-  margin-top: 48px;
-  margin-bottom: 78px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 .coloum-wrapper {
   margin-top: 60px;
@@ -9959,4 +9959,18 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .wc-date-container{
     min-width: 250px;;
+}
+.pt30{
+    padding-top: 30px;
+}
+.c-ticket-w100 {
+  width: 100%;
+}
+.c-image-responsive {
+}
+.container .carousel .item-carousel {
+  border: none !important;
+}
+.order__title {
+  color: #fff !important;
 }

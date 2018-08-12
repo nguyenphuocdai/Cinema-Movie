@@ -8,9 +8,10 @@ import { UATFeatureComponent } from './pages/uat-feature/uat-feature.component';
 import { LoginZaloDirective } from '../../shared/directives/login-zalo.directive';
 import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
 import { BookTicketComponent } from './pages/book-ticket/book-ticket.component';
-import { CarouselModule } from 'angular2-carousel';
+// import { CarouselModule } from 'angular2-carousel';
 import { BrowserModule } from '../../../../node_modules/@angular/platform-browser';
 import { AngularDateTimePickerModule } from './components/datetime-picker';
+import { CarouselModule } from './components/carousel-movie';
 @NgModule({
   imports: [
     BrowserModule,

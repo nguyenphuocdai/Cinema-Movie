@@ -36,6 +36,10 @@ const slideRight = [
     trigger('routerAnimations', [
       transition('home => login', slideRight),
       transition('login => home', slideLeft),
+      transition('home => ticket', slideRight),
+      transition('ticket => home', slideLeft),
+      transition('login => ticket', slideLeft),
+      transition('ticket => login', slideRight),
     ])
   ]
 })

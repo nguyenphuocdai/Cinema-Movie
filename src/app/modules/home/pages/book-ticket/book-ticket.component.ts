@@ -34,27 +34,27 @@ export class BookTicketComponent implements OnInit {
     });
     this.scriptService.loadScript('../../../../../assets/js/external/modernizr.custom.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script authenticator js');
+      console.log('Failed to load script  js');
     });
     this.scriptService.loadScript('../../../../../assets/js/custom.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script authenticator js');
+      console.log('Failed to load script  js');
     });
     this.scriptService.loadScript('../../../../../assets/js/form.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script authenticator js');
+      console.log('Failed to load script  js');
     });
     this.scriptService.loadScript('../../../../../assets/js/jquery.mobile.menu.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script authenticator js');
+      console.log('Failed to load script  js');
     });
     this.scriptService.loadScript('../../../../../assets/js/external/form-element.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script authenticator js');
+      console.log('Failed to load script');
     });
     this.scriptService.loadScript('../../../../../assets/js/external/jquery.selectbox-0.2.min.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script authenticator js');
+      console.log('Failed to load script');
     });
   }
 
