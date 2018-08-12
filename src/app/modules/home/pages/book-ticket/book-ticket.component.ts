@@ -9,7 +9,7 @@ import { DatepickerOptions } from '../../../../../../node_modules/ng2-datepicker
   styleUrls: ['./book-ticket.component.scss']
 })
 export class BookTicketComponent implements OnInit {
-
+  isShowBookChair: Boolean = false;
   @ViewChild('topCarousel') topCarousel: CarouselComponent;
   public degree = 25;
   public moreSlides = 3;
@@ -61,4 +61,7 @@ export class BookTicketComponent implements OnInit {
   ngOnInit() {
   }
 
+  ShowBookChair() {
+    this.isShowBookChair = true;
+  }
 }

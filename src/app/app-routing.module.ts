@@ -10,11 +10,14 @@ const appRoutes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
+
         data: {
             animation: {
                 value: 'home',
-            }
-        }
+            },
+            name: 'Trang chủ',
+        },
+
     },
     {
         path: 'zalo-callback',
@@ -26,7 +29,8 @@ const appRoutes: Routes = [
         data: {
             animation: {
                 value: 'login',
-            }
+            },
+            name: 'Đăng nhập',
         }
     },
     {
@@ -54,5 +58,4 @@ const appRoutes: Routes = [
     ]
 })
 export class AppRoutingModule {
-
 }
