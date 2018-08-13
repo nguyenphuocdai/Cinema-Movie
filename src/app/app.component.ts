@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { style, query, group, animate, trigger, transition } from '@angular/animations';
 import { ScriptService } from '../../node_modules/ngx-script-loader';
-import { Router } from '../../node_modules/@angular/router';
-import { Title } from '../../node_modules/@angular/platform-browser';
 
 const slideLeft = [
   query(':leave', style({ position: 'absolute', left: 0, right: 0, transform: 'translate3d(0%,0,0)' }), { optional: true }),
@@ -53,10 +51,11 @@ export class AppComponent {
   constructor(
     private scriptService: ScriptService
   ) {
-    this.scriptService.loadScript('https://sp.zalo.me/plugins/sdk.js').subscribe(() => {
-    }, (error) => {
-      console.log('Failed to load script sdk js');
-    });
+    // this.scriptService.loadScript('https://sp.zalo.me/plugins/sdk.js').subscribe(() => {
+
+    // }, (error) => {
+    //   console.log('Failed to load script sdk js');
+    // });
   }
 
   prepareRouteTransition(outlet) {

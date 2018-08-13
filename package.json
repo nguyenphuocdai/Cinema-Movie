@@ -38,6 +38,7 @@
     "jquery": "^3.3.1",
     "jwt-decode": "^2.2.0",
     "ng2-datepicker": "^3.1.1",
+    "ng2-scroll-to": "^1.0.7",
     "ngx-loading": "^1.0.14",
     "ngx-logger": "^3.0.5",
     "ngx-script-loader": "^1.0.0",

@@ -4,6 +4,7 @@ import { NgxZaloService } from './services/ngx-zalo.service';
 import { CacheImageDirective } from './directives/cache-image.directive';
 import { PhoneNumberPipe } from './pipes/phone-number.pipe';
 
+
 // tslint:disable-next-line:prefer-const
 let zaloConfigs: { version: string, appId: string, redirectUrl: string };
 
@@ -15,8 +16,9 @@ let zaloConfigs: { version: string, appId: string, redirectUrl: string };
     NgxZaloService,
   ],
   declarations: [
-  CacheImageDirective,
-  PhoneNumberPipe],
+    CacheImageDirective,
+    PhoneNumberPipe,
+  ],
   exports: [
   ]
 })

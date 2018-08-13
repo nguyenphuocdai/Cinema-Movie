@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscriber } from 'rxjs/Subscriber';
 
@@ -6,7 +6,7 @@ declare const Zalo;
 
 @Injectable()
 export class NgxZaloService {
-
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   private readonly SCRIPT_URL = 'https://zjs.zdn.vn/zalo/sdk.js';
   private readonly STATUS_NOT_INIT = 0;
   private readonly STATUS_INITIALIZING = 1;
@@ -39,8 +39,6 @@ export class NgxZaloService {
   login(): void {
     if (this.isInitSuccessfully) {
       Zalo.login();
-      // localStorage.setItem('currentUser', JSON.stringify(result));
-      // localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
     }
   }
 
@@ -82,6 +80,7 @@ export class NgxZaloService {
       this.pendingInit().subscribe(() => {
         Zalo.api('/me', 'GET', {fields: fields}, (myProfile) => {
           this.breakObservable(observer, myProfile);
+          this.getLoggedInName.emit(myProfile);
         });
       });
     });

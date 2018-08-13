@@ -14,6 +14,7 @@ import { AngularDateTimePickerModule } from './components/datetime-picker';
 import { CarouselModule } from './components/carousel-movie';
 import { BookChairComponent } from './pages/book-chair/book-chair.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { ScrollToIdDirective } from '../../shared/directives/scroll-to-id.directive';
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,7 +23,8 @@ import { PaymentComponent } from './pages/payment/payment.component';
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
-    AngularDateTimePickerModule
+    AngularDateTimePickerModule,
+
   ],
   declarations: [
     HomeComponent,
@@ -32,11 +34,13 @@ import { PaymentComponent } from './pages/payment/payment.component';
     LoginZaloDirective,
     BookTicketComponent,
     BookChairComponent,
-    PaymentComponent
+    PaymentComponent,
+    ScrollToIdDirective
   ],
   exports: [
     HomeComponent,
     ZaloCallbackComponent,
+    ScrollToIdDirective
 
   ],
   providers: [

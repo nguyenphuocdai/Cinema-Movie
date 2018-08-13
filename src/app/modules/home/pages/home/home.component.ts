@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       .subscribe(
         (result) => {
           this.listMovie = result;
-          console.log(result);
         },
         (err) => {
           console.log(SERVER_ERROR);
@@ -49,13 +48,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
       loop: true,
       dots: true,
       autoplay: true,
-      autoplayTimeout: 5000,
+      autoplayTimeout: 6000,
       autoplayHoverPause: true, // Stops autoplay
       nav: false,
       items: 1,
       responsive: {
         992: {
-          dots: false,
+          dots: true,
         }
       }
     });

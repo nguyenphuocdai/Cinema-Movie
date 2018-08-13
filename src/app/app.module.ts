@@ -52,7 +52,7 @@ const zaloConfigs = {
     AppRoutingModule,
     NgxZaloModule,
     ScriptLoaderModule,
-    LocalStorageServiceModule
+    LocalStorageServiceModule,
   ],
   providers: [
     {

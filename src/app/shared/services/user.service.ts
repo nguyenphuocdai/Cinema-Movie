@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '../../../../node_modules/@angular/http';
 import { Observable } from '../../../../node_modules/rxjs';
 import { appConfig } from '../../app.config';
@@ -10,7 +10,7 @@ import { UserNormal } from '../models/user-normal.model';
 export class UserService {
   text: String = '';
   possible: String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private http: Http) { }
 
 
@@ -58,5 +58,9 @@ export class UserService {
       this.text += this.possible.charAt(Math.floor(Math.random() * this.possible.length));
     }
     return this.text;
+  }
+  displayNameUser(user: String) {
+    this.getLoggedInName.emit(user);
+    return user;
   }
 }

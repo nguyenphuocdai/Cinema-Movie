@@ -1,4 +1,4 @@
-<section class="portfolio-area row-pt150 hero-area">
+<section class="breadcrumb-area">
   <div class="container">
     <div class="row">
       <div class="order-container c-ticket-w100 text-center">
@@ -11,6 +11,11 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+<!-- breadcrumb area end -->
+<section class="portfolio-area row-pt150">
+  <div class="container">
     <div *ngIf="!isShowBookChair;else bookChair;">
       <div class="row">
         <div class="section-title">
@@ -19,9 +24,11 @@
       </div>
 
       <div class="row" style="min-height: 500px">
-        <carousel-component [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree" [autoPlay]="true" #topCarousel>
-          <div class="item-carousel">
-            <img src="../../../../../assets/img/movie/movie-sample1.jpg" class="img-responsive" />
+        <carousel-component [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree" [autoPlay]="true" [delayAutoPlay]="delayAutoPlay"
+          #topCarousel>
+          <div class="item-carousel" *ngFor="let item of listMovie">
+            <img [src]="item.HinhAnh" (click)="onSelect(item)" onError="this.src='../../../../../assets/img/movie/movie-sample6.jpg';"
+              class="img-responsive" width="100%" />
           </div>
           <div class="item-carousel">
             <img src="../../../../../assets/img/movie/movie-sample9.jpg" class="img-responsive" />
@@ -46,6 +53,57 @@
           </div>
         </carousel-component>
       </div>
+      <div class="row" *ngIf="selectedMovie" [@enterAnimation]>
+        <div class="section-title">
+          <h2 class="page-heading" style="color : #fff">Nội dung phim</h2>
+        </div>
+        <div class="col-lg-12">
+          <div class="transformers-content">
+            <ul>
+              <li>
+                <div class="transformers-left">
+                  Tên phim:
+                </div>
+                <div class="transformers-right">
+                  {{selectedMovie.TenPhim}}
+                </div>
+              </li>
+              <li>
+                <div class="transformers-left">
+                  Trailer:
+                </div>
+                <div class="transformers-right">
+                  {{selectedMovie.Trailer}}
+                </div>
+              </li>
+              <li>
+                <div class="transformers-left">
+                  Mô tả:
+                </div>
+                <div class="transformers-right">
+                  {{selectedMovie.MoTa}}
+                </div>
+              </li>
+              <li>
+                <div class="transformers-left">
+                  Khởi Chiếu:
+                </div>
+                <div class="transformers-right">
+                  {{selectedMovie.NgayKhoiChieu}}
+                </div>
+              </li>
+              <li>
+                <div class="transformers-left">
+                  Đánh giá:
+                </div>
+                <div class="transformers-right">
+                  {{selectedMovie.DanhGia}}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="section-title">
           <h2 class="page-heading" style="color : #fff">Chọn thời gian</h2>
@@ -54,23 +112,23 @@
       <div class="row">
         <div class="form-group container-time">
           <label for="exampleFormControlInput1">Chọn ngày chiếu</label>
-          <angular2-date-picker [(ngModel)]="date" [settings]="settings"></angular2-date-picker>
+          <angular2-date-picker [(ngModel)]="date" (onDateSelect)="onDateSelect($event)" [settings]="settings"></angular2-date-picker>
         </div>
       </div>
       <div class="row">
         <label for="exampleFormControlInput1">Chọn giờ chiếu</label>
         <div class="portfolio-item" style="width: 100%;">
           <div class="time-select time-select--wide">
-            <div class="time-select__group group--first">
+            <div class="time-select__group">
               <div class="col-sm-3 border-right">
                 <p class="time-select__place">Cineworld</p>
               </div>
               <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='09:40'>09:40</li>
-                <li class="time-select__item" data-time='13:45'>13:45</li>
-                <li class="time-select__item" data-time='15:45'>15:45</li>
-                <li class="time-select__item" data-time='19:50'>19:50</li>
-                <li class="time-select__item" data-time='21:50'>21:50</li>
+                <li class="time-select__item" data-time='09:40' (click)="clickMe($event)">09:40</li>
+                <li class="time-select__item" data-time='13:45' (click)="clickMe($event)">13:45</li>
+                <li class="time-select__item" data-time='15:45' (click)="clickMe($event)">15:45</li>
+                <li class="time-select__item" data-time='19:50' (click)="clickMe($event)">19:50</li>
+                <li class="time-select__item" data-time='21:50' (click)="clickMe($event)">21:50</li>
               </ul>
             </div>
 
@@ -79,11 +137,11 @@
                 <p class="time-select__place">Empire</p>
               </div>
               <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='10:45'>10:45</li>
-                <li class="time-select__item" data-time='16:00'>16:00</li>
-                <li class="time-select__item" data-time='19:00'>19:00</li>
-                <li class="time-select__item" data-time='21:15'>21:15</li>
-                <li class="time-select__item" data-time='23:00'>23:00</li>
+                <li class="time-select__item" data-time='10:45' (click)="clickMe($event)">10:45</li>
+                <li class="time-select__item" data-time='16:00' (click)="clickMe($event)">16:00</li>
+                <li class="time-select__item" data-time='19:00' (click)="clickMe($event)">19:00</li>
+                <li class="time-select__item" data-time='21:15' (click)="clickMe($event)">21:15</li>
+                <li class="time-select__item" data-time='23:00' (click)="clickMe($event)">23:00</li>
               </ul>
             </div>
 
@@ -92,15 +150,15 @@
                 <p class="time-select__place">Curzon</p>
               </div>
               <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='09:00'>09:00</li>
-                <li class="time-select__item" data-time='11:00'>11:00</li>
-                <li class="time-select__item" data-time='13:00'>13:00</li>
-                <li class="time-select__item" data-time='15:00'>15:00</li>
-                <li class="time-select__item" data-time='17:00'>17:00</li>
-                <li class="time-select__item" data-time='19:00'>19:00</li>
-                <li class="time-select__item" data-time='21:00'>21:00</li>
-                <li class="time-select__item" data-time='23:00'>23:00</li>
-                <li class="time-select__item" data-time='01:00'>01:00</li>
+                <li class="time-select__item" data-time='09:00' (click)="clickMe($event)">09:00</li>
+                <li class="time-select__item" data-time='11:00' (click)="clickMe($event)">11:00</li>
+                <li class="time-select__item" data-time='13:00' (click)="clickMe($event)">13:00</li>
+                <li class="time-select__item" data-time='15:00' (click)="clickMe($event)">15:00</li>
+                <li class="time-select__item" data-time='17:00' (click)="clickMe($event)">17:00</li>
+                <li class="time-select__item" data-time='19:00' (click)="clickMe($event)">19:00</li>
+                <li class="time-select__item" data-time='21:00' (click)="clickMe($event)">21:00</li>
+                <li class="time-select__item" data-time='23:00' (click)="clickMe($event)">23:00</li>
+                <li class="time-select__item" data-time='01:00' (click)="clickMe($event)">01:00</li>
               </ul>
             </div>
             <div class="time-select__group">
@@ -108,16 +166,16 @@
                 <p class="time-select__place">Cinema City</p>
               </div>
               <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='09:00'>09:00</li>
-                <li class="time-select__item" data-time='11:00'>11:00</li>
-                <li class="time-select__item" data-time='13:00'>13:00</li>
-                <li class="time-select__item" data-time='15:00'>15:00</li>
-                <li class="time-select__item" data-time='17:00'>17:00</li>
-                <li class="time-select__item" data-time='19:00'>19:00</li>
-                <li class="time-select__item" data-time='21:00'>21:00</li>
-                <li class="time-select__item" data-time='23:00'>23:00</li>
-                <li class="time-select__item" data-time='01:00'>01:00</li>
-                <li class="time-select__item" data-time='02:00'>02:00</li>
+                <li class="time-select__item" data-time='09:00' (click)="clickMe($event)">09:00</li>
+                <li class="time-select__item" data-time='11:00' (click)="clickMe($event)">11:00</li>
+                <li class="time-select__item" data-time='13:00' (click)="clickMe($event)">13:00</li>
+                <li class="time-select__item" data-time='15:00' (click)="clickMe($event)">15:00</li>
+                <li class="time-select__item" data-time='17:00' (click)="clickMe($event)">17:00</li>
+                <li class="time-select__item" data-time='19:00' (click)="clickMe($event)">19:00</li>
+                <li class="time-select__item" data-time='21:00' (click)="clickMe($event)">21:00</li>
+                <li class="time-select__item" data-time='23:00' (click)="clickMe($event)">23:00</li>
+                <li class="time-select__item" data-time='01:00' (click)="clickMe($event)">01:00</li>
+                <li class="time-select__item" data-time='02:00' (click)="clickMe($event)">02:00</li>
               </ul>
             </div>
             <div class="time-select__group">
@@ -125,11 +183,11 @@
                 <p class="time-select__place">Odeon</p>
               </div>
               <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='10:45'>10:45</li>
-                <li class="time-select__item" data-time='16:00'>16:00</li>
-                <li class="time-select__item" data-time='19:00'>19:00</li>
-                <li class="time-select__item" data-time='21:15'>21:15</li>
-                <li class="time-select__item" data-time='23:00'>23:00</li>
+                <li class="time-select__item" data-time='10:45' (click)="clickMe($event)">10:45</li>
+                <li class="time-select__item" data-time='16:00' (click)="clickMe($event)">16:00</li>
+                <li class="time-select__item" data-time='19:00' (click)="clickMe($event)">19:00</li>
+                <li class="time-select__item" data-time='21:15' (click)="clickMe($event)">21:15</li>
+                <li class="time-select__item" data-time='23:00' (click)="clickMe($event)">23:00</li>
               </ul>
             </div>
 
@@ -138,15 +196,15 @@
                 <p class="time-select__place">Picturehouse</p>
               </div>
               <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='17:45'>17:45</li>
-                <li class="time-select__item" data-time='21:30'>21:30</li>
-                <li class="time-select__item" data-time='02:20'>02:20</li>
+                <li class="time-select__item" data-time='17:45' (click)="clickMe($event)">17:45</li>
+                <li class="time-select__item" data-time='21:30' (click)="clickMe($event)">21:30</li>
+                <li class="time-select__item" data-time='02:20' (click)="clickMe($event)">02:20</li>
               </ul>
             </div>
           </div>
         </div>
         <div class="pt30">
-          <a class="theme-btn c-btn-theme" href="javascript:void(0)" (click)="ShowBookChair()">
+          <a class="theme-btn c-btn-theme" href="javascript:void(0)" (click)="ShowBookChair()" scrollTo scrollTargetSelector="#main-section">
             <i class="icofont icofont-chair"></i> Tiến hành đặt ghế</a>
         </div>
       </div>
@@ -158,7 +216,7 @@
 
 
 <ng-template #bookChair>
-  <div class="containers">
+  <div class="containers" [@enterAnimation] id="main-section">
     <app-book-chair></app-book-chair>
   </div>
 </ng-template>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgxZaloService } from '../../../../shared/services/ngx-zalo.service';
 import { Router } from '@angular/router';
 import { CacheService } from '../../../../shared/ng2-cache-service';
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   registeredName: String = '';
   userLoginNow: any;
   regexPassword = '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,32}$';
-
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   private loginForm: FormGroup;
   private usernameLogin: FormControl;
   private passwordLogin: FormControl;
@@ -57,10 +57,10 @@ export class LoginComponent implements OnInit {
     // console.log(base32.encode('vicente001'));
     // console.log(base32.decode('OZUWGZLOORSTAMBR'));
 
-    this.isAllowLogin = this._movieService.BooleanConverter(localStorage.getItem('isLogin'));
-    if (this.isAllowLogin === true) {
-      this._location.back();
-    }
+    // this.isAllowLogin = this._movieService.BooleanConverter(localStorage.getItem('isLogin'));
+    // if (this.isAllowLogin === true) {
+    //   this._location.back();
+    // }
 
   }
   login() {
@@ -73,13 +73,8 @@ export class LoginComponent implements OnInit {
     this._userService.loginUser(this.usernameLogin.value, this.passwordLogin.value)
       .subscribe(
         (result) => {
-          console.log(result);
-          if (result !== null) {
-            localStorage.setItem('TypeLogin', 'normal');
-            localStorage.setItem('currentUserNormal', JSON.stringify(result));
-            location.reload();
-            this._router.navigate(['/home']);
-          }
+          this._userService.displayNameUser(result.HoTen);
+          this._router.navigate(['/home']);
         },
         (error) => {
           console.log(error);

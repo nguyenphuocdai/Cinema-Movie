@@ -12,17 +12,12 @@ export class ZaloCallbackComponent {
 
   constructor(private _router: Router, private _ngxZaloService: NgxZaloService) {
     this._ngxZaloService.updateLoginInfo().subscribe((res) => {
-      console.log(res);
       if (res === true) {
         this._ngxZaloService.getMyProfile().subscribe((result) => {
-          localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
-          localStorage.setItem('currentUser', JSON.stringify(result));
         });
-        location.reload();
         this._router.navigate(['/home']);
       } else {
         this._router.navigate(['/login']);
-        console.log(res);
       }
     });
   }

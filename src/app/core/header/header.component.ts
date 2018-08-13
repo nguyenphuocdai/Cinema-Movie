@@ -3,6 +3,7 @@ import { NgxZaloService } from '../../shared/services/ngx-zalo.service';
 import { UserSocial } from '../../shared/models/user-social.model';
 import { UserNormal } from '../../shared/models/user-normal.model';
 import { Router } from '../../../../node_modules/@angular/router';
+import { UserService } from '../../shared/services/user.service';
 
 
 @Component({
@@ -19,52 +20,36 @@ export class HeaderComponent implements OnInit {
   constructor(
     private _ngxZaloService: NgxZaloService,
     private _router: Router,
-
+    private _userService: UserService
   ) {
-    if (localStorage.getItem('TypeLogin') === 'normal') {
-      this.userNormal = JSON.parse(localStorage.getItem('currentUserNormal'));
-      if (this.userNormal !== null) {
-        this.displayName = this.userNormal.HoTen;
-        this.isLogined = true;
-        return;
-      }
-    }
-    if (localStorage.getItem('isLogin') === 'true') {
-      this.isLogin = localStorage.getItem('isLogin') === 'true';
-      this.user = JSON.parse(localStorage.getItem('currentUser'));
-      if (this.user.error === 0 && !this.isLogin) {
-        this._router.navigate(['/login']);
-        this.removeCache();
-        return;
-      }
-      this.displayName = this.user.name;
-      this.isLogined = true;
-      return;
-    }
-
+    _ngxZaloService.getLoggedInName.subscribe(user => this.changeName(user));
+    _userService.getLoggedInName.subscribe(user => this.changeName(user));
   }
 
   ngOnInit() {
 
   }
-  logout() {
-    this._ngxZaloService.logout().subscribe();
-    localStorage.setItem('isLogin', 'false');
-    localStorage.removeItem('currentUser');
-    console.log(this._ngxZaloService.logout().subscribe());
-  }
   checkLoginStatus() {
     console.log('Login status:', this._ngxZaloService.isLogin);
   }
   logoutSuccessfullyAction() {
-    localStorage.removeItem('isLogin');
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('TypeLogin');
-    localStorage.removeItem('currentUserNormal');
-    window.location.reload();
+    this.changeName(null);
   }
   removeCache() {
     localStorage.removeItem('isLogin');
     localStorage.removeItem('currentUser');
+  }
+  private changeName(user: any): void {
+    if (user === null) {
+      this.isLogined = false;
+      return;
+    }
+    this.isLogined = true;
+    if (typeof user === 'object') {
+      this.displayName = user.name;
+    } else {
+      this.displayName = user;
+    }
+
   }
 }
