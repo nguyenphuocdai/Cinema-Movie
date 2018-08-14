@@ -31,6 +31,9 @@ export class BookTicketComponent implements OnInit {
   selectedMovie: ListMovie;
   selectedTime: String;
   selectedDateTime: String;
+  selectedShowTime;
+  detailMovieSelected: any;
+  isShowLoading: Boolean = false;
   @ViewChild('topCarousel') topCarousel: CarouselComponent;
   @ViewChild('myname') liValue;
   public degree = 25;
@@ -91,8 +94,8 @@ export class BookTicketComponent implements OnInit {
   }
 
   ShowBookChair() {
-    this.isShowBookChair = true;
-    window.scrollTo(0, 0);
+    this.isShowLoading = true;
+    setTimeout(() => this.isShowBookChair = true, 2000);
   }
   getListMovie() {
     this.movieService.getListMovie()
@@ -108,8 +111,16 @@ export class BookTicketComponent implements OnInit {
   }
   onSelect(movie: ListMovie): void {
     this.selectedMovie = movie;
-    console.log(this.selectedMovie);
+    setTimeout(this.getDetailMovie(this.selectedMovie.MaPhim), 1000);
   }
+  getDetailMovie(id: number) {
+    this.movieService.getDetailMovie(id)
+      .subscribe((result) => {
+        this.detailMovieSelected = result;
+        console.log(this.detailMovieSelected);
+      });
+  }
+
   clickMe(event) {
     this.selectedTime = event.target.innerHTML;
     console.log(this.selectedTime);

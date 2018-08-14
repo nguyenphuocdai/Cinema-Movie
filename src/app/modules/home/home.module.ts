@@ -8,13 +8,18 @@ import { UATFeatureComponent } from './pages/uat-feature/uat-feature.component';
 import { LoginZaloDirective } from '../../shared/directives/login-zalo.directive';
 import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
 import { BookTicketComponent } from './pages/book-ticket/book-ticket.component';
-// import { CarouselModule } from 'angular2-carousel';
 import { BrowserModule } from '../../../../node_modules/@angular/platform-browser';
 import { AngularDateTimePickerModule } from './components/datetime-picker';
 import { CarouselModule } from './components/carousel-movie';
 import { BookChairComponent } from './pages/book-chair/book-chair.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { ScrollToIdDirective } from '../../shared/directives/scroll-to-id.directive';
+import {VgCoreModule} from 'videogular2/core';
+import {VgControlsModule} from 'videogular2/controls';
+import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+import {VgBufferingModule} from 'videogular2/buffering';
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -24,6 +29,10 @@ import { ScrollToIdDirective } from '../../shared/directives/scroll-to-id.direct
     ReactiveFormsModule,
     CarouselModule,
     AngularDateTimePickerModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
 
   ],
   declarations: [

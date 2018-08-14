@@ -1,31 +1,58 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, ElementRef } from '@angular/core';
 import { ScriptService } from 'ngx-script-loader';
 import { MovieService } from '../../../../shared/services/movie.service';
 import { ListMovie } from '../../../../shared/models/list-movie.model';
+import { trigger, state, style, transition, animate } from '../../../../../../node_modules/@angular/animations';
 
 declare var $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('scrollAnimation', [
+      state('show', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+      state('hide', style({
+        opacity: 0,
+        transform: 'translateX(-100%)'
+      })),
+      transition('show => hide', animate('700ms ease-out')),
+      transition('hide => show', animate('700ms ease-in'))
+    ])
+  ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   current: any;
   prevRating: any;
   nextRating: any;
-
+  state = 'hide';
   listMovie: ListMovie;
 
   constructor(
     private scriptService: ScriptService,
-    private movieService: MovieService
+    private movieService: MovieService,
+    public el: ElementRef
   ) {
     // this.scriptService.loadScript('../../../../../assets/js/main.js').subscribe(() => {
     // }, (error) => {
     //   console.log('Failed to load script main js');
     // });
   }
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    const componentPosition = this.el.nativeElement.offsetTop;
+    const scrollPosition = window.pageYOffset;
 
+    if (scrollPosition >= componentPosition) {
+      this.state = 'show';
+    } else {
+      this.state = 'hide';
+    }
+
+  }
 
   ngOnInit() {
     this.getListMovie();

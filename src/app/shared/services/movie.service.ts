@@ -21,6 +21,11 @@ export class MovieService {
       .catch(this.handleErrorObservable);
   }
 
+  getDetailMovie(id: number): Observable<any> {
+    return this.http.get(appConfig.detailMovie + 'MaPhim=' + id)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
 
   private parseData(res: Response) {
     return res.json() || [];

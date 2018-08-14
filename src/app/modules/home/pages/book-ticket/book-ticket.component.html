@@ -54,10 +54,10 @@
         </carousel-component>
       </div>
       <div class="row" *ngIf="selectedMovie" [@enterAnimation]>
-        <div class="section-title">
+        <div class="section-title m-width-100">
           <h2 class="page-heading" style="color : #fff">Nội dung phim</h2>
         </div>
-        <div class="col-lg-12">
+        <div class="col-md-6">
           <div class="transformers-content">
             <ul>
               <li>
@@ -73,7 +73,7 @@
                   Trailer:
                 </div>
                 <div class="transformers-right">
-                  {{selectedMovie.Trailer}}
+                  <a href="{{selectedMovie.Trailer}}" target="_blank" style="color:#fff">{{selectedMovie.Trailer}}</a>
                 </div>
               </li>
               <li>
@@ -103,36 +103,92 @@
             </ul>
           </div>
         </div>
+        <div class="col-md-6">
+          <vg-player>
+            <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="container-video">
+              <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+            </video>
+          </vg-player>
+        </div>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="detailMovieSelected">
         <div class="section-title">
           <h2 class="page-heading" style="color : #fff">Chọn thời gian</h2>
         </div>
       </div>
-      <div class="row">
-        <div class="form-group container-time">
-          <label for="exampleFormControlInput1">Chọn ngày chiếu</label>
-          <angular2-date-picker [(ngModel)]="date" (onDateSelect)="onDateSelect($event)" [settings]="settings"></angular2-date-picker>
+      <div class="row c-ticket-w100" *ngIf="detailMovieSelected">
+        <div class="col-md-3 c-no-padding">
+          <div class="form-group">
+            <label for="MaLichChieu">Chọn lịch chiếu</label>
+            <select class="form-control" id="MaLichChieu" [(ngModel)]="selectedShowTime">
+              <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index" [selected]="i == 0">{{obj.NgayChieuGioChieu | date:"dd-MM-yyyy" }}</option>
+            </select>
+          </div>
+          <!-- <div class="form-group container-time">
+            <label for="exampleFormControlInput1">Chọn lịch chiếu</label>
+            <angular2-date-picker [(ngModel)]="date" (onDateSelect)="onDateSelect($event)" [settings]="settings"></angular2-date-picker>
+          </div> -->
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3 c-no-padding" *ngIf="selectedShowTime">
+          <div class="form-group">
+            <label for="Rap">Chọn rạp chiếu</label>
+            <select class="form-control" id="Rap">
+              <option [value]="selectedShowTime?.Rap.MaRap">{{selectedShowTime?.Rap.TenRap}}</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <label for="exampleFormControlInput1">Chọn giờ chiếu</label>
+      <div class="row" *ngIf="selectedShowTime">
+        <label for="exampleFormControlInput1">Thông tin lịch chiếu</label>
         <div class="portfolio-item" style="width: 100%;">
           <div class="time-select time-select--wide">
             <div class="time-select__group">
               <div class="col-sm-3 border-right">
-                <p class="time-select__place">Cineworld</p>
+                <p class="time-select__place">Ngày khởi chiếu</p>
               </div>
               <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='09:40' (click)="clickMe($event)">09:40</li>
-                <li class="time-select__item" data-time='13:45' (click)="clickMe($event)">13:45</li>
+                <li class="time-select__item">{{selectedShowTime.NgayChieuGioChieu | date:"dd-MM-yyyy HH:mm" }}</li>
+              </ul>
+            </div>
+            <div class="time-select__group">
+              <div class="col-sm-3 border-right">
+                <p class="time-select__place">Giá vé</p>
+              </div>
+              <ul class="col-sm-9 items-wrap">
+                <li class="time-select__item">{{selectedShowTime.GiaVe | number:'3.0'}} VNĐ</li>
+              </ul>
+            </div>
+            <div class="time-select__group">
+              <div class="col-sm-3 border-right">
+                <p class="time-select__place">Thời lượng</p>
+              </div>
+              <ul class="col-sm-9 items-wrap">
+                <li class="time-select__item">{{selectedShowTime.ThoiLuong}} Phút</li>
+              </ul>
+            </div>
+            <div class="time-select__group">
+              <div class="col-sm-3 border-right">
+                <p class="time-select__place">Số ghế</p>
+              </div>
+              <ul class="col-sm-9 items-wrap">
+                <li class="time-select__item">{{selectedShowTime.Rap.SoGhe}} Cái</li>
+              </ul>
+            </div>
+            <!-- <div class="time-select__group" *ngFor="let time of detailMovieSelected.LichChieu">
+                <div class="col-sm-3 border-right">
+                  <p class="time-select__place">{{time.NgayChieuGioChieu | date:"dd-MM-yyyy HH:mm" }}</p>
+                </div>
+                <ul class="col-sm-9 items-wrap">
+                  <li class="time-select__item" data-time='09:40'></li>
+                  <li class="time-select__item" data-time='13:45' (click)="clickMe($event)">13:45</li>
                 <li class="time-select__item" data-time='15:45' (click)="clickMe($event)">15:45</li>
                 <li class="time-select__item" data-time='19:50' (click)="clickMe($event)">19:50</li>
                 <li class="time-select__item" data-time='21:50' (click)="clickMe($event)">21:50</li>
-              </ul>
-            </div>
+                </ul>
+              </div> -->
 
-            <div class="time-select__group">
+            <!-- <div class="time-select__group">
               <div class="col-sm-3 border-right">
                 <p class="time-select__place">Empire</p>
               </div>
@@ -200,12 +256,18 @@
                 <li class="time-select__item" data-time='21:30' (click)="clickMe($event)">21:30</li>
                 <li class="time-select__item" data-time='02:20' (click)="clickMe($event)">02:20</li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="pt30">
-          <a class="theme-btn c-btn-theme" href="javascript:void(0)" (click)="ShowBookChair()" scrollTo scrollTargetSelector="#main-section">
-            <i class="icofont icofont-chair"></i> Tiến hành đặt ghế</a>
+        <div class="pt30 c-ticket-w100">
+          <div class="order">
+            <a href="javascript:void(0)" (click)="ShowBookChair()" class="btn btn-md btn--warning btn--wide c-btn-theme--f__right" style="display: flex;
+  align-items: center;">
+              <i class="icofont icofont-chair"></i> &nbsp;Tiến hành đặt ghế
+              <div class="loader" *ngIf="isShowLoading"></div>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -217,6 +279,6 @@
 
 <ng-template #bookChair>
   <div class="containers" [@enterAnimation] id="main-section">
-    <app-book-chair></app-book-chair>
+    <app-book-chair [Time]="selectedTime"></app-book-chair>
   </div>
 </ng-template>
