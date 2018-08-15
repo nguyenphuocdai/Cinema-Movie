@@ -8,11 +8,7 @@ const appRoutes: Routes = [
             [
                 { path: '', component: HomeComponent }
             ],
-        data: {
-            animation: {
-                value: 'home',
-            }
-        },
+        data: { state: 'page3' }
     },
 
 ];

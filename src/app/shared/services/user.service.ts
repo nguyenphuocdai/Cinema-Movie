@@ -3,6 +3,7 @@ import { Http, RequestOptions, Headers, Response } from '../../../../node_module
 import { Observable } from '../../../../node_modules/rxjs';
 import { appConfig } from '../../app.config';
 import { UserNormal } from '../models/user-normal.model';
+import { DTO } from '../models/sitDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,12 @@ export class UserService {
       .map(this.parseData)
       .catch(this.handleErrorObservable);
   }
+  getAllSit(id: number): Observable<DTO> {
+    return this.http.get(appConfig.getSitShowRoom + 'MaLichChieu=' + id)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
+
   putTicket(body: Object): Observable<any> {
     // tslint:disable-next-line:prefer-const
     // let bodyString = JSON.stringify(body);
@@ -38,11 +45,13 @@ export class UserService {
       .map(this.parseData)
       .catch(this.handleErrorObservable);
   }
+
   getUser(): Observable<UserNormal> {
     return this.http.get(appConfig.getListMovie)
       .map(this.parseData)
       .catch(this.handleErrorObservable);
   }
+
   loginUser(account: String, password: String) {
     // tslint:disable-next-line:prefer-const
     // let bodyString = JSON.stringify(body);
@@ -55,14 +64,6 @@ export class UserService {
       .catch(this.handleErrorObservable);
   }
 
-  private parseData(res: Response) {
-    return res.json() || [];
-  }
-
-  private handleErrorObservable(error: Response | any) {
-    console.error(error.message || error);
-    return Observable.throw(error.message || error);
-  }
   public makeid() {
     this.text = '';
     for (let i = 0; i < 32; i++) {
@@ -73,5 +74,13 @@ export class UserService {
   displayNameUser(user: String) {
     this.getLoggedInName.emit(user);
     return user;
+  }
+  private parseData(res: Response) {
+    return res.json() || [];
+  }
+
+  private handleErrorObservable(error: Response | any) {
+    console.error(error.message || error);
+    return Observable.throw(error.message || error);
   }
 }

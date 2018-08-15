@@ -34,6 +34,7 @@ export class BookTicketComponent implements OnInit {
   selectedShowTime;
   detailMovieSelected: any;
   isShowLoading: Boolean = false;
+  MaLichChieu: number;
   @ViewChild('topCarousel') topCarousel: CarouselComponent;
   @ViewChild('myname') liValue;
   public degree = 25;
@@ -132,5 +133,13 @@ export class BookTicketComponent implements OnInit {
   }
   onDateSelect(value) {
     console.log(value);
+  }
+  valueChange(value) {
+    console.log(value);
+    this.isShowLoading = false;
+    this.isShowBookChair = value;
+  }
+  getShowTime(value) {
+    this.MaLichChieu = value;
   }
 }

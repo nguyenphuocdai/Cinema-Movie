@@ -14,7 +14,7 @@
   </div>
 </section>
 <!-- breadcrumb area end -->
-<section class="portfolio-area row-pt150">
+<section class="portfolio-area row-pt150" style="min-height: 750px;">
   <div class="container">
     <div *ngIf="!isShowBookChair;else bookChair;">
       <div class="row">
@@ -24,13 +24,13 @@
       </div>
 
       <div class="row" style="min-height: 500px">
-        <carousel-component [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree" [autoPlay]="true" [delayAutoPlay]="delayAutoPlay"
+        <carousel-component [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree" [autoPlay]="false" [delayAutoPlay]="delayAutoPlay"
           #topCarousel>
           <div class="item-carousel" *ngFor="let item of listMovie">
             <img [src]="item.HinhAnh" (click)="onSelect(item)" onError="this.src='../../../../../assets/img/movie/movie-sample6.jpg';"
               class="img-responsive" width="100%" />
           </div>
-          <div class="item-carousel">
+          <!-- <div class="item-carousel">
             <img src="../../../../../assets/img/movie/movie-sample9.jpg" class="img-responsive" />
           </div>
           <div class="item-carousel">
@@ -47,7 +47,7 @@
           </div>
           <div class="item-carousel">
             <img src="../../../../../assets/img/movie/movie-sample6.jpg" class="img-responsive" />
-          </div>
+          </div> -->
           <div class="item-carousel">
             <img src="../../../../../assets/img/movie/movie-sample7.jpg" class="img-responsive" />
           </div>
@@ -89,7 +89,7 @@
                   Khởi Chiếu:
                 </div>
                 <div class="transformers-right">
-                  {{selectedMovie.NgayKhoiChieu}}
+                  {{selectedMovie.NgayKhoiChieu | date:"dd-MM-yyyy" }}
                 </div>
               </li>
               <li>
@@ -120,8 +120,8 @@
         <div class="col-md-3 c-no-padding">
           <div class="form-group">
             <label for="MaLichChieu">Chọn lịch chiếu</label>
-            <select class="form-control" id="MaLichChieu" [(ngModel)]="selectedShowTime">
-              <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index" [selected]="i == 0">{{obj.NgayChieuGioChieu | date:"dd-MM-yyyy" }}</option>
+            <select class="form-control" id="MaLichChieu" [(ngModel)]="selectedShowTime" (change)="getShowTime(selectedShowTime.MaLichChieu)">
+              <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index">{{obj.NgayChieuGioChieu | date:"dd-MM-yyyy" }}</option>
             </select>
           </div>
           <!-- <div class="form-group container-time">
@@ -279,6 +279,6 @@
 
 <ng-template #bookChair>
   <div class="containers" [@enterAnimation] id="main-section">
-    <app-book-chair [Time]="selectedTime"></app-book-chair>
+    <app-book-chair [MaLichChieu]="MaLichChieu" [Time]="selectedTime" (comeback)="valueChange($event)"></app-book-chair>
   </div>
 </ng-template>

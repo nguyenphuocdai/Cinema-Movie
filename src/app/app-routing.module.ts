@@ -11,12 +11,7 @@ const appRoutes: Routes = [
         path: 'home',
         component: HomeComponent,
 
-        data: {
-            animation: {
-                value: 'home',
-            },
-            name: 'Trang chủ',
-        },
+        data: { state: 'page1' }
 
     },
     {
@@ -26,21 +21,12 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
-        data: {
-            animation: {
-                value: 'login',
-            },
-            name: 'Đăng nhập',
-        }
+        data: { state: 'page2' }
     },
     {
         path: 'ticket',
         component: BookTicketComponent,
-        data: {
-            animation: {
-                value: 'ticket',
-            }
-        }
+        data: { state: 'page3' }
     },
     { path: 'test', component: UATFeatureComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },

@@ -1,4 +1,4 @@
-<section class="container" *ngIf="!isShowPayment;else payment;">
+<section class="container" *ngIf="!isShowPayment;else payment;" [@enterAnimation]>
   <div class="row">
     <div class="section-title">
       <h2 class="page-heading" style="color : #fff">Chọn ghế</h2>
@@ -10,22 +10,22 @@
         <li class="sits-price marker--none">
           <strong>Price</strong>
         </li>
-        <li class="sits-price sits-price--cheap">$10</li>
-        <li class="sits-price sits-price--middle">$20</li>
-        <li class="sits-price sits-price--expensive">$30</li>
+        <li class="sits-price sits-price--cheap">50.000</li>
+        <li class="sits-price sits-price--middle">75.000</li>
+        <li class="sits-price sits-price--expensive">100.000</li>
       </ul>
     </div>
 
     <div class="choose-sits__info">
       <ul>
-        <li class="sits-state sits-state--not">Not available</li>
-        <li class="sits-state sits-state--your">Your choice</li>
+        <li class="sits-state sits-state--not">Chỗ đã đặt</li>
+        <li class="sits-state sits-state--your">Ghế bạn chọn</li>
       </ul>
     </div>
 
     <div class="col-sm-12 col-lg-10 col-lg-offset-1">
       <div class="sits-area hidden-xs">
-        <div class="sits-anchor">screen</div>
+        <div class="sits-anchor">Màn hình</div>
 
         <div class="sits">
           <aside class="sits__line">
@@ -43,202 +43,147 @@
           </aside>
 
           <div class="sits__row">
-            <span class="sits__place sits-price--cheap" data-place='A2' data-price='10' (click)="clickMe($event)">A2</span>
-            <span class="sits__place sits-price--cheap" data-place='A3' data-price='10' (click)="clickMe($event)">A3</span>
-            <span class="sits__place sits-price--cheap" data-place='A4' data-price='10' (click)="clickMe($event)">A4</span>
-            <span class="sits__place sits-price--cheap" data-place='A5' data-price='10' (click)="clickMe($event)">A5</span>
-            <span class="sits__place sits-price--cheap" data-place='A6' data-price='10' (click)="clickMe($event)">A6</span>
-            <span class="sits__place sits-price--cheap" data-place='A7' data-price='10' (click)="clickMe($event)">A7</span>
-            <span class="sits__place sits-price--cheap" data-place='A8' data-price='10' (click)="clickMe($event)">A8</span>
-            <span class="sits__place sits-price--cheap" data-place='A9' data-price='10' (click)="clickMe($event)">A9</span>
-            <span class="sits__place sits-price--cheap" data-place='A10' data-price='10' (click)="clickMe($event)">A10</span>
-            <span class="sits__place sits-price--cheap" data-place='A11' data-price='10' (click)="clickMe($event)">A11</span>
-            <span class="sits__place sits-price--cheap" data-place='A12' data-price='10' (click)="clickMe($event)">A12</span>
-            <span class="sits__place sits-price--cheap" data-place='A13' data-price='10' (click)="clickMe($event)">A13</span>
-            <span class="sits__place sits-price--cheap" data-place='A14' data-price='10' (click)="clickMe($event)">A14</span>
-            <span class="sits__place sits-price--cheap" data-place='A15' data-price='10' (click)="clickMe($event)">A15</span>
-            <span class="sits__place sits-price--cheap" data-place='A16' data-price='10' (click)="clickMe($event)">A16</span>
-            <span class="sits__place sits-price--cheap" data-place='A17' data-price='10' (click)="clickMe($event)">A17</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A2' data-price='10' (click)="clickMe($event)">A2</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A3' data-price='10' (click)="clickMe($event)">A3</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A4' data-price='10' (click)="clickMe($event)">A4</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A5' data-price='10' (click)="clickMe($event)">A5</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A6' data-price='10' (click)="clickMe($event)">A6</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A7' data-price='10' (click)="clickMe($event)">A7</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A8' data-price='10' (click)="clickMe($event)">A8</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A9' data-price='10' (click)="clickMe($event)">A9</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A10' data-price='10' (click)="clickMe($event)">A10</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A11' data-price='10' (click)="clickMe($event)">A11</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A12' data-price='10' (click)="clickMe($event)">A12</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A13' data-price='10' (click)="clickMe($event)">A13</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A14' data-price='10' (click)="clickMe($event)">A14</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A15' data-price='10' (click)="clickMe($event)">A15</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A16' data-price='10' (click)="clickMe($event)">A16</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='A17' data-price='10' (click)="clickMe($event)">A17</span>
           </div>
 
           <div class="sits__row">
-            <span class="sits__place sits-price--cheap" data-place='B2' data-price='10' (click)="clickMe($event)">B2</span>
-            <span class="sits__place sits-price--cheap" data-place='B1' data-price='10' (click)="clickMe($event)">B1</span>
-            <span class="sits__place sits-price--cheap" data-place='B3' data-price='10' (click)="clickMe($event)">B3</span>
-            <span class="sits__place sits-price--cheap" data-place='B4' data-price='10' (click)="clickMe($event)">B4</span>
-            <span class="sits__place sits-price--cheap" data-place='B5' data-price='10' (click)="clickMe($event)">B5</span>
-            <span class="sits__place sits-price--cheap" data-place='B6' data-price='10' (click)="clickMe($event)">B6</span>
-            <span class="sits__place sits-price--cheap" data-place='B7' data-price='10' (click)="clickMe($event)">B7</span>
-            <span class="sits__place sits-price--cheap" data-place='B8' data-price='10' (click)="clickMe($event)">B8</span>
-            <span class="sits__place sits-price--cheap" data-place='B9' data-price='10' (click)="clickMe($event)">B9</span>
-            <span class="sits__place sits-price--cheap" data-place='B10' data-price='10' (click)="clickMe($event)">B10</span>
-            <span class="sits__place sits-price--cheap" data-place='B11' data-price='10' (click)="clickMe($event)">B11</span>
-            <span class="sits__place sits-price--cheap" data-place='B12' data-price='10' (click)="clickMe($event)">B12</span>
-            <span class="sits__place sits-price--cheap" data-place='B13' data-price='10' (click)="clickMe($event)">B13</span>
-            <span class="sits__place sits-price--cheap" data-place='B14' data-price='10' (click)="clickMe($event)">B14</span>
-            <span class="sits__place sits-price--cheap" data-place='B15' data-price='10' (click)="clickMe($event)">B15</span>
-            <span class="sits__place sits-price--cheap" data-place='B16' data-price='10' (click)="clickMe($event)">B16</span>
-            <span class="sits__place sits-price--cheap" data-place='B17' data-price='10' (click)="clickMe($event)">B17</span>
-            <span class="sits__place sits-price--cheap" data-place='B18' data-price='10' (click)="clickMe($event)">B18</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B2' data-price='10' (click)="clickMe($event)">B2</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B1' data-price='10' (click)="clickMe($event)">B1</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B3' data-price='10' (click)="clickMe($event)">B3</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B4' data-price='10' (click)="clickMe($event)">B4</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B5' data-price='10' (click)="clickMe($event)">B5</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B6' data-price='10' (click)="clickMe($event)">B6</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B7' data-price='10' (click)="clickMe($event)">B7</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B8' data-price='10' (click)="clickMe($event)">B8</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B9' data-price='10' (click)="clickMe($event)">B9</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B10' data-price='10' (click)="clickMe($event)">B10</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B11' data-price='10' (click)="clickMe($event)">B11</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B12' data-price='10' (click)="clickMe($event)">B12</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B13' data-price='10' (click)="clickMe($event)">B13</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B14' data-price='10' (click)="clickMe($event)">B14</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B15' data-price='10' (click)="clickMe($event)">B15</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B16' data-price='10' (click)="clickMe($event)">B16</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B17' data-price='10' (click)="clickMe($event)">B17</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='B18' data-price='10' (click)="clickMe($event)">B18</span>
           </div>
 
           <div class="sits__row">
-            <span class="sits__place sits-price--cheap" data-place='C1' data-price='10' (click)="clickMe($event)">C1</span>
-            <span class="sits__place sits-price--cheap" data-place='C2' data-price='10' (click)="clickMe($event)">C2</span>
-            <span class="sits__place sits-price--cheap" data-place='C3' data-price='10' (click)="clickMe($event)">C3</span>
-            <span class="sits__place sits-price--cheap" data-place='C4' data-price='10' (click)="clickMe($event)">C4</span>
-            <span class="sits__place sits-price--cheap" data-place='C5' data-price='10' (click)="clickMe($event)">C5</span>
-            <span class="sits__place sits-price--cheap" data-place='C6' data-price='10' (click)="clickMe($event)">C6</span>
-            <span class="sits__place sits-price--cheap" data-place='C7' data-price='10' (click)="clickMe($event)">C7</span>
-            <span class="sits__place sits-price--cheap" data-place='C8' data-price='10' (click)="clickMe($event)">C8</span>
-            <span class="sits__place sits-price--cheap" data-place='C9' data-price='10' (click)="clickMe($event)">C9</span>
-            <span class="sits__place sits-price--cheap" data-place='C10' data-price='10' (click)="clickMe($event)">C10</span>
-            <span class="sits__place sits-price--cheap" data-place='C11' data-price='10' (click)="clickMe($event)">C11</span>
-            <span class="sits__place sits-price--cheap" data-place='C12' data-price='10' (click)="clickMe($event)">C12</span>
-            <span class="sits__place sits-price--cheap" data-place='C13' data-price='10' (click)="clickMe($event)">C13</span>
-            <span class="sits__place sits-price--cheap" data-place='C14' data-price='10' (click)="clickMe($event)">C14</span>
-            <span class="sits__place sits-price--cheap" data-place='C15' data-price='10' (click)="clickMe($event)">C15</span>
-            <span class="sits__place sits-price--cheap" data-place='C16' data-price='10' (click)="clickMe($event)">C16</span>
-            <span class="sits__place sits-price--cheap" data-place='C17' data-price='10' (click)="clickMe($event)">C17</span>
-            <span class="sits__place sits-price--cheap" data-place='C18' data-price='10' (click)="clickMe($event)">C18</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C1' data-price='10' (click)="clickMe($event)">C1</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C2' data-price='10' (click)="clickMe($event)">C2</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C3' data-price='10' (click)="clickMe($event)">C3</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C4' data-price='10' (click)="clickMe($event)">C4</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C5' data-price='10' (click)="clickMe($event)">C5</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C6' data-price='10' (click)="clickMe($event)">C6</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C7' data-price='10' (click)="clickMe($event)">C7</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C8' data-price='10' (click)="clickMe($event)">C8</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C9' data-price='10' (click)="clickMe($event)">C9</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C10' data-price='10' (click)="clickMe($event)">C10</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C11' data-price='10' (click)="clickMe($event)">C11</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C12' data-price='10' (click)="clickMe($event)">C12</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C13' data-price='10' (click)="clickMe($event)">C13</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C14' data-price='10' (click)="clickMe($event)">C14</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C15' data-price='10' (click)="clickMe($event)">C15</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C16' data-price='10' (click)="clickMe($event)">C16</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C17' data-price='10' (click)="clickMe($event)">C17</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='C18' data-price='10' (click)="clickMe($event)">C18</span>
           </div>
 
           <div class="sits__row">
-            <span class="sits__place sits-price--cheap" data-place='D1' data-price='10' (click)="clickMe($event)">D1</span>
-            <span class="sits__place sits-price--cheap" data-place='D2' data-price='10' (click)="clickMe($event)">D2</span>
-            <span class="sits__place sits-price--cheap" data-place='D3' data-price='10' (click)="clickMe($event)">D3</span>
-            <span class="sits__place sits-price--cheap" data-place='D4' data-price='10' (click)="clickMe($event)">D4</span>
-            <span class="sits__place sits-price--cheap" data-place='D5' data-price='10' (click)="clickMe($event)">D5</span>
-            <span class="sits__place sits-price--cheap" data-place='D6' data-price='10' (click)="clickMe($event)">D6</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D1' data-price='10' (click)="clickMe($event)">D1</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D2' data-price='10' (click)="clickMe($event)">D2</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D3' data-price='10' (click)="clickMe($event)">D3</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D4' data-price='10' (click)="clickMe($event)">D4</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D5' data-price='10' (click)="clickMe($event)">D5</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D6' data-price='10' (click)="clickMe($event)">D6</span>
             <span class="sits__place sits-price--cheap sits-state--not" data-place='D7' data-price='10' (click)="clickMe($event)">D7</span>
             <span class="sits__place sits-price--cheap sits-state--not" data-place='D8' data-price='10' (click)="clickMe($event)">D8</span>
-            <span class="sits__place sits-price--cheap" data-place='D9' data-price='10' (click)="clickMe($event)">D9</span>
-            <span class="sits__place sits-price--cheap" data-place='D10' data-price='10' (click)="clickMe($event)">D10</span>
-            <span class="sits__place sits-price--cheap" data-place='D11' data-price='10' (click)="clickMe($event)">D11</span>
-            <span class="sits__place sits-price--cheap" data-place='D12' data-price='10' (click)="clickMe($event)">D12</span>
-            <span class="sits__place sits-price--cheap" data-place='D13' data-price='10' (click)="clickMe($event)">D13</span>
-            <span class="sits__place sits-price--cheap" data-place='D14' data-price='10' (click)="clickMe($event)">D14</span>
-            <span class="sits__place sits-price--cheap" data-place='D15' data-price='10' (click)="clickMe($event)">D15</span>
-            <span class="sits__place sits-price--cheap" data-place='D16' data-price='10' (click)="clickMe($event)">D16</span>
-            <span class="sits__place sits-price--cheap" data-place='D17' data-price='10' (click)="clickMe($event)">D17</span>
-            <span class="sits__place sits-price--cheap" data-place='D18' data-price='10' (click)="clickMe($event)">D18</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D9' data-price='10' (click)="clickMe($event)">D9</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D10' data-price='10' (click)="clickMe($event)">D10</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D11' data-price='10' (click)="clickMe($event)">D11</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D12' data-price='10' (click)="clickMe($event)">D12</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D13' data-price='10' (click)="clickMe($event)">D13</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D14' data-price='10' (click)="clickMe($event)">D14</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D15' data-price='10' (click)="clickMe($event)">D15</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D16' data-price='10' (click)="clickMe($event)">D16</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D17' data-price='10' (click)="clickMe($event)">D17</span>
+            <span class="sits__place sits-price--cheap sits-state--not" data-place='D18' data-price='10' (click)="clickMe($event)">D18</span>
           </div>
 
           <div class="sits__row">
-            <span class="sits__place sits-price--middle" data-place='E1' data-price='20' (click)="clickMe($event)">E1</span>
-            <span class="sits__place sits-price--middle" data-place='E2' data-price='20' (click)="clickMe($event)">E2</span>
-            <span class="sits__place sits-price--middle" data-place='E3' data-price='20' (click)="clickMe($event)">E3</span>
-            <span class="sits__place sits-price--middle" data-place='E4' data-price='20' (click)="clickMe($event)">E4</span>
-            <span class="sits__place sits-price--middle" data-place='E5' data-price='20' (click)="clickMe($event)">E5</span>
-            <span class="sits__place sits-price--middle" data-place='E6' data-price='20' (click)="clickMe($event)">E6</span>
-            <span class="sits__place sits-price--middle" data-place='E7' data-price='20' (click)="clickMe($event)">E7</span>
-            <span class="sits__place sits-price--middle" data-place='E8' data-price='20' (click)="clickMe($event)">E8</span>
-            <span class="sits__place sits-price--middle" data-place='E9' data-price='20' (click)="clickMe($event)">E9</span>
-            <span class="sits__place sits-price--middle" data-place='E10' data-price='20' (click)="clickMe($event)">E10</span>
-            <span class="sits__place sits-price--middle" data-place='E11' data-price='20' (click)="clickMe($event)">E11</span>
-            <span class="sits__place sits-price--middle" data-place='E12' data-price='20 (click)="clickMe($event)"'>E12</span>
-            <span class="sits__place sits-price--middle" data-place='E13' data-price='20' (click)="clickMe($event)">E13</span>
-            <span class="sits__place sits-price--middle" data-place='E14' data-price='20' (click)="clickMe($event)">E14</span>
-            <span class="sits__place sits-price--middle" data-place='E15' data-price='20' (click)="clickMe($event)">E15</span>
-            <span class="sits__place sits-price--middle" data-place='E16' data-price='20' (click)="clickMe($event)">E16</span>
-            <span class="sits__place sits-price--middle" data-place='E17' data-price='20' (click)="clickMe($event)">E17</span>
-            <span class="sits__place sits-price--middle" data-place='E18' data-price='20' (click)="clickMe($event)">E18</span>
+            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionE; let i = index" [attr.data-place]='E + sit.TenGhe'
+              [attr.data-price]="sit.GiaVe" (click)="clickMe($event)">
+              E{{sit.TenGhe}}
+            </span>
           </div>
-
           <div class="sits__row">
-            <span class="sits__place sits-price--middle" data-place='F1' data-price='20' (click)="clickMe($event)">F1</span>
-            <span class="sits__place sits-price--middle" data-place='F2' data-price='20' (click)="clickMe($event)">F2</span>
-            <span class="sits__place sits-price--middle" data-place='F3' data-price='20' (click)="clickMe($event)">F3</span>
-            <span class="sits__place sits-price--middle" data-place='F4' data-price='20' (click)="clickMe($event)">F4</span>
-            <span class="sits__place sits-price--middle" data-place='F5' data-price='20' (click)="clickMe($event)">F5</span>
-            <span class="sits__place sits-price--middle" data-place='F6' data-price='20' (click)="clickMe($event)">F6</span>
-            <span class="sits__place sits-price--middle" data-place='F7' data-price='20' (click)="clickMe($event)">F7</span>
-            <span class="sits__place sits-price--middle" data-place='F8' data-price='20' (click)="clickMe($event)">F8</span>
-            <span class="sits__place sits-price--middle" data-place='F9' data-price='20' (click)="clickMe($event)">F9</span>
-            <span class="sits__place sits-price--middle" data-place='F10' data-price='20' (click)="clickMe($event)">F10</span>
-            <span class="sits__place sits-price--middle" data-place='F11' data-price='20' (click)="clickMe($event)">F11</span>
-            <span class="sits__place sits-price--middle" data-place='F12' data-price='20' (click)="clickMe($event)">F12</span>
-            <span class="sits__place sits-price--middle" data-place='F13' data-price='20' (click)="clickMe($event)">F13</span>
-            <span class="sits__place sits-price--middle" data-place='F14' data-price='20' (click)="clickMe($event)">F14</span>
-            <span class="sits__place sits-price--middle" data-place='F15' data-price='20' (click)="clickMe($event)">F15</span>
-            <span class="sits__place sits-price--middle" data-place='F16' data-price='20' (click)="clickMe($event)">F16</span>
-            <span class="sits__place sits-price--middle" data-place='F17' data-price='20' (click)="clickMe($event)">F17</span>
-            <span class="sits__place sits-price--middle" data-place='F18' data-price='20' (click)="clickMe($event)">F18</span>
+            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionF; let i = index" [attr.data-place]='F+ sit.TenGhe'
+              [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
+              F{{sit.TenGhe}}
+            </span>
           </div>
-
           <div class="sits__row">
-            <span class="sits__place sits-price--middle" data-place='G1' data-price='20' (click)="clickMe($event)">G1</span>
-            <span class="sits__place sits-price--middle" data-place='G2' data-price='20' (click)="clickMe($event)">G2</span>
-            <span class="sits__place sits-price--middle" data-place='G3' data-price='20' (click)="clickMe($event)">G3</span>
-            <span class="sits__place sits-price--middle" data-place='G4' data-price='20' (click)="clickMe($event)">G4</span>
-            <span class="sits__place sits-price--middle" data-place='G5' data-price='20' (click)="clickMe($event)">G5</span>
-            <span class="sits__place sits-price--middle" data-place='G6' data-price='20' (click)="clickMe($event)">G6</span>
-            <span class="sits__place sits-price--middle" data-place='G7' data-price='20' (click)="clickMe($event)">G7</span>
-            <span class="sits__place sits-price--middle" data-place='G8' data-price='20' (click)="clickMe($event)">G8</span>
-            <span class="sits__place sits-price--middle" data-place='G9' data-price='20' (click)="clickMe($event)">G9</span>
-            <span class="sits__place sits-price--middle" data-place='G10' data-price='20' (click)="clickMe($event)">G10</span>
-            <span class="sits__place sits-price--middle" data-place='G11' data-price='20' (click)="clickMe($event)">G11</span>
-            <span class="sits__place sits-price--middle" data-place='G12' data-price='20' (click)="clickMe($event)">G12</span>
-            <span class="sits__place sits-price--middle" data-place='G13' data-price='20' (click)="clickMe($event)">G13</span>
-            <span class="sits__place sits-price--middle" data-place='G14' data-price='20' (click)="clickMe($event)">G14</span>
-            <span class="sits__place sits-price--middle" data-place='G15' data-price='20' (click)="clickMe($event)">G15</span>
-            <span class="sits__place sits-price--middle" data-place='G16' data-price='20' (click)="clickMe($event)">G16</span>
-            <span class="sits__place sits-price--middle" data-place='G17' data-price='20' (click)="clickMe($event)">G17</span>
-            <span class="sits__place sits-price--middle" data-place='G18' data-price='20' (click)="clickMe($event)">G18</span>
+            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionG; let i = index" [attr.data-place]='G+ sit.TenGhe'
+              [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
+              G{{sit.TenGhe}}
+            </span>
           </div>
-
           <div class="sits__row">
-            <span class="sits__place sits-price--middle" data-place='I3' data-price='20' (click)="clickMe($event)">I3</span>
-            <span class="sits__place sits-price--middle" data-place='I4' data-price='20' (click)="clickMe($event)">I4</span>
-            <span class="sits__place sits-price--middle" data-place='I5' data-price='20' (click)="clickMe($event)">I5</span>
-            <span class="sits__place sits-price--middle" data-place='I6' data-price='20' (click)="clickMe($event)">I6</span>
-            <span class="sits__place sits-price--middle" data-place='I7' data-price='20' (click)="clickMe($event)">I7</span>
-            <span class="sits__place sits-price--middle" data-place='I8' data-price='20' (click)="clickMe($event)">I8</span>
-            <span class="sits__place sits-price--middle" data-place='I9' data-price='20' (click)="clickMe($event)">I9</span>
-            <span class="sits__place sits-price--middle" data-place='I10' data-price='20' (click)="clickMe($event)">I10</span>
-            <span class="sits__place sits-price--middle" data-place='I11' data-price='20' (click)="clickMe($event)">I11</span>
-            <span class="sits__place sits-price--middle" data-place='I12' data-price='20' (click)="clickMe($event)">I12</span>
-            <span class="sits__place sits-price--middle" data-place='I13' data-price='20' (click)="clickMe($event)">I13</span>
-            <span class="sits__place sits-price--middle" data-place='I14' data-price='20' (click)="clickMe($event)">I14</span>
-            <span class="sits__place sits-price--middle" data-place='I15' data-price='20' (click)="clickMe($event)">I15</span>
-            <span class="sits__place sits-price--middle" data-place='I16' data-price='20' (click)="clickMe($event)">I16</span>
+            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionI; let i = index" [attr.data-place]='I+ sit.TenGhe'
+              [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
+              I{{sit.TenGhe}}
+            </span>
           </div>
 
           <div class="sits__row additional-margin">
-            <span class="sits__place sits-price--expensive" data-place='J5' data-price='30' (click)="clickMe($event)">J5</span>
-            <span class="sits__place sits-price--expensive" data-place='J6' data-price='30' (click)="clickMe($event)">J6</span>
-            <span class="sits__place sits-price--expensive" data-place='J7' data-price='30' (click)="clickMe($event)">J7</span>
-            <span class="sits__place sits-price--expensive" data-place='J8' data-price='30' (click)="clickMe($event)">J8</span>
-            <span class="sits__place sits-price--expensive" data-place='J9' data-price='30' (click)="clickMe($event)">J9</span>
-            <span class="sits__place sits-price--expensive" data-place='J10' data-price='30' (click)="clickMe($event)">J10</span>
-            <span class="sits__place sits-price--expensive" data-place='J11' data-price='30' (click)="clickMe($event)">J11</span>
-            <span class="sits__place sits-price--expensive" data-place='J12' data-price='30' (click)="clickMe($event)">J12</span>
-            <span class="sits__place sits-price--expensive" data-place='J13' data-price='30' (click)="clickMe($event)">J13</span>
-            <span class="sits__place sits-price--expensive" data-place='J14' data-price='30' (click)="clickMe($event)">J14</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J5' data-price='30' (click)="clickMe($event)">J5</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J6' data-price='30' (click)="clickMe($event)">J6</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J7' data-price='30' (click)="clickMe($event)">J7</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J8' data-price='30' (click)="clickMe($event)">J8</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J9' data-price='30' (click)="clickMe($event)">J9</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J10' data-price='30' (click)="clickMe($event)">J10</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J11' data-price='30' (click)="clickMe($event)">J11</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J12' data-price='30' (click)="clickMe($event)">J12</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J13' data-price='30' (click)="clickMe($event)">J13</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='J14' data-price='30' (click)="clickMe($event)">J14</span>
           </div>
 
           <div class="sits__row">
-            <span class="sits__place sits-price--expensive" data-place='K5' data-price='30' (click)="clickMe($event)">K5</span>
-            <span class="sits__place sits-price--expensive" data-place='K6' data-price='30' (click)="clickMe($event)">K6</span>
-            <span class="sits__place sits-price--expensive" data-place='K7' data-price='30' (click)="clickMe($event)">K7</span>
-            <span class="sits__place sits-price--expensive" data-place='K8' data-price='30' (click)="clickMe($event)">K8</span>
-            <span class="sits__place sits-price--expensive" data-place='K9' data-price='30' (click)="clickMe($event)">K9</span>
-            <span class="sits__place sits-price--expensive" data-place='K10' data-price='30' (click)="clickMe($event)">K10</span>
-            <span class="sits__place sits-price--expensive" data-place='K11' data-price='30' (click)="clickMe($event)">K11</span>
-            <span class="sits__place sits-price--expensive" data-place='K12' data-price='30' (click)="clickMe($event)">K12</span>
-            <span class="sits__place sits-price--expensive" data-place='K13' data-price='30' (click)="clickMe($event)">K13</span>
-            <span class="sits__place sits-price--expensive" data-place='K14' data-price='30' (click)="clickMe($event)">K14</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K5' data-price='30' (click)="clickMe($event)">K5</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K6' data-price='30' (click)="clickMe($event)">K6</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K7' data-price='30' (click)="clickMe($event)">K7</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K8' data-price='30' (click)="clickMe($event)">K8</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K9' data-price='30' (click)="clickMe($event)">K9</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K10' data-price='30' (click)="clickMe($event)">K10</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K11' data-price='30' (click)="clickMe($event)">K11</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K12' data-price='30' (click)="clickMe($event)">K12</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K13' data-price='30' (click)="clickMe($event)">K13</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='K14' data-price='30' (click)="clickMe($event)">K14</span>
           </div>
 
           <div class="sits__row">
-            <span class="sits__place sits-price--expensive" data-place='L6' data-price='30' (click)="clickMe($event)">L6</span>
-            <span class="sits__place sits-price--expensive" data-place='L7' data-price='30' (click)="clickMe($event)">L7</span>
-            <span class="sits__place sits-price--expensive" data-place='L8' data-price='30' (click)="clickMe($event)">L8</span>
-            <span class="sits__place sits-price--expensive" data-place='L9' data-price='30' (click)="clickMe($event)">L9</span>
-            <span class="sits__place sits-price--expensive" data-place='L10' data-price='30' (click)="clickMe($event)">L10</span>
-            <span class="sits__place sits-price--expensive" data-place='L11' data-price='30' (click)="clickMe($event)">L11</span>
-            <span class="sits__place sits-price--expensive" data-place='L12' data-price='30' (click)="clickMe($event)">L12</span>
-            <span class="sits__place sits-price--expensive" data-place='L13' data-price='30' (click)="clickMe($event)">L13</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='L6' data-price='30' (click)="clickMe($event)">L6</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='L7' data-price='30' (click)="clickMe($event)">L7</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='L8' data-price='30' (click)="clickMe($event)">L8</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='L9' data-price='30' (click)="clickMe($event)">L9</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='L10' data-price='30' (click)="clickMe($event)">L10</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='L11' data-price='30' (click)="clickMe($event)">L11</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='L12' data-price='30' (click)="clickMe($event)">L12</span>
+            <span class="sits__place sits-price--expensive sits-state--not" data-place='L13' data-price='30' (click)="clickMe($event)">L13</span>
           </div>
 
           <aside class="sits__checked">
@@ -246,7 +191,7 @@
               {{item}}
             </div>
             <div class="checked-result">
-              $ {{totalCount}}
+              {{totalCount | number : '3.0'}} VNĐ
             </div>
           </aside>
           <section class="sits__number">
@@ -323,7 +268,7 @@
             {{item}}
           </div>
           <div class="checked-result">
-            $ {{totalCount}}
+            = {{totalCount}} VNĐ
           </div>
         </aside>
         <img alt="" src="../../../../../assets/img/components/sits_mobile.png">
@@ -333,9 +278,9 @@
 </section>
 <div class="clearfix"></div>
 <div class="pt30" *ngIf="!isShowPayment">
-  <a class="btn btn-md btn--warning" href="javascript:void(0)">
+  <a class="btn btn-md btn--warning" href="javascript:void(0)" (click)="emitChangeValue($event)">
     <i class="icofont icofont-arrow-left"></i>Trở về</a>
-  <a href="javascript:void(0)" (click)="showPayment()" class="btn btn-md btn--warning btn--wide c-btn-theme--f__right" style="    display: flex;
+  <a href="javascript:void(0)" (click)="showPayment()" class="btn btn-md btn--warning btn--wide c-btn-theme--f__right" style="display: flex;
   align-items: center;">
     <i class="icofont icofont-chair"></i> &nbsp;Tiến hành thanh toán
     <div class="loader" *ngIf="isShowLoading"></div>
@@ -345,7 +290,7 @@
 </div>
 
 <ng-template #payment>
-  <div class="containers" [@enterAnimation]>
-    <app-payment></app-payment>
+  <div class="containers">
+    <app-payment [TotalTicket]="selectedCount" [TotalPrice]="totalCount" [@enterAnimation]></app-payment>
   </div>
 </ng-template>

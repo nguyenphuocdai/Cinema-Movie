@@ -1,5 +1,7 @@
-import { Component, OnInit, ElementRef, Input } from '@angular/core';
-import { trigger, transition, animate, style } from '../../../../../../node_modules/@angular/animations';
+import { Component, OnInit, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { trigger, transition, animate, style, query, group } from '../../../../../../node_modules/@angular/animations';
+import { UserService } from '../../../../shared/services/user.service';
+import { DTO } from '../../../../shared/models/sitDTO.model';
 
 @Component({
   selector: 'app-book-chair',
@@ -22,8 +24,15 @@ import { trigger, transition, animate, style } from '../../../../../../node_modu
 })
 export class BookChairComponent implements OnInit {
   @Input() Time: String = '';
-
+  @Input() MaLichChieu: number;
+  // tslint:disable-next-line:no-output-rename
+  @Output('comeback') change = new EventEmitter<boolean>();
   isShowPayment: Boolean = false;
+  Sits: DTO;
+  SitAtPositionE: any;
+  SitAtPositionF: any;
+  SitAtPositionG: any;
+  SitAtPositionI: any;
   selectedSit: String;
   selectedArray: Array<String> = [];
   // tslint:disable-next-line:no-inferrable-types
@@ -32,14 +41,35 @@ export class BookChairComponent implements OnInit {
   count = 0;
   isShowLoading: boolean;
   constructor(
-    private elem: ElementRef
+    private elem: ElementRef,
+    private _userService: UserService
+  ) {
 
-  ) { }
+  }
 
   ngOnInit() {
-    console.log(this.Time);
+    if (this.MaLichChieu !== null) {
+      this._userService.getAllSit(this.MaLichChieu)
+        .subscribe((result) => {
+          this.Sits = result;
+          this.SitAtPositionE = this.Sits.DanhSachGhe.slice(0, 18);
+          this.SitAtPositionF = this.Sits.DanhSachGhe.slice(18, 36);
+          this.SitAtPositionG = this.Sits.DanhSachGhe.slice(36, 50);
+          this.SitAtPositionI = this.Sits.DanhSachGhe.slice(50, 64);
+          console.log(this.SitAtPositionE);
+          console.log(this.SitAtPositionF);
+          console.log(this.SitAtPositionG);
+          console.log(this.SitAtPositionI);
+          console.log(this.Sits);
+        });
+    }
+    console.log(this.MaLichChieu);
   }
   showPayment() {
+    if (this.totalCount <= 0) {
+      alert('chưa chọn vé');
+      return;
+    }
     this.isShowLoading = true;
     setTimeout(() => this.isShowPayment = true, 2000);
   }
@@ -64,5 +94,10 @@ export class BookChairComponent implements OnInit {
     console.log(this.totalCount);
     this.selectedCount = this.elem.nativeElement.querySelectorAll('.selected-sit').length;
     this.selectedArray.push(this.selectedSit);
+  }
+  emitChangeValue(event) {
+    // this.change.emit(event.target.checked);
+    this.change.emit(false);
+    console.log(event);
   }
 }

@@ -159,7 +159,7 @@ export class LoginComponent implements OnInit {
 
     this.formIsSubmitting = true;
     this.registerInfo.TaiKhoan = this.account.value;
-    this.registerInfo.MatKhau = simpleCrypt.encode(LocalKey.keyCryto, this.password.value);
+    this.registerInfo.MatKhau = this.password.value;
     this.registerInfo.HoTen = this.username.value;
     this.registerInfo.Email = this.email.value;
     this.registerInfo.SoDT = this.phoneNumber.value;

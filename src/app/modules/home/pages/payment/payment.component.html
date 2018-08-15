@@ -2,16 +2,16 @@
 <section class="container">
   <div class="col-sm-12">
     <div class="checkout-wrapper">
-      <h2 class="page-heading">Thông tin thanh toánt</h2>
+      <h2 class="page-heading">Thông tin thanh toán</h2>
       <ul class="book-result">
-        <li class="book-result__item">Tickets:
-          <span class="book-result__count booking-ticket">3</span>
+        <li class="book-result__item">Tổng vé:
+          <span class="book-result__count booking-ticket">{{TotalTicket}}</span>
         </li>
-        <li class="book-result__item">One item price:
-          <span class="book-result__count booking-price">$20</span>
+        <li class="book-result__item">Tạm tính:
+          <span class="book-result__count booking-price">{{TotalPrice}}</span>
         </li>
-        <li class="book-result__item">Total:
-          <span class="book-result__count booking-cost">$60</span>
+        <li class="book-result__item">Tổng thanh toán:
+          <span class="book-result__count booking-cost">{{TotalPrice}}</span>
         </li>
       </ul>
 
@@ -43,7 +43,7 @@
     </div>
 
     <div class="order">
-      <a href="book-final.html" class="btn btn-md btn--warning btn--wide">purchase</a>
+      <a href="#" class="btn btn-md btn--warning btn--wide">Đặt vé</a>
     </div>
 
   </div>

@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div [@routerAnimations]="prepareRouteTransition(outlet)" class="body-container">
+<div [@routerAnimation]="outlet.activatedRouteData.state" class="body-container">
     <router-outlet #outlet="outlet"></router-outlet>
 </div>
 <app-footer></app-footer>
