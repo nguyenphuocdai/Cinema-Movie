@@ -125,25 +125,25 @@
           </div>
 
           <div class="sits__row">
-            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionE; let i = index" [attr.data-place]='E + sit.TenGhe'
+            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionE; let i = index" [attr.data-id]='sit.MaGhe' [attr.data-place]='E + sit.TenGhe'
               [attr.data-price]="sit.GiaVe" (click)="clickMe($event)">
               E{{sit.TenGhe}}
             </span>
           </div>
           <div class="sits__row">
-            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionF; let i = index" [attr.data-place]='F+ sit.TenGhe'
+            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionF; let i = index" [attr.data-id]='sit.MaGhe' [attr.data-place]='F+ sit.TenGhe'
               [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
               F{{sit.TenGhe}}
             </span>
           </div>
           <div class="sits__row">
-            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionG; let i = index" [attr.data-place]='G+ sit.TenGhe'
+            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionG; let i = index" [attr.data-id]='sit.MaGhe' [attr.data-place]='G+ sit.TenGhe'
               [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
               G{{sit.TenGhe}}
             </span>
           </div>
           <div class="sits__row">
-            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionI; let i = index" [attr.data-place]='I+ sit.TenGhe'
+            <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionI; let i = index" [attr.data-id]='sit.MaGhe' [attr.data-place]='I+ sit.TenGhe'
               [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
               I{{sit.TenGhe}}
             </span>
@@ -291,6 +291,6 @@
 
 <ng-template #payment>
   <div class="containers">
-    <app-payment [TotalTicket]="selectedCount" [TotalPrice]="totalCount" [@enterAnimation]></app-payment>
+    <app-payment [TotalTicket]="selectedCount" [TotalPrice]="totalCount" [Ticket]="TotalTicket" [MaLichChieu]="MaLichChieu" [@enterAnimation]></app-payment>
   </div>
 </ng-template>

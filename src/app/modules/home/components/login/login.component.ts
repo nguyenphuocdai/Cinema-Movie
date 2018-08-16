@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (result) => {
           this._userService.displayNameUser(result.HoTen);
+          this._cacheService.set('CurrentUser', result);
           this._router.navigate(['/home']);
         },
         (error) => {

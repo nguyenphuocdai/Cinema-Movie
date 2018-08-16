@@ -5,12 +5,13 @@ import { LoginComponent } from './modules/home/components/login/login.component'
 import { ZaloCallbackComponent } from './modules/home/pages/zalo-callback/zalo-callback.component';
 import { UATFeatureComponent } from './modules/home/pages/uat-feature/uat-feature.component';
 import { BookTicketComponent } from './modules/home/pages/book-ticket/book-ticket.component';
+import { SuccessTicketComponent } from './modules/home/pages/success-ticket/success-ticket.component';
+import { UserInfoComponent } from './modules/home/pages/user-info/user-info.component';
 
 const appRoutes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-
         data: { state: 'page1' }
 
     },
@@ -28,6 +29,8 @@ const appRoutes: Routes = [
         component: BookTicketComponent,
         data: { state: 'page3' }
     },
+    { path: 'user-info', component: UserInfoComponent },
+    { path: 'success', component: SuccessTicketComponent },
     { path: 'test', component: UATFeatureComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: HomeComponent }

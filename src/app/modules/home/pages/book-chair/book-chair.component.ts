@@ -35,6 +35,7 @@ export class BookChairComponent implements OnInit {
   SitAtPositionI: any;
   selectedSit: String;
   selectedArray: Array<String> = [];
+  TotalTicket: Array<{ MaGhe: string, GiaVe: string }> = [];
   // tslint:disable-next-line:no-inferrable-types
   selectedCount: number = 1;
   totalCount = 0;
@@ -86,14 +87,16 @@ export class BookChairComponent implements OnInit {
       event.target.classList.remove('selected-sit');
       this.selectedCount = this.selectedCount - 1;
       this.selectedArray.pop();
+      this.TotalTicket.pop();
       this.totalCount -= +event.target.getAttribute('data-price');
       return;
     }
     event.target.classList.add('selected-sit');
     this.totalCount = +event.target.getAttribute('data-price') + this.totalCount;
-    console.log(this.totalCount);
     this.selectedCount = this.elem.nativeElement.querySelectorAll('.selected-sit').length;
     this.selectedArray.push(this.selectedSit);
+
+    this.TotalTicket.push({ MaGhe: event.target.getAttribute('data-id'), GiaVe: event.target.getAttribute('data-price') });
   }
   emitChangeValue(event) {
     // this.change.emit(event.target.checked);

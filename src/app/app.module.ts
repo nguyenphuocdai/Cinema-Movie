@@ -52,7 +52,7 @@ const zaloConfigs = {
     AppRoutingModule,
     NgxZaloModule,
     ScriptLoaderModule,
-    LocalStorageServiceModule,
+    LocalStorageServiceModule
   ],
   providers: [
     {
@@ -60,7 +60,8 @@ const zaloConfigs = {
       useClass: TokenInterceptor,
       multi: true
     },
-    MovieService
+    MovieService,
+
   ],
   exports: [
     NgxZaloModule

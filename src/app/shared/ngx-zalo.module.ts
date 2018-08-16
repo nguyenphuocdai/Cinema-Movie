@@ -17,7 +17,7 @@ let zaloConfigs: { version: string, appId: string, redirectUrl: string };
   ],
   declarations: [
     CacheImageDirective,
-    PhoneNumberPipe,
+    PhoneNumberPipe
   ],
   exports: [
   ]

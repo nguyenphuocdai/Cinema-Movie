@@ -14,10 +14,13 @@ import { CarouselModule } from './components/carousel-movie';
 import { BookChairComponent } from './pages/book-chair/book-chair.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { ScrollToIdDirective } from '../../shared/directives/scroll-to-id.directive';
-import {VgCoreModule} from 'videogular2/core';
-import {VgControlsModule} from 'videogular2/controls';
-import {VgOverlayPlayModule} from 'videogular2/overlay-play';
-import {VgBufferingModule} from 'videogular2/buffering';
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
+import { DialogComponent } from '../../shared/components/dialog/dialog.component';
+import { SuccessTicketComponent } from './pages/success-ticket/success-ticket.component';
+import { UserInfoComponent } from './pages/user-info/user-info.component';
 
 
 @NgModule({
@@ -32,7 +35,7 @@ import {VgBufferingModule} from 'videogular2/buffering';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
 
   ],
   declarations: [
@@ -44,12 +47,15 @@ import {VgBufferingModule} from 'videogular2/buffering';
     BookTicketComponent,
     BookChairComponent,
     PaymentComponent,
-    ScrollToIdDirective
+    ScrollToIdDirective,
+    DialogComponent,
+    SuccessTicketComponent,
+    UserInfoComponent
   ],
   exports: [
     HomeComponent,
     ZaloCallbackComponent,
-    ScrollToIdDirective
+    ScrollToIdDirective,
 
   ],
   providers: [

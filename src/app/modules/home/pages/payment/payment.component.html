@@ -8,10 +8,10 @@
           <span class="book-result__count booking-ticket">{{TotalTicket}}</span>
         </li>
         <li class="book-result__item">Tạm tính:
-          <span class="book-result__count booking-price">{{TotalPrice}}</span>
+          <span class="book-result__count booking-price">{{TotalPrice | number:"3.0"}}</span>
         </li>
         <li class="book-result__item">Tổng thanh toán:
-          <span class="book-result__count booking-cost">{{TotalPrice}}</span>
+          <span class="book-result__count booking-cost">{{TotalPrice | number:"3.0"}}</span>
         </li>
       </ul>
 
@@ -43,12 +43,41 @@
     </div>
 
     <div class="order">
-      <a href="#" class="btn btn-md btn--warning btn--wide">Đặt vé</a>
+      <a href="javascript:void(0)" (click)="putTicket()" class="btn btn-md btn--warning btn--wide">Đặt vé</a>
+      <div class="loader" *ngIf="isSubmitted"></div>
     </div>
 
   </div>
 
 </section>
 
-
+<app-dialog [(visible)]="showDialog">
+  <div class="f-container">
+    <form action="#" [formGroup]="loginForm" name="loginForm" novalidate>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="select-container">
+            <input type="text" placeholder="Tên đăng nhập" name="usernameLogin" id="usernameLogin" formControlName="usernameLogin" [ngClass]="{'has-error': usernameLogin.invalid && (usernameLogin.dirty || usernameLogin.touched)}"
+            />
+            <i class="icofont icofont-ui-user"></i>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="select-container">
+            <input type="password" placeholder="Mật khẩu" name="passwordLogin" id="passwordLogin" formControlName="passwordLogin" [ngClass]="{'has-error': passwordLogin.invalid && (passwordLogin.dirty || passwordLogin.touched)}"
+            />
+            <i class="icofont icofont-ui-password"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 row-flex">
+          <button type="button" class="theme-btn" [disabled]="loginForm.invalid || isShowLoadingLogin" [ngClass]='{disabled: loginForm.invalid}'
+            (click)="loginNormal()">Đăng nhập</button>
+          <div class="loader" *ngIf="isShowLoadingLogin"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-dialog>
 <div class="clearfix"></div>

@@ -33,6 +33,19 @@ export class UserService {
       .catch(this.handleErrorObservable);
   }
 
+
+  getHistoryUserTicket(account: string): Observable<any> {
+
+    // tslint:disable-next-line:prefer-const
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    // tslint:disable-next-line:prefer-const
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(appConfig.historyPutTicket + 'TaiKhoan=' + account, null, options)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
+
+
   putTicket(body: Object): Observable<any> {
     // tslint:disable-next-line:prefer-const
     // let bodyString = JSON.stringify(body);

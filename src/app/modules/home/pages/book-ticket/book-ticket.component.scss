@@ -286,7 +286,7 @@
  .checkout-wrapper {
      border-bottom: 1px solid #dbdee1;
      margin-bottom: 60px;
-     padding-bottom: 50px;
+     padding-bottom: 20px;
 }
  .btn-md {
      color: #ffffff;
@@ -928,4 +928,22 @@
 .c-no-padding {
     padding: 0 !important;
 }
- 
+.container-success {
+    text-align: center;
+    .icon-success{
+        i {
+            font-size: 5rem;
+            color: #59b546;
+        }
+    }
+    .info-success{
+      
+       padding-top: 20px;
+        p {
+            color:  #fff;
+        }
+        p:first-child{
+            margin-bottom: 0
+        }
+    }
+}
