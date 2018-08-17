@@ -35,18 +35,19 @@
               "./src/assets/css/external/jquery.selectbox.css",
               "./src/assets/css/external/idangerous.swiper.css",
               "node_modules/videogular2/fonts/videogular.css",
-              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
+              "./src/assets/css/slick.css",
+              "./src/assets/css/slick-theme.css"
             ],
             "scripts": [
               "./src/assets/js/popper.min.js",
-              "./src/assets/js/jquery.min.js",  
+              "./src/assets/js/jquery.min.js",
               "./src/assets/js/bootstrap.min.js",
-              "./src/assets/js/jquery.slicknav.min.js",  
+              "./src/assets/js/jquery.slicknav.min.js",
               "./src/assets/js/owl.carousel.min.js",
-              "./src/assets/js/jquery.magnific-popup.min.js",    
+              "./src/assets/js/jquery.magnific-popup.min.js",
               "./src/assets/js/isotope.pkgd.min.js",
               "./src/assets/js/external/idangerous.swiper.min.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js"
+              "./src/assets/js/slick.js"
             ]
           },
           "configurations": {
@@ -146,7 +147,6 @@
     }
   },
   "defaultProject": "Cinema-theater",
-  
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"

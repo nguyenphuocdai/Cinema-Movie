@@ -8,3 +8,8 @@
 .mainmenu li.btn-ticket a.active {
     color: #fff !important;
 }
+.header{
+    display: block !important;
+    padding: 30px 0;
+    position: relative
+}

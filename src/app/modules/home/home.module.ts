@@ -21,6 +21,7 @@ import { VgBufferingModule } from 'videogular2/buffering';
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 import { SuccessTicketComponent } from './pages/success-ticket/success-ticket.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { SlickModule } from '../../../../node_modules/ngx-slick';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-
+    SlickModule.forRoot()
   ],
   declarations: [
     HomeComponent,
@@ -55,8 +56,7 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
   exports: [
     HomeComponent,
     ZaloCallbackComponent,
-    ScrollToIdDirective,
-
+    ScrollToIdDirective
   ],
   providers: [
   ]

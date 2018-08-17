@@ -1,0 +1,80 @@
+.hero-area {
+  background-image: none !important;
+  max-height: 600px;
+}
+
+.c-padding-t60 {
+  padding-top: 60px;
+}
+
+.c-padding-b20 {
+  padding-bottom: 20px
+}
+
+.c-padding-t10 {
+  padding-top: 10px;
+}
+
+.c-padding-b60 {
+  padding-bottom: 60px;
+}
+
+.card {
+  border: none !important;
+  border-radius: 0 !important;
+  .relative {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+}
+
+.card .card-body {
+  background: #1e1e1e;
+}
+
+.film-meta {
+  text-align: center;
+  h3 {
+    font-family: "Playfair Display";
+    font-weight: 700;
+    font-style: normal;
+  }
+  .film-category {
+    margin-top: 3px;
+    margin-bottom: 25px;
+    a {
+      color: #757575;
+      letter-spacing: 1px;
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+  }
+}
+
+.film-meta .film-title {
+  font-size: 18px;
+  margin-top: 5px;
+  padding: 0px 10px;
+  line-height: 1.8;
+}
+
+.film-meta .film-rating .point {
+  color: #fd6500;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.film-meta .film-rating .total {
+  font-weight: 400;
+}
+
+.video {
+  background: #161616 !important;
+}
+
+.background-image {
+  background: #161616 url(http://demo.harutheme.com/circle/wp-content/uploads/2017/08/trailer-bg-6.jpg?id=1037) !important;
+}

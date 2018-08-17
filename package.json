@@ -50,6 +50,7 @@
     "ngx-modal": "0.0.29",
     "ngx-script-loader": "^1.0.0",
     "ngx-simple-crypt": "^1.0.1",
+    "ngx-slick": "^0.2.1",
     "ngx-useful-swiper": "^0.3.1-beta",
     "ngx-zalo": "0.0.19",
     "owl.carousel": "^2.3.4",

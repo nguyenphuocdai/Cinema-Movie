@@ -11,8 +11,6 @@ import { Subject } from 'rxjs';
 export class UserInfoComponent implements OnInit, OnDestroy {
   currentUser: any;
   historyTicket: any;
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject();
   constructor(
     private _cacheService: CacheService,
     private _userService: UserService
@@ -20,10 +18,6 @@ export class UserInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currentUser = this._cacheService.get('CurrentUser');
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 2
-    };
     if (this.currentUser) {
       this.getHistory();
     }
@@ -33,13 +27,10 @@ export class UserInfoComponent implements OnInit, OnDestroy {
       .subscribe((result) => {
 
         this.historyTicket = result;
-        this.dtTrigger.next();
         console.log(this.historyTicket);
       });
   }
   ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
   }
 
 }

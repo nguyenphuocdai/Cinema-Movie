@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { ScriptService } from 'ngx-script-loader';
 import { MovieService } from '../../../../shared/services/movie.service';
 import { ListMovie } from '../../../../shared/models/list-movie.model';
@@ -8,7 +8,7 @@ declare var $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   animations: [
     trigger('scrollAnimation', [
       state('show', style({
@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   nextRating: any;
   state = 'hide';
   listMovie: ListMovie;
+  slides: { img: string; }[];
 
   constructor(
     private scriptService: ScriptService,
@@ -51,11 +52,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
     } else {
       this.state = 'hide';
     }
-
+    // this.galleryOne.initSlick(this.slideConfig);
   }
+  // tslint:disable-next-line:member-ordering
+  slideConfig = {
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    lazyLoad: 'ondemand',
+  };
 
   ngOnInit() {
     this.getListMovie();
+    this.slides = [
+      { img: 'http://demo.harutheme.com/circle/wp-content/uploads/2017/08/slide-bg-6-1.jpg' }
+    ];
   }
 
   getListMovie() {
@@ -69,8 +84,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
       );
   }
+  addSlide() {
+    this.slides.push({ img: 'http://placehold.it/350x150/777777' });
+  }
+
+  removeSlide() {
+    this.slides.length = this.slides.length - 1;
+  }
+
+  afterChange(e) {
+    console.log('afterChange');
+  }
 
   ngAfterViewInit(): void {
+    // $('.single-item').slick();
     $('.hero-area-slider').owlCarousel({
       loop: true,
       dots: true,
@@ -143,5 +170,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     $(window).load(function () {
       $('#preloader').fadeOut(500);
     });
+
   }
 }

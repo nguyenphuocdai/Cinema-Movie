@@ -23,6 +23,7 @@ import { ScriptLoaderModule } from 'ngx-script-loader';
 import { LocalStorageServiceModule } from './shared/ng2-cache-service';
 import { MovieService } from './shared/services/movie.service';
 import { HttpModule } from '@angular/http';
+import { SlickModule } from 'ngx-slick';
 
 const zaloConfigs = {
   version: environment.zaloConfigs.version,
