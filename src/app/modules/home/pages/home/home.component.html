@@ -2,6 +2,22 @@
   <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
     <div ngxSlickItem *ngFor="let slide of slides" class="slide">
       <img src="{{ slide.img }}" alt="" width="100%">
+      <div class="clearfix"></div>
+      <div class="info-img">
+        <div class="info-caption">Wolf Warriors II (2017)</div>
+        <div class="info-time">
+          <span>20 Aug, 2018</span>
+          <span>02 hours 50 mins</span>
+          <span>Last Christmas</span>
+        </div>
+        <div class="info-btn">
+          Xem giới thiệu
+        </div>
+
+        <div class="info-detail">
+          Xem chi tiết
+        </div>
+      </div>
     </div>
   </ngx-slick>
 </section>
@@ -11,7 +27,7 @@
       <div class="col-lg-6 text-center text-lg-left">
         <div class="section-title">
           <h1>
-            <i class="icofont icofont-movie"></i> Phim đang chiếu</h1>
+            <i class="icofont icofont-movie"></i> Phim sắp chiếu</h1>
         </div>
       </div>
       <div class="col-lg-6 text-center text-lg-right">
@@ -23,7 +39,7 @@
         <div class="card video-area">
           <div class="relative">
             <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
-            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
               <i class="icofont icofont-ui-play"></i>
             </a>
           </div>
@@ -49,7 +65,7 @@
         <div class="card video-area">
           <div class="relative">
             <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
-            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
               <i class="icofont icofont-ui-play"></i>
             </a>
           </div>
@@ -75,7 +91,7 @@
         <div class="card video-area">
           <div class="relative">
             <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
-            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
               <i class="icofont icofont-ui-play"></i>
             </a>
           </div>
@@ -101,7 +117,7 @@
         <div class="card video-area">
           <div class="relative">
             <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
-            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
               <i class="icofont icofont-ui-play"></i>
             </a>
           </div>
@@ -126,35 +142,226 @@
     </div>
   </div>
 </section>
-<section class="video ptb-90">
+<section class="video c-padding-t90">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="section-title pb-20">
           <h1>
-            <i class="icofont icofont-film"></i> Trailers & Videos</h1>
+            <i class="icofont icofont-film"></i> Phim đang chiếu</h1>
         </div>
       </div>
     </div>
     <hr />
     <div class="row">
       <div class="col-md-9">
-        <div class="video-area">
-          <img src="assets/img/video/video1.png" alt="video" />
-          <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-            <i class="icofont icofont-ui-play"></i>
-          </a>
-          <div class="video-text">
-            <h2>Angle of Death</h2>
-            <div class="review">
-              <div class="author-review">
-                <i class="icofont icofont-star"></i>
-                <i class="icofont icofont-star"></i>
-                <i class="icofont icofont-star"></i>
-                <i class="icofont icofont-star"></i>
-                <i class="icofont icofont-star"></i>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card video-area">
+              <div class="relative">
+                <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
               </div>
-              <h4>180k voters</h4>
+              <div class="card-body bg-card-style2">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">8.7</span>
+                    <span class="total">/ 10</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">Last Christmas</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card video-area">
+              <div class="relative">
+                <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
+              </div>
+              <div class="card-body bg-card-style2">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">8.7</span>
+                    <span class="total">/ 10</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">Last Christmas</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card video-area">
+              <div class="relative">
+                <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
+              </div>
+              <div class="card-body bg-card-style2">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">8.7</span>
+                    <span class="total">/ 10</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">Last Christmas</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card video-area">
+              <div class="relative">
+                <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
+              </div>
+              <div class="card-body bg-card-style2">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">8.7</span>
+                    <span class="total">/ 10</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">Last Christmas</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card video-area">
+              <div class="relative">
+                <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
+              </div>
+              <div class="card-body bg-card-style2">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">8.7</span>
+                    <span class="total">/ 10</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">Last Christmas</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card video-area">
+              <div class="relative">
+                <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
+              </div>
+              <div class="card-body bg-card-style2">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">8.7</span>
+                    <span class="total">/ 10</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">Last Christmas</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card video-area">
+              <div class="relative">
+                <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
+              </div>
+              <div class="card-body bg-card-style2">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">8.7</span>
+                    <span class="total">/ 10</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">Last Christmas</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card video-area">
+              <div class="relative">
+                <img class="card-img-top" src="../../../../../assets/img/movie/movie-sample1.jpg" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
+              </div>
+              <div class="card-body bg-card-style2">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">8.7</span>
+                    <span class="total">/ 10</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">Last Christmas</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -162,19 +369,78 @@
       <div class="col-md-3">
         <div class="row">
           <div class="col-md-12 col-sm-6">
-            <div class="video-area">
-              <img src="assets/img/video/video2.png" alt="video" />
-              <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                <i class="icofont icofont-ui-play"></i>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-12 col-sm-6">
-            <div class="video-area">
-              <img src="assets/img/video/video3.png" alt="video" />
-              <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                <i class="icofont icofont-ui-play"></i>
-              </a>
+            <div class="wrapper__top">
+              <div class="wrapper__top__container">
+                <div class="film-content video-area">
+                  <h3 class="top-title">Top View</h3>
+                  <ul class="film-list">
+                    <li class="film-item">
+                      <div class="top-number">01</div>
+                      <div class="item-content">
+                        <a href="http://demo.harutheme.com/circle/film/harutheme-introduction/">HaruTheme</a>
+                        <div class="view-count">
+                          <i class="icofont icofont-eye-alt"></i>919 views</div>
+                      </div>
+                    </li>
+                    <li class="film-item">
+                      <div class="top-number">02</div>
+                      <div class="item-content">
+                        <a href="http://demo.harutheme.com/circle/film/wynonna/">Wynonna</a>
+                        <div class="view-count">
+                          <i class="icofont icofont-eye-alt"></i>641 views</div>
+                      </div>
+                    </li>
+                    <li class="film-item">
+                      <div class="top-number">03</div>
+                      <div class="item-content">
+                        <a href="http://demo.harutheme.com/circle/film/war-is-coming/">War is Coming</a>
+                        <div class="view-count">
+                          <i class="icofont icofont-eye-alt"></i>627 views</div>
+                      </div>
+                    </li>
+                    <li class="film-item">
+                      <div class="top-number">04</div>
+                      <div class="item-content">
+                        <a href="http://demo.harutheme.com/circle/film/red-sonja/">Red Sonja</a>
+                        <div class="view-count">
+                          <i class="icofont icofont-eye-alt"></i>418 views</div>
+                      </div>
+                    </li>
+                    <li class="film-item">
+                      <div class="top-number">05</div>
+                      <div class="item-content">
+                        <a href="http://demo.harutheme.com/circle/film/red-sonja/">Red Sonja</a>
+                        <div class="view-count">
+                          <i class="icofont icofont-eye-alt"></i>418 views</div>
+                      </div>
+                    </li>
+                    <li class="film-item">
+                      <div class="top-number">06</div>
+                      <div class="item-content">
+                        <a href="http://demo.harutheme.com/circle/film/red-sonja/">Red Sonja</a>
+                        <div class="view-count">
+                          <i class="icofont icofont-eye-alt"></i>418 views</div>
+                      </div>
+                    </li>
+                    <li class="film-item">
+                      <div class="top-number">07</div>
+                      <div class="item-content">
+                        <a href="http://demo.harutheme.com/circle/film/red-sonja/">Red Sonja</a>
+                        <div class="view-count">
+                          <i class="icofont icofont-eye-alt"></i>418 views</div>
+                      </div>
+                    </li>
+                    <li class="film-item">
+                      <div class="top-number">08</div>
+                      <div class="item-content">
+                        <a href="http://demo.harutheme.com/circle/film/red-sonja/">Red Sonja</a>
+                        <div class="view-count">
+                          <i class="icofont icofont-eye-alt"></i>418 views</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -197,7 +463,7 @@
       <div class="col-md-9">
         <div class="video-area">
           <img src="assets/img/video/video1.png" alt="video" />
-          <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+          <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
             <i class="icofont icofont-ui-play"></i>
           </a>
           <div class="video-text">
