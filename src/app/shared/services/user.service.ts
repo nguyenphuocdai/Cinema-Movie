@@ -12,6 +12,7 @@ export class UserService {
   text: String = '';
   possible: String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
+  @Output() secretKey: EventEmitter<any> = new EventEmitter();
   constructor(private http: Http) { }
 
 
@@ -58,7 +59,11 @@ export class UserService {
       .map(this.parseData)
       .catch(this.handleErrorObservable);
   }
-
+  getUserGP07(): Observable<UserNormal> {
+    return this.http.get(appConfig.getUser)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
   getUser(): Observable<UserNormal> {
     return this.http.get(appConfig.getListMovie)
       .map(this.parseData)
@@ -75,6 +80,28 @@ export class UserService {
     return this.http.post(appConfig.loginUser + `taikhoan=${account}&matkhau=${password}`, null, options)
       .map(this.parseData)
       .catch(this.handleErrorObservable);
+  }
+
+  loginUserBody(obj: Object) {
+    // tslint:disable-next-line:prefer-const
+    // let bodyString = JSON.stringify(body);
+    // tslint:disable-next-line:prefer-const
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    // tslint:disable-next-line:prefer-const
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(appConfig.loginUser, obj, options)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
+
+
+  saveSecretKey(secretKey: String) {
+    if (!secretKey) {
+      return;
+    } else {
+      this.secretKey.emit(secretKey);
+      return secretKey;
+    }
   }
 
   public makeid() {

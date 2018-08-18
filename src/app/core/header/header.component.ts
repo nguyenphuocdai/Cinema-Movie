@@ -25,8 +25,9 @@ export class HeaderComponent implements OnInit {
     private _userService: UserService,
     private _cacheService: CacheService,
   ) {
-    _ngxZaloService.getLoggedInName.subscribe(user => this.changeName(user));
+    _ngxZaloService.getLoggedInName.subscribe(user => { this.changeName(user); console.log(user); });
     _userService.getLoggedInName.subscribe(user => this.changeName(user));
+
   }
 
   ngOnInit() {

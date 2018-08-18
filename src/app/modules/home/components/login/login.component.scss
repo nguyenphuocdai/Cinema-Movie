@@ -1,88 +1,115 @@
 .c-padding-t-150 {
-    margin-top: 150px;
-    background: #13151f;
+  margin-top: 150px;
+  background: #13151f;
 }
+
 .c-padding-b-100 {
-    padding-bottom: 100px;
+  padding-bottom: 100px;
 }
-.breadcrumb-area{
-    padding: 50px 0 150px !important;
+
+.breadcrumb-area {
+  padding: 50px 0 150px !important;
 }
+
 // .row .transformers-box .flexbox-center-top{
 //     align-items: center;
 //     display: flex;
 //     ali
 // }
-.c-padding-t-20{
-    padding-top: 20px;
+.c-padding-t-20 {
+  padding-top: 20px;
 }
-.transformers-box{
-    width: 100%;
-}
-.login-social{
-    justify-content: flex-end !important;
-    margin-top: 20px;
-}
-.login-social div {
-    margin-left: 10px;
-    cursor: pointer;
-}
-.bg-zalo-login{
-    background: none !important;
-    background-image: url('../../../../../assets/img/zalo-logo.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 40px;
-    width: 45px;
-}
-.button-register {
-    background: #13151f;
-    color: #fff;
-}
-.row--no--padding{
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-.comeback-login{
-    position: absolute;
-    top: 0;
-}
-.comeback-login i {
-    font-size: 32px;
-}
-.display-password-confirm {
-    top: 42px;
-    color: indianred;
-    position: absolute;
-}
-.row-flex {
-    display: -webkit-box; 
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex; 
-    display: flex;
-    align-items: center;
-  }
-.loader {
-    border: 3px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 3px solid #3498db;
-    width: 20px;
-    height: 20px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
-    animation: spin 2s linear infinite;
-    margin-left: 10px;
-  }
-  
-  /* Safari */
-  @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
 
- 
+.transformers-box {
+  width: 100%;
+}
+
+.login-social {
+  justify-content: flex-end !important;
+  margin-top: 20px;
+}
+
+.login-social div {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.bg-zalo-login {
+  background: none !important;
+  background-image: url('../../../../../assets/img/zalo-logo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 45px;
+}
+
+.button-register {
+  background: #13151f;
+  color: #fff;
+}
+
+.row--no--padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.comeback-login {
+  position: absolute;
+  top: 0;
+}
+
+.comeback-login i {
+  font-size: 32px;
+}
+
+.display-password-confirm {
+  top: 42px;
+  color: indianred;
+  position: absolute;
+}
+
+.row-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+
+.loader {
+  border: 3px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 3px solid #3498db;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+  margin-left: 10px;
+}
+
+/* Safari */
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.info-error {
+  color: red;
+  padding: 0 0 15px 0;
+}

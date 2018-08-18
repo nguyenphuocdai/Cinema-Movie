@@ -13,6 +13,7 @@
               <h2>The Movie Point</h2>
               <p>Moive | 2D | 3D | Sci-Fi | SBS</p>
               <div class="details-reply" *ngIf="!isSuccessfully">
+                <div class="info-error" *ngIf="hasError">Tài khoản hoặc mật khẩu không đúng</div>
                 <form action="#" [formGroup]="loginForm" name="loginForm" novalidate>
                   <div *ngIf="isLogin">
                     <div class="row">

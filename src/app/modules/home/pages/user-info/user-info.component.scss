@@ -1,6 +1,8 @@
 .breadcrumb-area {
   padding: 100px 0 100px !important;
-  background: url('../../../../../assets/img/bg-page-title.jpg')
+  background: url('../../../../../assets/img/bg-page-title.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .transformers-area {
@@ -15,8 +17,36 @@
       display: -webkit-inline-box;
     }
   }
+  .breadcrumb-area-content h1{
+      font-size: 48px;
+  }
 }
+
 .history-ticket {
-    margin-top: 50px;
-    margin-bottom: 100px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.label-default {
+  background-color: #777;
+}
+
+.label-info {
+  background-color: #5bc0de;
+}
+.label-primary {
+    background-color: #337ab7;
 }

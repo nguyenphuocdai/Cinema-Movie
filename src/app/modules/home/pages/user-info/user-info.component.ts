@@ -11,6 +11,8 @@ import { Subject } from 'rxjs';
 export class UserInfoComponent implements OnInit, OnDestroy {
   currentUser: any;
   historyTicket: any;
+  today: number = Date.now();
+
   constructor(
     private _cacheService: CacheService,
     private _userService: UserService
@@ -21,11 +23,11 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     if (this.currentUser) {
       this.getHistory();
     }
+    console.log(this.today);
   }
   getHistory() {
     this._userService.getHistoryUserTicket(this.currentUser.TaiKhoan)
       .subscribe((result) => {
-
         this.historyTicket = result;
         console.log(this.historyTicket);
       });

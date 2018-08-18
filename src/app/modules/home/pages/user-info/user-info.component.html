@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="breadcrumb-area-content">
-          <h1>Thông tin cá nhân</h1>
+          <h1>Thông tin tài khoản</h1>
         </div>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-bg">
@@ -101,23 +101,40 @@
         <div class="col-lg-6 text-center text-lg-right">
         </div>
       </div>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <td>Id</td>
-            <td>Title</td>
-            <td>Amount</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>transfer.id</td>
-            <td>transfer.title</td>
-            <td>transfer.amount</td>
-          </tr>
-        </tbody>
-      </table>
-
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Tên phim</td>
+              <td>Mã ghế</td>
+              <td>Ngày đặt</td>
+              <td>Giá vé</td>
+              <td>Rạp</td>
+              <td>Trạng thái</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of historyTicket?.DanhSachVeDaDat; let i = index; let odd= odd">
+              <td>{{i+1}}</td>
+              <td>{{item.TenPhim}}</td>
+              <td>{{item.MaGhe}}</td>
+              <td>{{item.NgayDat | date:"dd-MM-yyy hh:mm"}}</td>
+              <td>{{item.GiaVe | number:"3.0"}}</td>
+              <td>{{item.Rap}}</td>
+              <td *ngIf="
+              (item.NgayDat | date:'dd-MM-yyy hh:mm') < (today | date:'dd-MM-yyy hh:mm');then thenBlock elseBlock
+              "></td>
+              <ng-template #thenBlock>
+                <td><span class="label label-primary">Đã nhận vé</span></td>
+              </ng-template>
+              <ng-template #elseBlock>
+                <td><span class="label label-info">Chờ xem</span></td>
+              </ng-template>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>

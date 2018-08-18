@@ -10,7 +10,6 @@ import { SimpleCrypt } from 'ngx-simple-crypt';
 import { LocalKey } from '../../../../app.config';
 import { UserNormal } from '../../../../shared/models/user-normal.model';
 import { UserService } from '../../../../shared/services/user.service';
-import * as base32 from 'hi-base32';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +22,13 @@ export class LoginComponent implements OnInit {
   isAllowLogin: Boolean = false;
   isSuccessfully: Boolean = false;
   isShowLoadingLogin: Boolean = false;
+  hasError: Boolean = false;
   registeredName: String = '';
   userLoginNow: any;
+  listUserGP07: any;
+  userLogin: any;
+  passwordDecode: any;
+  passwordNormal: string;
   regexPassword = '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,32}$';
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   private loginForm: FormGroup;
@@ -63,24 +67,49 @@ export class LoginComponent implements OnInit {
     // }
 
   }
+  getAllUserGP07() {
+    this._userService.getUserGP07().subscribe((result) => { this.listUserGP07 = result; console.log(this.listUserGP07); });
+  }
   login() {
     this._ngxZaloService.login();
     this.getMyProfile();
     localStorage.setItem('isLogin', this._ngxZaloService.isLogin.toString());
   }
   loginNormal() {
+    const simpleCrypt = new SimpleCrypt();
+    this.userLogin = this.listUserGP07.find(e => e.TaiKhoan === this.usernameLogin.value);
     this.isShowLoadingLogin = true;
-    this._userService.loginUser(this.usernameLogin.value, this.passwordLogin.value)
-      .subscribe(
-        (result) => {
-          this._userService.displayNameUser(result.HoTen);
-          this._cacheService.set('CurrentUser', result);
-          this._router.navigate(['/home']);
-        },
-        (error) => {
-          console.log(error);
+    if (this.userLogin) {
+      this.passwordDecode = simpleCrypt.decode(LocalKey.keyCryto, this.userLogin.MatKhau).match(/^[a-z0-9]+$/i);
+      if (this.passwordDecode) {
+        this.passwordNormal = simpleCrypt.encode(LocalKey.keyCryto, this.passwordDecode[0]);
+      } else {
+        if (this.passwordLogin.value === this.userLogin.MatKhau) {
+          this.passwordNormal = this.passwordLogin.value;
+        } else {
+          this.hasError = true;
+          this.isShowLoadingLogin = false;
+          return;
         }
-      );
+      }
+      this._userService.loginUser(this.usernameLogin.value, this.passwordNormal)
+        .subscribe(
+          (result) => {
+            this._userService.displayNameUser(result.HoTen);
+            this._userService.saveSecretKey(result.SecretKey);
+            this._cacheService.set('CurrentUser', result);
+            this._router.navigate(['/home']);
+          },
+          (error) => {
+            this.hasError = true;
+            this.isShowLoadingLogin = false;
+          }
+        );
+    } else {
+      this.hasError = true;
+      this.isShowLoadingLogin = false;
+    }
+
   }
   checkLoginStatus() {
     console.log('Login status:', this._ngxZaloService.isLogin);
@@ -113,6 +142,8 @@ export class LoginComponent implements OnInit {
 
     this.CreateValidatorLoginForm();
     this.CreateLoginForm();
+
+    this.getAllUserGP07();
   }
   private CreateLoginForm() {
     this.loginForm = new FormGroup({
@@ -160,7 +191,7 @@ export class LoginComponent implements OnInit {
 
     this.formIsSubmitting = true;
     this.registerInfo.TaiKhoan = this.account.value;
-    this.registerInfo.MatKhau = this.password.value;
+    this.registerInfo.MatKhau = simpleCrypt.encode(LocalKey.keyCryto, this.password.value).replace(/[^a-zA-Z0-9]/g, '_');
     this.registerInfo.HoTen = this.username.value;
     this.registerInfo.Email = this.email.value;
     this.registerInfo.SoDT = this.phoneNumber.value;
@@ -174,10 +205,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (result) => {
           this.userLoginNow = result;
-          console.log(this.userLoginNow);
           this.isSuccessfully = true;
           this.registeredName = result.HoTen;
-          this.isSuccessfully = true;
           this.formIsSubmitting = false;
           this.resetForm(this.registerForm);
         }
