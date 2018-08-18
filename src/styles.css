@@ -1,25 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+
 /* config color spinner */
 
-li .active{
-    color: #eb315a;
+li .active {
+  color: #eb315a;
 }
+
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
+
 .has-error {
-    border: 1px solid red !important;
+  border: 1px solid red !important;
 }
+
 .disabled {
-    opacity: 0.5;
-    pointer-events: none;
+  opacity: 0.5;
+  pointer-events: none;
 }
+
 .c-btn-theme {
-    background-color: #4267b2 !important;
-    border: 1px solid #29487d !important;
-    color: #fff !important;
-    font-size: 16px;
+  background-color: #4267b2 !important;
+  border: 1px solid #29487d !important;
+  color: #fff !important;
+  font-size: 16px;
 }
+
 .c-pb-30 {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
+}
+
+.c-padding-t60 {
+  padding-top: 60px;
+}
+
+.c-padding-b20 {
+  padding-bottom: 20px
+}
+
+.c-padding-t90 {
+  padding-top: 90px;
+}
+
+.c-padding-t10 {
+  padding-top: 10px;
+}
+
+.c-padding-b60 {
+  padding-bottom: 60px;
 }

@@ -2,27 +2,6 @@
   background-image: none !important;
   max-height: 600px;
 }
-
-.c-padding-t60 {
-  padding-top: 60px;
-}
-
-.c-padding-b20 {
-  padding-bottom: 20px
-}
-
-.c-padding-t90 {
-  padding-top: 90px;
-}
-
-.c-padding-t10 {
-  padding-top: 10px;
-}
-
-.c-padding-b60 {
-  padding-bottom: 60px;
-}
-
 .card {
   border: none !important;
   border-radius: 0 !important;
@@ -295,12 +274,13 @@
     }
   }
 }
+
 @media screen and (max-width: 479px) {
-    .slide {
-      .info-img {
-        .info-caption {
-          font-size: 24px;
-        }
+  .slide {
+    .info-img {
+      .info-caption {
+        font-size: 24px;
       }
     }
   }
+}

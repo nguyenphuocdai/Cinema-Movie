@@ -1,7 +1,22 @@
 .breadcrumb-area {
-    padding: 150px 0 50px !important;
-    background: url('../../../../../assets/img/bg-page-title.jpg')
+  padding: 100px 0 100px !important;
+  background: url('../../../../../assets/img/bg-page-title.jpg')
 }
-.transformers-area{
-    padding-top: 60px;
+
+.transformers-area {
+  padding-top: 60px;
+}
+
+.breadcrumb-area {
+  nav {
+    text-align: center;
+    .breadcrumb-bg {
+      background-color: unset !important;
+      display: -webkit-inline-box;
+    }
+  }
+}
+.history-ticket {
+    margin-top: 50px;
+    margin-bottom: 100px;
 }

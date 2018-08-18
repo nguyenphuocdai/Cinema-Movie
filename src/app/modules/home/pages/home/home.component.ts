@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getListMovie();
     this.slides = [
+      { img: 'http://demo.harutheme.com/circle/wp-content/uploads/2017/08/slide-bg-6-1.jpg' },
       { img: 'http://demo.harutheme.com/circle/wp-content/uploads/2017/08/slide-bg-6-1.jpg' }
     ];
   }
@@ -97,6 +98,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    $('.owl-carousel').owlCarousel({
+      items: 4,
+      lazyLoad: true,
+      loop: true,
+      margin: 10,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 3
+        },
+        1000: {
+          items: 5
+        }
+      }
+    });
     // $('.single-item').slick();
     $('.hero-area-slider').owlCarousel({
       loop: true,
