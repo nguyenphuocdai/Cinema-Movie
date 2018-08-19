@@ -45,7 +45,15 @@ export class UserService {
       .map(this.parseData)
       .catch(this.handleErrorObservable);
   }
-
+  updateUser(body: Object) {
+    // tslint:disable-next-line:prefer-const
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    // tslint:disable-next-line:prefer-const
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(appConfig.updateUser, body, options)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
 
   putTicket(body: Object): Observable<any> {
     // tslint:disable-next-line:prefer-const

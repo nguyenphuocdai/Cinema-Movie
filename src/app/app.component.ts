@@ -41,11 +41,11 @@ const slideRight = [
         group([
           query(':enter', [
             style({ opacity: 0, width: '100%', height: '900px' }),
-            animate('1200ms ease-in-out', style({ opacity: 1 }))
+            animate('1000ms ease-in-out', style({ opacity: 1 }))
           ], { optional: true }),
           query(':leave', [
             style({ opacity: 1, width: '100%', height: '900px' }),
-            animate('1200ms ease-in-out', style({ opacity: 0 }))], { optional: true }),
+            animate('200ms ease-in-out', style({ opacity: 0 }))], { optional: true }),
         ])
       ])
     ])

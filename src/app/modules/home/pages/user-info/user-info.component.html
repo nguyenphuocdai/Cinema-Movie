@@ -35,7 +35,9 @@
       <div class="row flexbox-center">
         <div class="col-lg-5 text-lg-left text-center">
           <div class="transformers-content">
-            <img src="assets/img/slide4.jpg" alt="about" />
+            <img id="qrImg" src="" alt="QR Code" *ngIf="isVerify"/>
+            <p *ngIf="isVerify">Vui lòng quét QR qua app Google Authenticator</p>
+            <p *ngIf="!isVerify">Khách hàng không có mã xác thực</p>
           </div>
         </div>
         <div class="col-lg-7">
@@ -101,7 +103,7 @@
         <div class="col-lg-6 text-center text-lg-right">
         </div>
       </div>
-      <div class="table-responsive">
+      <div class="table-responsive" *ngIf="isHistoryTicket">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -135,7 +137,15 @@
           </tbody>
         </table>
       </div>
+      <div class="not-thing-ticket" *ngIf="!isHistoryTicket">
+          <div class="transformers-content">
+              <p>Bạn không có lịch sử đặt vé nào cả !</p>
+            </div>
+      </div>
     </div>
   </div>
 </section>
 <!-- transformers area end -->
+<div class="hidden-field">
+  <input type="text" size="30" name="secret" id="secret" class="xlarge" #secret [value]="secretKey"/>
+</div>

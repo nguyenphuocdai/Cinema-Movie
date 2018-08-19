@@ -22,6 +22,7 @@ import { DialogComponent } from '../../shared/components/dialog/dialog.component
 import { SuccessTicketComponent } from './pages/success-ticket/success-ticket.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { SlickModule } from '../../../../node_modules/ngx-slick';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { SlickModule } from '../../../../node_modules/ngx-slick';
     ScrollToIdDirective,
     DialogComponent,
     SuccessTicketComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    ChangePasswordComponent
   ],
   exports: [
     HomeComponent,

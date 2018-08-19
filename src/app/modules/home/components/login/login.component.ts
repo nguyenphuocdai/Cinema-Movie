@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   userLogin: any;
   passwordDecode: any;
   passwordNormal: string;
-  regexPassword = '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,32}$';
+  regexPassword = '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*?]{6,}$';
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   private loginForm: FormGroup;
   private usernameLogin: FormControl;
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
   private username: FormControl;
   private email: FormControl;
   private phoneNumber: FormControl;
+  private agree: FormControl;
   private formIsSubmitting: boolean;
   private registerInfo: UserNormal = new UserNormal();
 
@@ -80,9 +81,11 @@ export class LoginComponent implements OnInit {
     this.userLogin = this.listUserGP07.find(e => e.TaiKhoan === this.usernameLogin.value);
     this.isShowLoadingLogin = true;
     if (this.userLogin) {
-      this.passwordDecode = simpleCrypt.decode(LocalKey.keyCryto, this.userLogin.MatKhau).match(/^[a-z0-9]+$/i);
+      if (this.userLogin.SSID) {
+        this.passwordDecode = simpleCrypt.decode(LocalKey.keyCryto, this.userLogin.SSID);
+      }
       if (this.passwordDecode) {
-        this.passwordNormal = simpleCrypt.encode(LocalKey.keyCryto, this.passwordDecode[0]);
+        this.passwordNormal = this.userLogin.MatKhau;
       } else {
         if (this.passwordLogin.value === this.userLogin.MatKhau) {
           this.passwordNormal = this.passwordLogin.value;
@@ -162,7 +165,8 @@ export class LoginComponent implements OnInit {
       passwordConFirm: this.passwordConFirm,
       username: this.username,
       email: this.email,
-      phoneNumber: this.phoneNumber
+      phoneNumber: this.phoneNumber,
+      agree: this.agree
     }, {
         validators: PasswordValidation.MatchPassword
       });
@@ -175,15 +179,7 @@ export class LoginComponent implements OnInit {
     this.username = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(24)]);
     this.email = new FormControl('', [Validators.required, Validators.pattern(/[^\s@]+@[^\s@]+\.[^\s@]+$/)]);
     this.phoneNumber = new FormControl('', [Validators.required, Validators.pattern(/^(01[2689]|09|08)[0-9]{8}$/)]);
-
-    this.registerForm = new FormGroup({
-      account: this.account,
-      password: this.password,
-      passwordConFirm: this.passwordConFirm,
-      username: this.username,
-      email: this.email,
-      phoneNumber: this.phoneNumber
-    });
+    this.agree = new FormControl('', Validators.requiredTrue);
   }
 
   registerUser() {
@@ -198,7 +194,7 @@ export class LoginComponent implements OnInit {
     this.registerInfo.MaNhom = 'GP07';
     this.registerInfo.MaLoaiNguoiDung = 'KhachHang';
     this.registerInfo.TenLoaiNguoiDung = 'Khách hàng';
-    this.registerInfo.SSID = '';
+    this.registerInfo.SSID = simpleCrypt.encode(LocalKey.keyCryto, this.password.value);
     this.registerInfo.SecretKey = this._userService.makeid();
 
     this._userService.registerUser(this.registerInfo)

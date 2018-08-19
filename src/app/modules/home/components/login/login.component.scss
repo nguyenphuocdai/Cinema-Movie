@@ -113,3 +113,12 @@
   color: red;
   padding: 0 0 15px 0;
 }
+
+.check-box {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  input {
+    margin-right: 10px;
+  }
+}

@@ -7,6 +7,7 @@ import { UATFeatureComponent } from './modules/home/pages/uat-feature/uat-featur
 import { BookTicketComponent } from './modules/home/pages/book-ticket/book-ticket.component';
 import { SuccessTicketComponent } from './modules/home/pages/success-ticket/success-ticket.component';
 import { UserInfoComponent } from './modules/home/pages/user-info/user-info.component';
+import { ChangePasswordComponent } from './modules/home/pages/change-password/change-password.component';
 
 const appRoutes: Routes = [
     {
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
         data: { state: 'page3' }
     },
     { path: 'user-info', component: UserInfoComponent },
+    { path: 'change-password', component: ChangePasswordComponent },
     { path: 'success', component: SuccessTicketComponent },
     { path: 'test', component: UATFeatureComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
