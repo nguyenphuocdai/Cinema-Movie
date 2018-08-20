@@ -60,6 +60,10 @@ export class AppComponent {
     public ngZone: NgZone,
     private myElement: ElementRef
   ) {
+    this.scriptService.loadScript('../../../../../assets/js/subiz-social.js').subscribe(() => {
+    }, (error) => {
+      console.log('Failed to load script sha js');
+    });
   }
 }
 
