@@ -1,7 +1,9 @@
 .hero-area {
   background-image: none !important;
   max-height: 600px;
+  height: 100%;
 }
+
 .card {
   border: none !important;
   border-radius: 0 !important;
@@ -283,4 +285,12 @@
       }
     }
   }
+}
+
+.bg-slide {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  max-height: 600px;
+  height: 100%;
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterViewInit, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, ElementRef } from '@angular/core';
 import { ScriptService } from 'ngx-script-loader';
 import { MovieService } from '../../../../shared/services/movie.service';
 import { ListMovie } from '../../../../shared/models/list-movie.model';
 import { trigger, state, style, transition, animate } from '../../../../../../node_modules/@angular/animations';
+import { WOW } from 'wowjs/dist/wow.min';
 
 declare var $: any;
 @Component({
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private movieService: MovieService,
     public el: ElementRef
   ) {
+    window.scrollTo(0, 0);
     // this.scriptService.loadScript('../../../../../assets/js/main.js').subscribe(() => {
     // }, (error) => {
     //   console.log('Failed to load script main js');
@@ -56,9 +58,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
   // tslint:disable-next-line:member-ordering
   slideConfig = {
-    dots: true,
+    // dots: true,
     infinite: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 1,
     adaptiveHeight: true,
     autoplay: true,
@@ -69,8 +71,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getListMovie();
     this.slides = [
-      { img: 'http://demo.harutheme.com/circle/wp-content/uploads/2017/08/slide-bg-6-1.jpg' },
-      { img: 'http://demo.harutheme.com/circle/wp-content/uploads/2017/08/slide-bg-6-1.jpg' }
+      { img: ('../../../../../assets/img/backgrounds/banner-slide.jpg') },
+      { img: ('../../../../../assets/img/backgrounds/momo_9k.jpg') },
+      { img: ('../../../../../assets/img/backgrounds/banner-slide1.jpg') },
+      { img: ('../../../../../assets/img/backgrounds/banner-slide2.png') }
     ];
   }
 
@@ -79,6 +83,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       .subscribe(
         (result) => {
           this.listMovie = result;
+          console.log(result);
         },
         (err) => {
           console.log(SERVER_ERROR);
@@ -189,5 +194,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       $('#preloader').fadeOut(500);
     });
 
+    new WOW().init();
   }
 }

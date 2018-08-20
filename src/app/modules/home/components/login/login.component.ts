@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { NgxZaloService } from '../../../../shared/services/ngx-zalo.service';
 import { Router } from '@angular/router';
 import { CacheService } from '../../../../shared/ng2-cache-service';
@@ -10,13 +10,14 @@ import { SimpleCrypt } from 'ngx-simple-crypt';
 import { LocalKey } from '../../../../app.config';
 import { UserNormal } from '../../../../shared/models/user-normal.model';
 import { UserService } from '../../../../shared/services/user.service';
+import { WOW } from 'wowjs/dist/wow.min';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   isLogin: Boolean = true;
   isRegister: Boolean = false;
   isAllowLogin: Boolean = false;
@@ -259,5 +260,7 @@ export class LoginComponent implements OnInit {
   //   this._cacheService.getTagData('tag');
 
   // }
-
+  ngAfterViewInit(): void {
+    new WOW().init();
+  }
 }

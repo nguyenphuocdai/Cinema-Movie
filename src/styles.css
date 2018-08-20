@@ -2,6 +2,7 @@
 
 /* config color spinner */
 
+@import "~animate.css/animate.css";
 li .active {
   color: #eb315a;
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ScriptService } from 'ngx-script-loader';
 import { CarouselComponent } from '../../../../../../node_modules/angular2-carousel';
-import { DatepickerOptions } from '../../../../../../node_modules/ng2-datepicker';
 import { trigger, transition, style, animate } from '../../../../../../node_modules/@angular/animations';
 import { MovieService } from '../../../../shared/services/movie.service';
 import { ListMovie } from '../../../../shared/models/list-movie.model';
+import { WOW } from 'wowjs/dist/wow.min';
 
 @Component({
   selector: 'app-book-ticket',
@@ -25,7 +25,7 @@ import { ListMovie } from '../../../../shared/models/list-movie.model';
     )
   ],
 })
-export class BookTicketComponent implements OnInit {
+export class BookTicketComponent implements OnInit, AfterViewInit {
   isShowBookChair: Boolean = false;
   listMovie: ListMovie;
   selectedMovie: ListMovie;
@@ -141,5 +141,8 @@ export class BookTicketComponent implements OnInit {
   }
   getShowTime(value) {
     this.MaLichChieu = value;
+  }
+  ngAfterViewInit(): void {
+    new WOW().init();
   }
 }

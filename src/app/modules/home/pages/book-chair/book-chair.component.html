@@ -1,4 +1,4 @@
-<section class="container" *ngIf="!isShowPayment;else payment;" [@enterAnimation]>
+<section class="container" *ngIf="!isShowPayment;else payment;">
   <div class="row">
     <div class="section-title">
       <h2 class="page-heading" style="color : #fff">Chọn ghế</h2>
@@ -186,7 +186,7 @@
             <span class="sits__place sits-price--expensive sits-state--not" data-place='L13' data-price='30' (click)="clickMe($event)">L13</span>
           </div>
 
-          <aside class="sits__checked">
+          <aside class="sits__checked animated slideInUp wow">
             <div class="checked-place" *ngFor="let item of selectedArray">
               {{item}}
             </div>
@@ -263,7 +263,7 @@
 
         <a href="#" class="watchlist add-sits-line">Add new sit</a>
 
-        <aside class="sits__checked">
+        <aside class="sits__checked animated slideInUp wow">
           <div class="checked-place" *ngFor="let item of selectedArray">
             {{item}}
           </div>
@@ -290,7 +290,7 @@
 </div>
 
 <ng-template #payment>
-  <div class="containers">
+  <div class="containers animated slideInUp wow">
     <app-payment [TotalTicket]="selectedCount" [TotalPrice]="totalCount" [Ticket]="TotalTicket" [MaLichChieu]="MaLichChieu" [@enterAnimation]></app-payment>
   </div>
 </ng-template>

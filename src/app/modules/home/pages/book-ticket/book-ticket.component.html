@@ -24,7 +24,7 @@
       </div>
 
       <div class="row" style="min-height: 500px">
-        <carousel-component [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree" [autoPlay]="false" [delayAutoPlay]="delayAutoPlay"
+        <carousel-component class="animated slideInRight wow" [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree" [autoPlay]="false" [delayAutoPlay]="delayAutoPlay"
           #topCarousel>
           <div class="item-carousel" *ngFor="let item of listMovie">
             <img [src]="item.HinhAnh" (click)="onSelect(item)" onError="this.src='../../../../../assets/img/movie/movie-sample6.jpg';"
@@ -53,11 +53,11 @@
           </div>
         </carousel-component>
       </div>
-      <div class="row" *ngIf="selectedMovie" [@enterAnimation]>
+      <div class="row" *ngIf="selectedMovie">
         <div class="section-title m-width-100">
           <h2 class="page-heading" style="color : #fff">Nội dung phim</h2>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 animated slideInRight wow">
           <div class="transformers-content">
             <ul>
               <li>
@@ -103,7 +103,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 animated slideInLeft wow">
           <vg-player>
             <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="container-video">
               <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
@@ -117,10 +117,10 @@
         </div>
       </div>
       <div class="row c-ticket-w100" *ngIf="detailMovieSelected">
-        <div class="col-md-3 c-no-padding">
+        <div class="col-md-3 c-no-padding animated slideInRight wow">
           <div class="form-group">
             <label for="MaLichChieu">Chọn lịch chiếu</label>
-            <select class="form-control" id="MaLichChieu" [(ngModel)]="selectedShowTime" (change)="getShowTime(selectedShowTime.MaLichChieu)">
+            <select class="form-control animated slideInRight wow" id="MaLichChieu" [(ngModel)]="selectedShowTime" (change)="getShowTime(selectedShowTime.MaLichChieu)">
               <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index">{{obj.NgayChieuGioChieu | date:"dd-MM-yyyy" }}</option>
             </select>
           </div>
@@ -139,7 +139,7 @@
           </div>
         </div>
       </div>
-      <div class="row" *ngIf="selectedShowTime">
+      <div class="row animated slideInRight wow" *ngIf="selectedShowTime">
         <label for="exampleFormControlInput1">Thông tin lịch chiếu</label>
         <div class="portfolio-item" style="width: 100%;">
           <div class="time-select time-select--wide">
@@ -175,88 +175,6 @@
                 <li class="time-select__item">{{selectedShowTime.Rap.SoGhe}} Cái</li>
               </ul>
             </div>
-            <!-- <div class="time-select__group" *ngFor="let time of detailMovieSelected.LichChieu">
-                <div class="col-sm-3 border-right">
-                  <p class="time-select__place">{{time.NgayChieuGioChieu | date:"dd-MM-yyyy HH:mm" }}</p>
-                </div>
-                <ul class="col-sm-9 items-wrap">
-                  <li class="time-select__item" data-time='09:40'></li>
-                  <li class="time-select__item" data-time='13:45' (click)="clickMe($event)">13:45</li>
-                <li class="time-select__item" data-time='15:45' (click)="clickMe($event)">15:45</li>
-                <li class="time-select__item" data-time='19:50' (click)="clickMe($event)">19:50</li>
-                <li class="time-select__item" data-time='21:50' (click)="clickMe($event)">21:50</li>
-                </ul>
-              </div> -->
-
-            <!-- <div class="time-select__group">
-              <div class="col-sm-3 border-right">
-                <p class="time-select__place">Empire</p>
-              </div>
-              <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='10:45' (click)="clickMe($event)">10:45</li>
-                <li class="time-select__item" data-time='16:00' (click)="clickMe($event)">16:00</li>
-                <li class="time-select__item" data-time='19:00' (click)="clickMe($event)">19:00</li>
-                <li class="time-select__item" data-time='21:15' (click)="clickMe($event)">21:15</li>
-                <li class="time-select__item" data-time='23:00' (click)="clickMe($event)">23:00</li>
-              </ul>
-            </div>
-
-            <div class="time-select__group">
-              <div class="col-sm-3 border-right">
-                <p class="time-select__place">Curzon</p>
-              </div>
-              <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='09:00' (click)="clickMe($event)">09:00</li>
-                <li class="time-select__item" data-time='11:00' (click)="clickMe($event)">11:00</li>
-                <li class="time-select__item" data-time='13:00' (click)="clickMe($event)">13:00</li>
-                <li class="time-select__item" data-time='15:00' (click)="clickMe($event)">15:00</li>
-                <li class="time-select__item" data-time='17:00' (click)="clickMe($event)">17:00</li>
-                <li class="time-select__item" data-time='19:00' (click)="clickMe($event)">19:00</li>
-                <li class="time-select__item" data-time='21:00' (click)="clickMe($event)">21:00</li>
-                <li class="time-select__item" data-time='23:00' (click)="clickMe($event)">23:00</li>
-                <li class="time-select__item" data-time='01:00' (click)="clickMe($event)">01:00</li>
-              </ul>
-            </div>
-            <div class="time-select__group">
-              <div class="col-sm-3 border-right">
-                <p class="time-select__place">Cinema City</p>
-              </div>
-              <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='09:00' (click)="clickMe($event)">09:00</li>
-                <li class="time-select__item" data-time='11:00' (click)="clickMe($event)">11:00</li>
-                <li class="time-select__item" data-time='13:00' (click)="clickMe($event)">13:00</li>
-                <li class="time-select__item" data-time='15:00' (click)="clickMe($event)">15:00</li>
-                <li class="time-select__item" data-time='17:00' (click)="clickMe($event)">17:00</li>
-                <li class="time-select__item" data-time='19:00' (click)="clickMe($event)">19:00</li>
-                <li class="time-select__item" data-time='21:00' (click)="clickMe($event)">21:00</li>
-                <li class="time-select__item" data-time='23:00' (click)="clickMe($event)">23:00</li>
-                <li class="time-select__item" data-time='01:00' (click)="clickMe($event)">01:00</li>
-                <li class="time-select__item" data-time='02:00' (click)="clickMe($event)">02:00</li>
-              </ul>
-            </div>
-            <div class="time-select__group">
-              <div class="col-sm-3 border-right">
-                <p class="time-select__place">Odeon</p>
-              </div>
-              <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='10:45' (click)="clickMe($event)">10:45</li>
-                <li class="time-select__item" data-time='16:00' (click)="clickMe($event)">16:00</li>
-                <li class="time-select__item" data-time='19:00' (click)="clickMe($event)">19:00</li>
-                <li class="time-select__item" data-time='21:15' (click)="clickMe($event)">21:15</li>
-                <li class="time-select__item" data-time='23:00' (click)="clickMe($event)">23:00</li>
-              </ul>
-            </div>
-
-            <div class="time-select__group group--last">
-              <div class="col-sm-3 border-right">
-                <p class="time-select__place">Picturehouse</p>
-              </div>
-              <ul class="col-sm-9 items-wrap">
-                <li class="time-select__item" data-time='17:45' (click)="clickMe($event)">17:45</li>
-                <li class="time-select__item" data-time='21:30' (click)="clickMe($event)">21:30</li>
-                <li class="time-select__item" data-time='02:20' (click)="clickMe($event)">02:20</li>
-              </ul>
-            </div> -->
           </div>
         </div>
         <div class="pt30 c-ticket-w100">
@@ -278,7 +196,7 @@
 
 
 <ng-template #bookChair>
-  <div class="containers" [@enterAnimation] id="main-section">
+  <div class="containers animated slideInRight wow" id="main-section">
     <app-book-chair [MaLichChieu]="MaLichChieu" [Time]="selectedTime" (comeback)="valueChange($event)"></app-book-chair>
   </div>
 </ng-template>

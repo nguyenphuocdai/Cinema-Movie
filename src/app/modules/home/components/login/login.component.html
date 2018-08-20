@@ -3,12 +3,12 @@
     <div class="row">
       <div class="transformers-box">
         <div class="row flexbox-center">
-          <div class="col-lg-5 text-lg-left text-center">
+          <div class="col-lg-5 text-lg-left text-center animated slideInLeft wow">
             <div class="transformers-content">
               <img src="assets/img/slide2.png" alt="about" />
             </div>
           </div>
-          <div class="col-lg-7">
+          <div class="col-lg-7 animated slideInRight wow">
             <div class="transformers-content c-padding-t-20">
               <h2>The Movie Point</h2>
               <p>Moive | 2D | 3D | Sci-Fi | SBS</p>
@@ -16,7 +16,7 @@
                 <div class="info-error" *ngIf="hasError">Tài khoản hoặc mật khẩu không đúng</div>
                 <form action="#" [formGroup]="loginForm" name="loginForm" novalidate>
                   <div *ngIf="isLogin">
-                    <div class="row">
+                    <div class="row animated slideInRight wow">
                       <div class="col-lg-12">
                         <div class="select-container">
                           <input type="text" placeholder="Tên đăng nhập" name="usernameLogin" id="usernameLogin" formControlName="usernameLogin" [ngClass]="{'has-error': usernameLogin.invalid && (usernameLogin.dirty || usernameLogin.touched)}"
@@ -41,7 +41,7 @@
                     </div>
                   </div>
                 </form>
-                <div class="transformers-content c-padding-t-20" *ngIf="isRegister && !isSuccessfully">
+                <div class="transformers-content c-padding-t-20 animated slideInRight wow" *ngIf="isRegister && !isSuccessfully">
                   <form action="#" [formGroup]="registerForm" name="registerForm" novalidate>
                     <div class="row">
                       <div class="col-lg-6">

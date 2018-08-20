@@ -1,7 +1,8 @@
-import { Component, OnInit, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { trigger, transition, animate, style, query, group } from '../../../../../../node_modules/@angular/animations';
 import { UserService } from '../../../../shared/services/user.service';
 import { DTO } from '../../../../shared/models/sitDTO.model';
+import { WOW } from 'wowjs/dist/wow.min';
 
 @Component({
   selector: 'app-book-chair',
@@ -22,7 +23,7 @@ import { DTO } from '../../../../shared/models/sitDTO.model';
     )
   ],
 })
-export class BookChairComponent implements OnInit {
+export class BookChairComponent implements OnInit, AfterViewInit {
   @Input() Time: String = '';
   @Input() MaLichChieu: number;
   // tslint:disable-next-line:no-output-rename
@@ -102,5 +103,8 @@ export class BookChairComponent implements OnInit {
     // this.change.emit(event.target.checked);
     this.change.emit(false);
     console.log(event);
+  }
+  ngAfterViewInit(): void {
+    new WOW().init();
   }
 }

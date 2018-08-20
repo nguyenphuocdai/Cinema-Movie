@@ -22,7 +22,7 @@
 <section class="transformers-area">
   <div class="container">
     <div class="row flexbox-center c-padding-b20">
-      <div class="col-lg-6 text-center text-lg-left">
+      <div class="col-lg-6 text-center text-lg-left animated slideInRight wow">
         <div class="section-title">
           <h1>
             <i class="icofont icofont-movie"></i> Thông tin cá nhân</h1>
@@ -33,7 +33,7 @@
     </div>
     <div class="transformers-box">
       <div class="row flexbox-center">
-        <div class="col-lg-5 text-lg-left text-center">
+        <div class="col-lg-5 text-lg-left text-center animated slideInRight wow">
           <div class="transformers-content">
             <img id="qrImg" src="" alt="QR Code" *ngIf="isVerify"/>
             <p *ngIf="isVerify">Vui lòng quét QR qua app Google Authenticator</p>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="col-lg-7">
-          <div class="transformers-content mtr-30">
+          <div class="transformers-content mtr-30 animated slideInLeft wow">
             <h2>{{this.currentUser.HoTen}}</h2>
             <a href="#" class="theme-btn">Biography</a>
             <a href="#">Filmography</a>
@@ -92,7 +92,7 @@
       </div>
     </div>
 
-    <div class="history-ticket">
+    <div class="history-ticket animated slideInRight wow">
       <div class="row flexbox-center c-padding-b20">
         <div class="col-lg-6 text-center text-lg-left">
           <div class="section-title">

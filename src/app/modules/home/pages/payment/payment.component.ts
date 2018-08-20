@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { trigger, transition, query, group, style, animate } from '../../../../../../node_modules/@angular/animations';
 import { UserService } from '../../../../shared/services/user.service';
 import { CacheService } from '../../../../shared/services/cache.service';
 import { FormGroup, FormControl, Validators } from '../../../../../../node_modules/@angular/forms';
-import { IfStmt } from '../../../../../../node_modules/@angular/compiler';
 import { Router } from '../../../../../../node_modules/@angular/router';
+import { WOW } from 'wowjs/dist/wow.min';
 
 @Component({
   selector: 'app-payment',
@@ -25,7 +25,7 @@ import { Router } from '../../../../../../node_modules/@angular/router';
     )
   ],
 })
-export class PaymentComponent implements OnInit {
+export class PaymentComponent implements OnInit, AfterViewInit {
   @Input() TotalTicket: String = '';
   @Input() TotalPrice: String = '';
   @Input() Ticket: Array<{ MaGhe: number, GiaVe: number }> = [];
@@ -119,5 +119,8 @@ export class PaymentComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+  ngAfterViewInit() {
+    new WOW().init();
   }
 }

@@ -8,6 +8,7 @@ import { SimpleCrypt } from '../../../../../../node_modules/ngx-simple-crypt';
 import { UserService } from '../../../../shared/services/user.service';
 import { ScriptService } from '../../../../../../node_modules/ngx-script-loader';
 import { Router } from '../../../../../../node_modules/@angular/router';
+import { WOW } from 'wowjs/dist/wow.min';
 
 @Component({
   selector: 'app-change-password',
@@ -166,5 +167,6 @@ export class ChangePasswordComponent implements OnInit, AfterViewInit {
     if (this.currentUser.SecretKey) {
       this.myInput.nativeElement.value = this.currentUser.SecretKey;
     }
+    new WOW().init();
   }
 }

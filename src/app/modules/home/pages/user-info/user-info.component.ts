@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CacheService } from '../../../../shared/services/cache.service';
 import { UserService } from '../../../../shared/services/user.service';
-import { Subject } from 'rxjs';
 import { ScriptService } from '../../../../../../node_modules/ngx-script-loader';
-import { SimpleCrypt } from '../../../../../../node_modules/ngx-simple-crypt';
-import { LocalKey } from '../../../../app.config';
+import { WOW } from 'wowjs/dist/wow.min';
+
 
 @Component({
   selector: 'app-user-info',
@@ -63,5 +62,7 @@ export class UserInfoComponent implements OnInit, OnDestroy, AfterViewInit {
       console.log('Failed to load script authenticator js');
     });
     this.myInput.nativeElement.value = this.currentUser.SecretKey;
+
+    new WOW().init();
   }
 }

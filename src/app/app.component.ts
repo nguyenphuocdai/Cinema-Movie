@@ -62,7 +62,7 @@ export class AppComponent {
   ) {
     this.scriptService.loadScript('../../../../../assets/js/subiz-social.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script sha js');
+      console.log('Failed to load script subiz');
     });
   }
 }
