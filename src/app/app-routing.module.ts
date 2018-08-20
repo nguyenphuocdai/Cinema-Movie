@@ -8,6 +8,7 @@ import { BookTicketComponent } from './modules/home/pages/book-ticket/book-ticke
 import { SuccessTicketComponent } from './modules/home/pages/success-ticket/success-ticket.component';
 import { UserInfoComponent } from './modules/home/pages/user-info/user-info.component';
 import { ChangePasswordComponent } from './modules/home/pages/change-password/change-password.component';
+import { MovieDetailComponent } from './modules/home/pages/movie-detail/movie-detail.component';
 
 const appRoutes: Routes = [
     {
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
         component: BookTicketComponent,
         data: { state: 'page3' }
     },
+    { path: 'movie-details/:id', component: MovieDetailComponent },
     { path: 'user-info', component: UserInfoComponent },
     { path: 'change-password', component: ChangePasswordComponent },
     { path: 'success', component: SuccessTicketComponent },

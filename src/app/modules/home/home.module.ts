@@ -23,10 +23,13 @@ import { SuccessTicketComponent } from './pages/success-ticket/success-ticket.co
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { SlickModule } from '../../../../node_modules/ngx-slick';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   imports: [
+    RouterModule,
     BrowserModule,
     CommonModule,
     CoreModule,
@@ -53,7 +56,8 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
     DialogComponent,
     SuccessTicketComponent,
     UserInfoComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    MovieDetailComponent
   ],
   exports: [
     HomeComponent,

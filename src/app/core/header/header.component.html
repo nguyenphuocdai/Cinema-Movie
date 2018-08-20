@@ -1,84 +1,89 @@
 <header class="header">
-    <div class="container">
-        <div class="header-area">
-            <div class="logo">
-                <a href="#" routerLink="/home" routerLinkActive="active">
-                    <img src="assets/img/logo.png" alt="logo" />
-                </a>
-            </div>
-            <div class="header-right">
-                <form action="#">
-                    <select>
-                        <option value="Movies">Phim</option>
-                        <option value="Movies">Diễn viên</option>
-                    </select>
-                    <input type="text" />
-                    <button>
-                        <i class="icofont icofont-search"></i>
-                    </button>
-                </form>
-                <ul *ngIf="!isLogined">
-                    <li>
-                        <a class="login-popup" routerLink="/login" routerLinkActive="active">Đăng ký / Đăng nhập</a>
-                    </li>
-                </ul>
+  <div class="container">
+    <div class="header-area">
+      <div class="logo">
+        <a href="#" routerLink="/home" routerLinkActive="active">
+          <img src="assets/img/logo.png" alt="logo" />
+        </a>
+      </div>
+      <div class="header-right">
+        <form action="#">
+          <select>
+            <option value="Movies">Phim</option>
+            <option value="Movies">Diễn viên</option>
+          </select>
+          <input type="text" />
+          <button>
+            <i class="icofont icofont-search"></i>
+          </button>
+        </form>
+        <ul *ngIf="!isLogined">
+          <li>
+            <a class="login-popup" routerLink="/login" routerLinkActive="active">Đăng ký / Đăng nhập</a>
+          </li>
+        </ul>
 
-                <ul *ngIf="isLogined">
-                    <li>
-                        <div class="dropdown show">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Chào, {{ displayName }}
-                            </a>
+        <ul *ngIf="isLogined">
+          <li>
+            <div class="dropdown show">
+              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Chào, {{ displayName }}
+              </a>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item c-font-16" href="javascript:void(0)" routerLink="/user-info" routerLinkActive="active">Thông tin cá nhân</a>
-                                <a class="dropdown-item c-font-16" href="javascript:void(0)" routerLink="/change-password" routerLinkActive="active">Đổi mật khẩu</a>
-                                <a class="dropdown-item c-font-16" href="javascript:void(0)" appLogoutZalo (successEvent)="logoutSuccessfullyAction()">Đăng xuất</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item c-font-16" href="javascript:void(0)" routerLink="/user-info" routerLinkActive="active">Thông tin cá nhân</a>
+                <a class="dropdown-item c-font-16" href="javascript:void(0)" routerLink="/change-password" routerLinkActive="active">Đổi mật khẩu</a>
+                <a class="dropdown-item c-font-16" href="javascript:void(0)" appLogoutZalo (successEvent)="logoutSuccessfullyAction()">Đăng xuất</a>
+              </div>
             </div>
-            <div class="menu-area">
-                <div class="responsive-menu"></div>
-                <div class="mainmenu">
-                    <ul id="primary-menu">
-                        <li>
-                            <a routerLink="/home" routerLinkActive="active">Trang chủ</a>
-                        </li>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-area">
+        <div class="responsive-menu"></div>
+        <div class="mainmenu">
+          <ul id="primary-menu">
+            <li>
+              <a routerLink="/home" routerLinkActive="active">Trang chủ</a>
+            </li>
 
-                        <li>
-                            <a href="#">Thể loại
-                                <i class="icofont icofont-simple-down"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="blog-details.html">Blog Details</a>
-                                </li>
-                                <li>
-                                    <a href="movie-details.html">Movie Details</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="celebrities.html">Phim lẻ</a>
-                        </li>
-                        <li>
-                            <a href="top-movies.html">Phim bộ</a>
-                        </li>
-                        <li>
-                            <a href="blog.html">Trailer</a>
-                        </li>
-                        <li>
-                            <a href="movies.html">Liên hệ</a>
-                        </li>
-                        <li class="btn-ticket">
-                            <a class="theme-btn btn-prefix" href="#" routerLink="/ticket" routerLinkActive="active">
-                                <i class="icofont icofont-ticket"></i> Đặt vé</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <li>
+              <a href="#">Phim
+                <i class="icofont icofont-simple-down"></i>
+              </a>
+              <ul>
+                <li>
+                  <a href="blog-details.html">Phim đang chiếu</a>
+                </li>
+                <li>
+                  <a href="movie-details.html">Phim sắp chiếu</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">Thành viên
+                <i class="icofont icofont-simple-down"></i>
+              </a>
+              <ul>
+                <li>
+                  <a href="blog-details.html">Tài khoản</a>
+                </li>
+                <li>
+                  <a href="movie-details.html">Quyền lợi</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="movies.html">Liên hệ</a>
+            </li>
+            <li class="btn-ticket">
+              <a class="theme-btn btn-prefix" href="#" routerLink="/ticket" routerLinkActive="active">
+                <i class="icofont icofont-ticket"></i> Đặt vé</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
 </header>
