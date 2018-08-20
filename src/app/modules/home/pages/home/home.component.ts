@@ -62,10 +62,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     autoplay: true,
-    autoplaySpeed: 5000,
-    lazyLoad: 'ondemand',
+    autoplaySpeed: 5000
   };
 
   ngOnInit() {
@@ -74,7 +73,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       { img: ('../../../../../assets/img/backgrounds/banner-slide.jpg') },
       { img: ('../../../../../assets/img/backgrounds/momo_9k.jpg') },
       { img: ('../../../../../assets/img/backgrounds/banner-slide1.jpg') },
-      { img: ('../../../../../assets/img/backgrounds/banner-slide2.png') }
+      { img: ('../../../../../assets/img/backgrounds/banner-slide2.jpg') }
     ];
   }
 

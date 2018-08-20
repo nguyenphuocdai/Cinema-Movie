@@ -27,7 +27,8 @@
               "./src/assets/css/bootstrap.min.css",
               "./src/assets/css/slicknav.min.css",
               "./src/assets/css/icofont.css",
-              "./src/assets/css/owl.carousel.css",              "./src/assets/css/magnific-popup.css",
+              "./src/assets/css/owl.carousel.css",
+              "./src/assets/css/magnific-popup.css",
               "./src/assets/css/style.css",
               "./src/assets/css/responsive.css",
               "./node_modules/font-awesome/css/font-awesome.css",
@@ -35,28 +36,38 @@
               "./src/assets/css/external/idangerous.swiper.css",
               "node_modules/videogular2/fonts/videogular.css",
               "./src/assets/css/slick.css",
-              "./src/assets/css/slick-theme.css"
+              "./src/assets/css/slick-theme.css",
+              "./src/assets/css/responsive-admin.css",
+              "./src/assets/css/ready.css",
+              "./src/assets/css/demo.css"
             ],
             "scripts": [
-              "./src/assets/js/popper.min.js",
               "./src/assets/js/jquery.min.js",
+              "./src/assets/js/popper.min.js",
               "./src/assets/js/bootstrap.min.js",
               "./src/assets/js/jquery.slicknav.min.js",
               "./src/assets/js/owl.carousel.min.js",
               "./src/assets/js/jquery.magnific-popup.min.js",
               "./src/assets/js/isotope.pkgd.min.js",
               "./src/assets/js/external/idangerous.swiper.min.js",
-              "./src/assets/js/slick.js"
+              "./src/assets/js/slick.js",
+              "./src/assets/js/main.js",
+              "./src/assets/js/isotope-admin.pkgd.min.js",
+              "./src/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js",
+              "./src/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js",
+              "./src/assets/js/plugin/jquery-mapael/jquery.mapael.min.js",
+              "./src/assets/js/plugin/jquery-mapael/maps/world_countries.min.js",
+              "./src/assets/js/plugin/chart-circle/circles.min.js",
+              "./src/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js",
+              "./src/assets/js/ready.min.js"
             ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,

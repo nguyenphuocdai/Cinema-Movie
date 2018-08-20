@@ -24,6 +24,7 @@ import { LocalStorageServiceModule } from './shared/ng2-cache-service';
 import { MovieService } from './shared/services/movie.service';
 import { HttpModule } from '@angular/http';
 import { SlickModule } from 'ngx-slick';
+import { DashboardComponent } from './modules/admin-theater/pages/dashboard/dashboard.component';
 
 const zaloConfigs = {
   version: environment.zaloConfigs.version,
@@ -39,7 +40,8 @@ const zaloConfigs = {
     CollapseButtonComponent,
     AuthDirective,
     CapitalizePipe,
-    SafePipe
+    SafePipe,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { SuccessTicketComponent } from './modules/home/pages/success-ticket/succ
 import { UserInfoComponent } from './modules/home/pages/user-info/user-info.component';
 import { ChangePasswordComponent } from './modules/home/pages/change-password/change-password.component';
 import { MovieDetailComponent } from './modules/home/pages/movie-detail/movie-detail.component';
+import { DashboardComponent } from './modules/admin-theater/pages/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
     {
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
         data: { state: 'page3' }
     },
     { path: 'movie-details/:id', component: MovieDetailComponent },
+    { path: 'dashboard', component: DashboardComponent },
     { path: 'user-info', component: UserInfoComponent },
     { path: 'change-password', component: ChangePasswordComponent },
     { path: 'success', component: SuccessTicketComponent },
