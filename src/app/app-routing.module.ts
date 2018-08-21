@@ -33,7 +33,8 @@ const appRoutes: Routes = [
         data: { state: 'page3' }
     },
     { path: 'movie-details/:id', component: MovieDetailComponent },
-    { path: 'dashboard', component: DashboardComponent },
+    { path: 'admin', loadChildren: './modules/admin-theater/admin.module#AdminModule' },
+    // { path: 'dashboard', component: DashboardComponent },
     { path: 'user-info', component: UserInfoComponent },
     { path: 'change-password', component: ChangePasswordComponent },
     { path: 'success', component: SuccessTicketComponent },

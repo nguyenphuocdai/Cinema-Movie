@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
     {
-        path: 'admin',
+        path: '',
         component: AdminComponent,
         children: [
             { path: '', component: AdminComponent },
