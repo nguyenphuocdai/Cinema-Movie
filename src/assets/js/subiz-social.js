@@ -1,13 +1,12 @@
-(function (s, u, b, i, z) {
-  u[i] = u[i] || function () {
-    u[i].t = +new Date();
-    (u[i].q = u[i].q || []).push(arguments);
-  };
-  z = s.createElement('script');
-  var zz = s.getElementsByTagName('script')[0];
-  z.async = 1;
-  z.src = b;
-  z.id = 'subiz-script';
-  zz.parentNode.insertBefore(z, zz);
-})(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
-subiz('setAccount', 'acpvsducjtjmdyu51eea');
+window._sbzq || function (e) {
+  e._sbzq = [];
+  var t = e._sbzq;
+  t.push(["_setAccount", 73252]);
+  var n = e.location.protocol == "https:" ? "https:" : "http:";
+  var r = document.createElement("script");
+  r.type = "text/javascript";
+  r.async = true;
+  r.src = n + "//static.subiz.com/public/js/loader.js";
+  var i = document.getElementsByTagName("script")[0];
+  i.parentNode.insertBefore(r, i)
+}(window);

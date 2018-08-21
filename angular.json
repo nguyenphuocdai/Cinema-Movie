@@ -23,8 +23,13 @@
             ],
             "styles": [
               "node_modules/loaders.css/loaders.min.css",
-              "./src/styles.css",
               "./src/assets/css/bootstrap.min.css",
+              "./src/styles.css",
+              "./src/assets/css/slick.css",
+              "./src/assets/css/slick-theme.css",
+              "./src/assets/css/responsive-admin.css",
+              "./src/assets/css/ready.css",
+              "./src/assets/css/demo.css",
               "./src/assets/css/slicknav.min.css",
               "./src/assets/css/icofont.css",
               "./src/assets/css/owl.carousel.css",
@@ -34,15 +39,11 @@
               "./node_modules/font-awesome/css/font-awesome.css",
               "./src/assets/css/external/jquery.selectbox.css",
               "./src/assets/css/external/idangerous.swiper.css",
-              "node_modules/videogular2/fonts/videogular.css",
-              "./src/assets/css/slick.css",
-              "./src/assets/css/slick-theme.css",
-              "./src/assets/css/responsive-admin.css",
-              "./src/assets/css/ready.css",
-              "./src/assets/css/demo.css"
+              "node_modules/videogular2/fonts/videogular.css"
             ],
             "scripts": [
               "./src/assets/js/jquery.min.js",
+              "./src/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js",
               "./src/assets/js/popper.min.js",
               "./src/assets/js/bootstrap.min.js",
               "./src/assets/js/jquery.slicknav.min.js",
@@ -59,7 +60,8 @@
               "./src/assets/js/plugin/jquery-mapael/maps/world_countries.min.js",
               "./src/assets/js/plugin/chart-circle/circles.min.js",
               "./src/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js",
-              "./src/assets/js/ready.min.js"
+              "./src/assets/js/ready.min.js",
+              "./src/assets/js/demo.js"
             ]
           },
           "configurations": {

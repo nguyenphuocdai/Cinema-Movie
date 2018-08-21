@@ -1,6 +1,7 @@
-import { Component, NgZone, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, NgZone, AfterViewInit, ElementRef, OnInit, AfterViewChecked } from '@angular/core';
 import { style, query, group, animate, trigger, transition } from '@angular/animations';
 import { ScriptService } from '../../node_modules/ngx-script-loader';
+import { AuthGuardService } from './shared/services/auth.service';
 
 const slideLeft = [
   query(':leave', style({ position: 'absolute', left: 0, right: 0, transform: 'translate3d(0%,0,0)' }), { optional: true }),
@@ -51,19 +52,27 @@ const slideRight = [
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewChecked {
   title = 'Movie Point';
+  private show: Boolean = true;
   userNameLogin: String;
   isLogin: Boolean;
   constructor(
     private scriptService: ScriptService,
     public ngZone: NgZone,
-    private myElement: ElementRef
+    private _authGuardService: AuthGuardService
   ) {
+
+  }
+  ngOnInit(): void {
     this.scriptService.loadScript('../../../../../assets/js/subiz-social.js').subscribe(() => {
     }, (error) => {
       console.log('Failed to load script subiz');
     });
   }
+  ngAfterViewChecked() {
+    this._authGuardService.getHeaderFlag().subscribe((flag) => {
+      this.show = flag;
+    });
+  }
 }
-

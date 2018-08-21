@@ -24,7 +24,7 @@ import { LocalStorageServiceModule } from './shared/ng2-cache-service';
 import { MovieService } from './shared/services/movie.service';
 import { HttpModule } from '@angular/http';
 import { SlickModule } from 'ngx-slick';
-import { DashboardComponent } from './modules/admin-theater/pages/dashboard/dashboard.component';
+import { AdminModule } from './modules/admin-theater/admin.module';
 
 const zaloConfigs = {
   version: environment.zaloConfigs.version,
@@ -41,11 +41,11 @@ const zaloConfigs = {
     AuthDirective,
     CapitalizePipe,
     SafePipe,
-    DashboardComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    AdminModule,
     CoreModule,
     HomeModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
