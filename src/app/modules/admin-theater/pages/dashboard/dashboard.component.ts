@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-
   }
   ngAfterViewChecked(): void {
 

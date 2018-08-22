@@ -1,8 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { AuthGuardService } from './auth-service.service';
+import { AuthGuardService } from './auth.service';
 
-describe('AuthServiceService', () => {
+describe('AuthGuardService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [AuthGuardService]

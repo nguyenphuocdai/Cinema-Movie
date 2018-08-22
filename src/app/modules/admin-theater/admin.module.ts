@@ -5,6 +5,7 @@ import { AdminComponent } from './admin.component';
 import { FormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginDashboardComponent } from './pages/login-dashboard/login-dashboard.component';
 
 @NgModule({
   imports: [
@@ -12,9 +13,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FormsModule,
     AdminRoutingModule
   ],
-  declarations: [UserManagerComponent, AdminComponent, DashboardComponent],
+  declarations: [UserManagerComponent, AdminComponent, DashboardComponent, LoginDashboardComponent],
   exports: [
-    UserManagerComponent, AdminComponent, DashboardComponent
+    UserManagerComponent, AdminComponent, DashboardComponent,
+    LoginDashboardComponent
   ]
 })
 export class AdminModule { }
