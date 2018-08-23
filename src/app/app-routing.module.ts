@@ -18,6 +18,9 @@ const appRoutes: Routes = [
         data: { state: 'page1' }
 
     },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', component: HomeComponent },
+
     {
         path: 'zalo-callback',
         component: ZaloCallbackComponent,
@@ -39,14 +42,13 @@ const appRoutes: Routes = [
     { path: 'change-password', component: ChangePasswordComponent },
     { path: 'success', component: SuccessTicketComponent },
     { path: 'test', component: UATFeatureComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: '**', component: HomeComponent }
+
 ];
 
 @NgModule({
     imports: [
         RouterModule.forRoot(
-            appRoutes
+            appRoutes, { enableTracing: true }
         )
     ],
     exports: [

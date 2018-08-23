@@ -9,13 +9,25 @@ import { LoginDashboardComponent } from './pages/login-dashboard/login-dashboard
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
     {
-        path: '',
+        // path: '',
+        // component: AdminComponent,
+        // children: [
+        //     { path: 'dashboard', component: DashboardComponent },
+        //     { path: 'user', component: UserManagerComponent },
+        //     { path: 'login-dashboard', component: LoginDashboardComponent },
+        //     // { path: '**', component: AdminComponent }
+        // ]
+        path: 'admin',
         component: AdminComponent,
         children: [
-            { path: '', component: AdminComponent },
-            { path: 'dashboard', component: DashboardComponent },
-            { path: 'user', component: UserManagerComponent },
-            { path: 'login-dashboard', component: LoginDashboardComponent }
+            {
+                path: '',
+                children: [
+                    { path: '', component: DashboardComponent },
+                    { path: 'user', component: UserManagerComponent },
+                    { path: 'login-dashboard', component: LoginDashboardComponent },
+                ]
+            }
         ]
     }
 ];

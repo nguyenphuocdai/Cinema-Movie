@@ -67,7 +67,8 @@ const zaloConfigs = {
 
   ],
   exports: [
-    NgxZaloModule
+    NgxZaloModule,
+    // AdminModule
   ],
   bootstrap: [AppComponent]
 })
