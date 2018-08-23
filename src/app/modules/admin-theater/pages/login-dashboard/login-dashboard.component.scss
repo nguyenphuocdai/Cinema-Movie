@@ -72,9 +72,8 @@ body {
   width: 100%;
   margin: auto;
   margin-top: -9px;
-  padding: 30px;
   background-color: #fff;
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .form .control {
@@ -127,4 +126,8 @@ body {
 }
 .page-thunder-to-text input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.1);
+}
+.card .card-action {
+  padding: 15px;
+  text-align: right
 }

@@ -1,9 +1,9 @@
-<div class="page page-thunder-to-text">
+<!-- <div class="page page-thunder-to-text">
   <input id="input" type="text" maxlength="24" placeholder="I love you!" style="opacity:0">
   <canvas id="canvas"></canvas>
-</div>
-<div>
-  <div class="owl">
+</div> -->
+<div class="animated bounce wow">
+  <div class="owl animated bounceInDown wow">
     <div class="hand"></div>
     <div class="hand hand-r"></div>
     <div class="arms">
@@ -12,13 +12,33 @@
     </div>
   </div>
   <div class="form">
-    <div class="control">
-      <label for="email" class="fa fa-envelope"></label>
-      <input id="email" placeholder="Email" type="email" />
-    </div>
-    <div class="control">
-      <label for="password" class="fa fa-asterisk"></label>
-      <input id="password" placeholder="Password" type="password" />
-    </div>
+    <form action="#" [formGroup]="loginForm" name="loginForm" novalidate>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Đăng nhập hệ thống</div>
+        </div>
+        <div class="card-body">
+          <div class="control animated slideInDown wow">
+            <label for="email" class="fa fa-envelope"></label>
+            <input id="text" placeholder="Tên đăng nhập" type="text" formControlName="usernameLogin" [ngClass]="{'has-error': usernameLogin.invalid && (usernameLogin.dirty || usernameLogin.touched)}"
+            />
+          </div>
+          <div class="control animated slideInRight wow">
+            <label for="password" class="fa fa-asterisk"></label>
+            <input id="password" placeholder="Password" type="password" name="passwordLogin" id="passwordLogin" formControlName="passwordLogin"
+              [ngClass]="{'has-error': passwordLogin.invalid && (passwordLogin.dirty || passwordLogin.touched)}" />
+          </div>
+
+        </div>
+        <div class="card-action">
+          <button type="button" [disabled]="loginForm.invalid || isShowLoadingLogin" [ngClass]='{disabled: loginForm.invalid}' class="btn btn-success">Đăng nhập</button>
+        </div>
+      </div>
+    </form>
+    <!-- <div class="heading-login"></div>
+
+    <div class="card-action">
+        <button class="btn btn-success">Submit</button>
+      </div> -->
   </div>
 </div>
