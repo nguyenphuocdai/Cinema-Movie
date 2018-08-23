@@ -64,6 +64,12 @@ export class AdminComponent implements OnInit, AfterViewInit {
         } else {
             this.displayName = user;
         }
-
+    }
+    logout() {
+        this._cacheService.remove('CurrentUserAdmin');
+        setTimeout(() => {
+            this.showNameLoginned(null);
+            this._router.navigate(['/admin/login-dashboard']);
+        }, 1000);
     }
 }
