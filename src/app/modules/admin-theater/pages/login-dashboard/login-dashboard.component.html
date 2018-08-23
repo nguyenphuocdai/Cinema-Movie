@@ -30,8 +30,9 @@
           </div>
 
         </div>
-        <div class="card-action">
-          <button type="button" [disabled]="loginForm.invalid || isShowLoadingLogin" [ngClass]='{disabled: loginForm.invalid}' class="btn btn-success">Đăng nhập</button>
+        <div class="card-action row-flex">
+          <button type="button" [disabled]="loginForm.invalid || isShowLoadingLogin" [ngClass]='{disabled: loginForm.invalid}' class="btn btn-success" (click)="loginNormal()">Đăng nhập</button>
+          <div class="loader" *ngIf="isShowLoadingLogin"></div>
         </div>
       </div>
     </form>
@@ -41,4 +42,5 @@
         <button class="btn btn-success">Submit</button>
       </div> -->
   </div>
+  <div class="note">Vui lòng đăng nhập để thực hiện các chức năng</div>
 </div>

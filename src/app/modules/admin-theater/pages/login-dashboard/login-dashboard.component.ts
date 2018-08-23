@@ -23,6 +23,7 @@ export class LoginDashboardComponent implements OnInit, AfterViewInit {
   passwordDecode: any;
   listUserGP07: any;
   userLogin: any;
+  typeUser: any;
   hasError: Boolean = false;
   passwordNormal: string;
   constructor(
@@ -44,6 +45,7 @@ export class LoginDashboardComponent implements OnInit, AfterViewInit {
     // });
     this.CreateValidatorLoginForm();
     this.CreateLoginForm();
+    this.getAllUserGP07();
   }
   ngAfterViewInit() {
     $('input[type="password"]').on('focus', function () {
@@ -88,10 +90,12 @@ export class LoginDashboardComponent implements OnInit, AfterViewInit {
       this._userService.loginUser(this.usernameLogin.value, this.passwordNormal)
         .subscribe(
           (result) => {
-            this._userService.displayNameUser(result.HoTen);
             this._userService.saveSecretKey(result.SecretKey);
-            this._cacheService.set('CurrentUser', result);
-            this._router.navigate(['/home']);
+            this._cacheService.set('CurrentUserAdmin', result);
+            setTimeout(() => {
+              this._userService.displayLoggedAdmin(result.HoTen);
+              this._router.navigate(['/admin']);
+            }, 3000);
           },
           (error) => {
             this.hasError = true;
