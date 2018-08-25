@@ -24,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of listUser | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+            <tr *ngFor="let item of listUser | paginate: { itemsPerPage: 10, currentPage: p,totalItems: total }; let i = index">
               <th scope="row">{{i + 1}}</th>
               <td>{{item.TaiKhoan}}</td>
               <td>{{item.HoTen}}</td>
@@ -41,7 +41,7 @@
             </tr>
           </tbody>
         </table>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Previous" nextLabel="Next"></pagination-controls>
       </div>
     </div>
   </div>
@@ -49,31 +49,6 @@
 <div class="row" *ngIf="onSelectUser">
   <app-admin-dialog [(visible)]="showDialog">
     <div class="f-container animated slideInRight wow">
-      <!-- <form action="#" [formGroup]="loginForm" name="loginForm" novalidate>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="select-container">
-              <input type="text" placeholder="Tên đăng nhập" name="usernameLogin" id="usernameLogin" formControlName="usernameLogin" [ngClass]="{'has-error': usernameLogin.invalid && (usernameLogin.dirty || usernameLogin.touched)}"
-              />
-              <i class="icofont icofont-ui-user"></i>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="select-container">
-              <input type="password" placeholder="Mật khẩu" name="passwordLogin" id="passwordLogin" formControlName="passwordLogin" [ngClass]="{'has-error': passwordLogin.invalid && (passwordLogin.dirty || passwordLogin.touched)}"
-              />
-              <i class="icofont icofont-ui-password"></i>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 row-flex">
-            <button type="button" class="theme-btn" [disabled]="loginForm.invalid || isShowLoadingLogin" [ngClass]='{disabled: loginForm.invalid}'
-              (click)="loginNormal()">Đăng nhập</button>
-            <div class="loader" *ngIf="isShowLoadingLogin"></div>
-          </div>
-        </div>
-      </form> -->
       <div class="col-md-12">
         <div class="card scroll-modal">
           <div class="card-header">
@@ -134,7 +109,7 @@
           </div>
           <div class="card-action btn-right">
             <button class="btn btn-success">Cập nhật</button>
-            <button class="btn btn-danger">Hủy</button>
+            <button class="btn btn-danger" (click)="showDialog = false">Hủy</button>
           </div>
         </div>
       </div>

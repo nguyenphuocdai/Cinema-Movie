@@ -28,10 +28,6 @@ export class UserManagerComponent implements OnInit {
   getUser() {
     this._userService.getUserGP07()
       .subscribe((result) => { this.listUser = result})
-
-    setTimeout(() => {
-        console.log(this.listUser);
-    }, 3000);
   }
   onSelectUser(user: UserNormal): void {
     this.selectedUSer = user;
