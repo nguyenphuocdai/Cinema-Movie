@@ -7,6 +7,7 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { SuccessTicketComponent } from './pages/success-ticket/success-ticket.component';
 import { UATFeatureComponent } from './pages/uat-feature/uat-feature.component';
+import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 
 
 const appRoutes: Routes = [
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
             { path: 'user-info', component: UserInfoComponent },
             { path: 'change-password', component: ChangePasswordComponent },
             { path: 'success', component: SuccessTicketComponent },
+            { path: 'movie-details/:id', component: MovieDetailComponent },
             { path: 'test', component: UATFeatureComponent },
             { path: '', redirectTo: '/home-page', pathMatch: 'full' },
             { path: '**', component: HomePageComponent },

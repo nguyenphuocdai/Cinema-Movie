@@ -135,7 +135,7 @@ export class ChangePasswordComponent implements OnInit, AfterViewInit {
             this._userService.displayNameUser(null);
           }, 2000);
           setTimeout(() => {
-            this._router.navigate(['/login']);
+            this._router.navigate(['home-page/login']);
           }, 5000);
         },
         (err) => {

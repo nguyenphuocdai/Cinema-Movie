@@ -102,7 +102,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             this._userService.displayNameUser(result.HoTen);
             this._userService.saveSecretKey(result.SecretKey);
             this._cacheService.set('CurrentUser', result);
-            this._router.navigate(['/home']);
+            this._router.navigate(['/home-page']);
           },
           (error) => {
             this.hasError = true;

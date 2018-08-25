@@ -84,7 +84,7 @@ export class PaymentComponent implements OnInit, AfterViewInit {
           if (result) {
             setTimeout(
               () => {
-                this._router.navigate(['/success']);
+                this._router.navigate(['home-page/success']);
                 this.isSubmitted = false;
               }
               , 3000);
