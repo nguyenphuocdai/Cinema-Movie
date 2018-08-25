@@ -14,9 +14,12 @@
 td .card-action {
   padding: 0 !important;
   border-top: unset !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-td .card-action .btn-danger {
+.card-action .btn-danger {
   margin-left: 15px;
 }
 
@@ -33,4 +36,15 @@ td .card-action .btn-danger {
 .scroll-modal {
   max-height: calc(100vh - 210px);
   overflow: auto;
+}
+
+.btn-right {
+  text-align: right;
+}
+
+@media (min-width: 576px) {
+  .form-inline .form-check,
+  .form-inline label {
+    justify-content: flex-start !important;
+  }
 }
