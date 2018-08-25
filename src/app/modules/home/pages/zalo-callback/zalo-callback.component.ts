@@ -15,9 +15,9 @@ export class ZaloCallbackComponent {
       if (res === true) {
         this._ngxZaloService.getMyProfile().subscribe((result) => {
         });
-        this._router.navigate(['/home']);
+        this._router.navigate(['/home-page']);
       } else {
-        this._router.navigate(['/login']);
+        this._router.navigate(['/home-page/login']);
       }
     });
   }

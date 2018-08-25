@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './pages/home/home.component';
 import { CoreModule } from '../../core/core.module';
 import { LoginComponent } from './components/login/login.component';
 import { ZaloCallbackComponent } from './pages/zalo-callback/zalo-callback.component';
@@ -25,6 +24,10 @@ import { SlickModule } from '../../../../node_modules/ngx-slick';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { HomeRoutingModule } from './home-routing.module';
+import { TicketBookingComponent } from './components/ticket-booking/ticket-booking.component';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { RouterModule } from '@angular/router';
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    SlickModule.forRoot()
+    SlickModule.forRoot(),
+    HomeRoutingModule
   ],
   declarations: [
     HomeComponent,
@@ -57,12 +61,29 @@ import { RouterModule } from '@angular/router';
     SuccessTicketComponent,
     UserInfoComponent,
     ChangePasswordComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    HomePageComponent,
+    TicketBookingComponent
   ],
   exports: [
     HomeComponent,
     ZaloCallbackComponent,
-    ScrollToIdDirective
+    ScrollToIdDirective,
+    HomeComponent,
+    LoginComponent,
+    ZaloCallbackComponent,
+    UATFeatureComponent,
+    LoginZaloDirective,
+    BookTicketComponent,
+    BookChairComponent,
+    PaymentComponent,
+    ScrollToIdDirective,
+    DialogComponent,
+    SuccessTicketComponent,
+    UserInfoComponent,
+    ChangePasswordComponent,
+    MovieDetailComponent,
+    HomePageComponent
   ],
   providers: [
   ]

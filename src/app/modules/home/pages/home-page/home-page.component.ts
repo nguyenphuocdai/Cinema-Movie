@@ -7,9 +7,9 @@ import { WOW } from 'wowjs/dist/wow.min';
 
 declare var $: any;
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss'],
   animations: [
     trigger('scrollAnimation', [
       state('show', style({
@@ -25,7 +25,7 @@ declare var $: any;
     ])
   ]
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomePageComponent implements OnInit, AfterViewInit {
   current: any;
   prevRating: any;
   nextRating: any;

@@ -30,9 +30,9 @@ export class PaymentComponent implements OnInit, AfterViewInit {
   @Input() TotalPrice: String = '';
   @Input() Ticket: Array<{ MaGhe: number, GiaVe: number }> = [];
   @Input() MaLichChieu: number;
-  private loginForm: FormGroup;
-  private usernameLogin: FormControl;
-  private passwordLogin: FormControl;
+  loginForm: FormGroup;
+  usernameLogin: FormControl;
+  passwordLogin: FormControl;
   DTOPutTicket: {
     MaLichChieu: number;
     TaiKhoanNguoiDung: string;

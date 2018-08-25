@@ -54,7 +54,7 @@ const slideRight = [
 })
 export class AppComponent implements OnInit, AfterViewChecked {
   title = 'Movie Point';
-  private show: Boolean = true;
+  show: Boolean = true;
   userNameLogin: String;
   isLogin: Boolean;
   constructor(

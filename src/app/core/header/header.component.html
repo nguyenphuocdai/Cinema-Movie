@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header-area">
       <div class="logo">
-        <a href="#" routerLink="/home" routerLinkActive="active">
+        <a href="#" routerLink="/home-page" routerLinkActive="active">
           <img src="assets/img/logo.png" alt="logo" />
         </a>
       </div>
@@ -19,7 +19,7 @@
         </form>
         <ul *ngIf="!isLogined">
           <li>
-            <a class="login-popup" routerLink="/login" routerLinkActive="active">Đăng ký / Đăng nhập</a>
+            <a class="login-popup" routerLink="/home-page/login" routerLinkActive="active">Đăng ký / Đăng nhập</a>
           </li>
         </ul>
 
@@ -44,7 +44,7 @@
         <div class="mainmenu">
           <ul id="primary-menu">
             <li>
-              <a routerLink="/home" routerLinkActive="active">Trang chủ</a>
+              <a routerLink="/home-page" routerLinkActive="active">Trang chủ</a>
             </li>
 
             <li>
@@ -78,7 +78,7 @@
               <a href="movies.html">Liên hệ</a>
             </li>
             <li class="btn-ticket">
-              <a class="theme-btn btn-prefix" href="#" routerLink="/ticket" routerLinkActive="active">
+              <a class="theme-btn btn-prefix" href="#" routerLink="home-page/ticket" routerLinkActive="active">
                 <i class="icofont icofont-ticket"></i> Đặt vé</a>
             </li>
           </ul>
