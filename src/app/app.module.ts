@@ -23,7 +23,6 @@ import { ScriptLoaderModule } from 'ngx-script-loader';
 import { LocalStorageServiceModule } from './shared/ng2-cache-service';
 import { MovieService } from './shared/services/movie.service';
 import { HttpModule } from '@angular/http';
-import { SlickModule } from 'ngx-slick';
 import { AdminModule } from './modules/admin-theater/admin.module';
 import { UserService } from './shared/services/user.service';
 
@@ -41,7 +40,7 @@ const zaloConfigs = {
     CollapseButtonComponent,
     AuthDirective,
     CapitalizePipe,
-    SafePipe,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -68,8 +67,7 @@ const zaloConfigs = {
     UserService
   ],
   exports: [
-    NgxZaloModule,
-    // AdminModule
+    NgxZaloModule
   ],
   bootstrap: [AppComponent]
 })

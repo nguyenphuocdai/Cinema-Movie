@@ -1,10 +1,36 @@
 .footer {
-    background-color: #fff !important;
-    padding: 0 !important;
+  background-color: #fff !important;
+  padding: 0 !important;
 }
-.copyright{
-    background : unset !important;
+
+.copyright {
+  background: unset !important;
 }
+
 .nav .nav-item a {
-    color: black !important;
+  color: black !important;
+}
+
+td .card-action {
+  padding: 0 !important;
+  border-top: unset !important;
+}
+
+td .card-action .btn-danger {
+  margin-left: 15px;
+}
+
+.dialog {
+  right: 0;
+  width: 100%;
+  top: 20% !important;
+  left: 0 !important;
+  min-height: 280px;
+  width: 90%;
+  max-width: 1170px;
+}
+
+.scroll-modal {
+  max-height: calc(100vh - 210px);
+  overflow: auto;
 }

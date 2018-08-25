@@ -50,6 +50,11 @@ body {
 .c-padding-b60 {
   padding-bottom: 60px;
 }
+
+.c-width-100 {
+  width: 100%;
+}
+
 .loader {
   border: 3px solid #f3f3f3;
   border-radius: 50%;
@@ -81,6 +86,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
 .row-flex {
   display: -webkit-box;
   display: -moz-box;
@@ -88,4 +94,8 @@ body {
   display: -webkit-flex;
   display: flex;
   align-items: center;
+}
+
+.active .la {
+  color: #1687c5 !important;
 }

@@ -26,6 +26,9 @@ const routes: Routes = [
                     { path: '', component: DashboardComponent },
                     { path: 'user', component: UserManagerComponent },
                     { path: 'login-dashboard', component: LoginDashboardComponent },
+                    // { path: '*', component: DashboardComponent },
+                    { path: '*', redirectTo: '/admin', pathMatch: 'full' },
+                    { path: '**', component: AdminComponent },
                 ]
             }
         ]

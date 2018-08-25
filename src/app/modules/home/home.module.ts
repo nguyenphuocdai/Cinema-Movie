@@ -28,6 +28,7 @@ import { HomeComponent } from './home.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { TicketBookingComponent } from './components/ticket-booking/ticket-booking.component';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { TicketBookingComponent } from './components/ticket-booking/ticket-booki
     VgOverlayPlayModule,
     VgBufferingModule,
     SlickModule.forRoot(),
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModuleModule
   ],
   declarations: [
     HomeComponent,
@@ -57,7 +59,6 @@ import { TicketBookingComponent } from './components/ticket-booking/ticket-booki
     BookChairComponent,
     PaymentComponent,
     ScrollToIdDirective,
-    DialogComponent,
     SuccessTicketComponent,
     UserInfoComponent,
     ChangePasswordComponent,
@@ -78,7 +79,7 @@ import { TicketBookingComponent } from './components/ticket-booking/ticket-booki
     BookChairComponent,
     PaymentComponent,
     ScrollToIdDirective,
-    DialogComponent,
+
     SuccessTicketComponent,
     UserInfoComponent,
     ChangePasswordComponent,

@@ -22,7 +22,7 @@ const appRoutes: Routes = [
             { path: 'success', component: SuccessTicketComponent },
             { path: 'movie-details/:id', component: MovieDetailComponent },
             { path: 'test', component: UATFeatureComponent },
-            { path: '', redirectTo: '/home-page', pathMatch: 'full' },
+            { path: '*', redirectTo: '/home-page', pathMatch: 'full' },
             { path: '**', component: HomePageComponent },
         ]
     }
