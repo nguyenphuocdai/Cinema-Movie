@@ -24,7 +24,6 @@ const appRoutes: Routes = [
             { path: 'test', component: UATFeatureComponent },
             { path: '', redirectTo: '/home-page', pathMatch: 'full' },
             { path: '**', component: HomePageComponent },
-
         ]
     }
 ];

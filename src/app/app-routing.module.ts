@@ -6,6 +6,7 @@ const appRoutes: Routes = [
     { path: 'home', loadChildren: './modules/home/home.module#HomeModule' },
     { path: 'admin', loadChildren: './modules/admin-theater/admin.module#AdminModule' },
     { path: 'zalo-callback', component: ZaloCallbackComponent },
+    { path: '', redirectTo: '/home-page', pathMatch: 'full' },
 ];
 
 @NgModule({

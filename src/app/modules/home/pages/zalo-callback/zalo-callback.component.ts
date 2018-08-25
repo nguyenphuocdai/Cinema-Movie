@@ -20,5 +20,5 @@ export class ZaloCallbackComponent {
         this._router.navigate(['/home-page/login']);
       }
     });
-  }
+}
 }
