@@ -1,14 +1,69 @@
+<h4 class="page-title" *ngIf="isSuccessfully && newUser">
+  Người dùng mới</h4>
+<div class="row" *ngIf="isSuccessfully && newUser">
+  <div class="card c-width-100">
+    <div class="card-header">
+      <div class="card-title">Danh sách</div>
+    </div>
+    <div class="card-body"  *ngIf="isSuccessfully">
+      <div class="alert alert-success">
+        <strong>Thêm mới thành công!</strong>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+                <th>#</th>
+              <th>Tài khoản</th>
+              <th>Họ tên</th>
+              <th>Email</th>
+              <th>Nhóm người dùng</th>
+              <th>Mã Loại người dùng</th>
+              <th>Số điện thoại</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th>1</th>
+              <td>{{newUser.TaiKhoan}}</td>
+              <td>{{newUser.HoTen}}</td>
+              <td>{{newUser.Email}}</td>
+              <td>{{newUser.MaNhom}}</td>
+              <td>{{newUser.MaLoaiNguoiDung}}</td>
+              <td>{{newUser.SoDT}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="registerError">
+      <div class="alert alert-danger">
+        <strong>Thất bại!</strong> Vui lòng trở lại sau.
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4 class="page-title">Người dùng</h4>
 <div class="row">
   <div class="card c-width-100">
     <div class="card-header">
-      <div class="card-title">Danh sách người dùng</div>
+      <div class="card-title">Danh sách</div>
     </div>
     <div class="card-body">
-      <div class="card-sub">
+      <!-- <div class="card-sub">
         Create responsive tables by wrapping any table with
         <code class="highlighter-rouge">.table-responsive</code>
         <code class="highlighter-rouge">DIV</code> to make them scroll horizontally on small devices
+      </div> -->
+      <div class="c-padding-b15">
+        <button class="btn btn-primary" (click)="showDialogAdd()">
+          <i class="la la-plus"></i> Thêm mới</button>
       </div>
+      <!-- <div class="c-padding-t10">
+        
+        <p>Có lỗi xảy ra vui lòng thử lại sau !</p>
+      </div> -->
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
@@ -34,8 +89,12 @@
               <td>{{item.SoDT}}</td>
               <td>
                 <div class="card-action">
-                  <button class="btn btn-success" (click)="onSelectUser(item)">Sửa</button>
-                  <button class="btn btn-danger">Xóa</button>
+                  <button class="btn btn-success" (click)="onSelectUser(item)">
+                    <i class="la la-edit"></i>
+                  </button>
+                  <button class="btn btn-danger">
+                    <i class="la la-trash"></i>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -46,6 +105,7 @@
     </div>
   </div>
 </div>
+<!-- edit user -->
 <div class="row" *ngIf="onSelectUser">
   <app-admin-dialog [(visible)]="showDialog">
     <div class="f-container animated slideInRight wow">
@@ -113,8 +173,118 @@
           </div>
         </div>
       </div>
-
     </div>
   </app-admin-dialog>
+</div>
 
+<!-- add user -->
+<div class="row" *ngIf="isShowDialogAddUser">
+  <app-admin-dialog [(visible)]="isShowDialogAddUser">
+    <div class="f-container animated slideInRight wow">
+      <div class="col-md-12">
+        <form action="#" [formGroup]="registerForm" name="registerForm" novalidate>
+          <div class="card scroll-modal">
+            <div class="card-header">
+              <div class="card-title">Thêm mới</div>
+            </div>
+            <div class="card-body">
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Tài khoản</label>
+                <div class="col-md-9 p-0">
+                  <input type="text" class="form-control input-full" placeholder="Nhập tài khoản" name="account" id="account" formControlName="account"
+                    [ngClass]="{'has-error': account.invalid && (account.dirty || account.touched)}">
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Họ tên</label>
+                <div class="col-md-9 p-0">
+                  <input type="text" class="form-control input-full" placeholder="Nhập họ tên" name="username" id="username" formControlName="username"
+                    [ngClass]="{'has-error': username.invalid && (username.dirty || username.touched)}">
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Mật khẩu</label>
+                <div class="col-md-9 p-0">
+                  <input type="password" maxlength="32" class="form-control input-full" placeholder="Nhập mật khẩu" name="password" id="password"
+                    formControlName="password" maxlength="32" [ngClass]="{'has-error': password.invalid && (password.dirty || password.touched)}">
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Nhập lại mật khẩu</label>
+                <div class="col-md-9 p-0">
+                  <input type="password" class="form-control input-full" placeholder="Nhập lại mật khẩu" ame="passwordConFirm" id="passwordConFirm"
+                    formControlName="passwordConFirm" [ngClass]="{'has-error': passwordConFirm.invalid && (passwordConFirm.dirty || passwordConFirm.touched)}">
+                </div>
+              </div>
+
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Địa chỉ Email</label>
+                <div class="col-md-9 p-0">
+                  <input type="email" class="form-control input-full" placeholder="Nhập địa chỉ Email" name="email" id="email" formControlName="email"
+                    [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched)}">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Số điện thoại</label>
+                <div class="col-md-9 p-0">
+                  <input type="text" class="form-control input-full" placeholder="Nhập số điện thoại" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber"
+                    [ngClass]="{'has-error': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}">
+                </div>
+              </div>
+
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Mã nhóm</label>
+                <div class="col-md-9 p-0">
+                  <select class="form-control" id="typeGroup" name="typeGroup" formControlName="typeGroup" [ngClass]="{'has-error': typeGroup.invalid && (typeGroup.dirty || typeGroup.touched)}">
+                    <option value="GP01" disabled>GP01</option>
+                    <option value="GP02" disabled>GP02</option>
+                    <option value="GP03" disabled>GP03</option>
+                    <option value="GP04" disabled>GP04</option>
+                    <option value="GP05" disabled>GP05</option>
+                    <option value="GP06" disabled>GP06</option>
+                    <option value="GP07">GP07</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Mã loại người dùng</label>
+                <div class="col-md-9 p-0">
+                  <div class="form-check">
+                    <label class="form-radio-label">
+                      <input class="form-radio-input" type="radio" name="typeUser" formControlName="typeUser" value="QuanTri" checked="">
+                      <span class="form-radio-sign">Quản Trị</span>
+                    </label>
+                    <label class="form-radio-label ml-3">
+                      <input class="form-radio-input" type="radio" formControlName="typeUser" name="typeUser" value="KhachHang">
+                      <span class="form-radio-sign">Khách hàng</span>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">&nbsp;</label>
+                <div class="col-md-9 p-0">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="" formControlName="agree">
+                    <span class="form-check-sign">Đồng ý với các điều khoản của hệ thống Movie Point</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="card-action btn-right">
+              <button class="btn btn-success" (click)="registerUser()" [disabled]="registerForm.invalid || formIsSubmitting" [ngClass]='{disabled: registerForm.invalid}'>Thêm mới</button>
+              <button class="btn btn-danger" (click)="isShowDialogAddUser = false">Hủy</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="my-container">
+        <ngx-loading [show]="formIsSubmitting" [config]="{ }"></ngx-loading>
+      </div>
+    </div>
+
+  </app-admin-dialog>
 </div>

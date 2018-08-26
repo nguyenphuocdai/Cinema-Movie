@@ -11,6 +11,10 @@ body {
   overflow-x: hidden;
 }
 
+.form-group .has-error {
+  border: 1px solid red !important;
+}
+
 .has-error {
   border: 1px solid red !important;
 }
@@ -45,6 +49,14 @@ body {
 
 .c-padding-t10 {
   padding-top: 10px;
+}
+
+.c-padding-b10 {
+  padding-bottom: 10px;
+}
+
+.c-padding-b15 {
+  padding-bottom: 15px;
 }
 
 .c-padding-b60 {

@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/http.token.interceptor';
-import { LoaderComponent } from './shared/components/loader/loader.component';
 import { CollapseButtonComponent } from './shared/components/buttons/collapse-button/collapse-button.component';
 import { FavoriteButtonComponent } from './shared/components/buttons/favorite-button/favorite-button.component';
 import { AuthDirective } from './shared/directives/auth.directive';
@@ -13,8 +12,6 @@ import { SafePipe } from './shared/pipes/safe.pipe';
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { LoadingModule } from 'ngx-loading';
-import { LoadersCssModule } from 'angular2-loaders-css';
 import { HomeModule } from './modules/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxZaloService } from './shared/services/ngx-zalo.service';
@@ -35,7 +32,7 @@ const zaloConfigs = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent,
+
     FavoriteButtonComponent,
     CollapseButtonComponent,
     AuthDirective,
@@ -49,8 +46,6 @@ const zaloConfigs = {
     CoreModule,
     HomeModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
-    LoadingModule,
-    LoadersCssModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     NgxZaloModule,
