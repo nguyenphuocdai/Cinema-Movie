@@ -107,6 +107,12 @@ export class UserService {
       .catch(this.handleErrorObservable);
   }
 
+  deleteUser(account : string){
+    return this.http.delete(appConfig.deleteUser + `TaiKhoan=${account}`)
+    .map(this.parseData)
+    .catch(this.handleErrorObservable);
+  }
+
 
   saveSecretKey(secretKey: String) {
     if (!secretKey) {

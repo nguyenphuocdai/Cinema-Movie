@@ -5,11 +5,13 @@ import { AdminDialogComponent } from '../../shared/components/admin-dialog/admin
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { LoadersCssModule } from 'angular2-loaders-css';
 import { LoadingModule } from 'ngx-loading';
+import { NgxDeleteConfirmModule } from '../../shared/components/comfirm-delete/ngx-delete-confirm.module';
 @NgModule({
   imports: [
     CommonModule,
     LoadersCssModule,
-    LoadingModule
+    LoadingModule,
+    NgxDeleteConfirmModule.forRoot()
   ],
   declarations: [
     DialogComponent,
@@ -21,7 +23,8 @@ import { LoadingModule } from 'ngx-loading';
     AdminDialogComponent,
     LoaderComponent,
     LoadersCssModule,
-    LoadingModule
+    LoadingModule,
+    NgxDeleteConfirmModule
   ]
 })
 export class SharedModuleModule { }

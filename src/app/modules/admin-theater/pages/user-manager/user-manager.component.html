@@ -1,11 +1,12 @@
 <h4 class="page-title" *ngIf="isSuccessfully && newUser">
   Người dùng mới</h4>
+
 <div class="row" *ngIf="isSuccessfully && newUser">
   <div class="card c-width-100">
     <div class="card-header">
       <div class="card-title">Danh sách</div>
     </div>
-    <div class="card-body"  *ngIf="isSuccessfully">
+    <div class="card-body" *ngIf="isSuccessfully">
       <div class="alert alert-success">
         <strong>Thêm mới thành công!</strong>
       </div>
@@ -13,7 +14,7 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-                <th>#</th>
+              <th>#</th>
               <th>Tài khoản</th>
               <th>Họ tên</th>
               <th>Email</th>
@@ -24,7 +25,7 @@
           </thead>
           <tbody>
             <tr>
-                <th>1</th>
+              <th>1</th>
               <td>{{newUser.TaiKhoan}}</td>
               <td>{{newUser.HoTen}}</td>
               <td>{{newUser.Email}}</td>
@@ -60,6 +61,9 @@
         <button class="btn btn-primary" (click)="showDialogAdd()">
           <i class="la la-plus"></i> Thêm mới</button>
       </div>
+      <div class="alert alert-danger animated slideInRight" *ngIf="msg">
+        <strong>Xóa thành công</strong>
+      </div>
       <!-- <div class="c-padding-t10">
         
         <p>Có lỗi xảy ra vui lòng thử lại sau !</p>
@@ -93,7 +97,7 @@
                     <i class="la la-edit"></i>
                   </button>
                   <button class="btn btn-danger">
-                    <i class="la la-trash"></i>
+                    <delete-confirm (onConfirm)="sendDelete($event);deleteUser(item.TaiKhoan)" (onCancel)="sendCancel($event)"></delete-confirm>
                   </button>
                 </div>
               </td>

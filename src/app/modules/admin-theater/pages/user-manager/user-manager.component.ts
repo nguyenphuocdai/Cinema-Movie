@@ -30,6 +30,7 @@ export class UserManagerComponent implements OnInit {
   private agree: FormControl;
   private formIsSubmitting: boolean;
   newUser: any;
+  private msg: Boolean = false;
 
   regexPassword = '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*?]{6,}$';
   private registerInfo: UserNormal = new UserNormal();
@@ -121,5 +122,27 @@ export class UserManagerComponent implements OnInit {
   }
   resetForm(form: FormGroup) {
     return form.reset();
+  }
+
+  deleteUser(account: string) {
+    this._userService.deleteUser(account)
+      .subscribe(
+        (result) => {
+          console.log(result);
+          this.getUser();
+        }
+        , (error) => { console.log(error) }
+      )
+  }
+
+  private sendDelete($event: any, account: string): void {
+    this.msg = true;
+    this.deleteUser(account);
+    setTimeout(() => {
+      this.msg = false;
+    }, 5000)
+  }
+  private sendCancel($event: any): void {
+    // this.msg = 'Backoff!'
   }
 }

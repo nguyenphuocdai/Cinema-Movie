@@ -1,6 +1,6 @@
 
 const baseAPIMovie = 'http://sv2.myclass.vn/api/QuanLyPhim/';
-const baseAPIUSer = 'http://sv2.myclass.vn/api/QuanLyNguoiDung/';
+const baseAPIUser = 'http://sv2.myclass.vn/api/QuanLyNguoiDung/';
 const baseAPITicket = 'http://sv2.myclass.vn/api/QuanLyDatVe/';
 const baseAPIShowRoom = 'http://sv2.myclass.vn/api/QuanLyPhim/';
 
@@ -16,10 +16,11 @@ export const appConfig = {
     putTicket: `${baseAPITicket}DatVe`,
     getSitShowRoom: `${baseAPIShowRoom}ChiTietPhongVe?`,
 
-    getUser: `${baseAPIUSer}LayDanhSachNguoiDung?MaNhom=GP07`,
-    registerUser: `${baseAPIUSer}ThemNguoiDung`,
-    loginUser: `${baseAPIUSer}DangNhap?`,
-    updateUser: `${baseAPIUSer}CapNhatThongTin`,
+    getUser: `${baseAPIUser}LayDanhSachNguoiDung?MaNhom=GP07`,
+    registerUser: `${baseAPIUser}ThemNguoiDung`,
+    loginUser: `${baseAPIUser}DangNhap?`,
+    deleteUser : `${baseAPIUser}XoaNguoiDung?`, 
+    updateUser: `${baseAPIUser}CapNhatThongTin`,
     historyPutTicket: `${baseAPITicket}XemLichSuDatVe?`
 
 };
