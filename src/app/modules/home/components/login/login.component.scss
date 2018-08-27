@@ -1,5 +1,5 @@
-.c-padding-t-150 {
-  margin-top: 150px;
+
+.bg-black{
   background: #13151f;
 }
 
@@ -9,6 +9,9 @@
 
 .breadcrumb-area {
   padding: 50px 0 150px !important;
+  background: url('../../../../../assets/img/backgrounds/bg-login.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 // .row .transformers-box .flexbox-center-top{
@@ -89,4 +92,9 @@
   input {
     margin-right: 10px;
   }
+}
+
+.img-responsive {
+  width: 100%;
+  box-shadow: 0 0 20px #000000;
 }

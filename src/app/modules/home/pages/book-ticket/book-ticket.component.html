@@ -4,9 +4,10 @@
       <div class="order-container c-ticket-w100 text-center">
         <div class="order">
           <img class="order__images" alt='' src="../../../../../assets/img/tickets.png">
-          <p class="order__title">Book a ticket
+          <p class="order__title">ĐẶT VÉ XEM PHIM
             <br>
-            <span class="order__descript">and have fun movie time</span>
+            <span class="order__descript">
+              và có thời gian xem phim thú vị</span>
           </p>
         </div>
       </div>
@@ -24,8 +25,8 @@
       </div>
 
       <div class="row" style="min-height: 500px">
-        <carousel-component class="animated slideInRight wow" [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree" [autoPlay]="false" [delayAutoPlay]="delayAutoPlay"
-          #topCarousel>
+        <carousel-component class="animated slideInRight wow" [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree"
+          [autoPlay]="false" [delayAutoPlay]="delayAutoPlay" #topCarousel>
           <div class="item-carousel" *ngFor="let item of listMovie">
             <img [src]="item.HinhAnh" (click)="onSelect(item)" onError="this.src='../../../../../assets/img/movie/movie-sample6.jpg';"
               class="img-responsive" width="100%" />
