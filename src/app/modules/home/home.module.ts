@@ -8,7 +8,6 @@ import { LoginZaloDirective } from '../../shared/directives/login-zalo.directive
 import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
 import { BookTicketComponent } from './pages/book-ticket/book-ticket.component';
 import { BrowserModule } from '../../../../node_modules/@angular/platform-browser';
-import { AngularDateTimePickerModule } from './components/datetime-picker';
 import { CarouselModule } from './components/carousel-movie';
 import { BookChairComponent } from './pages/book-chair/book-chair.component';
 import { PaymentComponent } from './pages/payment/payment.component';
@@ -17,7 +16,6 @@ import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
-import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 import { SuccessTicketComponent } from './pages/success-ticket/success-ticket.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { SlickModule } from '../../../../node_modules/ngx-slick';
@@ -40,7 +38,7 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
-    AngularDateTimePickerModule,
+
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,

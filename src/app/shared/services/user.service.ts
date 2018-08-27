@@ -1,6 +1,6 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '../../../../node_modules/@angular/http';
-import { Observable, Subject } from '../../../../node_modules/rxjs';
+import { Observable } from '../../../../node_modules/rxjs';
 import { appConfig } from '../../app.config';
 import { UserNormal } from '../models/user-normal.model';
 import { DTO } from '../models/sitDTO.model';
@@ -22,11 +22,8 @@ export class UserService {
 
 
   registerUser(body: Object): Observable<UserNormal> {
-    // tslint:disable-next-line:prefer-const
-    // let bodyString = JSON.stringify(body);
-    // tslint:disable-next-line:prefer-const
+
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    // tslint:disable-next-line:prefer-const
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(appConfig.registerUser, body, options)
@@ -41,19 +38,14 @@ export class UserService {
 
 
   getHistoryUserTicket(account: string): Observable<any> {
-
-    // tslint:disable-next-line:prefer-const
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    // tslint:disable-next-line:prefer-const
     let options = new RequestOptions({ headers: headers });
     return this.http.post(appConfig.historyPutTicket + 'TaiKhoan=' + account, null, options)
       .map(this.parseData)
       .catch(this.handleErrorObservable);
   }
   updateUser(body: Object) {
-    // tslint:disable-next-line:prefer-const
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    // tslint:disable-next-line:prefer-const
     let options = new RequestOptions({ headers: headers });
     return this.http.post(appConfig.updateUser, body, options)
       .map(this.parseData)
@@ -61,11 +53,7 @@ export class UserService {
   }
 
   putTicket(body: Object): Observable<any> {
-    // tslint:disable-next-line:prefer-const
-    // let bodyString = JSON.stringify(body);
-    // tslint:disable-next-line:prefer-const
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    // tslint:disable-next-line:prefer-const
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(appConfig.putTicket, body, options)
@@ -84,11 +72,8 @@ export class UserService {
   }
 
   loginUser(account: String, password: String) {
-    // tslint:disable-next-line:prefer-const
-    // let bodyString = JSON.stringify(body);
-    // tslint:disable-next-line:prefer-const
+    
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    // tslint:disable-next-line:prefer-const
     let options = new RequestOptions({ headers: headers });
     return this.http.post(appConfig.loginUser + `taikhoan=${account}&matkhau=${password}`, null, options)
       .map(this.parseData)
@@ -96,21 +81,17 @@ export class UserService {
   }
 
   loginUserBody(obj: Object) {
-    // tslint:disable-next-line:prefer-const
-    // let bodyString = JSON.stringify(body);
-    // tslint:disable-next-line:prefer-const
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    // tslint:disable-next-line:prefer-const
     let options = new RequestOptions({ headers: headers });
     return this.http.post(appConfig.loginUser, obj, options)
       .map(this.parseData)
       .catch(this.handleErrorObservable);
   }
 
-  deleteUser(account : string){
+  deleteUser(account: string) {
     return this.http.delete(appConfig.deleteUser + `TaiKhoan=${account}`)
-    .map(this.parseData)
-    .catch(this.handleErrorObservable);
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
   }
 
 

@@ -15,6 +15,8 @@ export const appConfig = {
     detailMovie: `${baseAPIMovie}/LayChiTietPhim?`,
     putTicket: `${baseAPITicket}DatVe`,
     getSitShowRoom: `${baseAPIShowRoom}ChiTietPhongVe?`,
+    addMovie:`${baseAPIMovie}ThemPhimMoi`,
+    deleteMovie : `${baseAPIMovie}XoaPhim?`,
 
     getUser: `${baseAPIUser}LayDanhSachNguoiDung?MaNhom=GP07`,
     registerUser: `${baseAPIUser}ThemNguoiDung`,

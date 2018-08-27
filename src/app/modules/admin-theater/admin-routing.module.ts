@@ -4,6 +4,7 @@ import { UserManagerComponent } from './pages/user-manager/user-manager.componen
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { LoginDashboardComponent } from './pages/login-dashboard/login-dashboard.component';
+import { MovieManagerComponent } from './pages/movie-manager/movie-manager.component';
 
 
 // noinspection TypeScriptValidateTypes
@@ -25,6 +26,7 @@ const routes: Routes = [
                 children: [
                     { path: '', component: DashboardComponent },
                     { path: 'user', component: UserManagerComponent },
+                    { path: 'movie', component: MovieManagerComponent },
                     { path: 'login-dashboard', component: LoginDashboardComponent },
                     // { path: '*', component: DashboardComponent },
                     { path: '*', redirectTo: '/admin', pathMatch: 'full' },

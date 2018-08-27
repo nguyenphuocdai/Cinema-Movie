@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -23,6 +23,21 @@ export class MovieService {
 
   getDetailMovie(id: number): Observable<any> {
     return this.http.get(appConfig.detailMovie + 'MaPhim=' + id)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
+
+  addMovie(body: Object): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(appConfig.addMovie, body, options)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+
+  }
+  deleteUser(movieId: number) {
+    return this.http.delete(appConfig.deleteMovie + `MaPhim=${movieId}`)
       .map(this.parseData)
       .catch(this.handleErrorObservable);
   }

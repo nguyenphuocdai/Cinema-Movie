@@ -30,7 +30,6 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
         this.screenHeight = window.innerHeight;
         this._userService.userLoggedAdmin.subscribe(user => this.showNameLoginned(user));
-        console.log(this.displayName);
     }
 
     ngOnInit() {

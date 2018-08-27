@@ -6,12 +6,16 @@ import { LoaderComponent } from '../../shared/components/loader/loader.component
 import { LoadersCssModule } from 'angular2-loaders-css';
 import { LoadingModule } from 'ngx-loading';
 import { NgxDeleteConfirmModule } from '../../shared/components/comfirm-delete/ngx-delete-confirm.module';
+import { CKEditorModule } from '../../shared/components/ckeditor/ckeditor.module';
+import { AngularDateTimePickerModule } from '../home/components/datetime-picker';
 @NgModule({
   imports: [
     CommonModule,
     LoadersCssModule,
     LoadingModule,
-    NgxDeleteConfirmModule.forRoot()
+    NgxDeleteConfirmModule.forRoot(),
+    CKEditorModule,
+    AngularDateTimePickerModule,
   ],
   declarations: [
     DialogComponent,
@@ -24,7 +28,9 @@ import { NgxDeleteConfirmModule } from '../../shared/components/comfirm-delete/n
     LoaderComponent,
     LoadersCssModule,
     LoadingModule,
-    NgxDeleteConfirmModule
+    NgxDeleteConfirmModule,
+    CKEditorModule,
+    AngularDateTimePickerModule,
   ]
 })
 export class SharedModuleModule { }

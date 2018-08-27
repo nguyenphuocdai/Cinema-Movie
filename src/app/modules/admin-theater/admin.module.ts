@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { UserManagerComponent } from './pages/user-manager/user-manager.component';
 import { AdminComponent } from './admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +9,7 @@ import { LoginDashboardComponent } from './pages/login-dashboard/login-dashboard
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from '../../shared/components/pagination/ngx-pagination.module';
 import { SharedModuleModule } from '../shared-module/shared-module.module';
-
+import { MovieManagerComponent } from './pages/movie-manager/movie-manager.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,17 +18,19 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
     ReactiveFormsModule,
     AdminRoutingModule,
     NgxPaginationModule,
-    SharedModuleModule
+    SharedModuleModule,
   ],
   declarations: [
     UserManagerComponent,
     AdminComponent,
     DashboardComponent,
-    LoginDashboardComponent
+    LoginDashboardComponent,
+    MovieManagerComponent
   ],
   exports: [
     UserManagerComponent, AdminComponent, DashboardComponent,
-    LoginDashboardComponent
-  ]
+    LoginDashboardComponent, MovieManagerComponent
+  ],
+  providers: [DatePipe]
 })
 export class AdminModule { }
