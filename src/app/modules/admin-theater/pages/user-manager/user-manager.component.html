@@ -1,5 +1,5 @@
 <h4 class="page-title" *ngIf="isSuccessfully && newUser">
-  Người dùng mới</h4>
+  Người dùng vừa xử lý</h4>
 
 <div class="row" *ngIf="isSuccessfully && newUser">
   <div class="card c-width-100">
@@ -7,8 +7,11 @@
       <div class="card-title">Danh sách</div>
     </div>
     <div class="card-body" *ngIf="isSuccessfully">
-      <div class="alert alert-success">
+      <div class="alert alert-success" *ngIf="isAddSuccessfully">
         <strong>Thêm mới thành công!</strong>
+      </div>
+      <div class="alert alert-success" *ngIf="isEditSuccessfully">
+        <strong>Cập nhật thành công!</strong>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered">
@@ -52,11 +55,6 @@
       <div class="card-title">Danh sách</div>
     </div>
     <div class="card-body">
-      <!-- <div class="card-sub">
-        Create responsive tables by wrapping any table with
-        <code class="highlighter-rouge">.table-responsive</code>
-        <code class="highlighter-rouge">DIV</code> to make them scroll horizontally on small devices
-      </div> -->
       <div class="c-padding-b15">
         <button class="btn btn-primary" (click)="showDialogAdd()">
           <i class="la la-plus"></i> Thêm mới</button>
@@ -64,10 +62,6 @@
       <div class="alert alert-danger animated slideInRight" *ngIf="msg">
         <strong>Xóa thành công</strong>
       </div>
-      <!-- <div class="c-padding-t10">
-        
-        <p>Có lỗi xảy ra vui lòng thử lại sau !</p>
-      </div> -->
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
@@ -114,70 +108,96 @@
   <app-admin-dialog [(visible)]="showDialog">
     <div class="f-container animated slideInRight wow">
       <div class="col-md-12">
-        <div class="card scroll-modal">
-          <div class="card-header">
-            <div class="card-title">Chỉnh sửa thông tin người dùng</div>
-          </div>
-          <div class="card-body">
-            <div class="form-group form-inline">
-              <label for="inlineinput" class="col-md-3 col-form-label">Static</label>
-              <div class="col-md-9 p-0">
-                <p class="form-control-static">hello@themekita.com</p>
-              </div>
+        <form action="#" [formGroup]="editForm" name="editForm" novalidate>
+          <div class="card scroll-modal">
+            <div class="card-header">
+              <div class="card-title">Chỉnh sửa người dùng</div>
             </div>
-            <div class="form-group form-inline">
-              <label for="inlineinput" class="col-md-3 col-form-label">Inline Input</label>
-              <div class="col-md-9 p-0">
-                <input type="text" class="form-control input-full" id="inlineinput" placeholder="Enter Input">
+            <div class="card-body">
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Tài khoản</label>
+                <div class="col-md-9 p-0">
+                  <input type="text" class="form-control input-full" placeholder="Nhập tài khoản" name="account" id="account" formControlName="account"
+                    [ngClass]="{'has-error': account.invalid && (account.dirty || account.touched)}">
+                </div>
               </div>
-            </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Họ tên</label>
+                <div class="col-md-9 p-0">
+                  <input type="text" class="form-control input-full" placeholder="Nhập họ tên" name="username" id="username" formControlName="username"
+                    [ngClass]="{'has-error': username.invalid && (username.dirty || username.touched)}">
+                </div>
+              </div>
 
-            <div class="form-group form-inline">
-              <label for="inlineinput" class="col-md-3 col-form-label">Email Address</label>
-              <div class="col-md-9 p-0">
-                <input type="email" class="form-control input-full" id="email" placeholder="Enter Email">
-                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Địa chỉ Email</label>
+                <div class="col-md-9 p-0">
+                  <input type="email" class="form-control input-full" placeholder="Nhập địa chỉ Email" name="email" id="email" formControlName="email"
+                    [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched)}">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
               </div>
-            </div>
-            <div class="form-group form-inline">
-              <label for="inlineinput" class="col-md-3 col-form-label">Password</label>
-              <div class="col-md-9 p-0">
-                <input type="password" class="form-control input-full" id="password" placeholder="Password">
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Số điện thoại</label>
+                <div class="col-md-9 p-0">
+                  <input type="text" class="form-control input-full" placeholder="Nhập số điện thoại" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber"
+                    [ngClass]="{'has-error': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}">
+                </div>
               </div>
-            </div>
-            <div class="form-group form-inline">
-              <label for="inlineinput" class="col-md-3 col-form-label">Gender</label>
-              <div class="col-md-9 p-0">
-                <div class="form-check">
-                  <label class="form-radio-label">
-                    <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
-                    <span class="form-radio-sign">Male</span>
-                  </label>
-                  <label class="form-radio-label ml-3">
-                    <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                    <span class="form-radio-sign">Female</span>
+
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Mã nhóm</label>
+                <div class="col-md-9 p-0">
+                  <select class="form-control" id="typeGroup" name="typeGroup" formControlName="typeGroup" [ngClass]="{'has-error': typeGroup.invalid && (typeGroup.dirty || typeGroup.touched)}">
+                    <option value="GP01" disabled>GP01</option>
+                    <option value="GP02" disabled>GP02</option>
+                    <option value="GP03" disabled>GP03</option>
+                    <option value="GP04" disabled>GP04</option>
+                    <option value="GP05" disabled>GP05</option>
+                    <option value="GP06" disabled>GP06</option>
+                    <option value="GP07">GP07</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Mã loại người dùng</label>
+                <div class="col-md-9 p-0">
+                  <div class="form-check">
+                    <label class="form-radio-label">
+                      <input class="form-radio-input" type="radio" name="typeUser" formControlName="typeUser" value="QuanTri" checked="">
+                      <span class="form-radio-sign">Quản Trị</span>
+                    </label>
+                    <label class="form-radio-label ml-3">
+                      <input class="form-radio-input" type="radio" formControlName="typeUser" name="typeUser" value="KhachHang">
+                      <span class="form-radio-sign">Khách hàng</span>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">&nbsp;</label>
+                <div class="col-md-9 p-0">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="" formControlName="agree">
+                    <span class="form-check-sign">Đồng ý với các điều khoản của hệ thống Movie Point</span>
                   </label>
                 </div>
+              </div>
+            </div>
+            <div class="card-action btn-right">
+              <button class="btn btn-success" (click)="updateUser()" [disabled]="editForm.invalid || formIsSubmitting" [ngClass]='{disabled: editForm.invalid}'>Cập nhật</button>
+              <button class="btn btn-danger" (click)="isShowDialogAddUser = false">Hủy</button>
+            </div>
+          </div>
 
-              </div>
-            </div>
-            <div class="form-group form-inline">
-              <label for="inlineinput" class="col-md-3 col-form-label">&nbsp;</label>
-              <div class="col-md-9 p-0">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  <span class="form-check-sign">Agree with terms and conditions</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="card-action btn-right">
-            <button class="btn btn-success">Cập nhật</button>
-            <button class="btn btn-danger" (click)="showDialog = false">Hủy</button>
-          </div>
-        </div>
+        </form>
+      </div>
+      <div class="my-container">
+        <ngx-loading [show]="formIsSubmitting" [config]="{ }"></ngx-loading>
       </div>
     </div>
+
   </app-admin-dialog>
 </div>
 
@@ -189,7 +209,7 @@
         <form action="#" [formGroup]="registerForm" name="registerForm" novalidate>
           <div class="card scroll-modal">
             <div class="card-header">
-              <div class="card-title">Thêm mới</div>
+              <div class="card-title">Thêm mới người dùng</div>
             </div>
             <div class="card-body">
               <div class="form-group form-inline">

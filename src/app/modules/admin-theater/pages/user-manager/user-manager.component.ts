@@ -5,6 +5,7 @@ import { UserNormal } from '../../../../shared/models/user-normal.model';
 import { PasswordValidation } from '../../../../shared/directives/macth-password.validate';
 import { SimpleCrypt } from 'ngx-simple-crypt';
 import { LocalKey } from '../../../../app.config';
+import { CacheService } from '../../../../shared/services/cache.service';
 
 @Component({
   selector: 'app-user-manager',
@@ -13,10 +14,12 @@ import { LocalKey } from '../../../../app.config';
 })
 export class UserManagerComponent implements OnInit {
   listUser: UserNormal;
-  selectedUSer: UserNormal;
+  selectedUser: UserNormal;
   showDialog: Boolean = false;
   isShowDialogAddUser: Boolean = false;
-  isSuccessfully: Boolean = true;
+  isSuccessfully: Boolean = false;
+  isAddSuccessfully: Boolean = false;
+  isEditSuccessfully: Boolean = false;
   registerError: Boolean = false;
   private registerForm: FormGroup;
   private account: FormControl;
@@ -29,6 +32,10 @@ export class UserManagerComponent implements OnInit {
   private phoneNumber: FormControl;
   private agree: FormControl;
   private formIsSubmitting: boolean;
+  private updateInfoUser: UserNormal = new UserNormal();
+  private editForm: FormGroup;
+
+
   newUser: any;
   private msg: Boolean = false;
 
@@ -37,23 +44,23 @@ export class UserManagerComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
-
+    private _cacheService: CacheService
   ) {
+    this.selectedUser = this._cacheService.get('CurrentUserAdmin');
   }
 
   ngOnInit() {
     this.getUser();
+    // initial form add
     this.CreateValidatorRegisterForm();
     this.CreateRegisterForm();
+    // initial form edit
+    this.CreateValidatorEditForm();
+    this.CreateEditForm();
   }
   getUser() {
     this._userService.getUserGP07()
       .subscribe((result) => { this.listUser = result })
-  }
-  onSelectUser(user: UserNormal): void {
-    this.selectedUSer = user;
-    this.showDialog = true;
-    console.log(this.selectedUSer);
   }
 
   showDialogAdd() {
@@ -110,6 +117,7 @@ export class UserManagerComponent implements OnInit {
             console.log(this.newUser);
             this.isShowDialogAddUser = false;
             this.isSuccessfully = true;
+            this.isAddSuccessfully = true;
             this.formIsSubmitting = false;
             this.resetForm(this.registerForm);
           }, 3000)
@@ -144,5 +152,69 @@ export class UserManagerComponent implements OnInit {
   }
   private sendCancel($event: any): void {
     // this.msg = 'Backoff!'
+  }
+
+  onSelectUser(user: UserNormal): void {
+    this.selectedUser = user;
+    this.showDialog = true;
+    this.CreateValidatorEditForm();
+    this.CreateEditForm();
+    console.log(this.selectedUser);
+    console.log(this.editForm.value);
+  }
+
+
+  private CreateEditForm() {
+    this.editForm = new FormGroup({
+      account: this.account,
+      username: this.username,
+      email: this.email,
+      phoneNumber: this.phoneNumber,
+      typeUser: this.typeUser,
+      typeGroup: this.typeGroup,
+      agree: this.agree
+    });
+  }
+
+  private CreateValidatorEditForm() {
+    this.account = new FormControl({ value: this.selectedUser.TaiKhoan.trim(), disabled: true }, [Validators.required, Validators.pattern(/^[a-z0-9_-]{8,15}$/)]);
+    this.typeUser = new FormControl(this.selectedUser.MaLoaiNguoiDung, [Validators.required]);
+    this.typeGroup = new FormControl(this.selectedUser.MaNhom, [Validators.required]);
+    this.username = new FormControl(this.selectedUser.HoTen, [Validators.required, Validators.minLength(3), Validators.maxLength(24)]);
+    this.email = new FormControl(this.selectedUser.Email, [Validators.required, Validators.pattern(/[^\s@]+@[^\s@]+\.[^\s@]+$/)]);
+    this.phoneNumber = new FormControl(this.selectedUser.SoDT, [Validators.required, Validators.pattern(/^(01[2689]|09|08)[0-9]{8}$/)]);
+    this.agree = new FormControl('', Validators.requiredTrue);
+  }
+  updateUser() {
+    this.formIsSubmitting = true;
+    const simpleCrypt = new SimpleCrypt();
+
+    this.updateInfoUser.TaiKhoan = this.account.value;
+    this.updateInfoUser.MatKhau = this.selectedUser.MatKhau;
+    this.updateInfoUser.SoDT = this.phoneNumber.value;
+    this.updateInfoUser.MaNhom = this.typeGroup.value;
+    this.updateInfoUser.Email = this.email.value;
+    this.updateInfoUser.MaLoaiNguoiDung = this.typeUser.value;
+    this.updateInfoUser.TenLoaiNguoiDung = this.typeUser.value === "KhachHang" ? 'Khách hàng' : 'Quản trị'
+    this.updateInfoUser.HoTen = this.username.value;
+    this.updateInfoUser.SSID = simpleCrypt.encode(LocalKey.keyCryto, this.password.value);
+    this.updateInfoUser.SecretKey = this._userService.makeid();
+
+    this._userService.updateUser(this.updateInfoUser)
+      .subscribe(
+        (result) => {
+          setTimeout(() => {
+            this.showDialog = false;
+            this.isSuccessfully = true;
+            this.isEditSuccessfully = true;
+          }, 3000);
+          this.newUser = this.updateInfoUser;
+          console.log(result);
+        },
+        (err) => {
+          this.formIsSubmitting = false;
+          this.registerError = false;
+        }
+      );
   }
 }
