@@ -42,6 +42,19 @@ export class MovieService {
       .catch(this.handleErrorObservable);
   }
 
+  uploadFileMovie(formData: FormData) {
+    return this.http.post(appConfig.uploadFileMovie, formData)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
+  updateMovie(body: Object) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(appConfig.updateMovie, body, options)
+      .map(this.parseData)
+      .catch(this.handleErrorObservable);
+  }
   private parseData(res: Response) {
     return res.json() || [];
   }

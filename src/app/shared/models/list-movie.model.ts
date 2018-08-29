@@ -5,6 +5,6 @@ export class ListMovie {
     HinhAnh: String;
     MoTa: String;
     MaNhom: String;
-    NgayKhoiChieu: String;
+    NgayKhoiChieu: string;
     DanhGia: String;
 }

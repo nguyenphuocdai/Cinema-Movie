@@ -17,7 +17,8 @@ export const appConfig = {
     getSitShowRoom: `${baseAPIShowRoom}ChiTietPhongVe?`,
     addMovie:`${baseAPIMovie}ThemPhimMoi`,
     deleteMovie : `${baseAPIMovie}XoaPhim?`,
-
+    updateMovie: `${baseAPIMovie}CapNhatPhim`,
+    uploadFileMovie: `${baseAPIMovie}UploadFile`,
     getUser: `${baseAPIUser}LayDanhSachNguoiDung?MaNhom=GP07`,
     registerUser: `${baseAPIUser}ThemNguoiDung`,
     loginUser: `${baseAPIUser}DangNhap?`,

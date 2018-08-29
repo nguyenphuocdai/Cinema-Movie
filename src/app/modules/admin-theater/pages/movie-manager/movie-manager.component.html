@@ -96,13 +96,13 @@
               </td>
               <td>{{item.DanhGia}}</td>
               <td>{{item.MaNhom}}</td>
-              <td>{{item.NgayKhoiChieu | date: "dd-mm-yyyy HH:mm"}}</td>
+              <td>{{item.NgayKhoiChieu | date: "dd-MM-yyyy HH:mm"}}</td>
               <td>
                 <div class="card-action">
-                  <button class="btn btn-success" (click)="deleteMovie(item)">
+                  <button class="btn btn-success" (click)="onSelectedMovie(item)">
                     <i class="la la-edit"></i>
                   </button>
-                  <button class="btn btn-danger">
+                  <button class="btn btn-danger" (click)="deleteMovie(item.MaPhim)">
                     <delete-confirm (onConfirm)="sendDelete($event);deleteMovie(item.MaPhim)" (onCancel)="sendCancel($event)"></delete-confirm>
                   </button>
                 </div>
@@ -130,31 +130,34 @@
               <div class="form-group form-inline">
                 <label for="inlineinput" class="col-md-3 col-form-label">Tên phim</label>
                 <div class="col-md-9 p-0">
-                  <input type="text" class="form-control input-full" placeholder="Nhập tên phim" name="nameMovie" id="nameMovie" formControlName="nameMovie"
-                    [ngClass]="{'has-error': nameMovie.invalid && (nameMovie.dirty || nameMovie.touched)}">
+                  <input type="text" class="form-control input-full" placeholder="Nhập tên phim" name="nameMovie" id="nameMovie"
+                    formControlName="nameMovie" [ngClass]="{'has-error': nameMovie.invalid && (nameMovie.dirty || nameMovie.touched)}">
                 </div>
               </div>
               <div class="form-group form-inline">
                 <label for="inlineinput" class="col-md-3 col-form-label">Đường dẫn Trailer</label>
                 <div class="col-md-9 p-0">
-                  <input type="url" class="form-control input-full" placeholder="Nhập đường dẫn Trailer" name="trailerMovie" id="trailerMovie"
-                    formControlName="trailerMovie" [ngClass]="{'has-error': trailerMovie.invalid && (trailerMovie.dirty || trailerMovie.touched)}">
+                  <input type="url" class="form-control input-full" placeholder="Nhập đường dẫn Trailer" name="trailerMovie"
+                    id="trailerMovie" formControlName="trailerMovie" [ngClass]="{'has-error': trailerMovie.invalid && (trailerMovie.dirty || trailerMovie.touched)}">
                 </div>
               </div>
               <div class="form-group form-inline">
                 <label for="inlineinput" class="col-md-3 col-form-label">Hình ảnh phim</label>
                 <div class="col-md-9 p-0">
-                  <input type="text" class="form-control input-full" placeholder="Nhập hình ảnh phim" name="imageMovie" id="imageMovie" formControlName="imageMovie"
-                    [ngClass]="{'has-error': imageMovie.invalid && (imageMovie.dirty || imageMovie.touched)}">
+                  <input type="file" class="form-control-file" (change)="fileChange($event)" placeholder="Nhập hình ảnh phim"
+                    name="imageMovie" id="imageMovie" formControlName="imageMovie" [ngClass]="{'has-error': imageMovie.invalid && (imageMovie.dirty || imageMovie.touched)}">
+                  <p *ngIf="previewImageName" class="c-padding-t20">{{previewImageName}}</p>
+                  <img [src]="previewImageUpload" class="preview-image" *ngIf="previewImageName">
                 </div>
               </div>
 
               <div class="form-group form-inline c-padding-b15 c-padding-t10">
                 <label for="inlineinput" class="col-md-3 col-form-label">Mô tả</label>
                 <div class="col-md-9 p-0">
-                  <ckeditor formControlName="descriptionMovie" [config]="{uiColor: '#e0f2f4'}" [readonly]="false" (change)="onChange($event)"
-                    (editorChange)="onEditorChange($event)" (ready)="onReady($event)" (focus)="onFocus($event)" (blur)="onBlur($event)"
-                    (contentDom)="onContentDom($event)" (fileUploadRequest)="onFileUploadRequest($event)" (fileUploadResponse)="onFileUploadResponse($event)"
+                  <ckeditor formControlName="descriptionMovie" [config]="{uiColor: '#e0f2f4'}" [readonly]="false"
+                    (change)="onChange($event)" (editorChange)="onEditorChange($event)" (ready)="onReady($event)"
+                    (focus)="onFocus($event)" (blur)="onBlur($event)" (contentDom)="onContentDom($event)"
+                    (fileUploadRequest)="onFileUploadRequest($event)" (fileUploadResponse)="onFileUploadResponse($event)"
                     (paste)="onPaste($event)" (drop)="onDrop($event)" debounce="500">
                   </ckeditor>
                 </div>
@@ -162,7 +165,8 @@
               <div class="form-group form-inline">
                 <label for="inlineinput" class="col-md-3 col-form-label">Ngày khởi chiếu</label>
                 <div class="">
-                  <angular2-date-picker formControlName="startTimeMovie" (onDateSelect)="onDateSelect($event)" [settings]="settings"></angular2-date-picker>
+                  <angular2-date-picker formControlName="startTimeMovie" (onDateSelect)="onDateSelect($event)"
+                    [settings]="settings"></angular2-date-picker>
                 </div>
               </div>
 
@@ -191,8 +195,107 @@
               </div>
             </div>
             <div class="card-action btn-right">
-              <button class="btn btn-success" (click)="registerMovie()" [disabled]="registerForm.invalid || formIsSubmitting" [ngClass]='{disabled: registerForm.invalid}'>Thêm mới</button>
+              <button class="btn btn-success" (click)="registerMovie()" [disabled]="registerForm.invalid || formIsSubmitting"
+                [ngClass]='{disabled: registerForm.invalid}'>Thêm mới</button>
               <button class="btn btn-danger" (click)="isShowDialogAddUser = false">Hủy</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="my-container">
+        <ngx-loading [show]="formIsSubmitting" [config]="{ }"></ngx-loading>
+      </div>
+    </div>
+
+  </app-admin-dialog>
+</div>
+
+
+<!-- edit movie -->
+<!-- edit user -->
+<div class="row" *ngIf="selectedMovie">
+  <app-admin-dialog [(visible)]="showDialogEdit">
+    <div class="f-container animated slideInRight wow">
+      <div class="col-md-12">
+        <form action="#" [formGroup]="editForm" name="editForm" novalidate>
+          <div class="card scroll-modal">
+            <div class="card-header">
+              <div class="card-title">Thêm phim mới</div>
+            </div>
+            <div class="card-body">
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Tên phim</label>
+                <div class="col-md-9 p-0">
+                  <input type="text" class="form-control input-full" placeholder="Nhập tên phim" name="nameMovie" id="nameMovie"
+                    formControlName="nameMovie" [ngClass]="{'has-error': nameMovie.invalid && (nameMovie.dirty || nameMovie.touched)}">
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Đường dẫn Trailer</label>
+                <div class="col-md-9 p-0">
+                  <input type="url" class="form-control input-full" placeholder="Nhập đường dẫn Trailer" name="trailerMovie"
+                    id="trailerMovie" formControlName="trailerMovie" [ngClass]="{'has-error': trailerMovie.invalid && (trailerMovie.dirty || trailerMovie.touched)}">
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Hình ảnh phim</label>
+                <div class="col-md-9 p-0">
+                  <input type="file" class="form-control-file" (change)="fileChange($event)" name="imageMovie" id="imageMovie"
+                    formControlName="imageMovie" [ngClass]="{'has-error': imageMovie.invalid && (imageMovie.dirty || imageMovie.touched)}">
+                  <img [src]="selectedMovie.HinhAnh" class="preview-image" *ngIf="!previewImageName">
+                  <p *ngIf="previewImageName" class="c-padding-t20">{{previewImageName}}</p>
+                  <img [src]="previewImageUpload" class="preview-image" *ngIf="previewImageName">
+                </div>
+              </div>
+
+              <div class="form-group form-inline c-padding-b15 c-padding-t10">
+                <label for="inlineinput" class="col-md-3 col-form-label">Mô tả</label>
+                <div class="col-md-9 p-0">
+                  <ckeditor formControlName="descriptionMovie" [config]="{uiColor: '#e0f2f4'}" [readonly]="false"
+                    (change)="onChange($event)" (editorChange)="onEditorChange($event)" (ready)="onReady($event)"
+                    (focus)="onFocus($event)" (blur)="onBlur($event)" (contentDom)="onContentDom($event)"
+                    (fileUploadRequest)="onFileUploadRequest($event)" (fileUploadResponse)="onFileUploadResponse($event)"
+                    (paste)="onPaste($event)" (drop)="onDrop($event)" debounce="500">
+                  </ckeditor>
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Ngày khởi chiếu</label>
+                <div class="">
+                  <angular2-date-picker formControlName="startTimeMovie" (onDateSelect)="onDateSelect($event)"
+                    [settings]="settings"></angular2-date-picker>
+                </div>
+              </div>
+
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">Mã nhóm phim</label>
+                <div class="col-md-9 p-0">
+                  <select class="form-control" id="typeGroup" name="typeGroup" formControlName="typeGroup" [ngClass]="{'has-error': typeGroup.invalid && (typeGroup.dirty || typeGroup.touched)}">
+                    <option value="GP01" disabled>GP01</option>
+                    <option value="GP02" disabled>GP02</option>
+                    <option value="GP03" disabled>GP03</option>
+                    <option value="GP04" disabled>GP04</option>
+                    <option value="GP05" disabled>GP05</option>
+                    <option value="GP06" disabled>GP06</option>
+                    <option value="GP07">GP07</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <label for="inlineinput" class="col-md-3 col-form-label">&nbsp;</label>
+                <div class="col-md-9 p-0">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="" formControlName="agree">
+                    <span class="form-check-sign">Đồng ý với các điều khoản của hệ thống Movie Point</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="card-action btn-right">
+              <button class="btn btn-success" (click)="updateMovie()" [disabled]="editForm.invalid || formIsSubmitting"
+                [ngClass]='{disabled: editForm.invalid}'>Thêm mới</button>
+              <button class="btn btn-danger" (click)="showDialogEdit = false">Hủy</button>
             </div>
           </div>
 

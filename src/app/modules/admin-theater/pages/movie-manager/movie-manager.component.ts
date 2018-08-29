@@ -4,6 +4,9 @@ import { ListMovie } from '../../../../shared/models/list-movie.model';
 import { ScriptService } from 'ngx-script-loader';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { RequestOptions, Headers, Http } from '@angular/http';
+import { Observable } from 'rxjs';
+import { appConfig } from '../../../../app.config';
 
 @Component({
   selector: 'app-movie-manager',
@@ -23,6 +26,8 @@ export class MovieManagerComponent implements OnInit {
   newMovie: ListMovie;
   isShowDialogAddUser: Boolean = false;
   isLoadingDelete: Boolean = false;
+  previewImageUpload: any;
+  previewImageName: string = '';
   private registerForm: FormGroup;
   private nameMovie: FormControl;
   private trailerMovie: FormControl;
@@ -33,8 +38,15 @@ export class MovieManagerComponent implements OnInit {
   private viewMovie: FormControl;
   private agree: FormControl;
   private formIsSubmitting: boolean;
+  isEditSuccessfully: Boolean = false;
   private infoMovie: ListMovie = new ListMovie();
   date: Date = new Date();
+
+  uploadFileData: FormData;
+
+  private editForm: FormGroup;
+  selectedMovie: ListMovie;
+  showDialogEdit: Boolean = false;
 
   settings = {
     bigBanner: false,
@@ -46,7 +58,8 @@ export class MovieManagerComponent implements OnInit {
   constructor(
     private movieService: MovieService,
     private _loadScript: ScriptService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private http: Http
   ) {
     this._loadScript.loadScript('https://cdn.ckeditor.com/4.7.1/full/ckeditor.js')
       .subscribe((result) => console.log(result))
@@ -71,7 +84,6 @@ export class MovieManagerComponent implements OnInit {
       .subscribe(
         (result) => {
           this.listMovie = result;
-          console.log(result);
         },
         (err) => {
           console.log(SERVER_ERROR);
@@ -117,19 +129,28 @@ export class MovieManagerComponent implements OnInit {
     this.infoMovie.MoTa = this.descriptionMovie.value;
     this.infoMovie.DanhGia = Math.floor(Math.random() * 100).toString();
 
-    console.log(this.infoMovie);
-
     this.movieService.addMovie(this.infoMovie)
       .subscribe(
         (result) => {
-          this.newMovie = result;
+          this.uploadFileData.append('TenPhim', this.nameMovie.value);
+          this.movieService.uploadFileMovie(this.uploadFileData)
+            .subscribe((result) => {
+              console.log(result)
+            });
+
           setTimeout(() => {
             this.formIsSubmitting = false;
             this.isShowDialogAddUser = false;
-            this.getListMovie();
+
             this.isSuccess = true;
             this.isAddSuccessfully = true;
+
+            this.getListMovie();
+
+            this.newMovie = result;
+            console.log(result);
           }, 3000)
+
         }, (error) => {
           this.formIsSubmitting = false;
           console.log(error);
@@ -137,50 +158,23 @@ export class MovieManagerComponent implements OnInit {
       );
 
   }
-  onChange($event: any): void {
-    console.log("onChange");
-    //this.log += new Date() + "<br />";
-  }
-  onEditorChange($event: any): void {
-    console.log("onEditorChange");
-    //this.log += new Date() + "<br />";
-  }
-  onReady($event: any): void {
-    console.log("onReady");
-    //this.log += new Date() + "<br />";
-  }
-  onFocus($event: any): void {
-    console.log("onFocus");
-    //this.log += new Date() + "<br />";
-  }
-  onBlur($event: any): void {
-    console.log("onBlur");
-    //this.log += new Date() + "<br />";
-  }
-  onContentDom($event: any): void {
-    console.log("onContentDom");
-    //this.log += new Date() + "<br />";
-  }
-  onFileUploadRequest($event: any): void {
-    console.log("onFileUploadRequest");
-    //this.log += new Date() + "<br />";
-  }
-  onFileUploadResponse($event: any): void {
-    console.log("onFileUploadResponse");
-    //this.log += new Date() + "<br />";
-  }
-  onPaste($event: any): void {
-    console.log("onPaste");
-    //this.log += new Date() + "<br />";
-  }
-  onDrop($event: any): void {
-    console.log("onDrop");
-    //this.log += new Date() + "<br />";
-  }
+  fileChange(event) {
+    let fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      let file: File = fileList[0];
+      this.uploadFileData = new FormData();
+      this.uploadFileData.append('Files', file, file.name);
+      this.previewImageName = file.name;
+      var reader = new FileReader();
 
+      reader.onload = (event: ProgressEvent) => {
+        this.previewImageUpload = (<FileReader>event.target).result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
 
   deleteMovie(movieId: string) {
-    console.log(movieId);
     this.movieService.deleteUser(this.movieService.NumberConverter(movieId))
       .subscribe(
         (result) => {
@@ -204,6 +198,98 @@ export class MovieManagerComponent implements OnInit {
   }
   private sendCancel($event: any): void {
     // this.msg = 'Backoff!'
+  }
+  private CreateEditForm() {
+    this.editForm = new FormGroup({
+      nameMovie: this.nameMovie,
+      trailerMovie: this.trailerMovie,
+      imageMovie: this.imageMovie,
+      startTimeMovie: this.startTimeMovie,
+      descriptionMovie: this.descriptionMovie,
+      typeGroup: this.typeGroup,
+      agree: this.agree
+    },
+    );
+  }
+
+  private CreateValidatorEditForm() {
+    this.nameMovie = new FormControl(this.selectedMovie.TenPhim, [Validators.required]);
+    this.trailerMovie = new FormControl(this.selectedMovie.Trailer, [Validators.required]);
+    this.typeGroup = new FormControl(this.selectedMovie.MaNhom, [Validators.required]);
+    this.imageMovie = new FormControl(this.selectedMovie.HinhAnh, [Validators.required]);
+    this.startTimeMovie = new FormControl(new Date(this.selectedMovie.NgayKhoiChieu), [Validators.required]);
+    this.descriptionMovie = new FormControl(this.selectedMovie.MoTa, [Validators.required]);
+    this.agree = new FormControl('', Validators.requiredTrue);
+  }
+
+  onSelectedMovie(movie: ListMovie): void {
+    this.selectedMovie = movie;
+    this.showDialogEdit = true;
+
+    this.CreateValidatorEditForm();
+    this.CreateEditForm();
+  }
+  updateMovie() {
+    this.formIsSubmitting = true;
+    this.infoMovie.MaPhim = this.selectedMovie.MaPhim;
+    this.infoMovie.TenPhim = this.nameMovie.value;
+    this.infoMovie.Trailer = this.trailerMovie.value;
+    this.infoMovie.MaNhom = this.typeGroup.value;
+    this.infoMovie.HinhAnh = this.imageMovie.value;
+    this.infoMovie.NgayKhoiChieu = this.startTimeMovie.value;
+    this.infoMovie.MoTa = this.descriptionMovie.value;
+    this.infoMovie.DanhGia = Math.floor(Math.random() * 100).toString();
+    console.log(this.infoMovie);
+    this.movieService.updateMovie(this.infoMovie)
+      .subscribe(
+        (res) => {
+          if (this.uploadFileData !== undefined) {
+            this.uploadFileData.append('TenPhim', this.nameMovie.value);
+            this.movieService.uploadFileMovie(this.uploadFileData)
+              .subscribe((result) => {
+                console.log(result)
+              });
+          }
+
+          setTimeout(() => {
+            this.formIsSubmitting = false;
+            this.showDialogEdit = false;
+            this.isSuccess = true;
+            this.isEditSuccessfully = true;
+            this.getListMovie();
+            this.newMovie = res;
+            console.log(res);
+          }, 3000)
+          setTimeout(() => {
+            this.isSuccess = false;
+          }, 8000)
+        }, (error) => {
+          this.formIsSubmitting = false;
+          this.showDialogEdit = false
+          console.log(error);
+        }
+      );
+
+  }
+  onChange($event: any): void {
+  }
+  onEditorChange($event: any): void {
+  }
+  onReady($event: any): void {
+  }
+  onFocus($event: any): void {
+  }
+  onBlur($event: any): void {
+  }
+  onContentDom($event: any): void {
+  }
+  onFileUploadRequest($event: any): void {
+  }
+  onFileUploadResponse($event: any): void {
+  }
+  onPaste($event: any): void {
+  }
+  onDrop($event: any): void {
   }
 
 }
