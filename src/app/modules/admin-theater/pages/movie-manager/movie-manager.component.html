@@ -252,7 +252,7 @@
               <div class="form-group form-inline c-padding-b15 c-padding-t10">
                 <label for="inlineinput" class="col-md-3 col-form-label">Mô tả</label>
                 <div class="col-md-9 p-0">
-                  <ckeditor *ngIf="test" formControlName="descriptionMovie" [config]="{uiColor: '#e0f2f4'}" [readonly]="false"
+                  <ckeditor formControlName="descriptionMovie" [config]="{uiColor: '#e0f2f4'}" [readonly]="false"
                     (change)="onChange($event)" (editorChange)="onEditorChange($event)" (ready)="onReady($event)"
                     (focus)="onFocus($event)" (blur)="onBlur($event)" (contentDom)="onContentDom($event)"
                     (fileUploadRequest)="onFileUploadRequest($event)" (fileUploadResponse)="onFileUploadResponse($event)"

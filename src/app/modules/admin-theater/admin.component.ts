@@ -49,6 +49,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
         new WOW().init();
     }
     private showNameLoginned(user: any): void {
+        // tslint:disable-next-line:prefer-const
         let data: any | null = this._cacheService.get('CurrentUserAdmin');
         if (user === null) {
             this.isLogined = false;
