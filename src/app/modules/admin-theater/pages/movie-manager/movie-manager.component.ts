@@ -5,8 +5,6 @@ import { ScriptService } from 'ngx-script-loader';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { RequestOptions, Headers, Http } from '@angular/http';
-import { Observable } from 'rxjs';
-import { appConfig } from '../../../../app.config';
 
 @Component({
   selector: 'app-movie-manager',
@@ -21,13 +19,16 @@ export class MovieManagerComponent implements OnInit {
   @ViewChild("myckeditor") ckeditor: any;
   ckeConfig: any;
   ckeditorContent: any;
-  isSuccess: Boolean;
-  isAddSuccessfully: Boolean;
-  newMovie: ListMovie;
-  isShowDialogAddUser: Boolean = false;
-  isLoadingDelete: Boolean = false;
   previewImageUpload: any;
   previewImageName: string = '';
+
+  isSuccess: Boolean;
+  isShowDialogAddUser: Boolean = false;
+  isLoadingDelete: Boolean = false;
+  isEditSuccessfully: Boolean = false;
+  showDialogEdit: Boolean = false;
+  isAddSuccessfully: Boolean;
+  
   private registerForm: FormGroup;
   private nameMovie: FormControl;
   private trailerMovie: FormControl;
@@ -38,15 +39,15 @@ export class MovieManagerComponent implements OnInit {
   private viewMovie: FormControl;
   private agree: FormControl;
   private formIsSubmitting: boolean;
-  isEditSuccessfully: Boolean = false;
-  private infoMovie: ListMovie = new ListMovie();
-  date: Date = new Date();
 
-  uploadFileData: FormData;
-
+  
   private editForm: FormGroup;
+
+  infoMovie: ListMovie = new ListMovie();
+  date: Date = new Date();
+  uploadFileData: FormData;
   selectedMovie: ListMovie;
-  showDialogEdit: Boolean = false;
+  newMovie: ListMovie;
 
   settings = {
     bigBanner: false,
@@ -62,12 +63,19 @@ export class MovieManagerComponent implements OnInit {
     private http: Http
   ) {
     this._loadScript.loadScript('https://cdn.ckeditor.com/4.7.1/full/ckeditor.js')
-      .subscribe((result) => console.log(result))
+      .subscribe((result) => {
+        console.log(result);
+      }, (error) => {
+        console.log(error);
+      })
 
   }
 
   ngOnInit() {
-
+    this.ckeConfig = {
+      uiColor: '#e0f2f4',
+      allowedContent: true
+  }; 
     this.CreateValidatorRegisterForm();
     this.CreateRegisterForm();
 
@@ -216,16 +224,16 @@ export class MovieManagerComponent implements OnInit {
     this.nameMovie = new FormControl(this.selectedMovie.TenPhim, [Validators.required]);
     this.trailerMovie = new FormControl(this.selectedMovie.Trailer, [Validators.required]);
     this.typeGroup = new FormControl(this.selectedMovie.MaNhom, [Validators.required]);
-    this.imageMovie = new FormControl(this.selectedMovie.HinhAnh, [Validators.required]);
+    this.imageMovie = new FormControl('', [Validators.required]);
     this.startTimeMovie = new FormControl(new Date(this.selectedMovie.NgayKhoiChieu), [Validators.required]);
     this.descriptionMovie = new FormControl(this.selectedMovie.MoTa, [Validators.required]);
     this.agree = new FormControl('', Validators.requiredTrue);
   }
 
   onSelectedMovie(movie: ListMovie): void {
-    this.selectedMovie = movie;
     this.showDialogEdit = true;
-
+    this.selectedMovie = movie;
+    this.infoMovie.HinhAnh = this.selectedMovie.HinhAnh;
     this.CreateValidatorEditForm();
     this.CreateEditForm();
   }
@@ -262,7 +270,7 @@ export class MovieManagerComponent implements OnInit {
           }, 3000)
           setTimeout(() => {
             this.isSuccess = false;
-          }, 8000)
+          }, 5000)
         }, (error) => {
           this.formIsSubmitting = false;
           this.showDialogEdit = false
@@ -272,24 +280,43 @@ export class MovieManagerComponent implements OnInit {
 
   }
   onChange($event: any): void {
+    console.log("onChange");
+    //this.log += new Date() + "<br />";
   }
   onEditorChange($event: any): void {
+    console.log("onEditorChange");
+    //this.log += new Date() + "<br />";
   }
   onReady($event: any): void {
+    console.log("onReady");
+    //this.log += new Date() + "<br />";
   }
   onFocus($event: any): void {
+    console.log("onFocus");
+    //this.log += new Date() + "<br />";
   }
   onBlur($event: any): void {
+    console.log("onBlur");
+    //this.log += new Date() + "<br />";
   }
   onContentDom($event: any): void {
+    console.log("onContentDom");
+    //this.log += new Date() + "<br />";
   }
   onFileUploadRequest($event: any): void {
+    console.log("onFileUploadRequest");
+    //this.log += new Date() + "<br />";
   }
   onFileUploadResponse($event: any): void {
+    console.log("onFileUploadResponse");
+    //this.log += new Date() + "<br />";
   }
   onPaste($event: any): void {
+    console.log("onPaste");
+    //this.log += new Date() + "<br />";
   }
   onDrop($event: any): void {
+    console.log("onDrop");
+    //this.log += new Date() + "<br />";
   }
-
 }

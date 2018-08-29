@@ -24,7 +24,6 @@ export class AdminComponent implements OnInit, AfterViewInit {
         private _cacheService: CacheService,
         private _router: Router
     ) {
-        // tslint:disable-next-line:prefer-const
         let headerFlagSubj = this._authGuardService.getHeaderFlag();
         headerFlagSubj.next(false);
 
@@ -44,14 +43,12 @@ export class AdminComponent implements OnInit, AfterViewInit {
     }
 
     onResize(event) {
-        // tslint:disable-next-line:no-unused-expression
         this.screenHeight = event.target.innerHeight;
     }
     ngAfterViewInit(): void {
         new WOW().init();
     }
     private showNameLoginned(user: any): void {
-        // tslint:disable-next-line:prefer-const
         let data: any | null = this._cacheService.get('CurrentUserAdmin');
         if (user === null) {
             this.isLogined = false;
