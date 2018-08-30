@@ -1,136 +1,149 @@
 .hero-area {
-    background-image: none !important;
-    max-height: 600px;
-    height: 100%;
-  }
-  
-  .card {
-    border: none !important;
-    border-radius: 0 !important;
-    .relative {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
+  background-image: none !important;
+  max-height: 600px;
+  height: 100%;
+}
+
+.card {
+  border: none !important;
+  border-radius: 0 !important;
+
+  .relative {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    .icofont-ui-play {
+      display: none;
+    }
+
+    &:hover {
       .icofont-ui-play {
-        display: none;
-      }
-      &:hover {
-        .icofont-ui-play {
-          display: block;
-        }
+        display: block;
       }
     }
   }
-  
-  .card .card-body {
-    background: #1e1e1e;
-  }
-  
-  .film-meta {
-    text-align: center;
-    h3 {
-      font-family: "Playfair Display";
-      font-weight: 700;
-      font-style: normal;
-    }
-    .film-category {
-      margin-top: 3px;
-      margin-bottom: 25px;
-      a {
-        color: #757575;
-        letter-spacing: 1px;
-        -webkit-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
-      }
-    }
-  }
-  
-  .film-meta .film-title {
-    font-size: 18px;
-    margin-top: 5px;
-    padding: 0px 10px;
-    line-height: 1.8;
-  }
-  
-  .film-meta .film-rating .point {
-    color: #fd6500;
-    font-size: 24px;
+}
+
+.card .card-body {
+  background: #1e1e1e;
+}
+
+.film-meta {
+  text-align: center;
+
+  h3 {
+    font-family: "Playfair Display";
     font-weight: 700;
-    margin-right: 5px;
+    font-style: normal;
   }
-  
-  .film-meta .film-rating .total {
-    font-weight: 400;
+
+  .film-category {
+    margin-top: 3px;
+    margin-bottom: 25px;
+
+    a {
+      color: #757575;
+      letter-spacing: 1px;
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+    }
   }
-  
-  .video {
-    background: #161616 !important;
-  }
-  
-  .background-image {
-    background: #161616 url(http://demo.harutheme.com/circle/wp-content/uploads/2017/08/trailer-bg-6.jpg?id=1037) !important;
-  }
-  
-  .bg-card-style2 {
-    background: #161616 !important;
-  }
-  
-  .wrapper__top {
-    .wrapper__top__container {
-      .film-content {
-        background-color: #111;
-        .top-title {
-          position: relative;
-          font-size: 24px;
-          font-family: "Playfair Display";
-          color: #fff;
-          margin-left: 15px;
-          padding-left: 18px;
-          padding-top: 25px;
-          &:before {
-            content: "/";
-            color: #fd6500;
-            left: 0;
-            position: absolute;
-          }
+}
+
+.film-meta .film-title {
+  font-size: 18px;
+  margin-top: 5px;
+  padding: 0px 10px;
+  line-height: 1.8;
+}
+
+.film-meta .film-rating .point {
+  color: #fd6500;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.film-meta .film-rating .total {
+  font-weight: 400;
+}
+
+.video {
+  background: #161616 !important;
+}
+
+.background-image {
+  background: #161616 url('../../../../../assets/img/backgrounds/trailer-bg-6.jpg') !important;
+}
+
+.bg-card-style2 {
+  background: #161616 !important;
+}
+
+.wrapper__top {
+  .wrapper__top__container {
+    .film-content {
+      background-color: #111;
+
+      .top-title {
+        position: relative;
+        font-size: 24px;
+        font-family: "Playfair Display";
+        color: #fff;
+        margin-left: 15px;
+        padding-left: 18px;
+        padding-top: 25px;
+
+        &:before {
+          content: "/";
+          color: #fd6500;
+          left: 0;
+          position: absolute;
         }
-        .film-list {
-          list-style-type: none;
-          list-style: none;
-          margin-bottom: 0;
-          padding: 10px 0;
-          .film-item {
-            padding: 20px 25px;
-            border-bottom: 1px dashed #333;
-            .top-number {
-              background-color: #333;
-              color: #fff;
+      }
+
+      .film-list {
+        list-style-type: none;
+        list-style: none;
+        margin-bottom: 0;
+        padding: 10px 0;
+
+        .film-item {
+          padding: 20px 25px;
+          border-bottom: 1px dashed #333;
+
+          .top-number {
+            background-color: #333;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            display: inline-block;
+            float: left;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+          }
+
+          .item-content {
+            display: inline-block;
+            padding-left: 15px;
+            width: calc(100% - 45px);
+
+            .view-count {
               font-size: 15px;
-              font-weight: 500;
-              display: inline-block;
-              float: left;
-              width: 30px;
-              height: 30px;
-              line-height: 30px;
-              text-align: center;
-              -webkit-border-radius: 50%;
-              -moz-border-radius: 50%;
-              border-radius: 50%;
-            }
-            .item-content {
-              display: inline-block;
-              padding-left: 15px;
-              width: calc(100% - 45px);
-              .view-count {
-                font-size: 15px;
-                margin-top: 5px;
-                .icofont-eye-alt {
-                  color: #fd6500;
-                  margin-right: 6px; // &:before {
-                  //   content: "\&#xef21;";
-                  // }
-                }
+              margin-top: 5px;
+
+              .icofont-eye-alt {
+                color: #fd6500;
+                margin-right: 6px; // &:before {
+                //   content: "\&#xef21;";
+                // }
               }
             }
           }
@@ -138,160 +151,172 @@
       }
     }
   }
-  
+}
+
+.slide {
+  position: relative;
+
+  .info-img {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 20%;
+
+    .info-caption {
+      z-index: 5;
+      white-space: nowrap;
+      font-size: 3rem;
+      line-height: 48px;
+      font-weight: 700;
+      color: rgb(255, 255, 255);
+      letter-spacing: 0px;
+      font-family: "Playfair Display";
+      visibility: inherit;
+      transition: none 0s ease 0s;
+      text-align: inherit;
+      border-width: 0px;
+      margin: 0px;
+      padding: 0px;
+      min-height: 0px;
+      min-width: 0px;
+      max-height: none;
+      max-width: none;
+      opacity: 1;
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-origin: 50% 50% 0px;
+    }
+
+    .info-time {
+      z-index: 6;
+      white-space: nowrap;
+      font-size: 15px;
+      line-height: 15px;
+      font-weight: 400;
+      color: rgb(255, 255, 255);
+      letter-spacing: 0px;
+      font-family: "Nunito Sans";
+      visibility: inherit;
+      transition: none 0s ease 0s;
+      text-align: inherit;
+      border-width: 0px;
+      margin: 0px;
+      padding: 20px 0px 0 10px;
+      min-height: 0px;
+      min-width: 0px;
+      max-height: none;
+      max-width: none;
+      opacity: 1;
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-origin: 50% 50% 0px;
+    }
+
+    .info-btn {
+      z-index: 9;
+      white-space: nowrap;
+      font-size: 15px;
+      line-height: 15px;
+      font-weight: 700;
+      color: rgb(255, 255, 255);
+      font-family: "Nunito Sans";
+      background-color: rgb(253, 101, 0);
+      border-color: rgb(253, 101, 0);
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 30px;
+      outline: none;
+      box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
+      box-sizing: border-box;
+      cursor: pointer;
+      visibility: inherit;
+      transition: none 0s ease 0s;
+      text-align: inherit;
+      margin: 0px;
+      padding: 12px 35px;
+      letter-spacing: 0px;
+      min-height: 0px;
+      min-width: 0px;
+      max-height: none;
+      max-width: none;
+      opacity: 1;
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-origin: 50% 50% 0px;
+      margin-top: 25px;
+      max-width: 150px;
+      text-align: center;
+      float: left;
+    }
+
+    .info-detail {
+      z-index: 9;
+      white-space: nowrap;
+      font-size: 15px;
+      line-height: 15px;
+      font-weight: 700;
+      color: rgb(255, 255, 255);
+      font-family: "Nunito Sans";
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 30px;
+      outline: none;
+      box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
+      box-sizing: border-box;
+      cursor: pointer;
+      visibility: inherit;
+      transition: none 0s ease 0s;
+      text-align: inherit;
+      margin: 0 0 0 10px;
+      padding: 12px 35px;
+      letter-spacing: 0px;
+      min-height: 0px;
+      min-width: 0px;
+      max-height: none;
+      max-width: none;
+      opacity: 1;
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-origin: 50% 50% 0px;
+      margin-top: 25px;
+      max-width: 150px;
+      text-align: center;
+      float: left;
+    }
+  }
+}
+
+.slick-slide img {
+  min-height: 400px;
+}
+
+@media screen and (max-width: 839px) {
   .slide {
-    position: relative;
     .info-img {
-      position: absolute;
-      display: block;
-      top: 50%;
-      left: 20%;
       .info-caption {
-        z-index: 5;
-        white-space: nowrap;
-        font-size: 3rem;
-        line-height: 48px;
-        font-weight: 700;
-        color: rgb(255, 255, 255);
-        letter-spacing: 0px;
-        font-family: "Playfair Display";
-        visibility: inherit;
-        transition: none 0s ease 0s;
-        text-align: inherit;
-        border-width: 0px;
-        margin: 0px;
-        padding: 0px;
-        min-height: 0px;
-        min-width: 0px;
-        max-height: none;
-        max-width: none;
-        opacity: 1;
-        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-        transform-origin: 50% 50% 0px;
-      }
-      .info-time {
-        z-index: 6;
-        white-space: nowrap;
-        font-size: 15px;
-        line-height: 15px;
-        font-weight: 400;
-        color: rgb(255, 255, 255);
-        letter-spacing: 0px;
-        font-family: "Nunito Sans";
-        visibility: inherit;
-        transition: none 0s ease 0s;
-        text-align: inherit;
-        border-width: 0px;
-        margin: 0px;
-        padding: 20px 0px 0 10px;
-        min-height: 0px;
-        min-width: 0px;
-        max-height: none;
-        max-width: none;
-        opacity: 1;
-        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-        transform-origin: 50% 50% 0px;
-      }
-      .info-btn {
-        z-index: 9;
-        white-space: nowrap;
-        font-size: 15px;
-        line-height: 15px;
-        font-weight: 700;
-        color: rgb(255, 255, 255);
-        font-family: "Nunito Sans";
-        background-color: rgb(253, 101, 0);
-        border-color: rgb(253, 101, 0);
-        border-style: solid;
-        border-width: 2px;
-        border-radius: 30px;
-        outline: none;
-        box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
-        box-sizing: border-box;
-        cursor: pointer;
-        visibility: inherit;
-        transition: none 0s ease 0s;
-        text-align: inherit;
-        margin: 0px;
-        padding: 12px 35px;
-        letter-spacing: 0px;
-        min-height: 0px;
-        min-width: 0px;
-        max-height: none;
-        max-width: none;
-        opacity: 1;
-        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-        transform-origin: 50% 50% 0px;
-        margin-top: 25px;
-        max-width: 150px;
-        text-align: center;
-        float: left;
-      }
-      .info-detail {
-        z-index: 9;
-        white-space: nowrap;
-        font-size: 15px;
-        line-height: 15px;
-        font-weight: 700;
-        color: rgb(255, 255, 255);
-        font-family: "Nunito Sans";
-        border-style: solid;
-        border-width: 2px;
-        border-radius: 30px;
-        outline: none;
-        box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
-        box-sizing: border-box;
-        cursor: pointer;
-        visibility: inherit;
-        transition: none 0s ease 0s;
-        text-align: inherit;
-        margin: 0 0 0 10px;
-        padding: 12px 35px;
-        letter-spacing: 0px;
-        min-height: 0px;
-        min-width: 0px;
-        max-height: none;
-        max-width: none;
-        opacity: 1;
-        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-        transform-origin: 50% 50% 0px;
-        margin-top: 25px;
-        max-width: 150px;
-        text-align: center;
-        float: left;
+        font-size: 36px;
       }
     }
   }
-  
-  .slick-slide img {
-    min-height: 400px;
-  }
-  
-  @media screen and (max-width: 839px) {
-    .slide {
-      .info-img {
-        .info-caption {
-          font-size: 36px;
-        }
+}
+
+@media screen and (max-width: 479px) {
+  .slide {
+    .info-img {
+      .info-caption {
+        font-size: 24px;
       }
     }
   }
-  
-  @media screen and (max-width: 479px) {
-    .slide {
-      .info-img {
-        .info-caption {
-          font-size: 24px;
-        }
-      }
-    }
-  }
-  
-  .bg-slide {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    max-height: 600px;
-    height: 100%;
-  }
-  
+}
+
+.bg-slide {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  max-height: 600px;
+  height: 100%;
+}
+.card-img-top {
+  max-height: 350px;
+}
+.card-imgae-playing {
+  max-height: 260px; 
+  width: 100%;
+}

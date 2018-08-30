@@ -73,8 +73,9 @@ img {
 
 .img-responsive {
   display: block;
+  width: 100%;
   max-width: 100%;
-  height: auto;
+  height: 100%;
   cursor: pointer;
 }
 
@@ -979,6 +980,7 @@ a:focus {
   }
   .transformers-right {
     font-size: 1rem;
+    overflow: hidden;
   }
   ul {
     li {

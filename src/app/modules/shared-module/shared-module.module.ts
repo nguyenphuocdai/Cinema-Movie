@@ -8,6 +8,7 @@ import { LoadingModule } from 'ngx-loading';
 import { NgxDeleteConfirmModule } from '../../shared/components/comfirm-delete/ngx-delete-confirm.module';
 import { CKEditorModule } from '../../shared/components/ckeditor/ckeditor.module';
 import { AngularDateTimePickerModule } from '../home/components/datetime-picker';
+import { LazyLoadImagesModule } from '../../shared/components/lazyload-image/ngx-lazy-load-images.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +17,7 @@ import { AngularDateTimePickerModule } from '../home/components/datetime-picker'
     NgxDeleteConfirmModule.forRoot(),
     CKEditorModule,
     AngularDateTimePickerModule,
+    LazyLoadImagesModule
   ],
   declarations: [
     DialogComponent,
@@ -31,6 +33,7 @@ import { AngularDateTimePickerModule } from '../home/components/datetime-picker'
     NgxDeleteConfirmModule,
     CKEditorModule,
     AngularDateTimePickerModule,
+    LazyLoadImagesModule
   ]
 })
 export class SharedModuleModule { }

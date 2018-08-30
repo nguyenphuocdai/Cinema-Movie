@@ -1,25 +1,8 @@
 <section class="hero-area" id="home">
   <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
-    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-      <img class="bg-slide" src="{{ slide.img }}" alt="" width="100%">
-      <!-- <div class="bg-slide" [ngStyle]="{'background-image': 'url(' + slide.img + ')'}">aaaa</div> -->
-      <!-- <div class="img-cover" [ngStyle]="{'background-image': 'url(' + slide.img + ')'}"></div> -->
+    <div ngxSlickItem *ngFor="let slide of slides" class="slide" lazy-load-images>
+      <img class="bg-slide" [attr.data-src]="slide.img" alt="" width="100%">
       <div class="clearfix"></div>
-      <!-- <div class="info-img">
-        <div class="info-caption">Wolf Warriors II (2017)</div>
-        <div class="info-time">
-          <span>20 Aug, 2018</span>
-          <span>02 hours 50 mins</span>
-          <span>Last Christmas</span>
-        </div>
-        <div class="info-btn">
-          Xem giới thiệu
-        </div>
-
-        <div class="info-detail">
-          Xem chi tiết
-        </div>
-      </div> -->
     </div>
   </ngx-slick>
 </section>
@@ -38,10 +21,10 @@
     <hr />
     <div class="row c-padding-t10">
       <div class="owl-carousel owl-theme">
-        <div class="col-md-12 item">
+        <div class="col-md-12 item" *ngFor="let intro of introMovie">
           <div class="card video-area">
-            <div class="relative">
-              <img class="card-img-top" src="../../../../../assets/img/backgrounds/leaf.jpg" alt="Card image cap">
+            <div class="relative" lazy-load-images>
+              <img class="card-img-top" [attr.data-src]="intro.url" alt="Card image cap">
               <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
                 <i class="icofont icofont-ui-play"></i>
               </a>
@@ -49,127 +32,22 @@
             <div class="card-body">
               <div class="film-meta">
                 <div class="film-rating">
-                  <span class="point">9.7</span>
-                  <span class="total">/ 10</span>
+                  <span class="point">{{intro.IMB}}</span>
+                  <span class="total">/ {{intro.total}}</span>
                 </div>
                 <h3 class="film-title">
-                  <a href="javascript:void(0)">Leaf</a>
+                  <a href="javascript:void(0)">{{intro.actor}}</a>
                 </h3>
                 <div class="film-category">
-                  <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
+                  <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">{{intro.cate}}</a>
                   /
-                  <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 item">
-          <div class="card video-area">
-            <div class="relative">
-              <img class="card-img-top" src="../../../../../assets/img/backgrounds/wynonna.jpg" alt="Card image cap">
-              <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
-                <i class="icofont icofont-ui-play"></i>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="film-meta">
-                <div class="film-rating">
-                  <span class="point">8.7</span>
-                  <span class="total">/ 10</span>
-                </div>
-                <h3 class="film-title">
-                  <a href="javascript:void(0)">Last Christmas</a>
-                </h3>
-                <div class="film-category">
-                  <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
-                  /
-                  <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 item">
-          <div class="card video-area">
-            <div class="relative">
-              <img class="card-img-top" src="../../../../../assets/img/backgrounds/war-is-coming.jpg" alt="Card image cap">
-              <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
-                <i class="icofont icofont-ui-play"></i>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="film-meta">
-                <div class="film-rating">
-                  <span class="point">7.7</span>
-                  <span class="total">/ 10</span>
-                </div>
-                <h3 class="film-title">
-                  <a href="javascript:void(0)">War Is Coming</a>
-                </h3>
-                <div class="film-category">
-                  <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
-                  /
-                  <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 item">
-          <div class="card video-area">
-            <div class="relative">
-              <img class="card-img-top" src="../../../../../assets/img/backgrounds/drive-angry.jpg" alt="Card image cap">
-              <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
-                <i class="icofont icofont-ui-play"></i>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="film-meta">
-                <div class="film-rating">
-                  <span class="point">8.7</span>
-                  <span class="total">/ 10</span>
-                </div>
-                <h3 class="film-title">
-                  <a href="javascript:void(0)">Drive Angry</a>
-                </h3>
-                <div class="film-category">
-                  <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
-                  /
-                  <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 item">
-          <div class="card video-area">
-            <div class="relative">
-              <img class="card-img-top" src="../../../../../assets/img/backgrounds/red-sonja.jpg" alt="Card image cap">
-              <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
-                <i class="icofont icofont-ui-play"></i>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="film-meta">
-                <div class="film-rating">
-                  <span class="point">8.4</span>
-                  <span class="total">/ 10</span>
-                </div>
-                <h3 class="film-title">
-                  <a href="javascript:void(0)">Red Sonja</a>
-                </h3>
-                <div class="film-category">
-                  <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">Comedy</a>
-                  /
-                  <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">Drama</a>
+                  <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">{{intro.actor}}</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -189,8 +67,8 @@
         <div class="row">
           <div class="col-md-3" *ngFor="let item of listMovie | slice:0:7; ">
             <div class="card video-area">
-              <div class="relative">
-                <img class="card-img-top" src="{{item.HinhAnh}}" alt="Card image cap">
+              <div class="relative" lazy-load-images>
+                <img class="card-imgae-playing" [attr.data-src]="item.HinhAnh" alt="Card image cap">
                 <a href="{{item.Trailer}}" target="_blank" class="popup-youtube">
                   <i class="icofont icofont-ui-play"></i>
                 </a>
@@ -202,7 +80,8 @@
                     <span class="total">/ 10</span>
                   </div>
                   <h3 class="film-title">
-                    <a href="javascript:void(0)" [routerLink]="['/home-page/movie-details',item.MaPhim]" routerLinkActive="active">{{item.TenPhim}}</a>
+                    <a href="javascript:void(0)" [routerLink]="['/home-page/movie-details',item.MaPhim]"
+                      routerLinkActive="active">{{item.TenPhim}}</a>
                   </h3>
                   <div class="film-category">
                     <a href="#" rel="tag">Comedy</a>
@@ -223,7 +102,7 @@
                 <div class="film-content video-area">
                   <h3 class="top-title">Xem nhiều nhất</h3>
                   <ul class="film-list">
-                    <li class="film-item" *ngFor="let item of listMovie; let i = index">
+                    <li class="film-item" *ngFor="let item of listMovie | slice: 0:7; let i = index">
                       <div class="top-number">0{{i + 1}}</div>
                       <div class="item-content">
                         <a href="http://demo.harutheme.com/circle/film/harutheme-introduction/">{{item.TenPhim}}</a>
@@ -293,13 +172,13 @@
             </div>
           </div>
           <div class="col-md-12 col-sm-6">
-              <div class="video-area">
-                <img src="../../../../../assets/img/backgrounds/trailer-beauty-and-monster.jpg" alt="video" />
-                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                  <i class="icofont icofont-ui-play"></i>
-                </a>
-              </div>
+            <div class="video-area">
+              <img src="../../../../../assets/img/backgrounds/trailer-beauty-and-monster.jpg" alt="video" />
+              <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                <i class="icofont icofont-ui-play"></i>
+              </a>
             </div>
+          </div>
         </div>
       </div>
     </div>
@@ -329,7 +208,8 @@
         </div>
         <div class="news-content">
           <h2>The Witch Queen</h2>
-          <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and teal eyes.</p>
+          <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and
+            teal eyes.</p>
         </div>
         <a href="#">Read More</a>
       </div>
@@ -342,7 +222,8 @@
         </div>
         <div class="news-content">
           <h2>The Witch Queen</h2>
-          <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and teal eyes.</p>
+          <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and
+            teal eyes.</p>
         </div>
         <a href="#">Read More</a>
       </div>
@@ -355,7 +236,8 @@
         </div>
         <div class="news-content">
           <h2>The Witch Queen</h2>
-          <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and teal eyes.</p>
+          <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and
+            teal eyes.</p>
         </div>
         <a href="#">Read More</a>
       </div>
@@ -371,7 +253,8 @@
           </div>
           <div class="news-content">
             <h2>The Witch Queen</h2>
-            <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and teal
+            <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and
+              teal
               eyes.
             </p>
           </div>
@@ -383,7 +266,8 @@
           <div class="news-bg-2"></div>
           <div class="news-content">
             <h2>The Witch Queen</h2>
-            <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and teal
+            <p>Witch Queen is a tall woman with a slim build. She has pink hair, which is pulled up under her hat, and
+              teal
               eyes.
             </p>
           </div>

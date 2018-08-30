@@ -25,32 +25,16 @@
       </div>
 
       <div class="row" style="min-height: 500px">
-        <carousel-component class="animated slideInRight wow" [mode]="'horizontal'" [morePairSlides]="moreSlides" [angle]="degree"
-          [autoPlay]="false" [delayAutoPlay]="delayAutoPlay" #topCarousel>
-          <div class="item-carousel" *ngFor="let item of listMovie">
-            <img [src]="item.HinhAnh" (click)="onSelect(item)" onError="this.src='../../../../../assets/img/movie/movie-sample6.jpg';"
+        <carousel-component class="animated slideInRight wow" [mode]="'horizontal'" [morePairSlides]="moreSlides"
+          [angle]="degree" [autoPlay]="false" [delayAutoPlay]="delayAutoPlay" #topCarousel>
+          <div class="item-carousel" *ngFor="let item of listMovie" lazy-load-images>
+            <img [attr.data-src]="item.HinhAnh" (click)="onSelect(item)" onError="this.src='../../../../../assets/img/movie/movie-sample6.jpg';"
               class="img-responsive" width="100%" />
+            <div class="c-name-moive">{{item.TenPhim}}</div>
           </div>
-          <!-- <div class="item-carousel">
-            <img src="../../../../../assets/img/movie/movie-sample9.jpg" class="img-responsive" />
-          </div>
-          <div class="item-carousel">
-            <img src="../../../../../assets/img/movie/movie-sample2.jpg" class="img-responsive" />
-          </div>
-          <div class="item-carousel">
-            <img src="../../../../../assets/img/movie/movie-sample3.jpg" class="img-responsive" />
-          </div>
-          <div class="item-carousel">
-            <img src="../../../../../assets/img/movie/movie-sample4.jpg" class="img-responsive" />
-          </div>
-          <div class="item-carousel">
-            <img src="../../../../../assets/img/movie/movie-sample5.jpg" class="img-responsive" />
-          </div>
-          <div class="item-carousel">
-            <img src="../../../../../assets/img/movie/movie-sample6.jpg" class="img-responsive" />
-          </div> -->
           <div class="item-carousel">
             <img src="../../../../../assets/img/movie/movie-sample7.jpg" class="img-responsive" />
+            <div class="c-name-moive">Sample-Test</div>
           </div>
         </carousel-component>
       </div>
@@ -121,8 +105,10 @@
         <div class="col-md-3 c-no-padding animated slideInRight wow">
           <div class="form-group">
             <label for="MaLichChieu">Chọn lịch chiếu</label>
-            <select class="form-control animated slideInRight wow" id="MaLichChieu" [(ngModel)]="selectedShowTime" (change)="getShowTime(selectedShowTime.MaLichChieu)">
-              <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index">{{obj.NgayChieuGioChieu | date:"dd-MM-yyyy" }}</option>
+            <select class="form-control animated slideInRight wow" id="MaLichChieu" [(ngModel)]="selectedShowTime"
+              (change)="getShowTime(selectedShowTime.MaLichChieu)">
+              <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index">{{obj.NgayChieuGioChieu
+                | date:"dd-MM-yyyy" }}</option>
             </select>
           </div>
           <!-- <div class="form-group container-time">
@@ -180,7 +166,8 @@
         </div>
         <div class="pt30 c-ticket-w100">
           <div class="order">
-            <a href="javascript:void(0)" (click)="ShowBookChair()" class="btn btn-md btn--warning btn--wide c-btn-theme--f__right" style="display: flex;
+            <a href="javascript:void(0)" (click)="ShowBookChair()" class="btn btn-md btn--warning btn--wide c-btn-theme--f__right"
+              style="display: flex;
   align-items: center;">
               <i class="icofont icofont-chair"></i> &nbsp;Tiến hành đặt ghế
               <div class="loader" *ngIf="isShowLoading"></div>

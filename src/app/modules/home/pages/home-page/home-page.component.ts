@@ -6,6 +6,8 @@ import { trigger, state, style, transition, animate } from '../../../../../../no
 import { WOW } from 'wowjs/dist/wow.min';
 
 declare var $: any;
+declare var require: any;
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -33,32 +35,33 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   listMovie: ListMovie;
   slides: { img: string; }[];
 
+  introMovie = [
+    { id: 1, url: require('../../../../../assets/img/backgrounds/leaf.jpg'), cate: "Comedy", actor: "Drama", IMB: "9.7", total: "10" },
+    { id: 2, url: require('../../../../../assets/img/backgrounds/wynonna.jpg'), cate: "Toham", actor: "Damma", IMB: "8.7", total: "10" },
+    { id: 3, url: require('../../../../../assets/img/backgrounds/war-is-coming.jpg'), cate: "Doham", actor: "LaiHam", IMB: "8.6", total: "10" },
+    { id: 4, url: require('../../../../../assets/img/backgrounds/drive-angry.jpg'), cate: "NmHam", actor: "Break", IMB: "9.1", total: "10" },
+    { id: 5, url: require('../../../../../assets/img/backgrounds/red-sonja.jpg'), cate: "Comedy", actor: "Point", IMB: "9.2", total: "10" },
+    { id: 6, url: require('../../../../../assets/img/backgrounds/movie-time11.jpg'), cate: "Comeon", actor: "Continue", IMB: "9.5", total: "10" },
+  ]
+
   constructor(
     private scriptService: ScriptService,
     private movieService: MovieService,
     public el: ElementRef
   ) {
     window.scrollTo(0, 0);
-    // this.scriptService.loadScript('../../../../../assets/js/main.js').subscribe(() => {
-    // }, (error) => {
-    //   console.log('Failed to load script main js');
-    // });
   }
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
     const componentPosition = this.el.nativeElement.offsetTop;
     const scrollPosition = window.pageYOffset;
-
     if (scrollPosition >= componentPosition) {
       this.state = 'show';
     } else {
       this.state = 'hide';
     }
-    // this.galleryOne.initSlick(this.slideConfig);
   }
-  // tslint:disable-next-line:member-ordering
   slideConfig = {
-    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -89,24 +92,18 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         }
       );
   }
-  addSlide() {
-    this.slides.push({ img: 'http://placehold.it/350x150/777777' });
-  }
-
-  removeSlide() {
-    this.slides.length = this.slides.length - 1;
-  }
-
+  // slide banner
   afterChange(e) {
-    console.log('afterChange');
+    // console.log('afterChange');
   }
 
   ngAfterViewInit(): void {
     $('.owl-carousel').owlCarousel({
       items: 4,
       lazyLoad: true,
-      loop: true,
+      loop: false,
       margin: 10,
+      autoplay: true,
       responsive: {
         0: {
           items: 1
