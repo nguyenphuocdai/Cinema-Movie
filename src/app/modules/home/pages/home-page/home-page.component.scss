@@ -1,6 +1,5 @@
 .hero-area {
   background-image: none !important;
-  max-height: 600px;
   height: 100%;
 }
 
@@ -309,8 +308,7 @@
 .bg-slide {
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
-  max-height: 600px;
+  max-height: 700px;
   height: 100%;
 }
 .card-img-top {
@@ -320,3 +318,13 @@
   max-height: 260px; 
   width: 100%;
 }
+.slick-prev{
+  left: 0
+}
+.slick-next{
+  right: 25px;
+}
+// .slick-prev:before, .slick-next:before {
+//   font-size: 32px;
+//   color: grey;
+// }

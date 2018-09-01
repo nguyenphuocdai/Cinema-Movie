@@ -64,10 +64,15 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   slideConfig = {
     infinite: true,
     speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
     slidesToShow: 1,
     adaptiveHeight: false,
     autoplay: true,
-    autoplaySpeed: 5000
+    autoplaySpeed: 4000,
+    loop: true,
+    lazyLoad: 'ondemand',
   };
 
   ngOnInit() {
