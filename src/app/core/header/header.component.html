@@ -92,7 +92,7 @@
   <div class="main-header header-menu-bg">
     <nav class="navbar navbar-expand-sm py-4 header-bg">
       <div class="container">
-        <a class="navbar-brand">
+        <a class="navbar-brand" routerLink="/home-page" routerLinkActive="active">
           <img class="img-fluid" src="../../../assets/img/backgrounds/MIN-OP1.png">
         </a>
         <form class="navbar-left navbar-form nav-search mr-md-3 hidden-area" action="">
@@ -179,7 +179,7 @@
               Liên hệ
             </a>
           </li>
-          <li class="nav-item dropdown hidden-caret" *ngIf="!isLogined">
+          <li class="nav-item dropdown hidden-caret hide-user" *ngIf="!isLogined">
             <a class="nav-link dropdown-toggle" href="javascript:void(0)" aria-haspopup="true" aria-expanded="false"
               routerLink="/home-page/login" routerLinkActive="active">
               Đăng nhập
@@ -211,13 +211,13 @@
           </li>
 
         </ul>
-        <ul *ngIf="!isLogined" class="hidden-area">
+        <ul *ngIf="!isLogined" class="hidden-area c-padding-r25">
           <li>
             <a class="login-popup" routerLink="/home-page/login" routerLinkActive="active">ĐĂNG KÝ / ĐĂNG NHẬP</a>
           </li>
         </ul>
 
-        <ul *ngIf="isLogined" class="hidden-area">
+        <ul *ngIf="isLogined" class="hidden-area c-padding-r25">
           <li>
             <div class="dropdown show">
               <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"

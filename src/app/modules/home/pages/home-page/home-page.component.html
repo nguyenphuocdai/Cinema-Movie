@@ -63,9 +63,9 @@
     </div>
     <hr />
     <div class="row">
-      <div class="col-md-9 animated slideInUp wow">
+      <div class="col-md-12 col-lg-9 animated slideInUp wow">
         <div class="row">
-          <div class="col-md-3" *ngFor="let item of listMovie | slice:0:7; ">
+          <div class="col-md-6 col-lg-3" *ngFor="let item of listMovie | slice:0:7; ">
             <div class="card video-area">
               <div class="relative" lazy-load-images>
                 <img class="card-imgae-playing" [attr.data-src]="item.HinhAnh" alt="Card image cap">
@@ -94,9 +94,9 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 animated slideInRight wow">
+      <div class="col-md-12 col-lg-3 animated slideInRight wow">
         <div class="row">
-          <div class="col-md-12 col-sm-6">
+          <div class="col-md-12 col-sm-12">
             <div class="wrapper__top">
               <div class="wrapper__top__container">
                 <div class="film-content video-area">
