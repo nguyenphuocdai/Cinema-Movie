@@ -14,13 +14,34 @@ const appRoutes: Routes = [
     {
         path: 'home-page',
         children: [
-            { path: '', component: HomePageComponent },
-            { path: 'login', component: LoginComponent },
-            { path: 'ticket', component: BookTicketComponent },
-            { path: 'user-info', component: UserInfoComponent },
-            { path: 'change-password', component: ChangePasswordComponent },
-            { path: 'success', component: SuccessTicketComponent },
-            { path: 'movie-details/:id', component: MovieDetailComponent },
+            {
+                path: '', component: HomePageComponent,
+                data: { title: "Trang chủ" }
+            },
+            {
+                path: 'login', component: LoginComponent,
+                data: { title: "Đăng nhập / Đăng ký" }
+            },
+            {
+                path: 'ticket', component: BookTicketComponent,
+                data: { title: "Đặt vé" }
+            },
+            {
+                path: 'user-info', component: UserInfoComponent,
+                data: { title: "Thông tin người dùng" }
+            },
+            {
+                path: 'change-password', component: ChangePasswordComponent,
+                data: { title: "Đổi mật khẩu" }
+            },
+            {
+                path: 'success', component: SuccessTicketComponent,
+                data: { title: "Đặt vé thành công" }
+            },
+            {
+                path: 'movie-details/:id', component: MovieDetailComponent,
+                data: { title: "Chi tiết phim" }
+            },
             { path: 'test', component: UATFeatureComponent },
             { path: '*', redirectTo: '/home-page', pathMatch: 'full' },
             { path: '**', component: HomePageComponent },

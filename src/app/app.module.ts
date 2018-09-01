@@ -22,6 +22,7 @@ import { MovieService } from './shared/services/movie.service';
 import { HttpModule } from '@angular/http';
 import { AdminModule } from './modules/admin-theater/admin.module';
 import { UserService } from './shared/services/user.service';
+import { TitleService } from './shared/services/title.service';
 
 const zaloConfigs = {
   version: environment.zaloConfigs.version,
@@ -59,7 +60,8 @@ const zaloConfigs = {
       multi: true
     },
     MovieService,
-    UserService
+    UserService,
+    TitleService
   ],
   exports: [
     NgxZaloModule

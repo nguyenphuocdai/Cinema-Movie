@@ -2,6 +2,7 @@ import { Component, NgZone, AfterViewInit, ElementRef, OnInit, AfterViewChecked 
 import { style, query, group, animate, trigger, transition } from '@angular/animations';
 import { ScriptService } from '../../node_modules/ngx-script-loader';
 import { AuthGuardService } from './shared/services/auth.service';
+import { TitleService } from './shared/services/title.service';
 
 const slideLeft = [
   query(':leave', style({ position: 'absolute', left: 0, right: 0, transform: 'translate3d(0%,0,0)' }), { optional: true }),
@@ -60,7 +61,8 @@ export class AppComponent implements OnInit, AfterViewChecked {
   constructor(
     private scriptService: ScriptService,
     public ngZone: NgZone,
-    private _authGuardService: AuthGuardService
+    private _authGuardService: AuthGuardService,
+    private _titleService : TitleService
   ) {
 
   }
@@ -69,6 +71,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
     }, (error) => {
       console.log('Failed to load script subiz');
     });
+    this._titleService.init();
   }
   ngAfterViewChecked() {
     this._authGuardService.getHeaderFlag().subscribe((flag) => {

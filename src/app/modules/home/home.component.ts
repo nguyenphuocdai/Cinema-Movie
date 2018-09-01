@@ -1,6 +1,4 @@
 import { Component, OnInit, AfterViewInit, HostListener, ElementRef } from '@angular/core';
-import { ScriptService } from 'ngx-script-loader';
-import { WOW } from 'wowjs/dist/wow.min';
 
 declare var $: any;
 @Component({
@@ -13,7 +11,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   constructor(
-
   ) {
 
   }
@@ -21,7 +18,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
-
+    
   }
 
 
