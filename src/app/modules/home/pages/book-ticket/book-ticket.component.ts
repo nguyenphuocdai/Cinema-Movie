@@ -29,6 +29,7 @@ export class BookTicketComponent implements OnInit, AfterViewInit {
   isShowBookChair: Boolean = false;
   listMovie: ListMovie;
   selectedMovie: ListMovie;
+  selectedCombo: any;
   selectedTime: String;
   selectedDateTime: String;
   selectedShowTime;
@@ -40,6 +41,15 @@ export class BookTicketComponent implements OnInit, AfterViewInit {
   public degree = 25;
   public moreSlides = 3;
   public delayAutoPlay = 5000;
+
+  combo = [
+    { id: 1, url: '../../../../../assets/img/combo/cb1.png', name: 'The Predator Combo' },
+    { id: 2, url: '../../../../../assets/img/combo/cb2.png', name: 'Pineapple Combo' },
+    { id: 3, url: '../../../../../assets/img/combo/cb3.png', name: 'CGV Combo' },
+    { id: 4, url: '../../../../../assets/img/combo/cb4.png', name: 'My Combo' },
+    { id: 5, url: '../../../../../assets/img/combo/cb5.png', name: 'Hotdog' },
+    { id: 6, url: '../../../../../assets/img/combo/cb6.png', name: 'Trà Sữa' }
+  ]
 
   toggle() {
     this.topCarousel.toggleMode();
@@ -110,6 +120,10 @@ export class BookTicketComponent implements OnInit, AfterViewInit {
         }
       );
   }
+  onSelectCombo(combo: any): void {
+    this.selectedCombo = combo;
+  }
+
   onSelect(movie: ListMovie): void {
     this.selectedMovie = movie;
     setTimeout(this.getDetailMovie(this.selectedMovie.MaPhim), 1000);
