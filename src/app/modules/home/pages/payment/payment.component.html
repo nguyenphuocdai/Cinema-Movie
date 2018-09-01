@@ -41,7 +41,9 @@
       </div>
 
     </div>
-
+    <div class="row">
+      <p *ngIf="hasError" style="color:red"> Có lỗi xảy ra vui lòng thử lại sau !</p>
+    </div>
     <div class="order row-flex">
       <a href="javascript:void(0)" (click)="putTicket()" class="btn btn-md btn--warning btn--wide">Đặt vé</a>
       <div class="loader" *ngIf="isSubmitted"></div>

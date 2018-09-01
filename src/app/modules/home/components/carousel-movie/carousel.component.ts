@@ -45,7 +45,7 @@ import { Carousel } from "./Carousel";
         :host .container .carousel ::content >>> .item-carousel {
             display: block;
             position: absolute;
-            border:1px solid black;
+            border:2px solid #eee;
             width: 100%;
             height: 100%;
             text-align: center;

@@ -5,6 +5,8 @@ import { CacheService } from '../../../../shared/services/cache.service';
 import { FormGroup, FormControl, Validators } from '../../../../../../node_modules/@angular/forms';
 import { Router } from '../../../../../../node_modules/@angular/router';
 import { WOW } from 'wowjs/dist/wow.min';
+import { SimpleCrypt } from 'ngx-simple-crypt';
+import { LocalKey } from '../../../../app.config';
 
 @Component({
   selector: 'app-payment',
@@ -38,12 +40,16 @@ export class PaymentComponent implements OnInit, AfterViewInit {
     TaiKhoanNguoiDung: string;
     DanhSachVe: { MaGhe: number, GiaVe: number }[]
   };
+  hasError: Boolean = false;
+  userLogin: any;
   showDialog: Boolean = false;
   isLogined: Boolean = false;
   isShowLoadingLogin: Boolean = false;
   isSubmitted: Boolean = false;
   currentUser: any;
-
+  listUserGP07: any;
+  passwordDecode: any;
+  passwordNormal: string;
   constructor(
     private _userService: UserService,
     private _cacheService: CacheService,
@@ -51,8 +57,6 @@ export class PaymentComponent implements OnInit, AfterViewInit {
   ) {
 
   }
-
-
 
   ngOnInit() {
     this.CreateValidatorLoginForm();
@@ -104,23 +108,48 @@ export class PaymentComponent implements OnInit, AfterViewInit {
     this.usernameLogin = new FormControl('', [Validators.required]);
     this.passwordLogin = new FormControl('', [Validators.required]);
   }
-
+  getAllUserGP07() {
+    this._userService.getUserGP07().subscribe((result) => { this.listUserGP07 = result; console.log(this.listUserGP07); });
+  }
   loginNormal() {
-
+    const simpleCrypt = new SimpleCrypt();
+    this.userLogin = this.listUserGP07.find(e => e.TaiKhoan === this.usernameLogin.value);
     this.isShowLoadingLogin = true;
-    this._userService.loginUser(this.usernameLogin.value, this.passwordLogin.value)
-      .subscribe(
-        (result) => {
-          this._userService.displayNameUser(result.HoTen);
-          this._cacheService.set('CurrentUser', result);
-          this.showDialog = false;
-        },
-        (error) => {
-          console.log(error);
+    if (this.userLogin) {
+      if (this.userLogin.SSID) {
+        this.passwordDecode = simpleCrypt.decode(LocalKey.keyCryto, this.userLogin.SSID);
+      }
+      if (this.passwordDecode) {
+        this.passwordNormal = this.userLogin.MatKhau;
+      } else {
+        if (this.passwordLogin.value === this.userLogin.MatKhau) {
+          this.passwordNormal = this.passwordLogin.value;
+        } else {
+          this.hasError = true;
+          this.isShowLoadingLogin = false;
+          return;
         }
-      );
+      }
+      this._userService.loginUser(this.usernameLogin.value, this.passwordNormal)
+        .subscribe(
+          (result) => {
+            this._userService.displayNameUser(result.HoTen);
+            this._userService.saveSecretKey(result.SecretKey);
+            this._cacheService.set('CurrentUser', result);
+            this.showDialog = false;
+          },
+          (error) => {
+            this.hasError = true;
+            this.isShowLoadingLogin = false;
+          }
+        );
+    } else {
+      this.hasError = true;
+      this.isShowLoadingLogin = false;
+    }
   }
   ngAfterViewInit() {
     new WOW().init();
+    this.getAllUserGP07();
   }
 }

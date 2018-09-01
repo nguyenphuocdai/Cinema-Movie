@@ -3,6 +3,9 @@ import { trigger, transition, animate, style, query, group } from '../../../../.
 import { UserService } from '../../../../shared/services/user.service';
 import { DTO } from '../../../../shared/models/sitDTO.model';
 import { WOW } from 'wowjs/dist/wow.min';
+import { ListMovie } from '../../../../shared/models/list-movie.model';
+import { CacheService } from '../../../../shared/services/cache.service';
+import { UserNormal } from '../../../../shared/models/user-normal.model';
 
 @Component({
   selector: 'app-book-chair',
@@ -26,10 +29,12 @@ import { WOW } from 'wowjs/dist/wow.min';
 export class BookChairComponent implements OnInit, AfterViewInit {
   @Input() Time: String = '';
   @Input() MaLichChieu: number;
-  // tslint:disable-next-line:no-output-rename
+  @Input() selectedMovie: ListMovie;
+  @Input() selectedCombo: any;
+  @Input() selectedShowTime: any;
   @Output('comeback') change = new EventEmitter<boolean>();
   isShowPayment: Boolean = false;
-  Sits: DTO;
+  Sits: any;
   SitAtPositionE: any;
   SitAtPositionF: any;
   SitAtPositionG: any;
@@ -37,16 +42,19 @@ export class BookChairComponent implements OnInit, AfterViewInit {
   selectedSit: String;
   selectedArray: Array<String> = [];
   TotalTicket: Array<{ MaGhe: string, GiaVe: string }> = [];
-  // tslint:disable-next-line:no-inferrable-types
   selectedCount: number = 1;
   totalCount = 0;
   count = 0;
   isShowLoading: boolean;
+  currentUser: UserNormal;
   constructor(
     private elem: ElementRef,
-    private _userService: UserService
+    private _userService: UserService,
+    private _cacheService: CacheService
   ) {
-
+    if (this._cacheService.get('CurrentUser') !== null) {
+      this.currentUser = this._cacheService.get('CurrentUser');
+    }
   }
 
   ngOnInit() {
@@ -58,14 +66,34 @@ export class BookChairComponent implements OnInit, AfterViewInit {
           this.SitAtPositionF = this.Sits.DanhSachGhe.slice(18, 36);
           this.SitAtPositionG = this.Sits.DanhSachGhe.slice(36, 50);
           this.SitAtPositionI = this.Sits.DanhSachGhe.slice(50, 64);
-          console.log(this.SitAtPositionE);
-          console.log(this.SitAtPositionF);
-          console.log(this.SitAtPositionG);
-          console.log(this.SitAtPositionI);
-          console.log(this.Sits);
+          setTimeout(
+            () => {
+              if (this.currentUser != null) {
+                this._userService.getHistoryUserTicket(this.currentUser.TaiKhoan)
+                  .subscribe((result) => {
+                    this.Sits.DanhSachGhe.forEach(element => {
+                      result.DanhSachVeDaDat.forEach(item => {
+                        if (item.MaGhe === element.MaGhe) {
+                          //disabled sits choosed
+                          let elements = this.elem.nativeElement.querySelectorAll('.sits__place');
+                          elements.forEach(ele => {
+                            if (item.MaGhe == ele.getAttribute('data-sits')) {
+                              console.log(ele.getAttribute('data-sits'));
+                              ele.classList.add('sits-state--not');
+                              //note : event prevendefault ===
+                              ele.removeEventListener('click', this.clickMe, false);
+                            }
+                          });
+                        }
+                      });
+                    });
+                  })
+              }
+            }
+            , 200)
+
         });
     }
-    console.log(this.MaLichChieu);
   }
   showPayment() {
     if (this.totalCount <= 0) {

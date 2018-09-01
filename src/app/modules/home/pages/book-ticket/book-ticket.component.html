@@ -26,11 +26,11 @@
 
       <div class="row" style="min-height: 500px">
         <carousel-component class="animated slideInRight wow" [mode]="'horizontal'" [morePairSlides]="moreSlides"
-          [angle]="degree" [autoPlay]="false" [delayAutoPlay]="delayAutoPlay" #topCarousel>
+          [angle]="degree" [autoPlay]="true" [delayAutoPlay]="delayAutoPlay" #topCarousel>
           <div class="item-carousel" *ngFor="let item of listMovie" lazy-load-images>
             <img [attr.data-src]="item.HinhAnh" (click)="onSelect(item)" onError="this.src='../../../../../assets/img/movie/movie-sample6.jpg';"
               class="img-responsive" width="100%" />
-            <div class="c-name-moive">{{item.TenPhim}}</div>
+            <div class="c-name-moive" (click)="onSelect(item)" style="cursor:pointer;margin-top: 20px">{{item.TenPhim}}</div>
           </div>
           <div class="item-carousel">
             <img src="../../../../../assets/img/movie/movie-sample7.jpg" class="img-responsive" />
@@ -107,7 +107,7 @@
             <label for="MaLichChieu" class="info-color">Chọn lịch chiếu</label>
             <select class="form-control animated slideInRight wow" id="MaLichChieu" [(ngModel)]="selectedShowTime"
               (change)="getShowTime(selectedShowTime.MaLichChieu)">
-              <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index">{{obj.NgayChieuGioChieu
+              <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index" [selected]="obj">{{obj.NgayChieuGioChieu
                 | date:"dd-MM-yyyy" }}</option>
             </select>
           </div>
@@ -177,7 +177,7 @@
           [angle]="degree" [autoPlay]="false" [delayAutoPlay]="delayAutoPlay" #topCarousel>
           <div class="item-carousel" *ngFor="let item of combo" (click)="onSelectCombo(item)" lazy-load-images>
             <img [attr.data-src]="item.url" class="img-responsive" width="100%" />
-            <div class="c-name-moive">{{item.name}}</div>
+            <div class="c-name-moive" style="cursor:pointer;margin-top: 20px">{{item.name}}</div>
           </div>
           <div class="item-carousel" style="opacity:0">
             <!-- <img src="../../../../../assets/img/movie/movie-sample7.jpg" class="img-responsive" />
@@ -189,13 +189,13 @@
         <div class="col-md-12">
           <div class="section-title">
             <h2 class="page-heading" style="color : #fff">Thông tin Booking</h2>
-            <p class="info-color">( * Xin vui lòng kiểm tra kỹ trước khi đặt ghế)</p>
+            <p class="info-color">( * Xin vui lòng kiểm tra kỹ thông tin đặt vé)</p>
           </div>
           <div class="row">
             <div class="col-md-4" *ngIf="selectedMovie">
               <div class="transformers-content mtr-30 animated slideInLeft wow">
                 <ul>
-                  <li *ngIf="selectedMovie">
+                  <li>
                     <div class="transformers-left">
                       <img [src]="selectedMovie.HinhAnh" width="150">
                     </div>
@@ -204,6 +204,28 @@
                     </div>
                   </li>
 
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4" *ngIf="selectedShowTime">
+              <div class="transformers-content mtr-30 animated slideInLeft wow">
+                <ul>
+                  <li *ngIf="selectedShowTime">
+                    <div class="transformers-left">
+                      Cụm rạp
+                    </div>
+                    <div class="transformers-right">
+                      {{selectedShowTime?.Rap.TenRap}}
+                    </div>
+                  </li>
+                  <li *ngIf="selectedShowTime">
+                    <div class="transformers-left">
+                      Ngày chiếu
+                    </div>
+                    <div class="transformers-right">
+                      {{selectedShowTime.NgayChieuGioChieu | date:"dd-MM-yyyy HH:mm" }}
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -222,32 +244,11 @@
                 </ul>
               </div>
             </div>
-            <div class="col-md-4" *ngIf="selectedShowTime">
-              <div class="transformers-content mtr-30 animated slideInLeft wow">
-                <ul>
-                  <li *ngIf="selectedCombo">
-                    <div class="transformers-left">
-                      Cụm rạp
-                    </div>
-                    <div class="transformers-right">
-                      {{selectedShowTime?.Rap.TenRap}}
-                    </div>
-                  </li>
-                  <li *ngIf="selectedCombo">
-                    <div class="transformers-left">
-                      Ngày chiếu
-                    </div>
-                    <div class="transformers-right">
-                      {{selectedShowTime.NgayChieuGioChieu | date:"dd-MM-yyyy HH:mm" }}
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
-      <div class="pt30 c-ticket-w100" *ngIf="selectedShowTime && selectedCombo && selectedMovie">
+      <div class="pt30 c-ticket-w100" *ngIf="selectedShowTime && selectedMovie">
         <div class="order">
           <a href="javascript:void(0)" (click)="ShowBookChair()" class="btn btn-md btn--warning btn--wide c-btn-theme--f__right"
             style="display: flex;
@@ -266,6 +267,7 @@
 
 <ng-template #bookChair>
   <div class="containers animated slideInRight wow" id="main-section">
-    <app-book-chair [MaLichChieu]="MaLichChieu" [Time]="selectedTime" (comeback)="valueChange($event)"></app-book-chair>
+    <app-book-chair [selectedMovie]="selectedMovie" [selectedCombo]="selectedCombo" [selectedShowTime]="selectedShowTime"
+      [MaLichChieu]="MaLichChieu" [Time]="selectedTime" (comeback)="valueChange($event)"></app-book-chair>
   </div>
 </ng-template>

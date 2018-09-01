@@ -1,5 +1,5 @@
 export class UserNormal {
-    TaiKhoan: String;
+    TaiKhoan: string;
     MatKhau: String;
     Email: String;
     SoDT: String;
