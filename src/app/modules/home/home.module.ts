@@ -27,6 +27,10 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { TicketBookingComponent } from './components/ticket-booking/ticket-booking.component';
 import { SharedModuleModule } from '../shared-module/shared-module.module';
+import { MovieComingSoonComponent } from './pages/movie-coming-soon/movie-coming-soon.component';
+import { MovieShowingComponent } from './pages/movie-showing/movie-showing.component';
+import { NewsComponent } from './pages/news/news.component';
+import { MovieAccountComponent } from './pages/movie-account/movie-account.component';
 
 
 @NgModule({
@@ -62,7 +66,11 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
     ChangePasswordComponent,
     MovieDetailComponent,
     HomePageComponent,
-    TicketBookingComponent
+    TicketBookingComponent,
+    MovieComingSoonComponent,
+    MovieShowingComponent,
+    NewsComponent,
+    MovieAccountComponent
   ],
   exports: [
     HomeComponent,

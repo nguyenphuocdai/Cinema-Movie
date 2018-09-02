@@ -116,7 +116,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   }
   checkLoginStatus() {
-    console.log('Login status:', this._ngxZaloService.isLogin);
+    // console.log('Login status:', this._ngxZaloService.isLogin);
   }
 
   getMyProfile() {
@@ -148,6 +148,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.CreateLoginForm();
 
     this.getAllUserGP07();
+
+    if (this._cacheService.get('CurrentUser')) {
+      this.isRegister = true;
+      this.isLogin = false;
+    }
   }
   private CreateLoginForm() {
     this.loginForm = new FormGroup({

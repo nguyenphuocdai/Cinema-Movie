@@ -8,6 +8,10 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { SuccessTicketComponent } from './pages/success-ticket/success-ticket.component';
 import { UATFeatureComponent } from './pages/uat-feature/uat-feature.component';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { MovieComingSoonComponent } from './pages/movie-coming-soon/movie-coming-soon.component';
+import { MovieShowingComponent } from './pages/movie-showing/movie-showing.component';
+import { NewsComponent } from './pages/news/news.component';
+import { MovieAccountComponent } from './pages/movie-account/movie-account.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +39,23 @@ const appRoutes: Routes = [
                 data: { title: "Đổi mật khẩu" }
             },
             {
-                path: 'success', component: SuccessTicketComponent,
+                path: 'movie-comming-soon', component: MovieComingSoonComponent,
+                data: { title: "Phim sắp chiếu" }
+            },
+            {
+                path: 'movie-showing', component: MovieShowingComponent,
+                data: { title: "Phim đang chiếu" }
+            },
+            {
+                path: 'news', component: NewsComponent,
+                data: { title: "Tin tức phim" }
+            },
+            {
+                path: 'movie-account', component: MovieAccountComponent,
+                data: { title: "Tài khoản" }
+            },
+            {
+                path: 'success/:successId', component: SuccessTicketComponent,
                 data: { title: "Đặt vé thành công" }
             },
             {

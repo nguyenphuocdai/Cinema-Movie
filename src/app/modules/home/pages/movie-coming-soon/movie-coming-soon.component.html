@@ -1,0 +1,45 @@
+<section class="portfolio-area pt-60 c-padding-b60 animated slideInUp">
+    <div class="container">
+      <div class="row flexbox-center c-padding-b20">
+        <div class="col-lg-6 text-center text-lg-left">
+          <div class="section-title">
+            <h1>
+              <i class="icofont icofont-movie"></i> Phim sắp chiếu</h1>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+        </div>
+      </div>
+      <hr />
+      <div class="row c-padding-t10">
+        <div class="owl-carousel owl-theme">
+          <div class="col-md-12 item" *ngFor="let intro of introMovie">
+            <div class="card video-area">
+              <div class="relative" lazy-load-images>
+                <img class="card-img-top" [attr.data-src]="intro.url" alt="Card image cap">
+                <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" target="_blank" class="popup-youtube">
+                  <i class="icofont icofont-ui-play"></i>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="film-meta">
+                  <div class="film-rating">
+                    <span class="point">{{intro.IMB}}</span>
+                    <span class="total">/ {{intro.total}}</span>
+                  </div>
+                  <h3 class="film-title">
+                    <a href="javascript:void(0)">{{intro.actor}}</a>
+                  </h3>
+                  <div class="film-category">
+                    <a href="http://demo.harutheme.com/circle/film-category/comedy/" rel="tag">{{intro.cate}}</a>
+                    /
+                    <a href="http://demo.harutheme.com/circle/film-category/drama/" rel="tag">{{intro.actor}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -19,23 +19,23 @@
                     <div class="row animated slideInRight wow">
                       <div class="col-lg-12">
                         <div class="select-container">
-                          <input type="text" placeholder="Tên đăng nhập" name="usernameLogin" id="usernameLogin" formControlName="usernameLogin" [ngClass]="{'has-error': usernameLogin.invalid && (usernameLogin.dirty || usernameLogin.touched)}"
-                          />
+                          <input type="text" placeholder="Tên đăng nhập" name="usernameLogin" id="usernameLogin"
+                            formControlName="usernameLogin" [ngClass]="{'has-error': usernameLogin.invalid && (usernameLogin.dirty || usernameLogin.touched)}" />
                           <i class="icofont icofont-ui-user"></i>
                         </div>
                       </div>
                       <div class="col-lg-12">
                         <div class="select-container">
-                          <input type="password" placeholder="Mật khẩu" name="passwordLogin" id="passwordLogin" formControlName="passwordLogin" [ngClass]="{'has-error': passwordLogin.invalid && (passwordLogin.dirty || passwordLogin.touched)}"
-                          />
+                          <input type="password" placeholder="Mật khẩu" name="passwordLogin" id="passwordLogin"
+                            formControlName="passwordLogin" [ngClass]="{'has-error': passwordLogin.invalid && (passwordLogin.dirty || passwordLogin.touched)}" />
                           <i class="icofont icofont-ui-password"></i>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-12 row-flex">
-                        <button type="button" class="theme-btn" [disabled]="loginForm.invalid || isShowLoadingLogin" [ngClass]='{disabled: loginForm.invalid}'
-                          (click)="loginNormal()">Đăng nhập</button>
+                        <button type="button" class="theme-btn" [disabled]="loginForm.invalid || isShowLoadingLogin"
+                          [ngClass]='{disabled: loginForm.invalid}' (click)="loginNormal()">Đăng nhập</button>
                         <div class="loader" *ngIf="isShowLoadingLogin"></div>
                       </div>
                     </div>
@@ -46,60 +46,63 @@
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="text" placeholder="Tên đăng nhập" name="+account" id="account" formControlName="account" [ngClass]="{'has-error': account.invalid && (account.dirty || account.touched)}"
-                          />
+                          <input type="text" placeholder="Tên đăng nhập" name="+account" id="account" formControlName="account"
+                            [ngClass]="{'has-error': account.invalid && (account.dirty || account.touched)}" />
                           <i class="icofont icofont-ui-user"></i>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="text" placeholder="Họ tên" name="username" id="username" formControlName="username" [ngClass]="{'has-error': username.invalid && (username.dirty || username.touched)}"
-                          />
+                          <input type="text" placeholder="Họ tên" name="username" id="username" formControlName="username"
+                            [ngClass]="{'has-error': username.invalid && (username.dirty || username.touched)}" />
                           <i class="icofont icofont-ui-user"></i>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="password" placeholder="Mật khẩu" name="password" id="password" formControlName="password" maxlength="32" [ngClass]="{'has-error': password.invalid && (password.dirty || password.touched)}"
-                          />
+                          <input type="password" placeholder="Mật khẩu" name="password" id="password" formControlName="password"
+                            maxlength="32" [ngClass]="{'has-error': password.invalid && (password.dirty || password.touched)}" />
                           <i class="icofont icofont-ui-password"></i>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="password" maxlength="32" placeholder="Nhập lại mật khẩu" name="passwordConFirm" id="passwordConFirm" formControlName="passwordConFirm"
-                            [ngClass]="{'has-error': passwordConFirm.invalid && (passwordConFirm.dirty || passwordConFirm.touched)}"
-                          />
+                          <input type="password" maxlength="32" placeholder="Nhập lại mật khẩu" name="passwordConFirm"
+                            id="passwordConFirm" formControlName="passwordConFirm" [ngClass]="{'has-error': passwordConFirm.invalid && (passwordConFirm.dirty || passwordConFirm.touched)}" />
                           <i class="icofont icofont-ui-password"></i>
                         </div>
-                        <div class="display-password-confirm" *ngIf="registerForm.controls.passwordConFirm.errors?.MatchPassword">Mật khẩu nhập lại chưa khớp</div>
+                        <div class="display-password-confirm" *ngIf="registerForm.controls.passwordConFirm.errors?.MatchPassword">Mật
+                          khẩu nhập lại chưa khớp</div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="email" placeholder="Email" name="email" id="email" formControlName="email" [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched)}"
-                          />
+                          <input type="email" placeholder="Email" name="email" id="email" formControlName="email"
+                            [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched)}" />
                           <i class="icofont icofont-ui-email"></i>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="select-container">
-                          <input type="text" placeholder="Số điện thoại" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber" [ngClass]="{'has-error': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}"
-                          />
+                          <input type="text" placeholder="Số điện thoại" name="phoneNumber" id="phoneNumber"
+                            formControlName="phoneNumber" [ngClass]="{'has-error': phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)}" />
                           <i class="icofont icofont-smart-phone"></i>
                         </div>
                       </div>
                       <div class="col-lg-12">
-                        <div class="check-box">
-                          <label>
-                            <input type="checkbox" value="" formControlName="agree">Tôi đồng ý với các điều khoản và quy định của Movie Point</label>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" formControlName="agree">
+                            <span class="form-check-sign">Tôi đồng ý với các
+                              điều khoản và quy định của Movie Point</span>
+                          </label>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-lg-12 row-flex">
                         <div>
-                          <button type="button" class="theme-btn" [disabled]="registerForm.invalid || formIsSubmitting" [ngClass]='{disabled: registerForm.invalid}'
-                            (click)="registerUser()">Đăng ký </button>
+                          <button type="button" class="theme-btn" [disabled]="registerForm.invalid || formIsSubmitting"
+                            [ngClass]='{disabled: registerForm.invalid}' (click)="registerUser()">Đăng ký </button>
                         </div>
                         <div class="loader" *ngIf="formIsSubmitting"></div>
                       </div>
@@ -115,13 +118,15 @@
 
             <div class="row row--no--padding c-padding-t-20 text-right">
               <div class="col-lg-12 row--no--padding" *ngIf="!isSuccessfully">
-                <button type="button" class="btn button-register" *ngIf="isRegister" (click)="isLogin = true; isRegister = false;">Đăng nhập</button>
+                <button type="button" class="btn button-register" *ngIf="isRegister" (click)="isLogin = true; isRegister = false;">Đăng
+                  nhập</button>
                 <button type="button" class="btn button-register" (click)="register()">Chưa có tài khoản?</button>
                 <button type="button" class="btn button-register">Quên mật khẩu?</button>
               </div>
               <div class="col-lg-12 row--no--padding" *ngIf="isSuccessfully">
                 <!-- <button type="button" class="btn button-register" (click)="loginNow()">Đăng nhập ngay</button> -->
-                <button type="button" class="btn button-register" (click)="isSuccessfully = false;isRegister = false; isLogin = true;">Đăng nhập ngay</button>
+                <button type="button" class="btn button-register" (click)="isSuccessfully = false;isRegister = false; isLogin = true;">Đăng
+                  nhập ngay</button>
               </div>
             </div>
             <div class="login-social" *ngIf="!isSuccessfully">

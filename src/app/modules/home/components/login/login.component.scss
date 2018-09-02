@@ -1,5 +1,4 @@
-
-.bg-black{
+.bg-black {
   background: #13151f;
 }
 
@@ -89,6 +88,7 @@
   position: relative;
   display: block;
   margin-bottom: 10px;
+
   input {
     margin-right: 10px;
   }
@@ -97,4 +97,13 @@
 .img-responsive {
   width: 100%;
   box-shadow: 0 0 20px #000000;
+}
+
+.transformers-box .transformers-content img {
+  max-width: 350px;
+}
+
+.argee {
+  position: relative;
+  left: 0
 }

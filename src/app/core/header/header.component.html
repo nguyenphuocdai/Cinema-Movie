@@ -152,27 +152,34 @@
 
           </li>
           <li class="nav-item dropdown hidden-caret">
-            <a class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false" routerLink="/home-page/movie-showing"
+            routerLinkActive="active">
               Phim đang chiếu
             </a>
           </li>
           <li class="nav-item dropdown hidden-caret">
-            <a class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false" routerLink="/home-page/movie-comming-soon"
+              routerLinkActive="active">
               Phim sắp chiếu
             </a>
           </li>
           <li class="nav-item dropdown hidden-caret">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" routerLink="home-page/news" routerLinkActive="active" aria-haspopup="true" aria-expanded="false">
+              Tin tức
+            </a>
+          </li>
+          <li class="nav-item dropdown hidden-caret">
 
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" routerLink="home-page/movie-account" routerLinkActive="active" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               Tài khoản
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+            </div> -->
           </li>
           <li class="nav-item dropdown hidden-caret">
             <a class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false">
@@ -280,19 +287,25 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)">
+            <a href="javascript:void(0)" routerLink="/home-page/movie-comming-soon" routerLinkActive="active">
               <i class="la la-table"></i>
               <p>Phim sắp chiếu</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)">
+            <a href="javascript:void(0)" routerLink="/home-page/movie-showing" routerLinkActive="active">
               <i class="la la-keyboard-o"></i>
               <p>Phim đang chiếu</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)">
+            <a href="javascript:void(0)" routerLink="home-page/news" routerLinkActive="active">
+              <i class="la la-keyboard-o"></i>
+              <p>Tin tức</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" routerLink="home-page/movie-account" routerLinkActive="active">
               <i class="la la-th"></i>
               <p>Tài khoản</p>
             </a>

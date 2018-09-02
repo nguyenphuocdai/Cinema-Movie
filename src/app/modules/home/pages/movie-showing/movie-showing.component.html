@@ -1,0 +1,46 @@
+<section class="video c-padding-t90 ">
+    <div class="container">
+      <div class="row animated slideInUp wow">
+        <div class="col-lg-12">
+          <div class="section-title pb-20">
+            <h1>
+              <i class="icofont icofont-film"></i> Phim đang chiếu</h1>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-12 col-lg-12 animated slideInUp wow">
+          <div class="row">
+            <div class="col-md-6 col-lg-3" *ngFor="let item of listMovie | slice:0:8; ">
+              <div class="card video-area">
+                <div class="relative" lazy-load-images>
+                  <img class="card-img-top" [attr.data-src]="item.HinhAnh" alt="Card image cap">
+                  <a href="{{item.Trailer}}" target="_blank" class="popup-youtube">
+                    <i class="icofont icofont-ui-play"></i>
+                  </a>
+                </div>
+                <div class="card-body bg-card-style2">
+                  <div class="film-meta">
+                    <div class="film-rating">
+                      <span class="point">8.7</span>
+                      <span class="total">/ 10</span>
+                    </div>
+                    <h3 class="film-title">
+                      <a href="javascript:void(0)" [routerLink]="['/home-page/movie-details',item.MaPhim]"
+                        routerLinkActive="active">{{item.TenPhim}}</a>
+                    </h3>
+                    <div class="film-category">
+                      <a href="#" rel="tag">Comedy</a>
+                      /
+                      <a href="#" rel="tag">Drama</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

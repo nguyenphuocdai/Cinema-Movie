@@ -24,10 +24,22 @@ const routes: Routes = [
             {
                 path: '',
                 children: [
-                    { path: '', component: DashboardComponent },
-                    { path: 'user', component: UserManagerComponent },
-                    { path: 'movie', component: MovieManagerComponent },
-                    { path: 'login-dashboard', component: LoginDashboardComponent },
+                    {
+                        path: '', component: DashboardComponent,
+                        data: { title: "Quản lý hệ thống" }
+                    },
+                    {
+                        path: 'user', component: UserManagerComponent,
+                        data: { title: "Quản lý người dùng" }
+                    },
+                    {
+                        path: 'movie', component: MovieManagerComponent,
+                        data: { title: "Quản lý phim" }
+                    },
+                    {
+                        path: 'login-dashboard', component: LoginDashboardComponent,
+                        data: { title: "Đăng nhập" }
+                    },
                     // { path: '*', component: DashboardComponent },
                     { path: '*', redirectTo: '/admin', pathMatch: 'full' },
                     { path: '**', component: AdminComponent },
