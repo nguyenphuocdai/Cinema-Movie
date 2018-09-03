@@ -39,7 +39,8 @@
               "./node_modules/font-awesome/css/font-awesome.css",
               "./src/assets/css/external/jquery.selectbox.css",
               "./src/assets/css/external/idangerous.swiper.css",
-              "node_modules/videogular2/fonts/videogular.css"
+              "node_modules/videogular2/fonts/videogular.css",
+              "node_modules/ngx-snackbar/bundles/style.css"
             ],
             "scripts": [
               "./src/assets/js/jquery.min.js",

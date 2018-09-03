@@ -1,4 +1,4 @@
-<section class="hero-area" id="home">
+<section class="hero-area">
   <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
     <div ngxSlickItem *ngFor="let slide of slides" class="slide" lazy-load-images>
       <img class="bg-slide" [attr.data-src]="slide.img" alt="" width="100%">

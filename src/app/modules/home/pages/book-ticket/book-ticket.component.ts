@@ -5,6 +5,7 @@ import { trigger, transition, style, animate } from '../../../../../../node_modu
 import { MovieService } from '../../../../shared/services/movie.service';
 import { ListMovie } from '../../../../shared/models/list-movie.model';
 import { WOW } from 'wowjs/dist/wow.min';
+import { ToasterService } from 'angular2-toaster';
 
 @Component({
   selector: 'app-book-ticket',
@@ -41,7 +42,6 @@ export class BookTicketComponent implements OnInit, AfterViewInit {
   public degree = 25;
   public moreSlides = 3;
   public delayAutoPlay = 5000;
-
   combo = [
     { id: 1, url: '../../../../../assets/img/combo/cb1.png', name: 'The Predator Combo' },
     { id: 2, url: '../../../../../assets/img/combo/cb2.png', name: 'Pineapple Combo' },
@@ -68,35 +68,35 @@ export class BookTicketComponent implements OnInit, AfterViewInit {
   constructor(
     private scriptService: ScriptService,
     private movieService: MovieService,
-    private elem: ElementRef
-  ) {
+    private elem: ElementRef,
+  ) {  
     this.scriptService.loadScript('../../../../../assets/js/external/idangerous.swiper.min.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script authenticator js');
+      console.log('Failed to load script idangerous js');
     });
     this.scriptService.loadScript('../../../../../assets/js/external/modernizr.custom.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script  js');
+      console.log('Failed to load script modernizr  js');
     });
     this.scriptService.loadScript('../../../../../assets/js/custom.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script  js');
+      console.log('Failed to load custom  js');
     });
     this.scriptService.loadScript('../../../../../assets/js/form.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script  js');
+      console.log('Failed to load script form js');
     });
     this.scriptService.loadScript('../../../../../assets/js/jquery.mobile.menu.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script  js');
+      console.log('Failed to load script mobile js');
     });
     this.scriptService.loadScript('../../../../../assets/js/external/form-element.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script');
+      console.log('Failed to load script form-element');
     });
     this.scriptService.loadScript('../../../../../assets/js/external/jquery.selectbox-0.2.min.js').subscribe(() => {
     }, (error) => {
-      console.log('Failed to load script');
+      console.log('Failed to load script selectbox ');
     });
   }
 
@@ -132,7 +132,6 @@ export class BookTicketComponent implements OnInit, AfterViewInit {
     this.movieService.getDetailMovie(id)
       .subscribe((result) => {
         this.detailMovieSelected = result;
-        console.log(this.detailMovieSelected);
       });
   }
 

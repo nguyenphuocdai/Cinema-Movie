@@ -40,8 +40,8 @@
         <div class="col-lg-7">
           <div class="transformers-content mtr-30 animated slideInLeft wow">
             <h2>{{currentMovie?.TenPhim}}</h2>
-            <a href="#" class="theme-btn">Biography</a>
-            <a href="#">Filmography</a>
+            <a pageScroll href="#chooseTime" class="theme-btn" (click)="showTicket()">Đặt vé ngay</a>
+            <a href="javascript:void(0)" routerLink="/home-page/ticket" routerLinkActive="active">Tới trang đặt vé</a>
             <ul>
               <li>
                 <div class="transformers-left">
@@ -72,7 +72,7 @@
                   Lịch chiếu:
                 </div>
                 <div class="transformers-right">
-                  <span class="label label-primary" *ngFor="let item of currentMovie?.LichChieu">
+                  <span class="label label-primary" *ngFor="let item of currentMovie?.LichChieu" style="cursor:pointer">
                     {{item.NgayChieuGioChieu | date:"dd-mm-yyyy"}}
                   </span>
                 </div>
@@ -83,26 +83,30 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
-<section class="details-area">
-  <div class="container">
+<section class="details-area" *ngIf="!showDialogTicket">
+  <div class="container" id="chooseTime">
     <div class="row">
       <div class="col-lg-12">
         <div class="details-content">
-          <div class="details-overview">
+          <div class="details-overview" >
             <h2>Tổng quan</h2>
             <p>{{currentMovie?.MoTa}}</p>
-            <p>Humans are at war with the Transformers, and Optimus Prime is gone. The key to saving the future lies buried
-              in the secrets of the past and the hidden history of Transformers on Earth. Now it's up to the unlikely alliance
-              of inventor Cade Yeager, Bumblebee, a n English lord and an Oxford professor to save the world. Transformers:
-              The Last Knight has a deeper mythos and bigger spectacle than its predecessors, yet still ends up being mostly
-              hollow and cacophonous. The first "Transformers" movie that could actually be characterized as badass. Which
+            <p>Humans are at war with the Transformers, and Optimus Prime is gone. The key to saving the future lies
+              buried
+              in the secrets of the past and the hidden history of Transformers on Earth. Now it's up to the unlikely
+              alliance
+              of inventor Cade Yeager, Bumblebee, a n English lord and an Oxford professor to save the world.
+              Transformers:
+              The Last Knight has a deeper mythos and bigger spectacle than its predecessors, yet still ends up being
+              mostly
+              hollow and cacophonous. The first "Transformers" movie that could actually be characterized as badass.
+              Which
               isn't a bad thing. It may, in fact, be better.</p>
           </div>
           <div class="details-reply">
-            <h2>Leave a Reply</h2>
+            <h2>Bình luận</h2>
             <form action="#">
               <div class="row">
                 <div class="col-lg-4">
@@ -136,12 +140,460 @@
           </div>
           <div class="details-comment">
             <a class="theme-btn theme-btn2" href="#">Post Comment</a>
-            <p>You may use these HTML tags and attributes: You may use these HTML tags and attributes: You may use these HTML
-              tags and attributes: </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<section class="details-area" *ngIf="showDialogTicket">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="details-content c-padding-b0">
+          <div class="details-overview">
+            <h2>Chọn lịch chiếu</h2>
+            <div class="row c-ticket-w100" *ngIf="detailMovieSelected">
+              <div class="col-md-3 c-no-padding animated slideInRight wow">
+                <div class="form-group">
+                  <label for="MaLichChieu" class="info-color">Chọn lịch chiếu</label>
+                  <select class="form-control animated slideInRight wow" id="MaLichChieu" [(ngModel)]="selectedShowTime"
+                    (change)="getShowTime(selectedShowTime.MaLichChieu)">
+                    <option [ngValue]="obj" *ngFor="let obj of detailMovieSelected?.LichChieu;let i = index" [selected]="obj">{{obj.NgayChieuGioChieu
+                      | date:"dd-MM-yyyy" }}</option>
+                  </select>
+                </div>
+                <!-- <div class="form-group container-time">
+                  <label for="exampleFormControlInput1">Chọn lịch chiếu</label>
+                  <angular2-date-picker [(ngModel)]="date" (onDateSelect)="onDateSelect($event)" [settings]="settings"></angular2-date-picker>
+                </div> -->
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3 c-no-padding" *ngIf="selectedShowTime">
+                <div class="form-group">
+                  <label for="Rap" class="info-color">Chọn rạp chiếu</label>
+                  <select class="form-control" id="Rap">
+                    <option [value]="selectedShowTime?.Rap.MaRap">{{selectedShowTime?.Rap.TenRap}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row animated slideInRight section-title-table" *ngIf="selectedShowTime">
+              <label for="exampleFormControlInput1" class="info-color">Thông tin lịch chiếu</label>
+              <table class="table mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">Ngày khởi chiếu</th>
+                    <th scope="col">Giá vé</th>
+                    <th scope="col">Thời lượng</th>
+                    <th scope="col">Số ghế</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{selectedShowTime.NgayChieuGioChieu | date:"dd-MM-yyyy HH:mm" }}</td>
+                    <td>{{selectedShowTime.GiaVe | number:'3.0'}} VNĐ</td>
+                    <td>{{selectedShowTime.ThoiLuong}} Phút</td>
+                    <td>{{selectedShowTime.Rap.SoGhe}} Cái</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="details-area" *ngIf="showDialogTicket">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="details-content">
+          <div class="details-overview">
+            <h2>Chọn bắp nước</h2>
+            <carousel-component [mode]="'horizontal'" [timeToSlide]="300" #topCarousel [autoPlay]="false">
+              <div class="item-carousel" *ngFor="let item of combo" (click)="onSelectCombo(item)">
+                <img [src]="item.url" class="img-responsive" width="100%" />
+                <div class="c-name-moive" (click)="onSelectCombo(item)" style="cursor:pointer;margin-top: 20px">{{item.name}}</div>
+              </div>
+            </carousel-component>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row btn-right">
+      <button class="btn btn-primary" (click)="showDialogSit()">Tiến hành đặt ghế</button>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</section>
+
 <!-- details area end -->
+<section class="details-area" *ngIf="showDialogTicket">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="details-content">
+          <div class="details-overview">
+            <h2>Thông tin vé đặt</h2>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4" *ngIf="detailMovieSelected">
+                    <div class="transformers-content mtr-30 animated slideInLeft wow">
+                      <ul>
+                        <li>
+                          <div class="transformers-left">
+                            <img [src]="detailMovieSelected.HinhAnh" width="150">
+                          </div>
+                          <div class="transformers-right">
+                            {{detailMovieSelected.TenPhim}}
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-4" *ngIf="selectedShowTime">
+                    <div class="transformers-content mtr-30 animated slideInLeft wow">
+                      <ul>
+                        <li *ngIf="selectedShowTime">
+                          <div class="transformers-left">
+                            Cụm rạp
+                          </div>
+                          <div class="transformers-right">
+                            {{selectedShowTime?.Rap.TenRap}}
+                          </div>
+                        </li>
+                        <li *ngIf="selectedShowTime">
+                          <div class="transformers-left">
+                            Ngày chiếu
+                          </div>
+                          <div class="transformers-right">
+                            {{selectedShowTime.NgayChieuGioChieu | date:"dd-MM-yyyy HH:mm" }}
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-4" *ngIf="selectedCombo">
+                    <div class="transformers-content mtr-30 animated slideInLeft wow">
+                      <ul>
+                        <li *ngIf="selectedCombo">
+                          <div class="transformers-left">
+                            <img [src]="selectedCombo.url" width="150">
+                          </div>
+                          <div class="transformers-right">
+                            {{selectedCombo.name}} <br>
+                            <input type="number" value="1" min="0" class="combo-input">
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="row">
+  <app-admin-dialog [(visible)]="showDialogSits">
+    <div class="f-container animated slideInRight wow">
+      <section class="container container-scroll">
+        <div class="row">
+          <div class="section-title">
+            <h2 class="page-heading" style="color : #fff">Chọn ghế</h2>
+          </div>
+        </div>
+        <div class="choose-sits">
+          <div class="choose-sits__info choose-sits__info--first">
+            <ul>
+              <li class="sits-price marker--none">
+                <strong>Price</strong>
+              </li>
+              <li class="sits-price sits-price--cheap">50.000</li>
+              <li class="sits-price sits-price--middle">75.000</li>
+              <li class="sits-price sits-price--expensive">100.000</li>
+            </ul>
+          </div>
+
+          <div class="choose-sits__info">
+            <ul>
+              <li class="sits-state sits-state--not">Chỗ đã đặt</li>
+              <li class="sits-state sits-state--your">Ghế bạn chọn</li>
+            </ul>
+          </div>
+
+          <div class="col-sm-12 col-lg-12 col-lg-offset-1">
+            <div class="sits-area hidden-xs">
+              <div class="sits-anchor">Màn hình</div>
+
+              <div class="sits">
+                <aside class="sits__line">
+                  <span class="sits__indecator">A</span>
+                  <span class="sits__indecator">B</span>
+                  <span class="sits__indecator">C</span>
+                  <span class="sits__indecator">D</span>
+                  <span class="sits__indecator">E</span>
+                  <span class="sits__indecator">F</span>
+                  <span class="sits__indecator">G</span>
+                  <span class="sits__indecator">I</span>
+                </aside>
+
+                <div class="sits__row">
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A2' data-price='10' (click)="clickMe($event)">A2</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A3' data-price='10' (click)="clickMe($event)">A3</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A4' data-price='10' (click)="clickMe($event)">A4</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A5' data-price='10' (click)="clickMe($event)">A5</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A6' data-price='10' (click)="clickMe($event)">A6</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A7' data-price='10' (click)="clickMe($event)">A7</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A8' data-price='10' (click)="clickMe($event)">A8</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A9' data-price='10' (click)="clickMe($event)">A9</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A10' data-price='10' (click)="clickMe($event)">A10</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A11' data-price='10' (click)="clickMe($event)">A11</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A12' data-price='10' (click)="clickMe($event)">A12</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A13' data-price='10' (click)="clickMe($event)">A13</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A14' data-price='10' (click)="clickMe($event)">A14</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A15' data-price='10' (click)="clickMe($event)">A15</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A16' data-price='10' (click)="clickMe($event)">A16</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='A17' data-price='10' (click)="clickMe($event)">A17</span>
+                </div>
+
+                <div class="sits__row">
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B2' data-price='10' (click)="clickMe($event)">B2</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B1' data-price='10' (click)="clickMe($event)">B1</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B3' data-price='10' (click)="clickMe($event)">B3</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B4' data-price='10' (click)="clickMe($event)">B4</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B5' data-price='10' (click)="clickMe($event)">B5</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B6' data-price='10' (click)="clickMe($event)">B6</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B7' data-price='10' (click)="clickMe($event)">B7</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B8' data-price='10' (click)="clickMe($event)">B8</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B9' data-price='10' (click)="clickMe($event)">B9</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B10' data-price='10' (click)="clickMe($event)">B10</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B11' data-price='10' (click)="clickMe($event)">B11</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B12' data-price='10' (click)="clickMe($event)">B12</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B13' data-price='10' (click)="clickMe($event)">B13</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B14' data-price='10' (click)="clickMe($event)">B14</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B15' data-price='10' (click)="clickMe($event)">B15</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B16' data-price='10' (click)="clickMe($event)">B16</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B17' data-price='10' (click)="clickMe($event)">B17</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='B18' data-price='10' (click)="clickMe($event)">B18</span>
+                </div>
+
+                <div class="sits__row">
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C1' data-price='10' (click)="clickMe($event)">C1</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C2' data-price='10' (click)="clickMe($event)">C2</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C3' data-price='10' (click)="clickMe($event)">C3</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C4' data-price='10' (click)="clickMe($event)">C4</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C5' data-price='10' (click)="clickMe($event)">C5</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C6' data-price='10' (click)="clickMe($event)">C6</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C7' data-price='10' (click)="clickMe($event)">C7</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C8' data-price='10' (click)="clickMe($event)">C8</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C9' data-price='10' (click)="clickMe($event)">C9</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C10' data-price='10' (click)="clickMe($event)">C10</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C11' data-price='10' (click)="clickMe($event)">C11</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C12' data-price='10' (click)="clickMe($event)">C12</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C13' data-price='10' (click)="clickMe($event)">C13</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C14' data-price='10' (click)="clickMe($event)">C14</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C15' data-price='10' (click)="clickMe($event)">C15</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C16' data-price='10' (click)="clickMe($event)">C16</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C17' data-price='10' (click)="clickMe($event)">C17</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='C18' data-price='10' (click)="clickMe($event)">C18</span>
+                </div>
+
+                <div class="sits__row">
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D1' data-price='10' (click)="clickMe($event)">D1</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D2' data-price='10' (click)="clickMe($event)">D2</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D3' data-price='10' (click)="clickMe($event)">D3</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D4' data-price='10' (click)="clickMe($event)">D4</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D5' data-price='10' (click)="clickMe($event)">D5</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D6' data-price='10' (click)="clickMe($event)">D6</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D7' data-price='10' (click)="clickMe($event)">D7</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D8' data-price='10' (click)="clickMe($event)">D8</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D9' data-price='10' (click)="clickMe($event)">D9</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D10' data-price='10' (click)="clickMe($event)">D10</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D11' data-price='10' (click)="clickMe($event)">D11</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D12' data-price='10' (click)="clickMe($event)">D12</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D13' data-price='10' (click)="clickMe($event)">D13</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D14' data-price='10' (click)="clickMe($event)">D14</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D15' data-price='10' (click)="clickMe($event)">D15</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D16' data-price='10' (click)="clickMe($event)">D16</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D17' data-price='10' (click)="clickMe($event)">D17</span>
+                  <span class="sits__place sits-price--cheap sits-state--not" data-place='D18' data-price='10' (click)="clickMe($event)">D18</span>
+                </div>
+
+                <div class="sits__row">
+                  <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionE; let i = index"
+                    [attr.data-id]='sit.MaGhe' [attr.data-place]='E + sit.TenGhe' [attr.data-sits]="sit.MaGhe"
+                    [attr.data-price]="sit.GiaVe" (click)="clickMe($event)">
+                    E{{sit.TenGhe}}
+                  </span>
+                </div>
+                <div class="sits__row">
+                  <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionF; let i = index"
+                    [attr.data-id]='sit.MaGhe' [attr.data-place]='F+ sit.TenGhe' [attr.data-sits]="sit.MaGhe"
+                    [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
+                    F{{sit.TenGhe}}
+                  </span>
+                </div>
+                <div class="sits__row">
+                  <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionG; let i = index"
+                    [attr.data-id]='sit.MaGhe' [attr.data-place]='G+ sit.TenGhe' [attr.data-sits]="sit.MaGhe"
+                    [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
+                    G{{sit.TenGhe}}
+                  </span>
+                </div>
+                <div class="sits__row">
+                  <span class="sits__place sits-price--middle" *ngFor="let sit of SitAtPositionI; let i = index"
+                    [attr.data-id]='sit.MaGhe' [attr.data-place]='I+ sit.TenGhe' [attr.data-sits]="sit.MaGhe"
+                    [attr.data-price]='sit.GiaVe' (click)="clickMe($event)">
+                    I{{sit.TenGhe}}
+                  </span>
+                </div>
+                <aside class="sits__checked animated slideInUp wow">
+                  <div class="checked-place" *ngFor="let item of selectedArray">
+                    {{item}}
+                  </div>
+                  <div class="checked-result" style="color: #000">
+                    {{totalCount | number : '3.0'}} VNĐ
+                  </div>
+                </aside>
+                <section class="sits__number">
+                  <span class="sits__indecator">1</span>
+                  <span class="sits__indecator">2</span>
+                  <span class="sits__indecator">3</span>
+                  <span class="sits__indecator">4</span>
+                  <span class="sits__indecator">5</span>
+                  <span class="sits__indecator">6</span>
+                  <span class="sits__indecator">7</span>
+                  <span class="sits__indecator">8</span>
+                  <span class="sits__indecator">9</span>
+                  <span class="sits__indecator">10</span>
+                  <span class="sits__indecator">11</span>
+                  <span class="sits__indecator">12</span>
+                  <span class="sits__indecator">13</span>
+                  <span class="sits__indecator">14</span>
+                  <span class="sits__indecator">15</span>
+                  <span class="sits__indecator">16</span>
+                  <span class="sits__indecator">17</span>
+                  <span class="sits__indecator">18</span>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container">
+        <div class="row" *ngIf="totalCount">
+          <div class="col-md-3">
+            <div class="transformers-content mtr-30 animated slideInLeft wow">
+              <ul>
+                <li>
+                  <div class="transformers-left">
+                    Mã ghế:
+                  </div>
+                  <div class="transformers-right">
+                    <span *ngFor="let item of selectedArray">{{item}}</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="transformers-left">
+                    Tổng tiền:
+                  </div>
+                  <div class="transformers-right">
+                    {{totalCount | number : '3.0'}} VNĐ
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="transformers-content mtr-30 animated slideInLeft wow">
+              <ul>
+                <li>
+                  <div class="transformers-left">
+                    Số lượng ghế đặt :
+                  </div>
+                  <div class="transformers-right">
+                    &nbsp; {{selectedCount}} chỗ
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="transformers-content mtr-30 animated slideInLeft wow">
+              <ul>
+                <li>
+                  <div class="transformers-left">
+                    Thanh toán:
+                  </div>
+                  <div class="transformers-right">
+                    <div class="form-check form-check--display">
+                      <label class="form-radio-label">
+                        <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                        <span class="form-radio-sign">Khi nhận vé</span>
+                      </label>
+                      <label class="form-radio-label ml-3">
+                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                        <span class="form-radio-sign">Trực tuyến</span>
+                      </label>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <div class="row btn-right" *ngIf="totalCount">
+          <button class="btn btn-info" (click)="putTicket()">Tiến hành đặt vé</button>
+        </div>
+        <div class="clearfix"></div>
+        <div class="my-container">
+          <ngx-loading [show]="isSubmitted" [config]="{ }"></ngx-loading>
+        </div>
+      </section>
+
+    </div>
+  </app-admin-dialog>
+</div>
+
+
+<app-dialog [(visible)]="showDialogLogin">
+  <div class="f-container animated slideInRight wow">
+    <p *ngIf="hasError">Có lỗi xảy ra</p>
+    <form action="#" [formGroup]="loginForm" name="loginForm" novalidate>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="select-container">
+            <input type="text" placeholder="Tên đăng nhập" name="usernameLogin" id="usernameLogin" formControlName="usernameLogin"
+              [ngClass]="{'has-error': usernameLogin.invalid && (usernameLogin.dirty || usernameLogin.touched)}" />
+            <i class="icofont icofont-ui-user"></i>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="select-container">
+            <input type="password" placeholder="Mật khẩu" name="passwordLogin" id="passwordLogin" formControlName="passwordLogin"
+              [ngClass]="{'has-error': passwordLogin.invalid && (passwordLogin.dirty || passwordLogin.touched)}" />
+            <i class="icofont icofont-ui-password"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 row-flex">
+          <button type="button" class="theme-btn" [disabled]="loginForm.invalid || isShowLoadingLogin" [ngClass]='{disabled: loginForm.invalid}'
+            (click)="loginNormal()">Đăng nhập</button>
+          <div class="loader" *ngIf="isShowLoadingLogin"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-dialog>
+<div class="clearfix"></div>

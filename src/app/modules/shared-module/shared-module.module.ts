@@ -5,10 +5,13 @@ import { AdminDialogComponent } from '../../shared/components/admin-dialog/admin
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { LoadersCssModule } from 'angular2-loaders-css';
 import { LoadingModule } from 'ngx-loading';
+
 import { NgxDeleteConfirmModule } from '../../shared/components/comfirm-delete/ngx-delete-confirm.module';
 import { CKEditorModule } from '../../shared/components/ckeditor/ckeditor.module';
 import { AngularDateTimePickerModule } from '../home/components/datetime-picker';
 import { LazyLoadImagesModule } from '../../shared/components/lazyload-image/ngx-lazy-load-images.module';
+import { CarouselModule } from '../home/components/carousel-movie';
+import { NgxPageScrollModule } from '../../shared/components/scrollTo/ngx-page-scroll.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +20,9 @@ import { LazyLoadImagesModule } from '../../shared/components/lazyload-image/ngx
     NgxDeleteConfirmModule.forRoot(),
     CKEditorModule,
     AngularDateTimePickerModule,
-    LazyLoadImagesModule
+    LazyLoadImagesModule,
+    CarouselModule,
+    NgxPageScrollModule,
   ],
   declarations: [
     DialogComponent,
@@ -33,7 +38,9 @@ import { LazyLoadImagesModule } from '../../shared/components/lazyload-image/ngx
     NgxDeleteConfirmModule,
     CKEditorModule,
     AngularDateTimePickerModule,
-    LazyLoadImagesModule
+    LazyLoadImagesModule,
+    CarouselModule,
+    NgxPageScrollModule
   ]
 })
 export class SharedModuleModule { }

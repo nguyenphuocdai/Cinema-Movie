@@ -159,7 +159,7 @@ export class CarouselComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnInit() {
     this.onInitCarousel.emit(this.carousel);
-    this.itemsCarouselRendered = this.carouselElm.nativeElement.getElementsByClassName("item-carousel").length
+    this.itemsCarouselRendered = this.carouselElm.nativeElement.getElementsByClassName("item-carousel").length;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -176,7 +176,7 @@ export class CarouselComponent implements OnInit, OnChanges, AfterViewInit {
     this.initEventsPan();
     this.configPlugin();
     setTimeout(function () {
-      this.componentElement.nativeElement.className += ' ready';
+      this.componentElement.nativeElement.className += 'ready';
     }.bind(this));
     this.onReadyCarousel.emit(this.carousel);
   }
@@ -496,6 +496,5 @@ export class CarouselComponent implements OnInit, OnChanges, AfterViewInit {
     window.addEventListener("resize", function () {
       this.update();
     }.bind(this));
-
   }
 }

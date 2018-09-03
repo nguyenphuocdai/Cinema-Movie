@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     // if (this.isAllowLogin === true) {
     //   this._location.back();
     // }
-
+    window.scrollTo(0, window.innerHeight / 2);
   }
   getAllUserGP07() {
     this._userService.getUserGP07().subscribe((result) => { this.listUserGP07 = result; console.log(this.listUserGP07); });

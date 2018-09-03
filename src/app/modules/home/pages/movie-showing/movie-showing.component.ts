@@ -9,7 +9,9 @@ import { MovieService } from '../../../../shared/services/movie.service';
 })
 export class MovieShowingComponent implements OnInit {
   listMovie: ListMovie;
-  constructor( private movieService: MovieService,) { }
+  constructor(private movieService: MovieService, ) {
+    window.scrollTo(0, 0);
+  }
 
   ngOnInit() {
     this.getListMovie();

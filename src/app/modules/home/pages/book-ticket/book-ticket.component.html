@@ -26,8 +26,8 @@
 
       <div class="row" style="min-height: 500px">
         <carousel-component class="animated slideInRight wow" [mode]="'horizontal'" [morePairSlides]="moreSlides"
-          [angle]="degree" [autoPlay]="true" [delayAutoPlay]="delayAutoPlay" #topCarousel>
-          <div class="item-carousel" *ngFor="let item of listMovie" lazy-load-images>
+          [angle]="degree" [autoPlay]="true" [delayAutoPlay]="delayAutoPlay" [initialSlide]="2" #topCarousel>
+          <div class="item-carousel" *ngFor="let item of listMovie" lazy-load-images pageScroll href="#movie">
             <img [attr.data-src]="item.HinhAnh" (click)="onSelect(item)" onError="this.src='../../../../../assets/img/movie/movie-sample6.jpg';"
               class="img-responsive" width="100%" />
             <div class="c-name-moive" (click)="onSelect(item)" style="cursor:pointer;margin-top: 20px">{{item.TenPhim}}</div>
@@ -38,7 +38,7 @@
           </div>
         </carousel-component>
       </div>
-      <div class="row" *ngIf="selectedMovie">
+      <div class="row" *ngIf="selectedMovie" id="movie">
         <div class="section-title m-width-100">
           <h2 class="page-heading" style="color : #fff">Nội dung phim</h2>
         </div>
@@ -266,7 +266,7 @@
 
 
 <ng-template #bookChair>
-  <div class="containers animated slideInRight wow" id="main-section">
+  <div class="containers animated slideInRight wow">
     <app-book-chair [selectedMovie]="selectedMovie" [selectedCombo]="selectedCombo" [selectedShowTime]="selectedShowTime"
       [MaLichChieu]="MaLichChieu" [Time]="selectedTime" (comeback)="valueChange($event)"></app-book-chair>
   </div>

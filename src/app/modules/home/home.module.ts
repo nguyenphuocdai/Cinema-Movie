@@ -8,7 +8,6 @@ import { LoginZaloDirective } from '../../shared/directives/login-zalo.directive
 import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
 import { BookTicketComponent } from './pages/book-ticket/book-ticket.component';
 import { BrowserModule } from '../../../../node_modules/@angular/platform-browser';
-import { CarouselModule } from './components/carousel-movie';
 import { BookChairComponent } from './pages/book-chair/book-chair.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { ScrollToIdDirective } from '../../shared/directives/scroll-to-id.directive';
@@ -31,6 +30,7 @@ import { MovieComingSoonComponent } from './pages/movie-coming-soon/movie-coming
 import { MovieShowingComponent } from './pages/movie-showing/movie-showing.component';
 import { NewsComponent } from './pages/news/news.component';
 import { MovieAccountComponent } from './pages/movie-account/movie-account.component';
+import { BookTicketMiniComponent } from './pages/book-ticket-mini/book-ticket-mini.component';
 
 
 @NgModule({
@@ -41,8 +41,6 @@ import { MovieAccountComponent } from './pages/movie-account/movie-account.compo
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    CarouselModule,
-
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
@@ -70,7 +68,8 @@ import { MovieAccountComponent } from './pages/movie-account/movie-account.compo
     MovieComingSoonComponent,
     MovieShowingComponent,
     NewsComponent,
-    MovieAccountComponent
+    MovieAccountComponent,
+    BookTicketMiniComponent
   ],
   exports: [
     HomeComponent,

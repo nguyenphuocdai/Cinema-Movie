@@ -6,6 +6,7 @@ import { WOW } from 'wowjs/dist/wow.min';
 import { ListMovie } from '../../../../shared/models/list-movie.model';
 import { CacheService } from '../../../../shared/services/cache.service';
 import { UserNormal } from '../../../../shared/models/user-normal.model';
+import { SnackbarService } from 'ngx-snackbar';
 
 @Component({
   selector: 'app-book-chair',
@@ -47,6 +48,22 @@ export class BookChairComponent implements OnInit, AfterViewInit {
   count = 0;
   isShowLoading: boolean;
   currentUser: UserNormal;
+
+  globalPosition = 'bottom-right';
+  globalMax = 3;
+  globalTimeout = 5000;
+  globalBackground = '#343434';
+  globalColor: string;
+  globalAccent = '#2196f3';
+ 
+  localMsg: string;
+  localTimeout: number;
+  localBackground: string;
+  localColor: string;
+  localAction: string;
+  localAccent: string;
+
+
   constructor(
     private elem: ElementRef,
     private _userService: UserService,
@@ -55,6 +72,7 @@ export class BookChairComponent implements OnInit, AfterViewInit {
     if (this._cacheService.get('CurrentUser') !== null) {
       this.currentUser = this._cacheService.get('CurrentUser');
     }
+    window.scrollTo(0, window.innerHeight / 2);
   }
 
   ngOnInit() {
@@ -97,7 +115,7 @@ export class BookChairComponent implements OnInit, AfterViewInit {
   }
   showPayment() {
     if (this.totalCount <= 0) {
-      alert('chưa chọn vé');
+      alert('Bạn cần phải chọn chỗ để tiến hành đặt vé!');
       return;
     }
     this.isShowLoading = true;
@@ -108,7 +126,7 @@ export class BookChairComponent implements OnInit, AfterViewInit {
       return;
     }
     if (this.selectedCount > 8) {
-      alert('only 8');
+      alert('Chỉ được mua tối đa 8 vé / 1 đơn hàng');
       return;
     }
     this.selectedSit = event.target.innerHTML;

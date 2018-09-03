@@ -1,3 +1,4 @@
+
 .breadcrumb-area {
   padding: 100px 0 100px !important;
   background: url('../../../../../assets/img/bg-page-title.jpg');
@@ -12,11 +13,13 @@
 .breadcrumb-area {
   nav {
     text-align: center;
+
     .breadcrumb-bg {
       background-color: unset !important;
       display: -webkit-inline-box;
     }
   }
+
   .breadcrumb-area-content h1 {
     font-size: 48px;
   }
@@ -68,6 +71,37 @@
   max-width: 400px;
   height: auto;
 }
+
 .details-area .details-content {
   border-bottom: 1px solid #1e1e1e;
+}
+
+.section-title {
+  width: 100%;
+  padding: 15px
+}
+
+.section-title .page-heading {
+  margin: 0;
+  color: #575962;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.section-title-table {
+  padding: 15px 25px
+}
+.info-color{
+  color: #cdd1e8 !important
+}
+.btn-right{
+  float: right
+}
+//@at-root
+.container-scroll {
+  overflow-y: scroll;
+}
+.form-check--display{
+  display: inline-flex;
+  padding: 0
 }
